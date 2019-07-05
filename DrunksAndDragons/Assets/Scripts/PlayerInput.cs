@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
 
-    public bool GetAttackDown { get { return Input.GetMouseButton(0); } }
-    public bool GetAttackPressed { get { return Input.GetMouseButtonDown(0); } }
-    public bool GetAttackReleased { get { return Input.GetMouseButtonUp(0); } }
+    public bool GetSweepDown { get { return Input.GetMouseButton(0); } }
+    public bool GetSweepPressed { get { return Input.GetMouseButtonDown(0); } }
+    public bool GetSweepReleased { get { return Input.GetMouseButtonUp(0); } }
 
-    public bool GetBoostDown { get { return Input.GetKey(KeyCode.LeftShift); } }
-    public bool GetBoostPressed { get { return Input.GetKeyDown(KeyCode.LeftShift); } }
-    public bool GetBoostReleased { get { return Input.GetKeyUp(KeyCode.LeftShift); } }
+    public bool GetLungeDown { get { return Input.GetMouseButton(1); } }
+    public bool GetLungePressed { get { return Input.GetMouseButtonDown(1); } }
+    public bool GetLungeReleased { get { return Input.GetMouseButtonUp(1); } }
 
 
     public Vector3 GetMoveDir { get {

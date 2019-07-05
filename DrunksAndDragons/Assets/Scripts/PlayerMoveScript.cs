@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerMoveScript : MonoBehaviour
 {
     [SerializeField] PlayerInput input;
+    [SerializeField] AttackScript attack;
 
-    [SerializeField]
+    [SerializeField] 
     [Range(1, 10)]
     float moveSpeed = 5;
 
@@ -26,6 +27,8 @@ public class PlayerMoveScript : MonoBehaviour
     {
         if (!input)
             input = GetComponent<PlayerInput>();
+        if (!attack)
+            attack = GetComponent<AttackScript>();
     }
 
     // Update is called once per frame
@@ -35,16 +38,15 @@ public class PlayerMoveScript : MonoBehaviour
         float angle = Mathf.Atan2(aimDir.x, aimDir.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
 
-        if (input.GetAttackPressed)
+        if (input.GetSweepPressed)
         {
-            GetComponent<AttackScript>().Attack();
+            attack.SweepAttack();
 
         }
 
-        if(input.GetBoostPressed)
+        if(input.GetLungePressed)
         {
-            speedMod = boostSpeed;
-            boostTimer = BoostTime;
+            attack.LungeAttack();
         }
 
         transform.position += input.GetMoveDir * (moveSpeed * speedMod) * Time.deltaTime;
