@@ -7,7 +7,9 @@ public class AttackScript : MonoBehaviour
 {
     [SerializeField] cameraShake cameraShake;
     [SerializeField] timeStop stopTime;
-    [SerializeField] Image panel;
+    [SerializeField] Image AttackPanel;
+
+    public bool IsAttacking { get { return !(sweepCountdown <= 0 && lungeCountdown <= 0); } }
 
     // consider having multiple attackCooldownDurations depending on what attack was used
     [Range(0, 5)]
@@ -58,7 +60,7 @@ public class AttackScript : MonoBehaviour
         else if(attackCooldown > 0)
         {
             attackCooldown -= Time.deltaTime;
-            panel.fillAmount = 1 - ((1 / attackCooldownDuration) * attackCooldown);
+            AttackPanel.fillAmount = 1 - ((1 / attackCooldownDuration) * attackCooldown);
         }
     }
 
@@ -108,7 +110,7 @@ public class AttackScript : MonoBehaviour
         {
             sweepCountdown = sweepDuration;
             attackCooldown = attackCooldownDuration;
-            panel.fillAmount = 0;
+            AttackPanel.fillAmount = 0;
         }
     }
 
@@ -119,7 +121,7 @@ public class AttackScript : MonoBehaviour
             lungeCountdown = lungeDuration;
             attackCooldown = attackCooldownDuration;
             lungeDir = transform.forward;
-            panel.fillAmount = 0;
+            AttackPanel.fillAmount = 0;
         }
     }
 }
