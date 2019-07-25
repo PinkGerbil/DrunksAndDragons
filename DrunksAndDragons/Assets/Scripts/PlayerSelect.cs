@@ -14,15 +14,10 @@ public class PlayerSelect : MonoBehaviour
     public static bool player2Active = true;
     public static bool player3Active = true;
     public static bool player4Active = true;
-
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //    
-    //
-    //}
-
-    // Update is called once per frame
+    
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     void Update()
     {
         if(SceneManager.GetActiveScene().buildIndex == 0)
@@ -41,10 +36,11 @@ public class PlayerSelect : MonoBehaviour
         {
             CheckActivePlayer();
         }
-
-
     }
 
+    /// <summary>
+    /// uses the keys 1-4 on the top of the keyboard to activate their players
+    /// </summary>
     private void SelectPlayers()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -104,6 +100,9 @@ public class PlayerSelect : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Checks which players are active so it can set the bool between scenes to activate them in main scene
+    /// </summary>
     private void ActivatePlayers()
     {
         if (Player1.activeInHierarchy)
