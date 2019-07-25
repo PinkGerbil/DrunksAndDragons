@@ -65,6 +65,7 @@ public class PlayerMoveScript : MonoBehaviour
             }
             else
             {
+                heldPlayer.GetComponent<Rigidbody>().isKinematic = false;
                 heldPlayer.GetComponent<Rigidbody>().AddForceAtPosition((transform.forward + transform.up).normalized * 500.0f, heldPlayer.transform.position - transform.forward * 0.5f);
                 heldPlayer = null;
             }
@@ -72,7 +73,7 @@ public class PlayerMoveScript : MonoBehaviour
         }
 
         if (!!heldPlayer)
-            heldPlayer.transform.position = transform.position + (transform.up * 2);
+            heldPlayer.transform.SetPositionAndRotation(transform.position + (transform.up * 2), transform.rotation);
 
         transform.position += input.GetMoveDir * (moveSpeed * speedMod) * Time.deltaTime;
 

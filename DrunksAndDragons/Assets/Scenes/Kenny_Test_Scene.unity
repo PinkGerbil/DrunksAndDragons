@@ -901,6 +901,9 @@ GameObject:
   - component: {fileID: 925270298}
   - component: {fileID: 925270297}
   - component: {fileID: 925270301}
+  - component: {fileID: 925270304}
+  - component: {fileID: 925270303}
+  - component: {fileID: 925270302}
   m_Layer: 0
   m_Name: altPlayer
   m_TagString: Player
@@ -916,7 +919,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925270296}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -992,10 +995,62 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &925270302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925270296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bde676d12540ad840bfd2f26a45d81c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthPanel: {fileID: 0}
+  attackScript: {fileID: 0}
+  isHit: 0
+  isHitDir: {x: 0, y: 0, z: 0}
+  maxHealth: 6
+  health: 0
+--- !u!114 &925270303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925270296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2455fe521ec15a541a2f0b9e455e77ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraShake: {fileID: 0}
+  stopTime: {fileID: 0}
+  AttackPanel: {fileID: 0}
+  attackCooldownDuration: 1
+  sweepDuration: 0.25
+  lungeDuration: 0.15
+  sweepRange: 2
+  sweepWidth: 45
+  lungeRange: 0.5
+--- !u!114 &925270304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925270296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b4d815420cd2d4ba7bfd0befa9dfb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeStopDuration: 0.25
 --- !u!1 &1248040044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,7 +1353,7 @@ GameObject:
   - component: {fileID: 1532709778}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1878,6 +1933,28 @@ MonoBehaviour:
   player: {fileID: 0}
   range: 2
   attackTime: 0.3
+--- !u!1 &2135156807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 154127650809698050, guid: 1642c077d3a23ae4da48016cc946c741,
+    type: 3}
+  m_PrefabInstance: {fileID: 154127651434048421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &2135156817
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135156807}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &154127651434048421
 PrefabInstance:
   m_ObjectHideFlags: 0

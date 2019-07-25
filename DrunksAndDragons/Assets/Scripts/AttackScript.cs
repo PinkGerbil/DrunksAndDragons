@@ -10,7 +10,10 @@ public class AttackScript : MonoBehaviour
 
     [SerializeField] cameraShake cameraShake;
     [SerializeField] timeStop stopTime;
-    [SerializeField] Image AttackPanel;
+
+    [SerializeField]
+    [Tooltip("AttackPanel should be a panel in the UI with a horizontal fill method")]
+    Image AttackPanel;
 
     public bool IsAttacking { get { return !(sweepCountdown <= 0 && lungeCountdown <= 0); } }
 

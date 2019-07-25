@@ -6,7 +6,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AttackScript))]
 public class PlayerDamageHandler : MonoBehaviour
 {
-    [SerializeField] Image HealthPanel;
+    [SerializeField]
+    [Tooltip("HealthPanel should be a panel in the UI with a horizontal fill method")]
+    Image HealthPanel;
     [SerializeField] AttackScript attackScript;
 
     public bool Invincible { get { return IFrameTime > 0 || attackScript.IsAttacking; } }
@@ -31,6 +33,8 @@ public class PlayerDamageHandler : MonoBehaviour
     public int health;
 
 
+    Rigidbody rigidbody;
+
     void Start()
     {
         if (!HealthPanel)
@@ -39,6 +43,9 @@ public class PlayerDamageHandler : MonoBehaviour
             attackScript = GetComponent<AttackScript>();
 
         health = maxHealth;
+
+        rigidbody = GetComponent<Rigidbody>();
+
     }
 
     void Update()
@@ -60,6 +67,17 @@ public class PlayerDamageHandler : MonoBehaviour
 
         if (health <= 0)
             Debug.Log("ded");
+
+        if (!rigidbody.isKinematic && Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 1))
+        {
+            if (hit.collider.CompareTag("Environment"))
+            {
+                rigidbody.isKinematic = true;
+                Vector3 temp = transform.position;
+                temp.y = 1;
+                transform.position = temp;
+            }
+        }
     }
 
     void LateUpdate()
