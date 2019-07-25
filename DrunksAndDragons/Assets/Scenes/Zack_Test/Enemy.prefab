@@ -128,9 +128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 4041726190277475621, guid: cea9899c82e267d468e75f7905da9176, type: 3}
-  - {fileID: 3381757409699346001, guid: 01c91c7dfd6478346b5bc2d67bf5d6f6, type: 3}
-  - {fileID: 3336091395958730464, guid: e46b202889f9ce7448d4ccfb6b77d04d, type: 3}
-  - {fileID: 4705312735054897810, guid: c09d5561da8d29f4086aaf773653c463, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   agent: {fileID: 264408059411136697}
   attackRange: 1.56

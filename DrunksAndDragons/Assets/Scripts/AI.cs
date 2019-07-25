@@ -5,9 +5,10 @@ using UnityEngine.AI;
 
 public class AI : MonoBehaviour
 {
-    public GameObject[] players;
     public NavMeshAgent agent;
     public float attackRange;
+
+    private GameObject[] players;
 
     private float min1;
     private float min2;
