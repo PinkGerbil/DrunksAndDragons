@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AttackScript))]
 public class PlayerDamageHandler : MonoBehaviour
 {
     [SerializeField] Image HealthPanel;
@@ -67,6 +68,8 @@ public class PlayerDamageHandler : MonoBehaviour
             getHit();
     }
 
+
+    // recieve damage and get knocked back, activate invincibility frames
     void getHit()
     {
         isHitDir.Normalize();

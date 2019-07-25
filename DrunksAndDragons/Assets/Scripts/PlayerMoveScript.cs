@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AttackScript), typeof(PlayerInput))]
 public class PlayerMoveScript : MonoBehaviour
 {
-    [SerializeField] PlayerInput input;
-    [SerializeField] AttackScript attack;
+    [SerializeField]
+    [Tooltip("The PlayerInput script attached to the player object")]
+    PlayerInput input;
+
+    [SerializeField]
+    [Tooltip("The AttackScript script attached to the player object")]
+    AttackScript attack;
 
     [SerializeField] 
     [Range(1, 10)]
@@ -20,7 +26,9 @@ public class PlayerMoveScript : MonoBehaviour
     [Range(0, 5)]
     float BoostTime = 1;
     float boostTimer = 0;
-    
+
+    GameObject heldPlayer = null;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,13 +49,30 @@ public class PlayerMoveScript : MonoBehaviour
         if (input.GetSweepPressed)
         {
             attack.SweepAttack();
-
         }
 
         if(input.GetLungePressed)
         {
             attack.LungeAttack();
         }
+
+        if(input.GetGrabPressed)
+        {
+            if (!heldPlayer)
+            {
+                heldPlayer = attack.GrabPlayer();
+                Debug.Log(heldPlayer);
+            }
+            else
+            {
+                heldPlayer.transform.position = transform.position;
+                heldPlayer = null;
+            }
+
+        }
+
+        if (!!heldPlayer)
+            heldPlayer.transform.position = transform.position + (transform.up * 2);
 
         transform.position += input.GetMoveDir * (moveSpeed * speedMod) * Time.deltaTime;
 

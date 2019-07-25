@@ -13,6 +13,10 @@ public class PlayerInput : MonoBehaviour
     public bool GetLungePressed { get { return Input.GetMouseButtonDown(1); } }
     public bool GetLungeReleased { get { return Input.GetMouseButtonUp(1); } }
 
+    public bool GetGrabDown { get { return Input.GetKey(KeyCode.Space); } }
+    public bool GetGrabPressed { get { return Input.GetKeyDown(KeyCode.Space); } }
+    public bool GetGrabReleased { get { return Input.GetKeyUp(KeyCode.Space); } }
+
 
     public Vector3 GetMoveDir { get {
             Vector3 dir = Vector3.zero;
