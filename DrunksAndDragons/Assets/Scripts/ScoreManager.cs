@@ -12,16 +12,22 @@ public class ScoreManager : MonoBehaviour
     public int maxWaves;
     public GameObject gameOver;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start is called before the first frame update and sets the variables that need setting
+    /// </summary>
     void Start()
     {
         timeLength = maxTime;
         wave = 1; 
     }
 
-    // Update is called once per frame
+    // 
+    /// <summary>
+    /// Update is called once per frame and updates the timer if needed
+    /// </summary>
     void Update()
     {
+        //time ends new wave starts
         if(timeLength > 0)
         {
             TimerUpdate();
@@ -31,6 +37,7 @@ public class ScoreManager : MonoBehaviour
         {
             if (wave < maxWaves)
             {
+                //time is over which means wave over
                 wave++;
                 timeLength = maxTime;
             }
@@ -39,10 +46,12 @@ public class ScoreManager : MonoBehaviour
                 //gameover
                 gameOver.SetActive(true);
             }
-            //time is over which means round over
         }
     }
 
+    /// <summary>
+    /// Timer update manages the timer and will change it accordingly
+    /// </summary>
     void TimerUpdate()
     {
         timeLength -= Time.deltaTime;
