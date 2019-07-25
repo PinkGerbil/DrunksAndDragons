@@ -31,19 +31,20 @@ public class AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //checking to see how many players there are in the scene by seeing how many player tags there are in startup
         if(playNum == 1)
         {
             onePlayer();
         }
-        if (playNum == 2)
+        else if (playNum == 2)
         {
             twoPlayer();
         }
-        if (playNum == 3)
+        else if (playNum == 3)
         {
             threePlayer();
         }
-        if (playNum == 4)
+        else if (playNum == 4)
         {
             fourPlayer();
         }
@@ -56,6 +57,7 @@ public class AI : MonoBehaviour
 
     void onePlayer()
     {
+        //finds the distance between the ai and the player then decides to chase or attack depending on range
         distance0 = Vector3.Distance(agent.transform.position, players[0].transform.position);
 
         if (distance0 > attackRange)
