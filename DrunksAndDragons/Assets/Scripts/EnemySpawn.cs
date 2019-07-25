@@ -8,12 +8,17 @@ public class EnemySpawn : MonoBehaviour
     public GameObject EnemyHolder;
     public GameObject EnemySpawner;
 
+    /// <summary>
+    /// This is called at the first frame
+    /// </summary>
     private void Start()
     {
         
     }
-
-    // Update is called once per frame
+    
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -22,6 +27,10 @@ public class EnemySpawn : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// spawns an enemy at a location
+    /// </summary>
+    /// <param name="spawner">Parent object of the spawner</param>
     private void SpawnEnemy(GameObject spawner)
     {
         GameObject InstEnemy;

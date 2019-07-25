@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(timeStop))]
 public class AttackScript : MonoBehaviour
 {
+    const float playerWidth = 0.5f;
+
     [SerializeField] cameraShake cameraShake;
     [SerializeField] timeStop stopTime;
     [SerializeField] Image AttackPanel;
@@ -64,6 +67,7 @@ public class AttackScript : MonoBehaviour
         }
     }
 
+    // fire out a ray based on how long the attack has been active
     void checkSweepCollide()
     {
         float timeScalar = 1 / sweepDuration;
@@ -72,7 +76,7 @@ public class AttackScript : MonoBehaviour
 
         attackDir = Quaternion.AngleAxis(-(sweepWidth * (1 - sweepCountdown * timeScalar)), Vector3.up) * attackDir;
 
-        Vector3 origin = transform.position + attackDir * 0.5f;
+        Vector3 origin = transform.position + attackDir * playerWidth;
         Debug.DrawLine(origin, origin + attackDir * sweepRange, Color.green);
 
         if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange))
@@ -87,23 +91,29 @@ public class AttackScript : MonoBehaviour
 
     }
 
+    // fire out several short rays in front of the player to check for enemy collision
     void checkLungeCollision()
     {
-        Vector3 rayOrigin = transform.position + lungeDir * 0.5f;
-        Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * lungeRange), Color.red);
+        Vector3 lungePerp = Vector3.Cross(transform.up, lungeDir);
+        Vector3 rayOrigin = transform.position + (lungeDir * playerWidth) + (-lungePerp * playerWidth);
 
-        if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange))
+        for (int i = 0; i < 5; i++)
         {
-            if (hit.collider.CompareTag("Enemy"))
+            if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange))
             {
-                Destroy(hit.collider.gameObject);
-                cameraShake.enableCamShake();
-                stopTime.enableTimeStop();
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    Destroy(hit.collider.gameObject);
+                    cameraShake.enableCamShake();
+                    stopTime.enableTimeStop();
+                }
             }
+            rayOrigin += lungePerp * 0.2f;
+            Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * lungeRange), Color.red);
         }
-
     }
 
+    // activate the sweeping attack
     public void SweepAttack()
     {
         if (attackCooldown <= 0)
@@ -114,6 +124,7 @@ public class AttackScript : MonoBehaviour
         }
     }
 
+    // activate the lunge atack (causing the player to charge forward)
     public void LungeAttack()
     {
         if (attackCooldown <= 0)
@@ -124,4 +135,28 @@ public class AttackScript : MonoBehaviour
             AttackPanel.fillAmount = 0;
         }
     }
+
+    // check an area in front of the players, then return the first located player
+    public GameObject GrabPlayer()
+    {
+        Vector3 rayOrigin = transform.position + (transform.forward * playerWidth);
+        Vector3 rayDir = transform.forward;
+        rayDir = Quaternion.AngleAxis(22.5f, Vector3.up) * rayDir;
+        
+        for (int i = 0; i < 5; i++)
+        {
+            if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit hit, 1.5f))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    Debug.Log(hit.collider.name);
+                    return hit.collider.gameObject;
+                }
+            }
+            rayDir = Quaternion.AngleAxis(-45 * 0.2f, Vector3.up) * rayDir;
+
+        }
+        return null;
+    }
+
 }

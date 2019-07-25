@@ -47,6 +47,7 @@ public class EnemyAttackTest : MonoBehaviour
         }
     }
 
+    // if the players is alive and not invincible, tell the player they've been hit
     void hitPlayer()
     {
         if (!player.Invincible && player.Alive)
