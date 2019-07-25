@@ -65,7 +65,7 @@ public class PlayerMoveScript : MonoBehaviour
             }
             else
             {
-                heldPlayer.transform.position = transform.position;
+                heldPlayer.GetComponent<Rigidbody>().AddForceAtPosition((transform.forward + transform.up).normalized * 500.0f, heldPlayer.transform.position - transform.forward * 0.5f);
                 heldPlayer = null;
             }
 
