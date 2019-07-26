@@ -102,6 +102,7 @@ public class AttackScript : MonoBehaviour
                 Destroy(hit.collider.gameObject);
                 cameraShake.enableCamShake();
                 stopTime.enableTimeStop();
+                this.GetComponent<PlayerPoints>().AddPoints(100);
             }
         }
 
