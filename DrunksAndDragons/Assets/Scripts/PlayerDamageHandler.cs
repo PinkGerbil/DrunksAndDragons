@@ -71,6 +71,8 @@ public class PlayerDamageHandler : MonoBehaviour
             if (hit.collider.CompareTag("Environment"))
             {
                 rigidbody.isKinematic = true;
+
+                // set the player position to just above where the ray hit
                 Vector3 temp = hit.point;
                 temp.y = 1;
                 transform.position = temp;

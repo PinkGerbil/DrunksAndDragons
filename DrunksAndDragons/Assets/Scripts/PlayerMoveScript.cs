@@ -34,9 +34,7 @@ public class PlayerMoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 aimDir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-        float angle = Mathf.Atan2(aimDir.x, aimDir.y) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+        
 
         if (input.GetSweepPressed && !heldPlayer)
         {
@@ -69,7 +67,14 @@ public class PlayerMoveScript : MonoBehaviour
         if (!!heldPlayer)
             heldPlayer.transform.SetPositionAndRotation(transform.position + (transform.up * 2), transform.rotation);
 
-        transform.position += input.GetMoveDir * moveSpeed * speedMod * Time.deltaTime;
-        
+
+        Vector3 moveDir = input.GetMoveDir;
+        if (moveDir != Vector3.zero)
+        {
+            transform.position += moveDir * moveSpeed * speedMod * Time.deltaTime;
+            Vector3 aimDir = moveDir;
+            float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+        }
     }
 }

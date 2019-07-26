@@ -24,6 +24,8 @@ public class PlayerInput : MonoBehaviour
             playerID = blackboard.GetPlayerID(GetComponent<PlayerDamageHandler>());
     }
 
+
+    // the following code needs to be changed based on playerID when XInput is added
     public bool GetSweepHeld { get { return playerID == 1 && Input.GetMouseButton(0); } }
     public bool GetSweepPressed { get { return playerID == 1 && Input.GetMouseButtonDown(0); } }
     public bool GetSweepReleased { get { return playerID == 1 && Input.GetMouseButtonUp(0); } }
@@ -35,8 +37,10 @@ public class PlayerInput : MonoBehaviour
     public bool GetGrabHeld { get { return playerID == 1 && Input.GetKey(KeyCode.Space); } }
     public bool GetGrabPressed { get { return playerID == 1 && Input.GetKeyDown(KeyCode.Space); } }
     public bool GetGrabReleased { get { return playerID == 1 && Input.GetKeyUp(KeyCode.Space); } }
+    //
 
 
+    //the following will be changed or obsolete when XInput is added
     public Vector3 GetMoveDir { get {
             Vector3 dir = Vector3.zero;
             if (Input.GetKey(KeyCode.W)) dir.z += 1;
