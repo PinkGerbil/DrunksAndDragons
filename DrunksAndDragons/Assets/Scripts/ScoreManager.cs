@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,11 +13,19 @@ public class ScoreManager : MonoBehaviour
     public int maxWaves;
     public GameObject gameOver;
 
+    public GameObject Player1;
+    public GameObject Player2;
+    public GameObject Player3;
+    public GameObject Player4;
+
+    public bool pointsShown;
+
     /// <summary>
     /// Start is called before the first frame update and sets the variables that need setting
     /// </summary>
     void Start()
     {
+        pointsShown = false; 
         timeLength = maxTime;
         wave = 1; 
     }
@@ -34,16 +43,11 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            if (wave < maxWaves)
+            //gameover
+            gameOver.SetActive(true);
+            if (!pointsShown)
             {
-                //time is over which means wave over
-                wave++;
-                timeLength = maxTime;
-            }
-            else
-            {
-                //gameover
-                gameOver.SetActive(true);
+                GameOverPoints();
             }
         }
     }
@@ -58,11 +62,37 @@ public class ScoreManager : MonoBehaviour
         timer.text = IntTime.ToString(); 
     }
 
-    void PlayerPoints()
+    private int PlayerPoints(GameObject player)
     {
-        //do smack on enemies
-        //get the points
-        //when the timer is no the points tallied
-        //shows best player??
+        return player.GetComponent<PlayerPoints>().GetPoints();
     }
+
+    /// <summary>
+    /// gets all the players scores and 
+    /// </summary>
+    void GameOverPoints()
+    {
+        //player1.getpoints
+        int P1Points = PlayerPoints(Player1);
+        //player2.getpoints
+        int P2Points = PlayerPoints(Player2);
+        //player4.getpoints
+        int P3Points = PlayerPoints(Player3);
+        //player3.getpoints
+        int P4Points = PlayerPoints(Player4);
+        //compare.player.points
+        int[] points = { P1Points, P2Points, P3Points, P4Points };
+        //sort.players
+        Array.Sort(points);
+        Array.Reverse(points);
+        foreach(int score in points)
+        {
+            print(score);
+        }
+        //winner is the player with most points
+        //print(points[0]);
+        pointsShown = true;
+    }
+
+
 }

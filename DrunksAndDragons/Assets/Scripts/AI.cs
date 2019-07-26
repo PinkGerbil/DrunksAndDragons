@@ -19,6 +19,8 @@ public class AI : MonoBehaviour
     private float distance2;
     private float distance3;
 
+    private int pointAmount = 20;
+
     private int playNum;
 
     // Start is called before the first frame update
