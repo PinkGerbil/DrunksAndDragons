@@ -21,7 +21,6 @@ public class ScoreManager : MonoBehaviour
         wave = 1; 
     }
 
-    // 
     /// <summary>
     /// Update is called once per frame and updates the timer if needed
     /// </summary>
@@ -57,5 +56,13 @@ public class ScoreManager : MonoBehaviour
         timeLength -= Time.deltaTime;
         int IntTime = Mathf.RoundToInt(timeLength);
         timer.text = IntTime.ToString(); 
+    }
+
+    void PlayerPoints()
+    {
+        //do smack on enemies
+        //get the points
+        //when the timer is no the points tallied
+        //shows best player??
     }
 }

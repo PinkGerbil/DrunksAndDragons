@@ -61,6 +61,9 @@ public class PlayerSelect : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// checks to see if the bool is active, if it is it will activate the corresponding players
+    /// </summary>
     private void CheckActivePlayer()
     {
         if (player1Active)
