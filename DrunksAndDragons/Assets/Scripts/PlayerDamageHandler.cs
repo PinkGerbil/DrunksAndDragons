@@ -71,7 +71,7 @@ public class PlayerDamageHandler : MonoBehaviour
             if (hit.collider.CompareTag("Environment"))
             {
                 rigidbody.isKinematic = true;
-                Vector3 temp = transform.position;
+                Vector3 temp = hit.point;
                 temp.y = 1;
                 transform.position = temp;
             }

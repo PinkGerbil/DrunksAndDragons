@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyAttackTest : MonoBehaviour
 {
+    // consider just using some of this code in ai and deleting this script
+
     [SerializeField]
     Blackboard blackboard;
 
@@ -20,6 +22,7 @@ public class EnemyAttackTest : MonoBehaviour
     float attackCountdown;
 
     [SerializeField]
+    [Tooltip("How far away the player target needs to be before deciding to switch targets")]
     [Range(0,100)]
     float maxFollowRange = 6;
 
@@ -55,6 +58,8 @@ public class EnemyAttackTest : MonoBehaviour
             attackCountdown = attackTime;
             Debug.DrawLine(transform.position, currentPlayer.transform.position, Color.white);
         }
+
+        // check whether target needs to switch if current target is far away
         if ((distance > maxFollowRange || !currentPlayer.Alive) && blackboard != null)
         {
             currentPlayer = blackboard.getNearestPlayer(transform.position);

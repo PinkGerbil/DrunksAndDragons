@@ -22,25 +22,32 @@ public class AttackScript : MonoBehaviour
     public float attackCooldownDuration = 1.0f;
     float attackCooldown = 0;
 
+    [Tooltip("How fast the sweep occurs")]
     [Range(0,5)]
     public float sweepDuration = 0.25f;
     float sweepCountdown = 0;
 
+    [Tooltip("How long the lunge attack lasts")]
     [Range(0, 5)]
     public float lungeDuration = 0.15f;
     float lungeCountdown = 0;
     Vector3 lungeDir;
 
+    [Tooltip("The range of the sweep attack")]
     [Range(0, 10)]
     public float sweepRange = 2;
+    [Tooltip("How wide the sweep attack should be")]
     [Range(1, 360)]
     public float sweepWidth = 45;
 
+    [Tooltip("How far in front the rays of the lunge attack reach")]
     [Range(0, 5)]
     public float lungeRange = 0.5f;
 
+    [Tooltip("How far away the player can grab another player from")]
     [Range(0, 5)]
-    public float grabRange = 3.0f;
+    public float grabRange = 1.5f;
+    [Tooltip("The angle of the grab check in front of the player")]
     [Range(1, 360)]
     public float grabWidth = 45.0f;
 
