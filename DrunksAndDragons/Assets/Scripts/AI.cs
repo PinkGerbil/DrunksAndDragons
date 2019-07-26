@@ -72,6 +72,7 @@ public class AI : MonoBehaviour
     }
     void twoPlayer()
     {
+        //does the same as for one player but compares distances between players and finds the lowest and chooses to target that one
         distance0 = Vector3.Distance(agent.transform.position, players[0].transform.position);
         distance1 = Vector3.Distance(agent.transform.position, players[1].transform.position);
         min1 = Mathf.Min(distance0, distance1);

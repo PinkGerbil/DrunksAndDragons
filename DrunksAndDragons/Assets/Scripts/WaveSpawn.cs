@@ -8,7 +8,9 @@ public class WaveSpawn : MonoBehaviour
     public Transform[] spawnLocation;
 
     public int spawnAmount;
-    public int waveMultiplier;
+    public bool waveMultiplierOn = false;
+    public int waveMultiplierStartValue;
+    public int multiplyAmount;
     public float timeBetweenSpawn;
     public float startTimeBetweenWaves;
     public float addedTimeBetweenWaves;
@@ -59,7 +61,7 @@ public class WaveSpawn : MonoBehaviour
 
     IEnumerator spawnDelay()
     {
-        for(int i = 0; i < (spawnAmount * waveMultiplier); i++)
+        for(int i = 0; i < (spawnAmount * waveMultiplierStartValue); i++)
         {
             int index = Random.Range(0, spawnLocation.Length);
 
@@ -67,6 +69,9 @@ public class WaveSpawn : MonoBehaviour
 
             yield return new WaitForSeconds(timeBetweenSpawn);
         }
-        waveMultiplier = waveMultiplier = 1;
+        if (waveMultiplierOn == true)
+        {
+            waveMultiplierStartValue = waveMultiplierStartValue + multiplyAmount;
+        }
     }
 }
