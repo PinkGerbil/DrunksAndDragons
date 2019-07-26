@@ -315,6 +315,11 @@ MonoBehaviour:
   wave: 0
   maxWaves: 5
   gameOver: {fileID: 1474364943}
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  Player3: {fileID: 0}
+  Player4: {fileID: 0}
+  pointsShown: 0
 --- !u!114 &267371463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +671,8 @@ MonoBehaviour:
   Player2: {fileID: 997098922}
   Player3: {fileID: 1602011188}
   Player4: {fileID: 1959864251}
+  playerSelectScene: Sam_Test
+  gameScene: Sam_Test_Another
 --- !u!1 &1241320634
 GameObject:
   m_ObjectHideFlags: 0

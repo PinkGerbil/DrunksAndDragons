@@ -1029,6 +1029,8 @@ MonoBehaviour:
   Player2: {fileID: 1733382740}
   Player3: {fileID: 876341487}
   Player4: {fileID: 1062290776}
+  playerSelectScene: Sam_Test
+  gameScene: Sam_Test_Another
 --- !u!4 &1309624223
 Transform:
   m_ObjectHideFlags: 0

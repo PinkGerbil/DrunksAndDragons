@@ -10,6 +10,9 @@ public class PlayerSelect : MonoBehaviour
     public GameObject Player3;
     public GameObject Player4;
 
+    public string playerSelectScene;
+    public string gameScene;
+
     public static bool player1Active = true;
     public static bool player2Active = true;
     public static bool player3Active = true;
@@ -20,7 +23,7 @@ public class PlayerSelect : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 0)
+        if(SceneManager.GetActiveScene().name == playerSelectScene)
         {
             SelectPlayers();
             ActivatePlayers();
@@ -32,7 +35,7 @@ public class PlayerSelect : MonoBehaviour
                 SceneManager.LoadScene(1);
             }
         }
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().name == gameScene)
         {
             CheckActivePlayer();
         }
