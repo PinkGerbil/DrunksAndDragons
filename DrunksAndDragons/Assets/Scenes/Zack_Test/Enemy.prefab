@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 264408059411136703}
   - component: {fileID: 264408059411136696}
   - component: {fileID: 264408059411136697}
+  - component: {fileID: 1641546508880163830}
   - component: {fileID: 264408059411136698}
   m_Layer: 0
   m_Name: Enemy
@@ -115,6 +116,23 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1641546508880163830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264408059411136699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62e84368acb63e49b829eef8e768522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackboard: {fileID: 0}
+  currentPlayer: {fileID: 0}
+  range: 1.5
+  attackTime: 0.5
+  maxFollowRange: 6
 --- !u!114 &264408059411136698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,10 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026d614967306ef4f9c5b0b8c10e5e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  attackScript: {fileID: 0}
   agent: {fileID: 264408059411136697}
   attackRange: 1.56

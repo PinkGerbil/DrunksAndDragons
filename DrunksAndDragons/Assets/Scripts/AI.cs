@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(EnemyAttackTest))]
 public class AI : MonoBehaviour
 {
+    [SerializeField]
+    EnemyAttackTest attackScript;
+
     public NavMeshAgent agent;
     public float attackRange;
 
     private GameObject[] players;
+    GameObject currentPlayer = null;
 
     private float min1;
     private float min2;
@@ -28,142 +33,43 @@ public class AI : MonoBehaviour
     {
         players = GameObject.FindGameObjectsWithTag("Player");
         playNum = players.Length;
+        FindClosestPlayer();
+
+        if (!attackScript)
+            attackScript = GetComponent<EnemyAttackTest>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //checking to see how many players there are in the scene by seeing how many player tags there are in startup
-        if(playNum == 1)
+        float distanceToTarget = Vector3.Distance(transform.position, currentPlayer.transform.position);
+        if (distanceToTarget > 5)
+            FindClosestPlayer();
+        else if (distanceToTarget < attackRange)
+            attack();
+        
+    }
+
+    void FindClosestPlayer()
+    {
+        float closest = Mathf.Infinity;
+        foreach (GameObject child in players)
         {
-            onePlayer();
-        }
-        else if (playNum == 2)
-        {
-            twoPlayer();
-        }
-        else if (playNum == 3)
-        {
-            threePlayer();
-        }
-        else if (playNum == 4)
-        {
-            fourPlayer();
+            float curDistance = Vector3.Distance(transform.position, child.transform.position);
+            if (curDistance < closest)
+            {
+                closest = curDistance;
+                currentPlayer = child;
+                agent.destination = currentPlayer.transform.position;
+            }
         }
     }
 
     void attack()
     {
-        Debug.Log("attack");
+        attackScript.hitPlayer(currentPlayer.GetComponent<PlayerDamageHandler>());
+        //Debug.Log("attack");
     }
 
-    void onePlayer()
-    {
-        //finds the distance between the ai and the player then decides to chase or attack depending on range
-        distance0 = Vector3.Distance(agent.transform.position, players[0].transform.position);
-
-        if (distance0 > attackRange)
-        {
-            agent.destination = players[0].transform.position;
-        }
-        else
-        {
-            attack();
-        }
-
-    }
-    void twoPlayer()
-    {
-        //does the same as for one player but compares distances between players and finds the lowest and chooses to target that one
-        distance0 = Vector3.Distance(agent.transform.position, players[0].transform.position);
-        distance1 = Vector3.Distance(agent.transform.position, players[1].transform.position);
-        min1 = Mathf.Min(distance0, distance1);
-
-        if (min1 > attackRange)
-        {
-            if (min1 == distance0)
-            {
-                agent.destination = players[0].transform.position;
-            }
-            else if (min1 == distance1)
-            {
-                agent.destination = players[1].transform.position;
-            }
-        }
-        else
-        {
-            attack();
-        }
-
-
-
-    }
-    void threePlayer()
-    {
-        distance0 = Vector3.Distance(agent.transform.position, players[0].transform.position);
-        distance1 = Vector3.Distance(agent.transform.position, players[1].transform.position);
-        distance2 = Vector3.Distance(agent.transform.position, players[2].transform.position);
-
-        min1 = Mathf.Min(distance0, distance1);
-        min2 = Mathf.Min(distance2, min1);
-
-        if (min2 > attackRange)
-        {
-            if (min2 == distance0)
-            {
-                agent.destination = players[0].transform.position;
-            }
-            else if (min2 == distance1)
-            {
-                agent.destination = players[1].transform.position;
-            }
-            else if (min2 == distance2)
-            {
-                agent.destination = players[2].transform.position;
-            }
-        }
-        else
-        {
-            attack();
-        }
-
-
-
-    }
-    void fourPlayer()
-    {
-        distance0 = Vector3.Distance(agent.transform.position, players[0].transform.position);
-        distance1 = Vector3.Distance(agent.transform.position, players[1].transform.position);
-        distance2 = Vector3.Distance(agent.transform.position, players[2].transform.position);
-        distance3 = Vector3.Distance(agent.transform.position, players[3].transform.position);
-
-        min1 = Mathf.Min(distance0, distance1);
-        min2 = Mathf.Min(distance2, distance3);
-        min = Mathf.Min(min1, min2);
-
-        if (min > attackRange)
-        {
-            if (min == distance0)
-            {
-                agent.destination = players[0].transform.position;
-            }
-            else if (min == distance1)
-            {
-                agent.destination = players[1].transform.position;
-            }
-            else if (min == distance2)
-            {
-                agent.destination = players[2].transform.position;
-            }
-            else if (min == distance3)
-            {
-                agent.destination = players[3].transform.position;
-            }
-        }
-        else
-        {
-            attack();
-        }
-
-    }
 }

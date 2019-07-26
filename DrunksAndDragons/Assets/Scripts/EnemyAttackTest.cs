@@ -29,8 +29,8 @@ public class EnemyAttackTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(!blackboard)
-            blackboard = GameObject.Find("Game Manager").GetComponent<Blackboard>();
+        //if(!blackboard)
+        //    blackboard = GameObject.Find("Game Manager").GetComponent<Blackboard>();
         
         attackCountdown = attackTime;
     }
@@ -38,42 +38,44 @@ public class EnemyAttackTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!currentPlayer && blackboard != null)
-            currentPlayer = blackboard.getNearestPlayer(transform.position);
-        float distance = Vector3.Distance(transform.position, currentPlayer.transform.position);
-        if (distance < range)
-        {
-            if (attackCountdown > 0)
-            {
-                attackCountdown -= Time.deltaTime;
-            }
-            else
-            {
-                hitPlayer();
-            }
-            Debug.DrawLine(transform.position, currentPlayer.transform.position, Color.red);
-        }
-        else
-        {
-            attackCountdown = attackTime;
-            Debug.DrawLine(transform.position, currentPlayer.transform.position, Color.white);
-        }
-
-        // check whether target needs to switch if current target is far away
-        if ((distance > maxFollowRange || !currentPlayer.Alive) && blackboard != null)
-        {
-            currentPlayer = blackboard.getNearestPlayer(transform.position);
-        }
+        //if(!currentPlayer && blackboard != null)
+        //    currentPlayer = blackboard.getNearestPlayer(transform.position);
+        //float distance = Vector3.Distance(transform.position, currentPlayer.transform.position);
+        //if (distance < range)
+        //{
+        //    if (attackCountdown > 0)
+        //    {
+        //        attackCountdown -= Time.deltaTime;
+        //    }
+        //    else
+        //    {
+        //        hitPlayer(currentPlayer);
+        //    }
+        //    Debug.DrawLine(transform.position, currentPlayer.transform.position, Color.red);
+        //}
+        //else
+        //{
+        //    attackCountdown = attackTime;
+        //    Debug.DrawLine(transform.position, currentPlayer.transform.position, Color.white);
+        //}
+        //
+        //// check whether target needs to switch if current target is far away
+        //if ((distance > maxFollowRange || !currentPlayer.Alive) && blackboard != null)
+        //{
+        //    currentPlayer = blackboard.getNearestPlayer(transform.position);
+        //}
     }
 
     // if the players is alive and not invincible, tell the player they've been hit
-    void hitPlayer()
+    public void hitPlayer(PlayerDamageHandler player)
     {
-        if (!currentPlayer.Invincible && currentPlayer.Alive)
+        if (!player.Invincible && player.Alive)
         {
-            currentPlayer.isHit = true;
-            currentPlayer.isHitDir += (currentPlayer.transform.position - transform.position).normalized;
-            Debug.Log("Hit: " + currentPlayer.isHitDir);
+            player.isHit = true;
+            player.isHitDir += (player.transform.position - transform.position).normalized;
+            Debug.Log("Hit: " + player.isHitDir);
         }
     }
+
+
 }
