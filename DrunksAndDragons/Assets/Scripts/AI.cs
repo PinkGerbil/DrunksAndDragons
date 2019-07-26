@@ -15,28 +15,25 @@ public class AI : MonoBehaviour
     private GameObject[] players;
     GameObject currentPlayer = null;
 
-    private float min1;
-    private float min2;
-    private float min;
-
-    private float distance0;
-    private float distance1;
-    private float distance2;
-    private float distance3;
+    [SerializeField]
+    [Range(0, 2)]
+    float attackTime = 0.5f;
+    float attackCountdown;
 
     private int pointAmount = 20;
-
-    private int playNum;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-        playNum = players.Length;
+        
         FindClosestPlayer();
 
         if (!attackScript)
             attackScript = GetComponent<EnemyAttackTest>();
+
+        attackCountdown = attackTime;
     }
 
     // Update is called once per frame
@@ -48,6 +45,8 @@ public class AI : MonoBehaviour
             FindClosestPlayer();
         else if (distanceToTarget < attackRange)
             attack();
+        else
+            attackCountdown = attackTime;
         
     }
 
@@ -68,8 +67,15 @@ public class AI : MonoBehaviour
 
     void attack()
     {
-        attackScript.hitPlayer(currentPlayer.GetComponent<PlayerDamageHandler>());
-        //Debug.Log("attack");
+        if (attackCountdown > 0)
+        {
+            attackCountdown -= Time.deltaTime;
+        }
+        else
+        {
+            attackScript.hitPlayer(currentPlayer.GetComponent<PlayerDamageHandler>());
+            attackCountdown = attackTime;
+        }
     }
 
 }
