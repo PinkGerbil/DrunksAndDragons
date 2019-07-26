@@ -32,7 +32,7 @@ public class PlayerSelect : MonoBehaviour
             {
                 //make more efficient later
                 //loads next scene after character select
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
         if (SceneManager.GetActiveScene().name == gameScene)
