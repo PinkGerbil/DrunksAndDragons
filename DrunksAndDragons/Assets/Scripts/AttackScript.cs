@@ -39,6 +39,11 @@ public class AttackScript : MonoBehaviour
     [Range(0, 5)]
     public float lungeRange = 0.5f;
 
+    [Range(0, 5)]
+    public float grabRange = 3.0f;
+    [Range(1, 360)]
+    public float grabWidth = 45.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,7 +71,8 @@ public class AttackScript : MonoBehaviour
         else if(attackCooldown > 0)
         {
             attackCooldown -= Time.deltaTime;
-            AttackPanel.fillAmount = 1 - ((1 / attackCooldownDuration) * attackCooldown);
+            if(AttackPanel != null)
+                AttackPanel.fillAmount = 1 - ((1 / attackCooldownDuration) * attackCooldown);
         }
     }
 
@@ -123,7 +129,8 @@ public class AttackScript : MonoBehaviour
         {
             sweepCountdown = sweepDuration;
             attackCooldown = attackCooldownDuration;
-            AttackPanel.fillAmount = 0;
+            if(AttackPanel != null)
+                AttackPanel.fillAmount = 0;
         }
     }
 
@@ -135,20 +142,29 @@ public class AttackScript : MonoBehaviour
             lungeCountdown = lungeDuration;
             attackCooldown = attackCooldownDuration;
             lungeDir = transform.forward;
-            AttackPanel.fillAmount = 0;
+            if (AttackPanel != null)
+                AttackPanel.fillAmount = 0;
         }
     }
 
     // check an area in front of the players, then return the first located player
     public GameObject GrabPlayer()
     {
-        Vector3 rayOrigin = transform.position + (transform.forward * playerWidth);
+        Vector3 rayOrigin = transform.position /*+ (transform.forward * playerWidth)*/;
         Vector3 rayDir = transform.forward;
-        rayDir = Quaternion.AngleAxis(22.5f, Vector3.up) * rayDir;
-        
-        for (int i = 0; i < 5; i++)
+        if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit firstHit, 3.0f))
         {
-            if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit hit, 1.5f))
+            if (firstHit.collider.CompareTag("Player"))
+            {
+                return firstHit.collider.gameObject;
+            }
+        }
+
+        rayDir = Quaternion.AngleAxis(-grabWidth * 0.5f, Vector3.up) * rayDir;
+        
+        for (int i = 0; i < 4; i++)
+        {
+            if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit hit, 3.0f))
             {
                 if (hit.collider.CompareTag("Player"))
                 {
@@ -156,7 +172,7 @@ public class AttackScript : MonoBehaviour
                     return hit.collider.gameObject;
                 }
             }
-            rayDir = Quaternion.AngleAxis(-45 * 0.2f, Vector3.up) * rayDir;
+            rayDir = Quaternion.AngleAxis(grabWidth * 0.25f, Vector3.up) * rayDir;
 
         }
         return null;

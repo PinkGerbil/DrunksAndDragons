@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(AttackScript))]
+[RequireComponent(typeof(AttackScript), typeof(Rigidbody))]
 public class PlayerDamageHandler : MonoBehaviour
 {
+
+    [SerializeField] Rigidbody rigidbody;
+    [SerializeField] AttackScript attackScript;
     [SerializeField]
     [Tooltip("HealthPanel should be a panel in the UI with a horizontal fill method")]
     Image HealthPanel;
-    [SerializeField] AttackScript attackScript;
 
-    public bool Invincible { get { return IFrameTime > 0 || attackScript.IsAttacking; } }
+    public bool Invincible { get { return !(IFrameTime <= 0 && !attackScript.IsAttacking && rigidbody.isKinematic); } }
     public bool Alive { get { return health > 0; } }
 
     [Range(1, 10)]
@@ -33,18 +35,18 @@ public class PlayerDamageHandler : MonoBehaviour
     public int health;
 
 
-    Rigidbody rigidbody;
-
     void Start()
     {
-        if (!HealthPanel)
-            HealthPanel = GameObject.Find("Health").GetComponent<Image>();
         if (!attackScript)
             attackScript = GetComponent<AttackScript>();
 
         health = maxHealth;
 
-        rigidbody = GetComponent<Rigidbody>();
+        if(!rigidbody)
+            rigidbody = GetComponent<Rigidbody>();
+
+        if(rigidbody != null)
+            rigidbody.isKinematic = true;
 
     }
 
@@ -62,11 +64,7 @@ public class PlayerDamageHandler : MonoBehaviour
             IFrameTime -= Time.deltaTime;
             if (IFrameTime < 0) IFrameTime = 0;
         }
-        
-        HealthPanel.fillAmount = (1.0f / maxHealth) * health;
 
-        if (health <= 0)
-            Debug.Log("ded");
 
         if (!rigidbody.isKinematic && Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 1))
         {
@@ -77,6 +75,14 @@ public class PlayerDamageHandler : MonoBehaviour
                 temp.y = 1;
                 transform.position = temp;
             }
+        }
+
+        if(HealthPanel != null)
+            HealthPanel.fillAmount = (1.0f / maxHealth) * health;
+
+        if (Alive && health <= 0)
+        {
+            Debug.Log("ded");
         }
     }
 

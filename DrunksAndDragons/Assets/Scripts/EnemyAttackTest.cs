@@ -5,7 +5,11 @@ using UnityEngine;
 public class EnemyAttackTest : MonoBehaviour
 {
     [SerializeField]
-    PlayerDamageHandler player;
+    Blackboard blackboard;
+
+    [SerializeField]
+    [Tooltip("Set this if there is no blackboard")]
+    PlayerDamageHandler currentPlayer;
     
     [Range(1, 10)]
     public float range = 1.5f;
@@ -15,19 +19,25 @@ public class EnemyAttackTest : MonoBehaviour
     float attackTime = 0.5f;
     float attackCountdown;
 
+    [SerializeField]
+    [Range(0,100)]
+    float maxFollowRange = 6;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!player)
-            player = GameObject.Find("Player").GetComponent<PlayerDamageHandler>();
+        if(!blackboard)
+            blackboard = GameObject.Find("Game Manager").GetComponent<Blackboard>();
+        
         attackCountdown = attackTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, player.transform.position);
+        if(!currentPlayer && blackboard != null)
+            currentPlayer = blackboard.getNearestPlayer(transform.position);
+        float distance = Vector3.Distance(transform.position, currentPlayer.transform.position);
         if (distance < range)
         {
             if (attackCountdown > 0)
@@ -38,23 +48,27 @@ public class EnemyAttackTest : MonoBehaviour
             {
                 hitPlayer();
             }
-            Debug.DrawLine(transform.position, player.transform.position, Color.red);
+            Debug.DrawLine(transform.position, currentPlayer.transform.position, Color.red);
         }
         else
         {
             attackCountdown = attackTime;
-            Debug.DrawLine(transform.position, player.transform.position, Color.white);
+            Debug.DrawLine(transform.position, currentPlayer.transform.position, Color.white);
+        }
+        if ((distance > maxFollowRange || !currentPlayer.Alive) && blackboard != null)
+        {
+            currentPlayer = blackboard.getNearestPlayer(transform.position);
         }
     }
 
     // if the players is alive and not invincible, tell the player they've been hit
     void hitPlayer()
     {
-        if (!player.Invincible && player.Alive)
+        if (!currentPlayer.Invincible && currentPlayer.Alive)
         {
-            player.isHit = true;
-            player.isHitDir += (player.transform.position - transform.position).normalized;
-            Debug.Log("Hit: " + player.isHitDir);
+            currentPlayer.isHit = true;
+            currentPlayer.isHitDir += (currentPlayer.transform.position - transform.position).normalized;
+            Debug.Log("Hit: " + currentPlayer.isHitDir);
         }
     }
 }
