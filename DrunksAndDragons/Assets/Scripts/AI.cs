@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(EnemyAttackTest))]
 public class AI : MonoBehaviour
 {
-    [SerializeField]
-    EnemyAttackTest attackScript;
 
     public NavMeshAgent agent;
     public float attackRange;
 
     private GameObject[] players;
-    GameObject currentPlayer = null;
+    PlayerDamageHandler currentPlayer = null;
 
     [SerializeField]
     [Range(0, 2)]
@@ -29,9 +26,7 @@ public class AI : MonoBehaviour
         players = GameObject.FindGameObjectsWithTag("Player");
         
         FindClosestPlayer();
-
-        if (!attackScript)
-            attackScript = GetComponent<EnemyAttackTest>();
+        
 
         attackCountdown = attackTime;
     }
@@ -59,7 +54,7 @@ public class AI : MonoBehaviour
             if (curDistance < closest)
             {
                 closest = curDistance;
-                currentPlayer = child;
+                currentPlayer = child.GetComponent<PlayerDamageHandler>();
                 agent.destination = currentPlayer.transform.position;
             }
         }
@@ -73,8 +68,18 @@ public class AI : MonoBehaviour
         }
         else
         {
-            attackScript.hitPlayer(currentPlayer.GetComponent<PlayerDamageHandler>());
+            hitPlayer();
             attackCountdown = attackTime;
+        }
+    }
+
+    public void hitPlayer()
+    {
+        if (!currentPlayer.Invincible && currentPlayer.Alive)
+        {
+            currentPlayer.isHit = true;
+            currentPlayer.isHitDir += (currentPlayer.transform.position - transform.position).normalized;
+            Debug.Log("Hit: " + currentPlayer.isHitDir);
         }
     }
 
