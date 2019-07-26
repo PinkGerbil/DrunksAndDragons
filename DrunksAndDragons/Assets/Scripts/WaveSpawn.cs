@@ -8,9 +8,12 @@ public class WaveSpawn : MonoBehaviour
     public Transform[] spawnLocation;
 
     public int spawnAmount;
+    [Header("increase enemies each wave")]
     public bool waveMultiplierOn = false;
     public int waveMultiplierStartValue;
     public int multiplyAmount;
+
+    [Header("Wave Timer")]
     public float timeBetweenSpawn;
     public float startTimeBetweenWaves;
     public float addedTimeBetweenWaves;
