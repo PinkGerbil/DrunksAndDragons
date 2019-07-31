@@ -141,10 +141,10 @@ public class AttackScript : MonoBehaviour
 
         attackDir = Quaternion.AngleAxis(-(sweepWidth * (1 - sweepCountdown * timeScalar)), Vector3.up) * attackDir;
 
-        Vector3 origin = transform.position + attackDir * playerWidth;
-        Debug.DrawLine(origin, origin + attackDir * sweepRange, Color.green);
+        Vector3 origin = transform.position;
+        Debug.DrawLine(origin, origin + attackDir * (sweepRange + playerWidth), Color.green);
 
-        if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange))
+        if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange + playerWidth))
         {
             if (hit.collider.CompareTag("Enemy"))
             {
@@ -164,11 +164,11 @@ public class AttackScript : MonoBehaviour
     void checkLungeCollision()
     {
         Vector3 lungePerp = Vector3.Cross(transform.up, lungeDir);
-        Vector3 rayOrigin = transform.position + (lungeDir * playerWidth) + (-lungePerp * playerWidth);
+        Vector3 rayOrigin = transform.position + (-lungePerp * playerWidth);
 
         for (int i = 0; i < 5; i++)
         {
-            if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange))
+            if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange + playerWidth))
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
@@ -178,7 +178,7 @@ public class AttackScript : MonoBehaviour
                 }
             }
             rayOrigin += lungePerp * 0.2f;
-            Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * lungeRange), Color.red);
+            Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * (lungeRange + playerWidth)), Color.red);
         }
     }
 

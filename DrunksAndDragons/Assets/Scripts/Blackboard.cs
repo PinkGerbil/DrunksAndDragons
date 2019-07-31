@@ -29,9 +29,9 @@ public class Blackboard : MonoBehaviour
             foreach(Image image in images)
             {
                 if (image.name == "P1_Health")
-                    HealthPanels.Add(image.GetComponent<Image>());
+                    HealthPanels.Add(image);
                 else if (image.name == "P1_Stamina")
-                    AttackPanels.Add(image.GetComponent<Image>());
+                    AttackPanels.Add(image);
             }
         }
     }
