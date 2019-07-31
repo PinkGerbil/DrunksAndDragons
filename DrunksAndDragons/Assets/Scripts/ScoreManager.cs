@@ -18,13 +18,20 @@ public class ScoreManager : MonoBehaviour
     public GameObject Player3;
     public GameObject Player4;
 
-    private bool pointsShown;
+    public Text p1_Score;
+    public Text p2_Score;
+    public Text p3_Score;
+    public Text p4_Score;
+
+
+    public bool pointsShown;
 
     /// <summary>
     /// Start is called before the first frame update and sets the variables that need setting
     /// </summary>
-    void Start()
+    public void Start()
     {
+        
         pointsShown = false; 
         timeLength = maxTime;
         wave = 1; 
@@ -35,8 +42,20 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     void Update()
     {
+        //Shows and updates Player 1 score
+        int P1Points = PlayerPoints(Player1);
+        p1_Score.text = "Score: " + P1Points;
+        //Shows and updates Player 2 score
+        int P2Points = PlayerPoints(Player2);
+        p2_Score.text = "Score: " + P2Points;
+        //Shows and updates Player 3 score
+        int P3Points = PlayerPoints(Player3);
+        p3_Score.text = "Score: " + P3Points;
+        //Shows and updates Player 4 score
+        int P4Points = PlayerPoints(Player4);
+        p4_Score.text = "Score: " + P4Points;
         //time ends new wave starts
-        if(timeLength > 0)
+        if (timeLength > 0)
         {
             TimerUpdate();
 
@@ -70,7 +89,7 @@ public class ScoreManager : MonoBehaviour
     /// <summary>
     /// gets all the players scores and 
     /// </summary>
-    void GameOverPoints()
+    public void GameOverPoints()
     {
         //player1.getpoints
         int P1Points = PlayerPoints(Player1);
