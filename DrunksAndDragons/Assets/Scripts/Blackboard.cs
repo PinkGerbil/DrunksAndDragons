@@ -18,6 +18,7 @@ public class Blackboard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        players = new List<PlayerDamageHandler>();
         AttackPanels = new List<Image>();
         HealthPanels = new List<Image>();
         if (!UIcanvas)
@@ -27,13 +28,12 @@ public class Blackboard : MonoBehaviour
             Image[] images = child.GetComponentsInChildren<Image>();
             foreach(Image image in images)
             {
-                if (image.name == "Health")
+                if (image.name == "P1_Health")
                     HealthPanels.Add(image.GetComponent<Image>());
-                else if (image.name == "Attack")
+                else if (image.name == "P1_Stamina")
                     AttackPanels.Add(image.GetComponent<Image>());
             }
         }
-        players = new List<PlayerDamageHandler>();
     }
 
 

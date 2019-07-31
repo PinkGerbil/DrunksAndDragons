@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 17731067}
   - component: {fileID: 17731066}
   m_Layer: 5
-  m_Name: Attack
+  m_Name: Attack Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -328,7 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 278741578}
   m_Layer: 5
-  m_Name: Player 3
+  m_Name: Player UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 333297537}
   - component: {fileID: 333297536}
   m_Layer: 5
-  m_Name: Attack
+  m_Name: Attack Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 482504509}
   - component: {fileID: 482504508}
   m_Layer: 5
-  m_Name: Attack
+  m_Name: Attack Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -819,7 +819,7 @@ GameObject:
   - component: {fileID: 508694852}
   - component: {fileID: 508694851}
   m_Layer: 5
-  m_Name: Attack
+  m_Name: Attack Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1069,7 +1069,7 @@ GameObject:
   - component: {fileID: 544729645}
   - component: {fileID: 544729644}
   m_Layer: 5
-  m_Name: Health
+  m_Name: Health Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1171,7 +1171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 681809475}
   m_Layer: 5
-  m_Name: Player 1
+  m_Name: Player UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1393,7 +1393,7 @@ GameObject:
   - component: {fileID: 757677846}
   - component: {fileID: 757677845}
   m_Layer: 5
-  m_Name: Health
+  m_Name: Health Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1467,7 +1467,7 @@ GameObject:
   - component: {fileID: 808456005}
   - component: {fileID: 808456004}
   m_Layer: 5
-  m_Name: Health
+  m_Name: Health Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1993,7 +1993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1350603444}
   m_Layer: 5
-  m_Name: Player 2
+  m_Name: Player UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2142,7 +2142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1421119467}
   m_Layer: 5
-  m_Name: Player 4
+  m_Name: Player UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2276,7 +2276,7 @@ GameObject:
   - component: {fileID: 1491913899}
   - component: {fileID: 1491913898}
   m_Layer: 5
-  m_Name: Health
+  m_Name: Health Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3468,6 +3468,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 8029757748504559217, guid: bfad4f2cba3da6d43bcafd859f8e6cb9,
+        type: 3}
+      propertyPath: UIcanvas
+      value: 
+      objectReference: {fileID: 101358162}
     - target: {fileID: 8029757748504559230, guid: bfad4f2cba3da6d43bcafd859f8e6cb9,
         type: 3}
       propertyPath: m_LocalPosition.x
