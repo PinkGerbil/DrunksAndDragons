@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(timeStop), typeof(PlayerPoints))]
+[RequireComponent(typeof(timeStop), typeof(PlayerInput), typeof(PlayerMoveScript))]
 public class AttackScript : MonoBehaviour
 {
     const float playerWidth = 0.5f;
 
     [SerializeField] cameraShake cameraShake;
     [SerializeField] timeStop stopTime;
+
+    [SerializeField] PlayerInput input;
+    [SerializeField] PlayerMoveScript playerMove;
 
     [SerializeField]
     [Tooltip("AttackPanel should be a panel in the UI with a horizontal fill method")]
@@ -20,7 +23,8 @@ public class AttackScript : MonoBehaviour
     // consider having multiple attackCooldownDurations depending on what attack was used
     [Range(0, 5)]
     public float attackCooldownDuration = 1.0f;
-    float attackCooldown = 0;
+    [HideInInspector]
+    public float attackCooldown = 0;
 
     [Tooltip("How fast the sweep occurs")]
     [Range(0,5)]
@@ -51,9 +55,16 @@ public class AttackScript : MonoBehaviour
     [Range(1, 360)]
     public float grabWidth = 45.0f;
 
+    [HideInInspector]
+    public GameObject heldPlayer = null;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (!input)
+            input = GetComponent<PlayerInput>();
+        if (!playerMove)
+            playerMove = GetComponent<PlayerMoveScript>();
         if (!stopTime)
             stopTime = GetComponent<timeStop>();
         if (!cameraShake)
@@ -75,12 +86,46 @@ public class AttackScript : MonoBehaviour
             checkLungeCollision();
             lungeCountdown -= Time.deltaTime;
         }
-        else if(attackCooldown > 0)
+        else if(attackCooldown > 0 && !heldPlayer)
         {
             attackCooldown -= Time.deltaTime;
-            if(AttackPanel != null)
-                AttackPanel.fillAmount = 1 - ((1 / attackCooldownDuration) * attackCooldown);
+            setCooldownGauge();
         }
+
+        if (input.GetSweepPressed && !heldPlayer)
+        {
+            SweepAttack();
+        }
+
+        if (input.GetLungePressed && !heldPlayer)
+        {
+            LungeAttack();
+        }
+
+        if (input.GetGrabPressed)
+        {
+            if (!heldPlayer)
+            {
+                heldPlayer = GrabPlayer();
+                if (heldPlayer != null)
+                    playerMove.speedMod = 0.25f;
+            }
+            else
+            {
+                dropPlayer();
+            }
+
+        }
+
+        if (!!heldPlayer)
+        {
+            attackCooldown += Time.deltaTime;
+            setCooldownGauge();
+            heldPlayer.transform.SetPositionAndRotation(transform.position + (transform.up * 2), transform.rotation);
+        }
+
+        if (attackCooldown >= 1 && heldPlayer != null)
+            dropPlayer();
     }
 
     /// <summary>
@@ -170,7 +215,7 @@ public class AttackScript : MonoBehaviour
     /// <returns> The first player hit by a ray </returns>
     public GameObject GrabPlayer()
     {
-        Vector3 rayOrigin = transform.position /*+ (transform.forward * playerWidth)*/;
+        Vector3 rayOrigin = transform.position;
         Vector3 rayDir = transform.forward;
         if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit firstHit, 3.0f))
         {
@@ -198,4 +243,21 @@ public class AttackScript : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Throw held Player and allow them to move again
+    /// </summary>
+    public void dropPlayer()
+    {
+        heldPlayer.GetComponent<Rigidbody>().isKinematic = false;
+        heldPlayer.GetComponent<Rigidbody>().AddForceAtPosition((transform.forward + transform.up).normalized * 500.0f, heldPlayer.transform.position - transform.forward * 0.5f);
+        heldPlayer = null;
+        playerMove.speedMod = 1;
+    }
+
+    void setCooldownGauge()
+    {
+
+        if (AttackPanel != null)
+            AttackPanel.fillAmount = 1 - ((1 / attackCooldownDuration) * attackCooldown);
+    }
 }

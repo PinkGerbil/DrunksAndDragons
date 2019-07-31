@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-[RequireComponent(typeof(AttackScript), typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerInput))]
 public class PlayerMoveScript : MonoBehaviour
 {
     [SerializeField]
@@ -18,11 +18,10 @@ public class PlayerMoveScript : MonoBehaviour
     [Range(1, 10)]
     float moveSpeed = 5;
 
-    float speedMod = 1;
+    public float speedMod = 1;
 
     
 
-    GameObject heldPlayer = null;
 
 
     // Start is called before the first frame update
@@ -39,36 +38,7 @@ public class PlayerMoveScript : MonoBehaviour
     {
         
 
-        if (input.GetSweepPressed && !heldPlayer)
-        {
-            attack.SweepAttack();
-        }
 
-        if(input.GetLungePressed && !heldPlayer)
-        {
-            attack.LungeAttack();
-        }
-
-        if(input.GetGrabPressed)
-        {
-            if (!heldPlayer)
-            {
-                heldPlayer = attack.GrabPlayer();
-                if(heldPlayer != null)
-                    speedMod = 0.25f;
-            }
-            else
-            {
-                heldPlayer.GetComponent<Rigidbody>().isKinematic = false;
-                heldPlayer.GetComponent<Rigidbody>().AddForceAtPosition((transform.forward + transform.up).normalized * 500.0f, heldPlayer.transform.position - transform.forward * 0.5f);
-                heldPlayer = null;
-                speedMod = 1;
-            }
-
-        }
-
-        if (!!heldPlayer)
-            heldPlayer.transform.SetPositionAndRotation(transform.position + (transform.up * 2), transform.rotation);
 
 
         Vector3 moveDir = input.GetMoveDir;
@@ -80,4 +50,6 @@ public class PlayerMoveScript : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
         }
     }
+
+
 }
