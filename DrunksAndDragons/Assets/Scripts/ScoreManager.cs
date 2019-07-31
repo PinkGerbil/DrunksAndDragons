@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
     public GameObject Player3;
     public GameObject Player4;
 
-    public bool pointsShown;
+    private bool pointsShown;
 
     /// <summary>
     /// Start is called before the first frame update and sets the variables that need setting

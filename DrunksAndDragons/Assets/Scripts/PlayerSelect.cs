@@ -6,10 +6,10 @@ using XboxCtrlrInput;
 
 public class PlayerSelect : MonoBehaviour
 {
-    public XboxController Controller1;
-    public XboxController Controller2;
-    public XboxController Controller3;
-    public XboxController Controller4;
+    private XboxController Controller1 = XboxController.First;
+    private XboxController Controller2 = XboxController.Second;
+    private XboxController Controller3 = XboxController.Third;
+    private XboxController Controller4 = XboxController.Fourth;
     public GameObject Player1;
     public GameObject Player2;
     public GameObject Player3;
@@ -18,10 +18,10 @@ public class PlayerSelect : MonoBehaviour
     public string playerSelectScene;
     public string gameScene;
 
-    public static bool player1Active = true;
-    public static bool player2Active = true;
-    public static bool player3Active = true;
-    public static bool player4Active = true;
+    private static bool player1Active = true;
+    private static bool player2Active = true;
+    private static bool player3Active = true;
+    private static bool player4Active = true;
     
     /// <summary>
     /// Update is called once per frame
