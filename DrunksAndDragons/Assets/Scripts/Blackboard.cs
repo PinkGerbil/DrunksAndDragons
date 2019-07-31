@@ -35,7 +35,7 @@ public class Blackboard : MonoBehaviour
             }
         }
     }
-
+    //0.4220619
 
     /// <summary>
     /// Can be used by AI (if necessary) to find the nearest player.

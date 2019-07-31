@@ -20,7 +20,7 @@ public class PlayerMoveScript : MonoBehaviour
 
     public float speedMod = 1;
 
-    
+    Rigidbody rigidbody;
 
 
 
@@ -31,18 +31,14 @@ public class PlayerMoveScript : MonoBehaviour
             input = GetComponent<PlayerInput>();
         if (!attack)
             attack = GetComponent<AttackScript>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
-
-
-
         Vector3 moveDir = input.GetMoveDir;
-        if (moveDir != Vector3.zero)
+        if (moveDir != Vector3.zero && rigidbody.isKinematic)
         {
             transform.position += moveDir * moveSpeed * speedMod * Time.deltaTime;
             Vector3 aimDir = moveDir;
