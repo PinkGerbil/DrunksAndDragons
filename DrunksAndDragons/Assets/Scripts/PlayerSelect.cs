@@ -51,19 +51,19 @@ public class PlayerSelect : MonoBehaviour
     /// </summary>
     private void SelectPlayers()
     {
-        if (XCI.GetButton(XboxButton.Start, XboxController.First))
+        if (XCI.GetButtonDown(XboxButton.Start, XboxController.First))
         {
             Player1.SetActive(!Player1.activeInHierarchy);
         }
-        if (XCI.GetButton(XboxButton.Start, XboxController.Second))
+        if (XCI.GetButtonDown(XboxButton.Start, XboxController.Second))
         {
             Player2.SetActive(!Player2.activeInHierarchy);
         }
-        if (XCI.GetButton(XboxButton.Start, XboxController.Third))
+        if (XCI.GetButtonDown(XboxButton.Start, XboxController.Third))
         {
             Player3.SetActive(!Player3.activeInHierarchy);
         }
-        if (XCI.GetButton(XboxButton.Start, XboxController.Fourth))
+        if (XCI.GetButtonDown(XboxButton.Start, XboxController.Fourth))
         {
             Player4.SetActive(!Player4.activeInHierarchy);
         }
