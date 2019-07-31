@@ -16,12 +16,12 @@ public class Blackboard : MonoBehaviour
         players = new List<PlayerDamageHandler>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
+    /// <summary>
+    /// Can be used by AI (if necessary) to find the nearest player.
+    /// </summary>
+    /// <param name="enemyPos"> the position of the enemy calling this function </param>
+    /// <returns> the damage handler for the closest player </returns>
     public PlayerDamageHandler getNearestPlayer(Vector3 enemyPos)
     {
         float distance = Mathf.Infinity;
@@ -38,6 +38,11 @@ public class Blackboard : MonoBehaviour
         return closest.GetComponent<PlayerDamageHandler>();
     }
 
+    /// <summary>
+    /// Add player to the players list, then return the ID requested and iterate nextPlayerID
+    /// </summary>
+    /// <param name="player"> The damage handler of the player calling this function </param>
+    /// <returns> The ID of the player requesting their playerID (nextPlayerID) </returns>
     public int GetPlayerID(PlayerDamageHandler player)
     {
         Debug.Log(player.name);

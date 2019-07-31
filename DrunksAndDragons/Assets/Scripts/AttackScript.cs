@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(timeStop))]
+[RequireComponent(typeof(timeStop), typeof(PlayerPoints))]
 public class AttackScript : MonoBehaviour
 {
     const float playerWidth = 0.5f;
@@ -83,7 +83,9 @@ public class AttackScript : MonoBehaviour
         }
     }
 
-    // fire out a ray based on how long the attack has been active
+    /// <summary>
+    /// Fire out one ray each frame. The direction of the frame relative to the player depends on the sweepCountdown
+    /// </summary>
     void checkSweepCollide()
     {
         float timeScalar = 1 / sweepDuration;
@@ -108,7 +110,10 @@ public class AttackScript : MonoBehaviour
 
     }
 
-    // fire out several short rays in front of the player to check for enemy collision
+    /// <summary>
+    /// Fire out five parallel rays in front of the player to check for enemies.
+    /// If an enemy is hit, they are destroyed.
+    /// </summary>
     void checkLungeCollision()
     {
         Vector3 lungePerp = Vector3.Cross(transform.up, lungeDir);
@@ -130,7 +135,9 @@ public class AttackScript : MonoBehaviour
         }
     }
 
-    // activate the sweeping attack
+    /// <summary>
+    /// Start the sweep attack by starting the sweepCountdown and attackCooldown
+    /// </summary>
     public void SweepAttack()
     {
         if (attackCooldown <= 0)
@@ -142,7 +149,9 @@ public class AttackScript : MonoBehaviour
         }
     }
 
-    // activate the lunge atack (causing the player to charge forward)
+    /// <summary>
+    /// Start the lunge attack by starting the lungeCountdown and attackCooldown
+    /// </summary>
     public void LungeAttack()
     {
         if (attackCooldown <= 0)
@@ -155,7 +164,10 @@ public class AttackScript : MonoBehaviour
         }
     }
 
-    // check an area in front of the players, then return the first located player
+    /// <summary>
+    /// check an area in front of the players, then return the first located player
+    /// </summary>
+    /// <returns> The first player hit by a ray </returns>
     public GameObject GrabPlayer()
     {
         Vector3 rayOrigin = transform.position /*+ (transform.forward * playerWidth)*/;

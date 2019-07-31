@@ -95,20 +95,17 @@ public class PlayerDamageHandler : MonoBehaviour
     }
 
 
-    // recieve damage and get knocked back, activate invincibility frames
+    /// <summary>
+    /// Get direction of knockback then take damage and start knockback
+    /// </summary>
     void getHit()
     {
         isHitDir.Normalize();
         isHitDir.y = 0;
         Debug.Log(isHitDir);
-        hitToward(); 
+        knockbackCountdown = knockbackTime;
         IFrameTime = IFrames;
         health -= 1;
         isHit = false;
-    }
-
-    void hitToward()
-    {
-        knockbackCountdown = knockbackTime;
     }
 }

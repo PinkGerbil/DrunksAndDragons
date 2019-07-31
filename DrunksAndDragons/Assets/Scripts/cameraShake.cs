@@ -37,9 +37,24 @@ public class cameraShake : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Start camera shake.
+    /// Camera shake moves the camera around for a set amount of time
+    /// </summary>
     public void enableCamShake()
     {
         originalPos = transform.localPosition;
         shakeCountDown = ShakeDuration;
+    }
+
+    /// <summary>
+    /// Start camera shake.
+    /// Camera shake moves the camera around for a set amount of time
+    /// </summary>
+    /// <param name="duration"> Specify the duration of the camera shake </param>
+    public void enableCamShake(float duration)
+    {
+        originalPos = transform.localPosition;
+        shakeCountDown = duration;
     }
 }

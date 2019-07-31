@@ -20,6 +20,9 @@ public class timeStop : MonoBehaviour
             Time.timeScale = 1.0f;
     }
 
+    /// <summary>
+    /// Sets timescale to 0 for a set amount of unscaled time)
+    /// </summary>
     public void enableTimeStop()
     { 
         timeStopCountdown = timeStopDuration;
