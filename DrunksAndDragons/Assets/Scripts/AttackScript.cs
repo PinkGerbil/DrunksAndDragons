@@ -16,7 +16,7 @@ public class AttackScript : MonoBehaviour
 
     [SerializeField]
     [Tooltip("AttackPanel should be a panel in the UI with a horizontal fill method")]
-    Image AttackPanel;
+    public Image AttackPanel;
 
     public bool IsAttacking { get { return !(sweepCountdown <= 0 && lungeCountdown <= 0); } }
 
@@ -69,12 +69,14 @@ public class AttackScript : MonoBehaviour
             stopTime = GetComponent<timeStop>();
         if (!cameraShake)
             cameraShake = Camera.main.GetComponent<cameraShake>();
+
         //change attackDuration to be same as attack animation time
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if(sweepCountdown > 0)
         {
             checkSweepCollide();

@@ -11,7 +11,7 @@ public class PlayerDamageHandler : MonoBehaviour
     [SerializeField] AttackScript attackScript;
     [SerializeField]
     [Tooltip("HealthPanel should be a panel in the UI with a horizontal fill method")]
-    Image HealthPanel;
+    public Image HealthPanel;
 
     public bool Invincible { get { return !(IFrameTime <= 0 && !attackScript.IsAttacking && rigidbody.isKinematic); } }
     public bool Alive { get { return health > 0; } }

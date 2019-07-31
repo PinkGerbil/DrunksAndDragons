@@ -1,18 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Blackboard : MonoBehaviour
 {
 
     int nextPlayerID = 0;
+    [SerializeField] Canvas UIcanvas;
+
     List<PlayerDamageHandler> players;
-    
+    List<Image> AttackPanels;
+    List<Image> HealthPanels;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        AttackPanels = new List<Image>();
+        HealthPanels = new List<Image>();
+        if (!UIcanvas)
+            UIcanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        foreach(Transform child in UIcanvas.transform)
+        {
+            Image[] images = child.GetComponentsInChildren<Image>();
+            foreach(Image image in images)
+            {
+                if (image.name == "Health")
+                    HealthPanels.Add(image.GetComponent<Image>());
+                else if (image.name == "Attack")
+                    AttackPanels.Add(image.GetComponent<Image>());
+            }
+        }
         players = new List<PlayerDamageHandler>();
     }
 
@@ -45,12 +65,19 @@ public class Blackboard : MonoBehaviour
     /// <returns> The ID of the player requesting their playerID (nextPlayerID) </returns>
     public int GetPlayerID(PlayerDamageHandler player)
     {
-        Debug.Log(player.name);
         players.Add(player);
         
-        Debug.Log(nextPlayerID);
         return ++nextPlayerID; 
     }
 
+    public Image getHealthUI(int ID)
+    {
+        return HealthPanels[ID - 1];
+    }
+
+    public Image getAttackUI(int ID)
+    {
+        return AttackPanels[ID - 1];
+    }
 
 }

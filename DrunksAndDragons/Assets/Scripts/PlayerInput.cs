@@ -35,6 +35,9 @@ public class PlayerInput : MonoBehaviour
                 controller = XboxController.Third;
             else if (playerID == 4)
                 controller = XboxController.Fourth;
+
+            GetComponent<PlayerDamageHandler>().HealthPanel = blackboard.getHealthUI(playerID);
+            GetComponent<AttackScript>().AttackPanel = blackboard.getAttackUI(playerID);
         }
     }
 
@@ -67,5 +70,7 @@ public class PlayerInput : MonoBehaviour
             
             return dir.normalized;
         } }
+    ///
 
+    public int getPlayerID { get { return playerID; } }
 }
