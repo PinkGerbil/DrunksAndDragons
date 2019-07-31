@@ -45,6 +45,7 @@ public class AI : MonoBehaviour
         
     }
 
+    //getting the closest player to this object if the player moves past a distance set above
     void FindClosestPlayer()
     {
         float closest = Mathf.Infinity;
@@ -60,6 +61,7 @@ public class AI : MonoBehaviour
         }
     }
 
+    //adds a timer to the ai's attack so it doesnt constantly hit the player
     void attack()
     {
         if (attackCountdown > 0)
@@ -73,6 +75,7 @@ public class AI : MonoBehaviour
         }
     }
 
+    //checks if the target player is alive and not invincible then will hit the player and knock them back 
     public void hitPlayer()
     {
         if (!currentPlayer.Invincible && currentPlayer.Alive)

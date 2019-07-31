@@ -33,7 +33,7 @@ public class WaveSpawn : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-
+        //if there is no children of the spawnmaster then start spawning enemies 
         if(numberOfChildren() == 0)
         {
             if(timer < 0)
@@ -53,6 +53,7 @@ public class WaveSpawn : MonoBehaviour
         }
     }
 
+    //counts how many children there are
     int numberOfChildren()
     {
         for(int i = 0; i < spawnLocation.Length;i++)
@@ -62,6 +63,7 @@ public class WaveSpawn : MonoBehaviour
         return childNumber;
     }
 
+    //delays each spawn of enemies by a set amount of time
     IEnumerator spawnDelay()
     {
         for(int i = 0; i < (spawnAmount * waveMultiplierStartValue); i++)
