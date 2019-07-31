@@ -662,7 +662,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
 --- !u!1 &967910526
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,7 +915,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
 --- !u!1 &1169316209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,6 +1023,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ef180b661484540b0218ec6e342559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Controller1: 1
+  Controller2: 2
+  Controller3: 3
+  Controller4: 4
   Player1: {fileID: 1874828346}
   Player2: {fileID: 1733382740}
   Player3: {fileID: 876341487}
@@ -1223,7 +1225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
 --- !u!1 &1874828346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,7 +1330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
 --- !u!1 &1908537615
 GameObject:
   m_ObjectHideFlags: 0

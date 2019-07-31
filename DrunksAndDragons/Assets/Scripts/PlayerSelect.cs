@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using XboxCtrlrInput;
 
 public class PlayerSelect : MonoBehaviour
 {
+    public XboxController Controller1;
+    public XboxController Controller2;
+    public XboxController Controller3;
+    public XboxController Controller4;
     public GameObject Player1;
     public GameObject Player2;
     public GameObject Player3;
@@ -28,7 +33,7 @@ public class PlayerSelect : MonoBehaviour
             SelectPlayers();
             ActivatePlayers();
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (XCI.GetButton(XboxButton.Back, XboxController.First))
             {
                 //make more efficient later
                 //loads next scene after character select
@@ -46,19 +51,19 @@ public class PlayerSelect : MonoBehaviour
     /// </summary>
     private void SelectPlayers()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (XCI.GetButton(XboxButton.Start, XboxController.First))
         {
             Player1.SetActive(!Player1.activeInHierarchy);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (XCI.GetButton(XboxButton.Start, XboxController.Second))
         {
             Player2.SetActive(!Player2.activeInHierarchy);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (XCI.GetButton(XboxButton.Start, XboxController.Third))
         {
             Player3.SetActive(!Player3.activeInHierarchy);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (XCI.GetButton(XboxButton.Start, XboxController.Fourth))
         {
             Player4.SetActive(!Player4.activeInHierarchy);
         }

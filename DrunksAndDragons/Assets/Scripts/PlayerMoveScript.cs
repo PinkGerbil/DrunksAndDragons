@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 [RequireComponent(typeof(AttackScript), typeof(PlayerInput))]
 public class PlayerMoveScript : MonoBehaviour
@@ -18,6 +19,8 @@ public class PlayerMoveScript : MonoBehaviour
     float moveSpeed = 5;
 
     float speedMod = 1;
+
+    
 
     GameObject heldPlayer = null;
 
