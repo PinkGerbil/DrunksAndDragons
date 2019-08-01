@@ -7,7 +7,7 @@ public class cameraShake : MonoBehaviour
     Vector3 originalPos;
 
     [Range(0, 5)]
-    public float ShakeDuration = 1;
+    public float ShakeDuration = 0.1f;
     float shakeCountDown = 0;
 
     [Range(0,5)]

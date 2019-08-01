@@ -58,6 +58,8 @@ public class AttackScript : MonoBehaviour
     [HideInInspector]
     public GameObject heldPlayer = null;
 
+    Rigidbody rigidbody;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +72,7 @@ public class AttackScript : MonoBehaviour
         if (!cameraShake)
             cameraShake = Camera.main.GetComponent<cameraShake>();
 
+        rigidbody = GetComponent<Rigidbody>();
         //change attackDuration to be same as attack animation time
     }
 
@@ -94,30 +97,35 @@ public class AttackScript : MonoBehaviour
             setCooldownGauge();
         }
 
-        if (input.GetSweepPressed && !heldPlayer)
+        if (rigidbody.isKinematic)
         {
-            SweepAttack();
-        }
-
-        if (input.GetLungePressed && !heldPlayer)
-        {
-            LungeAttack();
-        }
-
-        if (input.GetGrabPressed)
-        {
-            if (!heldPlayer)
+            if (input.GetSweepPressed && !heldPlayer)
             {
-                heldPlayer = GrabPlayer();
-                if (heldPlayer != null)
-                    playerMove.speedMod = 0.25f;
-            }
-            else
-            {
-                dropPlayer();
+                SweepAttack();
             }
 
+            if (input.GetLungePressed && !heldPlayer)
+            {
+                LungeAttack();
+            }
+
+            if (input.GetGrabPressed)
+            {
+                if (!heldPlayer)
+                {
+                    heldPlayer = GrabPlayer();
+                    if (heldPlayer != null)
+                        playerMove.speedMod = 0.25f;
+                }
+                else
+                {
+                    dropPlayer();
+                }
+
+            }
         }
+        else
+            dropPlayer();
 
         if (!!heldPlayer)
         {
@@ -250,10 +258,13 @@ public class AttackScript : MonoBehaviour
     /// </summary>
     public void dropPlayer()
     {
-        heldPlayer.GetComponent<Rigidbody>().isKinematic = false;
-        heldPlayer.GetComponent<Rigidbody>().AddForceAtPosition((transform.forward + transform.up).normalized * 500.0f, heldPlayer.transform.position - transform.forward * 0.5f);
-        heldPlayer = null;
-        playerMove.speedMod = 1;
+        if (heldPlayer != null)
+        {
+            heldPlayer.GetComponent<Rigidbody>().isKinematic = false;
+            heldPlayer.GetComponent<Rigidbody>().AddForceAtPosition((transform.forward + transform.up).normalized * 500.0f, heldPlayer.transform.position - transform.forward * 0.5f);
+            heldPlayer = null;
+            playerMove.speedMod = 1;
+        }
     }
 
     void setCooldownGauge()

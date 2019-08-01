@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class WallScript : MonoBehaviour
 {
+
+    BoxCollider boxCollider;
+
+    List<Collider> colliders;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        colliders = new List<Collider>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        foreach(Collider child in colliders)
+        {
+            child.transform.position = boxCollider.ClosestPoint(child.transform.position) + transform.forward * 0.45f;
+        }
+        colliders.Clear();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(!CompareTag("Player") && !CompareTag("Enemy"))
         {
-            
+            colliders.Add(other);
         }
     }
 }

@@ -113,8 +113,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 0}
   stopTime: {fileID: 6690755835536349668}
+  input: {fileID: 0}
+  playerMove: {fileID: 0}
   AttackPanel: {fileID: 0}
   attackCooldownDuration: 1
+  attackCooldown: 0
   sweepDuration: 0.25
   lungeDuration: 0.15
   sweepRange: 2
@@ -122,6 +125,7 @@ MonoBehaviour:
   lungeRange: 0.5
   grabRange: 3
   grabWidth: 45
+  heldPlayer: {fileID: 0}
 --- !u!114 &6087397870472386677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +141,7 @@ MonoBehaviour:
   input: {fileID: 8262162441647526483}
   attack: {fileID: 4026292650061605386}
   moveSpeed: 5
+  speedMod: 1
 --- !u!114 &1347370192055418913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +175,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackboard: {fileID: 0}
   playerID: 0
+  controller: 0
+  controllerNum: 0
 --- !u!114 &6690755835536349668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +217,6 @@ GameObject:
   - component: {fileID: 4638789775347153471}
   - component: {fileID: 9127998522314994010}
   - component: {fileID: 7389386358315272659}
-  - component: {fileID: 616036875566456429}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -277,16 +283,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &616036875566456429
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8333721911142228420}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
