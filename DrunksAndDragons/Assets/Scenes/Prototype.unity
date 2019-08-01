@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 450293896}
   - component: {fileID: 450293895}
   m_Layer: 5
-  m_Name: P3_Stamina
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,7 +452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 260, y: -260}
+  m_AnchoredPosition: {x: 260, y: -184}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540636248
@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9494a232f625ecc45bb1af17011aecb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShakeDuration: 1
+  ShakeDuration: 0.1
   shakeAmount: 0.7
 --- !u!1 &671502169
 GameObject:
@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 671502172}
   - component: {fileID: 671502171}
   m_Layer: 5
-  m_Name: P2_Health
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1136,7 +1136,7 @@ GameObject:
   - component: {fileID: 848777202}
   - component: {fileID: 848777201}
   m_Layer: 5
-  m_Name: P4_Health
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1289,7 +1289,7 @@ GameObject:
   - component: {fileID: 1123669508}
   - component: {fileID: 1123669507}
   m_Layer: 5
-  m_Name: P4_Stamina
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1387,7 +1387,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -260, y: 260}
+  m_AnchoredPosition: {x: -260, y: 189}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1324310292
@@ -1463,7 +1463,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 260, y: 260}
+  m_AnchoredPosition: {x: 260, y: 184}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1430924891
@@ -1859,7 +1859,7 @@ GameObject:
   - component: {fileID: 1870801778}
   - component: {fileID: 1870801777}
   m_Layer: 5
-  m_Name: P1_Health
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1957,7 +1957,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -260, y: -260}
+  m_AnchoredPosition: {x: -260, y: -181}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1888322771
@@ -2009,7 +2009,7 @@ GameObject:
   - component: {fileID: 1916751674}
   - component: {fileID: 1916751673}
   m_Layer: 5
-  m_Name: P3_Health
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2083,7 +2083,7 @@ GameObject:
   - component: {fileID: 1960246551}
   - component: {fileID: 1960246550}
   m_Layer: 5
-  m_Name: P1_Stamina
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2157,7 +2157,7 @@ GameObject:
   - component: {fileID: 2041036548}
   - component: {fileID: 2041036547}
   m_Layer: 5
-  m_Name: P2_Stamina
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

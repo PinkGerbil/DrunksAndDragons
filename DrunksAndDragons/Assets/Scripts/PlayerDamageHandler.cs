@@ -102,7 +102,6 @@ public class PlayerDamageHandler : MonoBehaviour
     {
         isHitDir.Normalize();
         isHitDir.y = 0;
-        Debug.Log(isHitDir);
         knockbackCountdown = knockbackTime;
         IFrameTime = IFrames;
         health -= 1;
