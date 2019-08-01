@@ -157,9 +157,9 @@ public class AttackScript : MonoBehaviour
             if (hit.collider.CompareTag("Enemy"))
             {
                 Destroy(hit.collider.gameObject);
+                GetComponent<PlayerPoints>().AddPoints(100);
                 cameraShake.enableCamShake();
                 stopTime.enableTimeStop();
-                this.GetComponent<PlayerPoints>().AddPoints(100);
             }
         }
 
@@ -181,6 +181,7 @@ public class AttackScript : MonoBehaviour
                 if (hit.collider.CompareTag("Enemy"))
                 {
                     Destroy(hit.collider.gameObject);
+                    GetComponent<PlayerPoints>().AddPoints(100);
                     cameraShake.enableCamShake();
                     stopTime.enableTimeStop();
                 }
