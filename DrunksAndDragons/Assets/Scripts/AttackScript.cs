@@ -129,7 +129,7 @@ public class AttackScript : MonoBehaviour
 
         if (!!heldPlayer)
         {
-            attackCooldown += Time.deltaTime;
+            attackCooldown += 0.5f * Time.deltaTime;
             setCooldownGauge();
             heldPlayer.transform.SetPositionAndRotation(transform.position + (transform.up * 2), transform.rotation);
         }
@@ -243,7 +243,7 @@ public class AttackScript : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Player"))
                 {
-                    Debug.Log(hit.collider.name);
+
                     return hit.collider.gameObject;
                 }
             }
