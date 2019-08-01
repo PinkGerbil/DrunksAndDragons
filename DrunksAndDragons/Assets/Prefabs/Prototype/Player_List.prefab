@@ -35,7 +35,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90645781927134560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.16, y: 3.45, z: -23}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6375075834705639995}
@@ -115,8 +115,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 0}
   stopTime: {fileID: 4954748985711368672}
+  input: {fileID: 0}
+  playerMove: {fileID: 0}
   AttackPanel: {fileID: 0}
   attackCooldownDuration: 1
+  attackCooldown: 0
   sweepDuration: 0.25
   lungeDuration: 0.15
   sweepRange: 2
@@ -124,6 +127,7 @@ MonoBehaviour:
   lungeRange: 0.5
   grabRange: 3
   grabWidth: 45
+  heldPlayer: {fileID: 0}
 --- !u!114 &2849281151702260555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
 --- !u!114 &5504053042639558769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +155,7 @@ MonoBehaviour:
   input: {fileID: 0}
   attack: {fileID: 0}
   moveSpeed: 5
+  speedMod: 1
 --- !u!114 &7688071172393538135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackboard: {fileID: 0}
   playerID: 0
+  controller: 0
+  controllerNum: 0
 --- !u!114 &4954748985711368672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,9 +232,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &717346216364781929
 GameObject:
@@ -356,7 +362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856029153133536171}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -32.36, y: 3.45, z: -23}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7377453058714874566}
@@ -436,8 +442,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 0}
   stopTime: {fileID: 8852922632473039133}
+  input: {fileID: 0}
+  playerMove: {fileID: 0}
   AttackPanel: {fileID: 0}
   attackCooldownDuration: 1
+  attackCooldown: 0
   sweepDuration: 0.25
   lungeDuration: 0.15
   sweepRange: 2
@@ -445,6 +454,7 @@ MonoBehaviour:
   lungeRange: 0.5
   grabRange: 3
   grabWidth: 45
+  heldPlayer: {fileID: 0}
 --- !u!114 &8249320034643447948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +470,7 @@ MonoBehaviour:
   input: {fileID: 0}
   attack: {fileID: 0}
   moveSpeed: 5
+  speedMod: 1
 --- !u!114 &6100310646336772778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +485,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackboard: {fileID: 0}
   playerID: 0
+  controller: 0
+  controllerNum: 0
 --- !u!114 &8852922632473039133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,7 +512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
 --- !u!114 &3797487539300829400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,9 +559,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1712920884371117750
 GameObject:
@@ -666,8 +678,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2840593953823831411}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -30.3, y: -2.3, z: -25.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 924643060227620496}
@@ -676,7 +688,7 @@ Transform:
   - {fileID: 3660817638679541357}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2051746214694373008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,7 +742,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5296900218036231200}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30.9, y: 3.45, z: -23}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2594809155014069581}
@@ -810,8 +822,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 0}
   stopTime: {fileID: 4087158976314633878}
+  input: {fileID: 0}
+  playerMove: {fileID: 0}
   AttackPanel: {fileID: 0}
   attackCooldownDuration: 1
+  attackCooldown: 0
   sweepDuration: 0.25
   lungeDuration: 0.15
   sweepRange: 2
@@ -819,6 +834,7 @@ MonoBehaviour:
   lungeRange: 0.5
   grabRange: 3
   grabWidth: 45
+  heldPlayer: {fileID: 0}
 --- !u!114 &3465554585596571399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,6 +850,7 @@ MonoBehaviour:
   input: {fileID: 0}
   attack: {fileID: 0}
   moveSpeed: 5
+  speedMod: 1
 --- !u!114 &1642634516725359905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -848,6 +865,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackboard: {fileID: 0}
   playerID: 0
+  controller: 0
+  controllerNum: 0
 --- !u!114 &4087158976314633878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,7 +892,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
 --- !u!114 &8561349048964331347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,9 +939,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &6171870124422981949
 GameObject:
@@ -1051,7 +1069,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6319496142489943039}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -29.489, y: 3.45, z: -23}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4193871329132735122}
@@ -1131,8 +1149,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 0}
   stopTime: {fileID: 2776895241329117513}
+  input: {fileID: 0}
+  playerMove: {fileID: 0}
   AttackPanel: {fileID: 0}
   attackCooldownDuration: 1
+  attackCooldown: 0
   sweepDuration: 0.25
   lungeDuration: 0.15
   sweepRange: 2
@@ -1140,6 +1161,7 @@ MonoBehaviour:
   lungeRange: 0.5
   grabRange: 3
   grabWidth: 45
+  heldPlayer: {fileID: 0}
 --- !u!114 &3326222121668495576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1155,6 +1177,7 @@ MonoBehaviour:
   input: {fileID: 0}
   attack: {fileID: 0}
   moveSpeed: 5
+  speedMod: 1
 --- !u!114 &647055508919321342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1169,6 +1192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackboard: {fileID: 0}
   playerID: 0
+  controller: 0
+  controllerNum: 0
 --- !u!114 &2776895241329117513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1194,7 +1219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
 --- !u!114 &7557329848050962572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,9 +1266,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &7764145165765976512
 GameObject:
