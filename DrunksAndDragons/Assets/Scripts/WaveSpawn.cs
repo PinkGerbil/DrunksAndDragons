@@ -9,8 +9,11 @@ public class WaveSpawn : MonoBehaviour
 
     public int spawnAmount;
     [Header("increase enemies each wave")]
-    public bool waveMultiplierOn = false;
+    [Tooltip("set to 1 to spawn the set spawnAmount")]
     public int waveMultiplierStartValue;
+    [Tooltip("set true to increase enemy spawn amount each wave")]
+    public bool waveMultiplierOn;
+    [Tooltip("increases the amount spawned each wave")]
     public int multiplyAmount;
 
     [Header("Wave Timer")]
