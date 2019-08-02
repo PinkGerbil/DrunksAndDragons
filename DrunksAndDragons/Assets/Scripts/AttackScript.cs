@@ -260,8 +260,10 @@ public class AttackScript : MonoBehaviour
     {
         if (heldPlayer != null)
         {
-            heldPlayer.GetComponent<Rigidbody>().isKinematic = false;
-            heldPlayer.GetComponent<Rigidbody>().AddForceAtPosition((transform.forward + transform.up).normalized * 500.0f, heldPlayer.transform.position - transform.forward * 0.5f);
+            heldPlayer.GetComponent<Collider>().isTrigger = true;
+            Rigidbody other = heldPlayer.GetComponent<Rigidbody>();
+            other.isKinematic = false;
+            other.AddForceAtPosition((transform.forward + transform.up).normalized * 500.0f, heldPlayer.transform.position - transform.forward * 0.5f);
             heldPlayer = null;
             playerMove.speedMod = 1;
         }
