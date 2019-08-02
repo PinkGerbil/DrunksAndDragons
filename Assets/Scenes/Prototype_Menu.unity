@@ -507,6 +507,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8029757748504559217, guid: bfad4f2cba3da6d43bcafd859f8e6cb9,
+        type: 3}
+      propertyPath: UIcanvas
+      value: 
+      objectReference: {fileID: 1722032922}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfad4f2cba3da6d43bcafd859f8e6cb9, type: 3}
 --- !u!1 &914156906 stripped
@@ -597,7 +602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241320634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: -30.4, y: -2.4, z: -33.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
