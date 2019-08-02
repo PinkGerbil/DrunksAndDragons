@@ -28,9 +28,9 @@ public class Blackboard : MonoBehaviour
             Image[] images = child.GetComponentsInChildren<Image>();
             foreach(Image image in images)
             {
-                if (image.name == "P1_Health")
+                if (image.name == "Health")
                     HealthPanels.Add(image);
-                else if (image.name == "P1_Stamina")
+                else if (image.name == "Stamina")
                     AttackPanels.Add(image);
             }
         }

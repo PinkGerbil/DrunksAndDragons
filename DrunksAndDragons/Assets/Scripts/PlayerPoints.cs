@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class PlayerPoints : MonoBehaviour
 {
-    private int points;
-    // Start is called before the first frame update
-    void Start()
-    {
-        points = 0; 
-    }
+    private int points = 0;
 
     public void AddPoints(int i)
     {

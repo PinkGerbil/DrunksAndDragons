@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 17731067}
   - component: {fileID: 17731066}
   m_Layer: 5
-  m_Name: P1_Stamina
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -960,7 +960,7 @@ GameObject:
   - component: {fileID: 333297537}
   - component: {fileID: 333297536}
   m_Layer: 5
-  m_Name: P1_Stamina
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1291,7 +1291,7 @@ GameObject:
   - component: {fileID: 482504509}
   - component: {fileID: 482504508}
   m_Layer: 5
-  m_Name: P1_Stamina
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1365,7 +1365,7 @@ GameObject:
   - component: {fileID: 508694852}
   - component: {fileID: 508694851}
   m_Layer: 5
-  m_Name: P1_Stamina
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1615,7 +1615,7 @@ GameObject:
   - component: {fileID: 544729645}
   - component: {fileID: 544729644}
   m_Layer: 5
-  m_Name: P1_Health
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2030,7 +2030,7 @@ GameObject:
   - component: {fileID: 757677846}
   - component: {fileID: 757677845}
   m_Layer: 5
-  m_Name: P1_Health
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2286,7 +2286,7 @@ GameObject:
   - component: {fileID: 808456005}
   - component: {fileID: 808456004}
   m_Layer: 5
-  m_Name: P1_Health
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3732,7 +3732,7 @@ GameObject:
   - component: {fileID: 1491913899}
   - component: {fileID: 1491913898}
   m_Layer: 5
-  m_Name: P1_Health
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

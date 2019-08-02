@@ -82,7 +82,6 @@ public class AI : MonoBehaviour
         {
             currentPlayer.isHit = true;
             currentPlayer.isHitDir += (currentPlayer.transform.position - transform.position).normalized;
-            Debug.Log("Hit: " + currentPlayer.isHitDir);
         }
     }
 
