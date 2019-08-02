@@ -54,8 +54,7 @@ public class AttackScript : MonoBehaviour
     [Tooltip("The angle of the grab check in front of the player")]
     [Range(1, 360)]
     public float grabWidth = 45.0f;
-
-    [HideInInspector]
+    
     public GameObject heldPlayer = null;
 
     Rigidbody rigidbody;
@@ -230,7 +229,7 @@ public class AttackScript : MonoBehaviour
         Vector3 rayDir = transform.forward;
         if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit firstHit, 3.0f))
         {
-            if (firstHit.collider.CompareTag("Player"))
+            if (firstHit.collider.CompareTag("Player") && !firstHit.collider.GetComponent<AttackScript>().heldPlayer)
             {
                 return firstHit.collider.gameObject;
             }
@@ -242,7 +241,7 @@ public class AttackScript : MonoBehaviour
         {
             if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit hit, 3.0f))
             {
-                if (hit.collider.CompareTag("Player"))
+                if (hit.collider.CompareTag("Player") && !firstHit.collider.GetComponent<AttackScript>().heldPlayer)
                 {
 
                     return hit.collider.gameObject;
