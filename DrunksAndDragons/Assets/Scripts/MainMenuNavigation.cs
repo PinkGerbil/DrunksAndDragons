@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuNavigation : MonoBehaviour
 {
+
     /// <summary>
     /// goes to the next scene of the game
     /// </summary>
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     /// <summary>
