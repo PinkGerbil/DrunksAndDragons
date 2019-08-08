@@ -38,7 +38,7 @@ public class PlayerMoveScript : MonoBehaviour
     void Update()
     {
         Vector3 moveDir = input.GetMoveDir;
-        if (moveDir != Vector3.zero && rigidbody.isKinematic)
+        if (moveDir != Vector3.zero && rigidbody.isKinematic && Time.timeScale > 0)
         {
             transform.position += moveDir * moveSpeed * speedMod * Time.deltaTime;
             Vector3 aimDir = moveDir;

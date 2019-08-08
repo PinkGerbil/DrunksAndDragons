@@ -96,7 +96,7 @@ public class AttackScript : MonoBehaviour
             setCooldownGauge();
         }
 
-        if (rigidbody.isKinematic)
+        if (rigidbody.isKinematic && Time.timeScale > 0)
         {
             if (input.GetSweepPressed && !heldPlayer)
             {
@@ -155,6 +155,7 @@ public class AttackScript : MonoBehaviour
         {
             if (hit.collider.CompareTag("Enemy"))
             {
+                hit.collider.enabled = false;
                 Destroy(hit.collider.gameObject);
                 GetComponent<PlayerPoints>().AddPoints(100);
                 cameraShake.enableCamShake();
@@ -179,6 +180,7 @@ public class AttackScript : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
+                    hit.collider.enabled = false;
                     Destroy(hit.collider.gameObject);
                     GetComponent<PlayerPoints>().AddPoints(100);
                     cameraShake.enableCamShake();

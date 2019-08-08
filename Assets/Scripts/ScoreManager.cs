@@ -12,11 +12,13 @@ public class ScoreManager : MonoBehaviour
     public int wave;
     public int maxWaves;
     public GameObject gameOver;
+    public GameObject whiteOut;
 
-    public GameObject Player1;
-    public GameObject Player2;
-    public GameObject Player3;
-    public GameObject Player4;
+    List<PlayerPoints> players;
+    public PlayerPoints Player1;
+    public PlayerPoints Player2;
+    public PlayerPoints Player3;
+    public PlayerPoints Player4;
 
     public Text p1_Score;
     public Text p2_Score;
@@ -31,7 +33,11 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     public void Start()
     {
-        gameOver.SetActive(false);
+        players = new List<PlayerPoints>();
+        players.Add(Player1);
+        players.Add(Player2);
+        players.Add(Player3);
+        players.Add(Player4);
         pointsShown = false; 
         timeLength = maxTime;
         wave = 1; 
@@ -43,29 +49,28 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         //Shows and updates Player 1 score
-        int P1Points = PlayerPoints(Player1);
-        p1_Score.text = "Score: " + P1Points;
+        p1_Score.text = "Score: " + Player1.GetPoints();
         //Shows and updates Player 2 score
-        int P2Points = PlayerPoints(Player2);
-        p2_Score.text = "Score: " + P2Points;
+        p2_Score.text = "Score: " + Player2.GetPoints();
         //Shows and updates Player 3 score
-        int P3Points = PlayerPoints(Player3);
-        p3_Score.text = "Score: " + P3Points;
+        p3_Score.text = "Score: " + Player3.GetPoints();
         //Shows and updates Player 4 score
-        int P4Points = PlayerPoints(Player4);
-        p4_Score.text = "Score: " + P4Points;
+        p4_Score.text = "Score: " + Player4.GetPoints();
         //time ends new wave starts
-        if (timeLength > 0.99)
+        if (timeLength > 0)
         {
             TimerUpdate();
+
         }
         else
         {
+
+
             //gameover
             gameOver.SetActive(true);
+            whiteOut.SetActive(true);
             if (!pointsShown)
             {
-                timeLength = 0.99f;
                 GameOverPoints();
             }
         }
@@ -77,42 +82,68 @@ public class ScoreManager : MonoBehaviour
     void TimerUpdate()
     {
         timeLength -= Time.deltaTime;
-        string minutes = ((int)timeLength / 60).ToString("00");
-        string seconds = Mathf.Floor(timeLength % 60).ToString("00");
-        timer.text = minutes + ":" + seconds;
-    }
-
-    private int PlayerPoints(GameObject player)
-    {
-        return player.GetComponent<PlayerPoints>().GetPoints();
+        int IntTime = Mathf.RoundToInt(timeLength);
+        timer.text = IntTime.ToString(); 
     }
 
     /// <summary>
-    /// gets all the players scores and 
+    /// Tallies up all player scores and prints them in order of rank
     /// </summary>
     public void GameOverPoints()
     {
-        //player1.getpoints
-        int P1Points = PlayerPoints(Player1);
-        //player2.getpoints
-        int P2Points = PlayerPoints(Player2);
-        //player4.getpoints
-        int P3Points = PlayerPoints(Player3);
-        //player3.getpoints
-        int P4Points = PlayerPoints(Player4);
-        //compare.player.points
-        int[] points = { P1Points, P2Points, P3Points, P4Points };
-        //sort.players
-        Array.Sort(points);
-        Array.Reverse(points);
-        foreach(int score in points)
+        int bestScore = -1;
+
+        int[] scores = new int[4];
+        GameObject[] ranks = new GameObject[4];
+
+
+        foreach(PlayerPoints child in players)
         {
-            print(score);
+            if(scores.Length == 0)
+            {
+                scores[0] = child.GetPoints();
+                ranks[0] = child.gameObject;
+                continue;
+            }
+            for(int i = 0; i < scores.Length; i++)
+            {
+                if(child.GetPoints() > scores[i])
+                {
+                    for(int j = 3; j > -1; j--)
+                    {
+                        if (j == i)
+                            break;
+                        scores[j] = scores[j - 1];
+                        ranks[j] = ranks[j - 1];
+
+                    }
+                    scores[i] = child.GetPoints();
+                    ranks[i] = child.gameObject;
+                    break;
+                }
+                if (!ranks[i])
+                {
+                    scores[i] = child.GetPoints();
+                    ranks[i] = child.gameObject;
+                    break;
+                }
+            }
+
         }
-        //winner is the player with most points
-        //print(points[0]);
+
+        string temp = "Game Over \n";
+
+        for(int i = 0; i < scores.Length; i++)
+        {
+            Debug.Log(i + 1 + " " + ranks[i].name + ": " + scores[i]);
+            temp += i+1 + ". " + ranks[i].name + ": " + scores[i] + "\n";
+        }
+        gameOver.GetComponent<Text>().text = temp;
         pointsShown = true;
+
+        Time.timeScale = 0;
     }
 
+    
 
 }
