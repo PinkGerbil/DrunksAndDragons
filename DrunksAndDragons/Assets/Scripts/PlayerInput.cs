@@ -21,25 +21,27 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if(playerID == 0 && blackboard != null)
-        { 
-            playerID = blackboard.GetPlayerID(GetComponent<PlayerDamageHandler>());
+        if (blackboard != null)
+        {
+            if (playerID == 0)
+            {
+                playerID = blackboard.GetPlayerID(GetComponent<PlayerDamageHandler>());
 
-            //if (playerID == 1)
-            //    controller = XboxController.First;
-            //else if (playerID == 2)
-            //    controller = XboxController.Second;
-            //else if (playerID == 3)
-            //    controller = XboxController.Third;
-            //else if (playerID == 4)
-            //    controller = XboxController.Fourth;
+                //if (playerID == 1)
+                //    controller = XboxController.First;
+                //else if (playerID == 2)
+                //    controller = XboxController.Second;
+                //else if (playerID == 3)
+                //    controller = XboxController.Third;
+                //else if (playerID == 4)
+                //    controller = XboxController.Fourth;
 
-            GetComponent<PlayerDamageHandler>().HealthPanel = blackboard.getHealthUI(playerID);
-            GetComponent<AttackScript>().AttackPanel = blackboard.getAttackUI(playerID);
+                GetComponent<PlayerDamageHandler>().HealthPanel = blackboard.getHealthUI(playerID);
+                GetComponent<AttackScript>().AttackPanel = blackboard.getAttackUI(playerID);
+            }
+            if (XCI.GetButtonDown(XboxButton.Start, controller))
+                blackboard.togglePause();
         }
-
-        if (XCI.GetButtonDown(XboxButton.Start, controller))
-            blackboard.togglePause();
     }
 
     public void SetController(XboxController newController)
