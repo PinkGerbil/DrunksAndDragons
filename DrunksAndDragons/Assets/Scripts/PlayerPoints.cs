@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerPoints : MonoBehaviour
 {
-    private int points = 0;
+    public int points = 0;
 
     public void AddPoints(int i)
     {
@@ -18,10 +18,6 @@ public class PlayerPoints : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            int p = Random.Range(1, 20);
-            AddPoints(p);
-        }
+        
     }
 }
