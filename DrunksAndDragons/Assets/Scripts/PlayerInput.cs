@@ -10,7 +10,7 @@ public class PlayerInput : MonoBehaviour
     Blackboard blackboard;
 
     public int playerID;
-
+    
     public XboxController controller;
     public int controllerNum;
 
@@ -27,20 +27,24 @@ public class PlayerInput : MonoBehaviour
         { 
             playerID = blackboard.GetPlayerID(GetComponent<PlayerDamageHandler>());
 
-            if (playerID == 1)
-                controller = XboxController.First;
-            else if (playerID == 2)
-                controller = XboxController.Second;
-            else if (playerID == 3)
-                controller = XboxController.Third;
-            else if (playerID == 4)
-                controller = XboxController.Fourth;
+            //if (playerID == 1)
+            //    controller = XboxController.First;
+            //else if (playerID == 2)
+            //    controller = XboxController.Second;
+            //else if (playerID == 3)
+            //    controller = XboxController.Third;
+            //else if (playerID == 4)
+            //    controller = XboxController.Fourth;
 
             GetComponent<PlayerDamageHandler>().HealthPanel = blackboard.getHealthUI(playerID);
             GetComponent<AttackScript>().AttackPanel = blackboard.getAttackUI(playerID);
         }
     }
 
+    public void SetController(XboxController newController)
+    {
+        controller = newController;
+    }
 
     /// <summary>
     /// all the get functions for button inputs. Used for attack buttons and grab button.
