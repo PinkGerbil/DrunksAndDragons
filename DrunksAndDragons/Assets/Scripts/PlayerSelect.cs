@@ -87,24 +87,13 @@ public class PlayerSelect : MonoBehaviour
     /// </summary>
     private void SelectPlayers()
     {
-        //not work like this
+        //if controller one's start button is pressed assign controller one to the next avaliable player
         if (XCI.GetButtonDown(XboxButton.Start, XboxController.First))
         {
-            //controller press button
-            //controller is assigned to next inactive player
-            //repeat
-            //one controller not able to activate other players
-
-            //if (i = 1)
-            //Player1.SetActive(!Player1.activeInHierarchy);
-            //i++
-
-            //if (i = 2)
-            //Player2.SetActive(!Player2.activeInHierarchy);
-            //i++
-
+            //checks to see if the controller has already been assigned
             if (!isController1Active)
             {
+                //checks the controller count to see what plater needs to be set next
                 if (controllerCount == 0)
                 {
                     Player1.SetActive(!Player1.activeInHierarchy);
@@ -143,10 +132,13 @@ public class PlayerSelect : MonoBehaviour
                 }
             }
         }
+        //if controller two's start button is pressed assign controller two to the next avaliable player
         if (XCI.GetButtonDown(XboxButton.Start, XboxController.Second))
         {
+            //checks to see if the controller has already been assigned
             if (!isController2Active)
             {
+                //checks the controller count to see what plater needs to be set next
                 if (controllerCount == 0)
                 {
                     Player1.SetActive(!Player1.activeInHierarchy);
@@ -181,10 +173,13 @@ public class PlayerSelect : MonoBehaviour
                 }
             }
         }
+        //if controller three's start button is pressed assign controller three to the next avaliable player
         if (XCI.GetButtonDown(XboxButton.Start, XboxController.Third))
         {
+            //checks to see if the controller has already been assigned
             if (!isController3Active)
             {
+                //checks the controller count to see what plater needs to be set next
                 if (controllerCount == 0)
                 {
                     Player1.SetActive(!Player1.activeInHierarchy);
@@ -219,10 +214,13 @@ public class PlayerSelect : MonoBehaviour
                 }
             }
         }
+        //if controller four's start button is pressed assign controller four to the next avaliable player
         if (XCI.GetButtonDown(XboxButton.Start, XboxController.Fourth))
         {
+            //checks to see if the controller has already been assigned
             if (!isController4Active)
             {
+                //checks the controller count to see what plater needs to be set next
                 if (controllerCount == 0)
                 {
                     Player1.SetActive(!Player1.activeInHierarchy);
@@ -257,51 +255,6 @@ public class PlayerSelect : MonoBehaviour
                 }
             }
         }
-
-        //not important anymore
-        //throwaway
-        //if (XCI.GetButtonDown(XboxButton.Start, XboxController.First))
-        //{
-        //    if(!isController1Active)
-        //    {
-        //        if(i == 0)
-        //        {
-        //            Player1.SetActive(!Player1.activeInHierarchy);
-        //            i++;
-        //            isController1Active = true;
-        //        }
-        //        if(i == 1)
-        //        {
-        //            Player2.SetActive(!Player2.activeInHierarchy);
-        //            i++;
-        //            isController1Active = true;
-        //        }
-        //        if (i == 2)
-        //        {
-        //            Player3.SetActive(!Player3.activeInHierarchy);
-        //            i++;
-        //            isController1Active = true;
-        //        }
-        //        if (i == 3)
-        //        {
-        //            Player4.SetActive(!Player4.activeInHierarchy);
-        //            i++;
-        //            isController1Active = true;
-        //        }
-        //    }
-        //}
-        //if (XCI.GetButtonDown(XboxButton.Start, XboxController.Second))
-        //{
-        //    Player2.SetActive(!Player2.activeInHierarchy);
-        //}
-        //if (XCI.GetButtonDown(XboxButton.Start, XboxController.Third))
-        //{
-        //    Player3.SetActive(!Player3.activeInHierarchy);
-        //}
-        //if (XCI.GetButtonDown(XboxButton.Start, XboxController.Fourth))
-        //{
-        //    Player4.SetActive(!Player4.activeInHierarchy);
-        //}
     }
 
     /// <summary>
