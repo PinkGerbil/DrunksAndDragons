@@ -16,8 +16,6 @@ public class PlayerInput : MonoBehaviour
 
     void Start()
     {
-        if (!blackboard)
-            blackboard = GameObject.Find("Game Manager").GetComponent<Blackboard>();
         
     }
 
