@@ -9,15 +9,18 @@ public class timeStop : MonoBehaviour
     float timeStopDuration = 0.25f;
     float timeStopCountdown = 0.0f;
 
-
+    bool timeStopped = false;
 
     // Update is called once per frame
     void Update()
     {
         if (timeStopCountdown > 0)
             timeStopCountdown -= Time.unscaledDeltaTime;
-        else
+        else if (timeStopped)
+        {
             Time.timeScale = 1.0f;
+            timeStopped = false;
+        }
     }
 
     /// <summary>
@@ -27,5 +30,6 @@ public class timeStop : MonoBehaviour
     { 
         timeStopCountdown = timeStopDuration;
         Time.timeScale = 0.0f;
+        timeStopped = true;
     }
 }

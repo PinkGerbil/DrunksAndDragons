@@ -8,16 +8,24 @@ public class Blackboard : MonoBehaviour
 
     int nextPlayerID = 0;
     [SerializeField] Canvas UIcanvas;
+    [SerializeField] GameObject pause;
+    Text pauseText;
+
 
     List<PlayerDamageHandler> players;
     List<Image> AttackPanels;
     List<Image> HealthPanels;
 
-
+    bool paused = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (pause != null)
+        {
+            pauseText = pause.GetComponent<Text>();
+            pauseText.enabled = false;
+        }
         players = new List<PlayerDamageHandler>();
         AttackPanels = new List<Image>();
         HealthPanels = new List<Image>();
@@ -35,7 +43,6 @@ public class Blackboard : MonoBehaviour
             }
         }
     }
-    //0.4220619
 
     /// <summary>
     /// Can be used by AI (if necessary) to find the nearest player.
@@ -80,4 +87,29 @@ public class Blackboard : MonoBehaviour
         return AttackPanels[ID - 1];
     }
 
+    public void togglePause(bool toggle)
+    {
+        pause.SetActive(toggle);
+        pauseText.enabled = toggle;
+        paused = toggle;
+        if (toggle)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
+    }
+
+    public void togglePause()
+    {
+<<<<<<< .mine
+        pause.SetActive(!pause.activeInHierarchy);
+||||||| .r99
+=======
+        paused = !paused;
+>>>>>>> .r103
+        pauseText.enabled = !pauseText.enabled;
+        if (paused)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
+    }
 }
