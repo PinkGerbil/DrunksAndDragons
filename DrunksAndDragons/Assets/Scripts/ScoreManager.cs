@@ -154,8 +154,8 @@ public class ScoreManager : MonoBehaviour
         }
         //winner is the player with most points
         //print(points[0]);
-        pointsShown = true;
         */
+        pointsShown = true;
     }
 
     
