@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 26834792}
   timeLength: 0
-  maxTime: 10
+  maxTime: 90
   wave: 0
   maxWaves: 0
   gameOver: {fileID: 1859686978}
