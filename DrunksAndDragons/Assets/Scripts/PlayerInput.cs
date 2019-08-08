@@ -37,6 +37,9 @@ public class PlayerInput : MonoBehaviour
             GetComponent<PlayerDamageHandler>().HealthPanel = blackboard.getHealthUI(playerID);
             GetComponent<AttackScript>().AttackPanel = blackboard.getAttackUI(playerID);
         }
+
+        if (XCI.GetButtonDown(XboxButton.Start, controller))
+            blackboard.togglePause();
     }
 
     public void SetController(XboxController newController)

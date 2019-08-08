@@ -68,7 +68,7 @@ public class AI : MonoBehaviour
         {
             attackCountdown -= Time.deltaTime;
         }
-        else
+        else if(Time.timeScale > 0)
         {
             hitPlayer();
             attackCountdown = attackTime;

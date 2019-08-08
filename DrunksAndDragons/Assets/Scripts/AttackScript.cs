@@ -96,7 +96,7 @@ public class AttackScript : MonoBehaviour
             setCooldownGauge();
         }
 
-        if (rigidbody.isKinematic)
+        if (rigidbody.isKinematic && Time.timeScale > 0)
         {
             if (input.GetSweepPressed && !heldPlayer)
             {

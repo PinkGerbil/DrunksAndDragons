@@ -129,33 +129,17 @@ public class ScoreManager : MonoBehaviour
 
         }
 
+        string temp = "Game Over \n";
+
         for(int i = 0; i < scores.Length; i++)
         {
             Debug.Log(i + 1 + " " + ranks[i].name + ": " + scores[i]);
+            temp += i+1 + ". " + ranks[i].name + ": " + scores[i] + "\n";
         }
-
-        /*
-        //player1.getpoints
-        int P1Points = PlayerPoints(Player1);
-        //player2.getpoints
-        int P2Points = PlayerPoints(Player2);
-        //player4.getpoints
-        int P3Points = PlayerPoints(Player3);
-        //player3.getpoints
-        int P4Points = PlayerPoints(Player4);
-        //compare.player.points
-        int[] points = { P1Points, P2Points, P3Points, P4Points };
-        //sort.players
-        Array.Sort(points);
-        Array.Reverse(points);
-        foreach(int score in points)
-        {
-            print(score);
-        }
-        //winner is the player with most points
-        //print(points[0]);
-        */
+        gameOver.GetComponent<Text>().text = temp;
         pointsShown = true;
+
+        Time.timeScale = 0;
     }
 
     
