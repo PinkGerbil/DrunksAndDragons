@@ -8,9 +8,7 @@ public class Blackboard : MonoBehaviour
 
     int nextPlayerID = 0;
     [SerializeField] Canvas UIcanvas;
-    [SerializeField] GameObject pause;
-    Text pauseText;
-
+    [SerializeField] Text pauseText;
 
     List<PlayerDamageHandler> players;
     List<Image> AttackPanels;
@@ -21,16 +19,14 @@ public class Blackboard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (pause != null)
-        {
-            pauseText = pause.GetComponent<Text>();
-            pauseText.enabled = false;
-        }
+
         players = new List<PlayerDamageHandler>();
         AttackPanels = new List<Image>();
         HealthPanels = new List<Image>();
         if (!UIcanvas)
             UIcanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        if (!pauseText)
+            pauseText = UIcanvas.transform.Find("Pause_Text").GetComponent<Text>();
         foreach(Transform child in UIcanvas.transform)
         {
             Image[] images = child.GetComponentsInChildren<Image>();
@@ -89,7 +85,6 @@ public class Blackboard : MonoBehaviour
 
     public void togglePause(bool toggle)
     {
-        pause.SetActive(toggle);
         pauseText.enabled = toggle;
         paused = toggle;
         if (toggle)
@@ -100,12 +95,7 @@ public class Blackboard : MonoBehaviour
 
     public void togglePause()
     {
-<<<<<<< .mine
-        pause.SetActive(!pause.activeInHierarchy);
-||||||| .r99
-=======
         paused = !paused;
->>>>>>> .r103
         pauseText.enabled = !pauseText.enabled;
         if (paused)
             Time.timeScale = 0;

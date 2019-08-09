@@ -36,7 +36,7 @@ public class AI : MonoBehaviour
     {
         //checking to see how many players there are in the scene by seeing how many player tags there are in startup
         float distanceToTarget = Vector3.Distance(transform.position, currentPlayer.transform.position);
-        if (distanceToTarget > 5)
+        if (distanceToTarget > 5 || !currentPlayer.Alive)
             FindClosestPlayer();
         else if (distanceToTarget < attackRange)
             attack();
@@ -51,6 +51,9 @@ public class AI : MonoBehaviour
         float closest = Mathf.Infinity;
         foreach (GameObject child in players)
         {
+            if (!child.GetComponent<PlayerDamageHandler>().Alive)
+                continue;
+
             float curDistance = Vector3.Distance(transform.position, child.transform.position);
             if (curDistance < closest)
             {
@@ -58,6 +61,7 @@ public class AI : MonoBehaviour
                 currentPlayer = child.GetComponent<PlayerDamageHandler>();
                 agent.destination = currentPlayer.transform.position;
             }
+            
         }
     }
 

@@ -12,7 +12,6 @@ public class ScoreManager : MonoBehaviour
     public int wave;
     public int maxWaves;
     public GameObject gameOver;
-    public GameObject whiteOut;
 
     List<PlayerPoints> players;
     public PlayerPoints Player1;
@@ -68,7 +67,6 @@ public class ScoreManager : MonoBehaviour
 
             //gameover
             gameOver.SetActive(true);
-            whiteOut.SetActive(true);
             if (!pointsShown)
             {
                 GameOverPoints();
@@ -83,7 +81,12 @@ public class ScoreManager : MonoBehaviour
     {
         timeLength -= Time.deltaTime;
         int IntTime = Mathf.RoundToInt(timeLength);
-        timer.text = IntTime.ToString(); 
+        int mins = IntTime / 60;
+        int secs = IntTime % 60;
+        if (secs > 9)
+            timer.text = mins + ":" + secs;
+        else
+            timer.text = mins + ":0" + secs;
     }
 
     /// <summary>
