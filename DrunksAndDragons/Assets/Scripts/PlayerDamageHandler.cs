@@ -16,6 +16,7 @@ public class PlayerDamageHandler : MonoBehaviour
     public bool Invincible { get { return !(IFrameTime <= 0 && !attackScript.IsAttacking && rigidbody.isKinematic); } }
     public bool Alive { get { return health > 0; } }
 
+    [SerializeField]
     [Range(1, 10)]
     float IFrames = 0.5f;
     float IFrameTime = 0;
@@ -23,20 +24,29 @@ public class PlayerDamageHandler : MonoBehaviour
     public bool isHit = false;
     public Vector3 isHitDir = Vector3.zero;
 
+    [SerializeField]
     [Range(0,5)]
     float knockbackTime = 0.2f;
     float knockbackCountdown = 0;
 
+    [SerializeField]
     [Range(1,100)]
     float knockbackForce = 25;
 
+    [SerializeField]
     [Range(1,10)]
     public int maxHealth = 6;
     public int health;
 
+    Vector3 spawnLocation;
+
+    [SerializeField]
+    float respawnTime = 5;
+    float respawnCountdown = 0;
 
     void Start()
     {
+        spawnLocation = transform.position;
         if (!attackScript)
             attackScript = GetComponent<AttackScript>();
 
@@ -79,12 +89,31 @@ public class PlayerDamageHandler : MonoBehaviour
             }
         }
 
-        if(HealthPanel != null)
+        if(HealthPanel != null && Alive)
             HealthPanel.fillAmount = (1.0f / maxHealth) * health;
 
-        if (Alive && health <= 0)
+        if (!Alive && respawnCountdown <= 0)
         {
             Debug.Log("ded");
+            respawnCountdown = respawnTime;
+            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
+            //delete the following line when proper model is added
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else if(respawnCountdown > 0)
+        {
+            respawnCountdown -= Time.deltaTime;
+            HealthPanel.fillAmount = 1.0f - (respawnCountdown / respawnTime);
+                if (respawnCountdown <= 0)
+                {
+                    health = maxHealth;
+                    GetComponent<MeshRenderer>().enabled = true;
+                    GetComponent<CapsuleCollider>().enabled = true;
+                    transform.position = spawnLocation;
+                    //delete the following line when proper model is added
+                    transform.GetChild(0).gameObject.SetActive(false);
+                }
         }
     }
 
