@@ -140,7 +140,6 @@ public class ScoreManager : MonoBehaviour
 
         for(int i = 0; i < scores.Length; i++)
         {
-            Debug.Log(i + 1 + " " + ranks[i].name + ": " + scores[i]);
             temp += i+1 + ". " + ranks[i].name + ": " + scores[i] + "\n";
             playerScoreText[i] = i + 1 + ". " + ranks[i].name + ": " + scores[i];
             Debug.Log(playerScoreText[i]);
@@ -151,6 +150,6 @@ public class ScoreManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    
+    public string[] getScoreStrings{get { return playerScoreText; } }
 
 }
