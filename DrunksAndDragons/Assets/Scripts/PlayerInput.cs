@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using XboxCtrlrInput;
 
 [RequireComponent(typeof(PlayerMoveScript), typeof(PlayerDamageHandler))]
@@ -11,6 +12,8 @@ public class PlayerInput : MonoBehaviour
     [SerializeField]
     PlayerDamageHandler damageHandler;
 
+    public Image HealthUI;
+    public Image StaminaUI;
 
     public int playerID;
     
@@ -21,7 +24,8 @@ public class PlayerInput : MonoBehaviour
 
     void Start()
     {
-        
+        if(!damageHandler)
+            damageHandler = GetComponent<PlayerDamageHandler>();
     }
 
     void Update()
@@ -32,8 +36,8 @@ public class PlayerInput : MonoBehaviour
             {
                 playerID = blackboard.GetPlayerID(GetComponent<PlayerDamageHandler>());
 
-                damageHandler.HealthPanel = blackboard.getHealthUI(playerID);
-                GetComponent<AttackScript>().AttackPanel = blackboard.getAttackUI(playerID);
+                damageHandler.HealthPanel = HealthUI;
+                GetComponent<AttackScript>().AttackPanel = StaminaUI;
             }
             if (XCI.GetButtonDown(XboxButton.Start, controller))
                 blackboard.togglePause();

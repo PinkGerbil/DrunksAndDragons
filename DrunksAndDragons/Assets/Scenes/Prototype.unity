@@ -2452,21 +2452,61 @@ PrefabInstance:
       propertyPath: blackboard
       value: 
       objectReference: {fileID: 7923830}
+    - target: {fileID: 7688071172393538135, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: HealthUI
+      value: 
+      objectReference: {fileID: 1870801777}
+    - target: {fileID: 7688071172393538135, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: StaminaUI
+      value: 
+      objectReference: {fileID: 1960246550}
     - target: {fileID: 6100310646336772778, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: blackboard
+      value: 
+      objectReference: {fileID: 7923830}
+    - target: {fileID: 6100310646336772778, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: HealthUI
+      value: 
+      objectReference: {fileID: 848777201}
+    - target: {fileID: 6100310646336772778, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: StaminaUI
+      value: 
+      objectReference: {fileID: 1123669507}
+    - target: {fileID: 1642634516725359905, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: blackboard
       value: 
       objectReference: {fileID: 7923830}
     - target: {fileID: 1642634516725359905, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
-      propertyPath: blackboard
+      propertyPath: HealthUI
       value: 
-      objectReference: {fileID: 7923830}
+      objectReference: {fileID: 1916751673}
+    - target: {fileID: 1642634516725359905, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: StaminaUI
+      value: 
+      objectReference: {fileID: 450293895}
     - target: {fileID: 647055508919321342, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: blackboard
       value: 
       objectReference: {fileID: 7923830}
+    - target: {fileID: 647055508919321342, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: HealthUI
+      value: 
+      objectReference: {fileID: 671502171}
+    - target: {fileID: 647055508919321342, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: StaminaUI
+      value: 
+      objectReference: {fileID: 2041036547}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f61d54eaa5d414f9fc55f93a77fbca, type: 3}
 --- !u!114 &2114994490 stripped
