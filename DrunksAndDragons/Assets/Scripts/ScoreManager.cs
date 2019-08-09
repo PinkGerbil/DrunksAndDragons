@@ -24,6 +24,7 @@ public class ScoreManager : MonoBehaviour
     public Text p3_Score;
     public Text p4_Score;
 
+    String[] playerScoreText;
 
     public bool pointsShown;
 
@@ -39,7 +40,8 @@ public class ScoreManager : MonoBehaviour
         players.Add(Player4);
         pointsShown = false; 
         timeLength = maxTime;
-        wave = 1; 
+        wave = 1;
+        playerScoreText = new string[4];
     }
 
     /// <summary>
@@ -140,6 +142,8 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.Log(i + 1 + " " + ranks[i].name + ": " + scores[i]);
             temp += i+1 + ". " + ranks[i].name + ": " + scores[i] + "\n";
+            playerScoreText[i] = i + 1 + ". " + ranks[i].name + ": " + scores[i];
+            Debug.Log(playerScoreText[i]);
         }
         gameOver.GetComponent<Text>().text = temp;
         pointsShown = true;
