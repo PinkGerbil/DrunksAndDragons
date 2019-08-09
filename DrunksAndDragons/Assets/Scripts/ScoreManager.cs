@@ -41,7 +41,6 @@ public class ScoreManager : MonoBehaviour
         pointsShown = false; 
         timeLength = maxTime;
         wave = 1;
-        playerScoreText = new string[4];
     }
 
     /// <summary>
@@ -138,7 +137,9 @@ public class ScoreManager : MonoBehaviour
 
         string temp = "Game Over \n";
 
-        for(int i = 0; i < scores.Length; i++)
+        
+        playerScoreText = new string[4];
+        for (int i = 0; i < scores.Length; i++)
         {
             temp += i+1 + ". " + ranks[i].name + ": " + scores[i] + "\n";
             playerScoreText[i] = i + 1 + ". " + ranks[i].name + ": " + scores[i];
@@ -150,6 +151,9 @@ public class ScoreManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public string[] getScoreStrings{get { return playerScoreText; } }
+    public string[] getScoreStrings{get {
+            if (playerScoreText != null)
+                return null;
+            return playerScoreText; } }
 
 }
