@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
 --- !u!114 &5504053042639558769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackboard: {fileID: 0}
-  damageHandler: {fileID: 768506975647449125}
   playerID: 0
   controller: 0
   controllerNum: 0
@@ -202,14 +200,10 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   attackScript: {fileID: 3456751159924599310}
   HealthPanel: {fileID: 0}
-  IFrames: 0.5
   isHit: 0
   isHitDir: {x: 0, y: 0, z: 0}
-  knockbackTime: 0.2
-  knockbackForce: 25
   maxHealth: 6
   health: 6
-  respawnTime: 5
 --- !u!208 &90645781927134563
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -476,7 +470,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackboard: {fileID: 0}
-  damageHandler: {fileID: 3797487539300829400}
   playerID: 0
   controller: 0
   controllerNum: 0
@@ -505,7 +498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
 --- !u!114 &3797487539300829400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,14 +513,10 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   attackScript: {fileID: 1288578236772934387}
   HealthPanel: {fileID: 0}
-  IFrames: 0.5
   isHit: 0
   isHitDir: {x: 0, y: 0, z: 0}
-  knockbackTime: 0.2
-  knockbackForce: 25
   maxHealth: 6
   health: 6
-  respawnTime: 5
 --- !u!208 &7582116158251858561
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -848,7 +836,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackboard: {fileID: 0}
-  damageHandler: {fileID: 8561349048964331347}
   playerID: 0
   controller: 0
   controllerNum: 0
@@ -877,7 +864,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
 --- !u!114 &8561349048964331347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,14 +879,10 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   attackScript: {fileID: 6017535062562332024}
   HealthPanel: {fileID: 0}
-  IFrames: 0.5
   isHit: 0
   isHitDir: {x: 0, y: 0, z: 0}
-  knockbackTime: 0.2
-  knockbackForce: 25
   maxHealth: 6
   health: 6
-  respawnTime: 5
 --- !u!208 &6394730902037388087
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1167,7 +1149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackboard: {fileID: 0}
-  damageHandler: {fileID: 7557329848050962572}
   playerID: 0
   controller: 0
   controllerNum: 0
@@ -1196,7 +1177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
 --- !u!114 &7557329848050962572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1212,14 +1192,10 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   attackScript: {fileID: 5598984429869546151}
   HealthPanel: {fileID: 0}
-  IFrames: 0.5
   isHit: 0
   isHitDir: {x: 0, y: 0, z: 0}
-  knockbackTime: 0.2
-  knockbackForce: 25
   maxHealth: 6
   health: 6
-  respawnTime: 5
 --- !u!208 &538950742852297689
 NavMeshObstacle:
   m_ObjectHideFlags: 0

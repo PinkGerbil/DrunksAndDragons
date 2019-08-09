@@ -12,7 +12,7 @@ public class ScoreManager : MonoBehaviour
     public int wave;
     public int maxWaves;
     public GameObject gameOver;
-    public GameObject results;
+    public GameObject whiteOut;
 
     List<PlayerPoints> players;
     public PlayerPoints Player1;
@@ -25,7 +25,6 @@ public class ScoreManager : MonoBehaviour
     public Text p3_Score;
     public Text p4_Score;
 
-    String[] playerScoreText;
 
     public bool pointsShown;
 
@@ -41,7 +40,7 @@ public class ScoreManager : MonoBehaviour
         players.Add(Player4);
         pointsShown = false; 
         timeLength = maxTime;
-        wave = 1;
+        wave = 1; 
     }
 
     /// <summary>
@@ -69,7 +68,7 @@ public class ScoreManager : MonoBehaviour
 
             //gameover
             gameOver.SetActive(true);
-            results.SetActive(true);
+            whiteOut.SetActive(true);
             if (!pointsShown)
             {
                 GameOverPoints();
@@ -84,12 +83,7 @@ public class ScoreManager : MonoBehaviour
     {
         timeLength -= Time.deltaTime;
         int IntTime = Mathf.RoundToInt(timeLength);
-        int mins = IntTime / 60;
-        int secs = IntTime % 60;
-        if (secs > 9)
-            timer.text = mins + ":" + secs;
-        else
-            timer.text = mins + ":0" + secs;
+        timer.text = IntTime.ToString(); 
     }
 
     /// <summary>
@@ -137,21 +131,12 @@ public class ScoreManager : MonoBehaviour
 
         }
 
-        string temp = "Results" + "\n" + "\n" + "\n";
+        string temp = "Game Over \n";
 
-        
-        playerScoreText = new string[4];
-        for (int i = 0; i < scores.Length; i++)
+        for(int i = 0; i < scores.Length; i++)
         {
-            Debug.Log(i + 1 + ".  " + ranks[i].name + "       " + scores[i]);
-            temp += i+1 + ".  " + ranks[i].name + "          " + scores[i] + "\n" + "\n";
-            playerScoreText[i] = i + 1 + ".  " + ranks[i].name + "       " + scores[i];
             Debug.Log(i + 1 + " " + ranks[i].name + ": " + scores[i]);
             temp += i+1 + ". " + ranks[i].name + ": " + scores[i] + "\n";
-            playerScoreText[i] = i + 1 + ". " + ranks[i].name + ": " + scores[i];
-            temp += i+1 + ". " + ranks[i].name + ": " + scores[i] + "\n";
-            playerScoreText[i] = i + 1 + ". " + ranks[i].name + ": " + scores[i];
-            Debug.Log(playerScoreText[i]);
         }
         gameOver.GetComponent<Text>().text = temp;
         pointsShown = true;
@@ -159,9 +144,6 @@ public class ScoreManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public string[] getScoreStrings{get {
-            if (playerScoreText != null)
-                return null;
-            return playerScoreText; } }
+    
 
 }
