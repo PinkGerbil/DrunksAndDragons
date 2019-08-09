@@ -143,18 +143,14 @@ public class ScoreManager : MonoBehaviour
         playerScoreText = new string[4];
         for (int i = 0; i < scores.Length; i++)
         {
-<<<<<<< .mine
             Debug.Log(i + 1 + ".  " + ranks[i].name + "       " + scores[i]);
             temp += i+1 + ".  " + ranks[i].name + "          " + scores[i] + "\n" + "\n";
             playerScoreText[i] = i + 1 + ".  " + ranks[i].name + "       " + scores[i];
-||||||| .r113
             Debug.Log(i + 1 + " " + ranks[i].name + ": " + scores[i]);
             temp += i+1 + ". " + ranks[i].name + ": " + scores[i] + "\n";
             playerScoreText[i] = i + 1 + ". " + ranks[i].name + ": " + scores[i];
-=======
             temp += i+1 + ". " + ranks[i].name + ": " + scores[i] + "\n";
             playerScoreText[i] = i + 1 + ". " + ranks[i].name + ": " + scores[i];
->>>>>>> .r116
             Debug.Log(playerScoreText[i]);
         }
         gameOver.GetComponent<Text>().text = temp;
