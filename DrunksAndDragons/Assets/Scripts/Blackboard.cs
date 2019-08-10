@@ -25,7 +25,7 @@ public class Blackboard : MonoBehaviour
         HealthPanels = new List<Image>();
         if (!UIcanvas)
             UIcanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        if (!pauseText)
+        if (!pauseText && UIcanvas != null)
             pauseText = UIcanvas.transform.Find("Pause_Text").GetComponent<Text>();
         foreach(Transform child in UIcanvas.transform)
         {
@@ -75,12 +75,16 @@ public class Blackboard : MonoBehaviour
 
     public Image getHealthUI(int ID)
     {
-        return HealthPanels[ID - 1];
+        if (HealthPanels[ID - 1] != null)
+            return HealthPanels[ID - 1];
+        else return null;
     }
 
     public Image getAttackUI(int ID)
     {
-        return AttackPanels[ID - 1];
+        if (AttackPanels[ID - 1] != null)
+            return AttackPanels[ID - 1];
+        else return null;
     }
 
     public void togglePause(bool toggle)

@@ -104,16 +104,17 @@ public class PlayerDamageHandler : MonoBehaviour
         else if(respawnCountdown > 0)
         {
             respawnCountdown -= Time.deltaTime;
+            if(HealthPanel != null)
             HealthPanel.fillAmount = 1.0f - (respawnCountdown / respawnTime);
-                if (respawnCountdown <= 0)
-                {
-                    health = maxHealth;
-                    GetComponent<MeshRenderer>().enabled = true;
-                    GetComponent<CapsuleCollider>().enabled = true;
-                    transform.position = spawnLocation;
-                    //delete the following line when proper model is added
-                    transform.GetChild(0).gameObject.SetActive(false);
-                }
+            if (respawnCountdown <= 0)
+            {
+                health = maxHealth;
+                GetComponent<MeshRenderer>().enabled = true;
+                GetComponent<CapsuleCollider>().enabled = true;
+                transform.position = spawnLocation;
+                //delete the following line when proper model is added
+                transform.GetChild(0).gameObject.SetActive(false);
+            }
         }
     }
 
