@@ -22,7 +22,13 @@ public class PlayerMoveScript : MonoBehaviour
 
     Rigidbody rigidbody;
 
+    [Tooltip("E.G. set how far in front of the player an object should be before a collision occurs")]
+    [SerializeField]
+    float playerRadius = 0.5f;
 
+    [Tooltip("how tall is the player")]
+    [SerializeField]
+    float height = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +50,60 @@ public class PlayerMoveScript : MonoBehaviour
             Vector3 aimDir = moveDir;
             float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+
+            checkGrounded();
         }
     }
 
+    void checkGrounded()
+    {
+        bool grounded = true;
+        Vector3 origin = transform.position + (-transform.right * playerRadius) + (transform.forward * playerRadius);
+        Vector3 highest = Vector3.zero;
+        for (int i = 0; i < 3; i++)
+        {
+            if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit))
+            {
+                Vector3 temp = hit.point;
+                temp.y = transform.position.y;
+                float distance = Vector3.Distance(temp, hit.point);
+                if (hit.collider.CompareTag("Environment") && distance <= height * 0.5f)
+                {
+                    Vector3 current = Vector3.up * (height * 0.5f - distance);
+                    if (current.magnitude > highest.magnitude)
+                    highest = Vector3.up * (height * 0.5f - distance);
+                    grounded = false;
+                }
+            }
+            origin += transform.right * playerRadius;
+        }
+        if(highest != Vector3.zero)
+        {
+            transform.position += highest;
+            return;
+        }
+        origin = transform.position + (-transform.right * playerRadius) + (-transform.forward * playerRadius);
+        for (int i = 0; i < 3; i++)
+        {
+            if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit))
+            {
+                Vector3 temp = hit.point;
+                temp.y = transform.position.y;
+                float distance = Vector3.Distance(temp, hit.point);
+                if (hit.collider.CompareTag("Environment") && distance <= height * 0.5f)
+                {
+                    grounded = false;
+                }
+            }
+            origin += transform.right * playerRadius;
+        }
+
+        if (grounded && Physics.Raycast(transform.position, Vector3.down, out RaycastHit ground))
+        {
+            transform.position = ground.point + (Vector3.up * (height * 0.5f));
+            Debug.Log(ground.point);
+            Debug.Log(ground.point + (Vector3.up * (height * 0.5f)));
+        }
+    }
 
 }
