@@ -88,6 +88,7 @@ public class AttackScript : MonoBehaviour
         {
             transform.position += lungeDir * 20 * Time.deltaTime;
             checkLungeCollision();
+            playerMove.checkGrounded();
             lungeCountdown -= Time.deltaTime;
         }
         else if(attackCooldown > 0 && !heldPlayer)

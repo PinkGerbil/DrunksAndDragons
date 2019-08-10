@@ -55,7 +55,7 @@ public class PlayerMoveScript : MonoBehaviour
         }
     }
 
-    void checkGrounded()
+    public void checkGrounded()
     {
         bool grounded = true;
         Vector3 origin = transform.position + (-transform.right * playerRadius) + (transform.forward * playerRadius);
