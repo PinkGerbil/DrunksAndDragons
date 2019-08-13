@@ -55,6 +55,10 @@ public class PlayerMoveScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fire several rays down from several points on the player to check if the
+    /// ground beneath the players and see if the player should be higher or lower relative to it
+    /// </summary>
     public void checkGrounded()
     {
         bool grounded = true;
