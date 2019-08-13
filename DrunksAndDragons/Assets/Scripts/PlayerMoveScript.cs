@@ -101,8 +101,6 @@ public class PlayerMoveScript : MonoBehaviour
         if (grounded && Physics.Raycast(transform.position, Vector3.down, out RaycastHit ground))
         {
             transform.position = ground.point + (Vector3.up * (height * 0.5f));
-            Debug.Log(ground.point);
-            Debug.Log(ground.point + (Vector3.up * (height * 0.5f)));
         }
     }
 
