@@ -98,11 +98,11 @@ NavMeshSettings:
     serializedVersion: 2
     agentTypeID: 0
     agentRadius: 0.5
-    agentHeight: 8
+    agentHeight: 2
     agentSlope: 45
-    agentClimb: 6
-    ledgeDropHeight: 10
-    maxJumpAcrossDistance: 12
+    agentClimb: 0.92
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
     cellSize: 0.16666667
@@ -623,8 +623,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133436004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -64.56, y: -34.79, z: 80.18}
-  m_LocalScale: {x: 0.64979863, y: 1, z: 2.00126}
+  m_LocalPosition: {x: -61.28, y: -34.79, z: 80.18}
+  m_LocalScale: {x: 0.93970215, y: 1, z: 2.00126}
   m_Children: []
   m_Father: {fileID: 357713093}
   m_RootOrder: 5
@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 157215469}
   m_Layer: 0
   m_Name: floor
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -955,8 +955,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159353870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: -34.79, z: -20.05}
-  m_LocalScale: {x: 0.83136755, y: 1, z: 2.00126}
+  m_LocalPosition: {x: -2.18, y: -34.79, z: -20.88}
+  m_LocalScale: {x: 0.9040291, y: 1, z: 2.00126}
   m_Children: []
   m_Father: {fileID: 357713093}
   m_RootOrder: 4
@@ -1034,7 +1034,7 @@ GameObject:
   - component: {fileID: 247463857}
   m_Layer: 0
   m_Name: floor
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -1473,8 +1473,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357713092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.373844, y: 20.466385, z: -5.477052}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.37, y: 4.04, z: -0.97}
+  m_LocalScale: {x: 0.19818869, y: 0.19818869, z: 0.19818869}
   m_Children:
   - {fileID: 157215468}
   - {fileID: 737333805}
@@ -1515,8 +1515,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419092230}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -59.37, y: -39.81, z: 80.21}
-  m_LocalScale: {x: 0.69001466, y: 1, z: 2.00126}
+  m_LocalPosition: {x: -56.17, y: -39.89, z: 80.21}
+  m_LocalScale: {x: 0.8100082, y: 1, z: 2.00126}
   m_Children: []
   m_Father: {fileID: 357713093}
   m_RootOrder: 6
@@ -1909,7 +1909,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584846801}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -45.61, y: -9.07, z: 75.2}
+  m_LocalPosition: {x: 8.496, y: -1.07, z: -5.075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2113,7 +2113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636507553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.84, y: -39.81, z: -20.05}
+  m_LocalPosition: {x: -7.09, y: -39.81, z: -20.92}
   m_LocalScale: {x: 0.75857615, y: 1, z: 2.0012643}
   m_Children: []
   m_Father: {fileID: 357713093}
@@ -2205,7 +2205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688567560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -77.62, y: -30.37, z: 80.15}
+  m_LocalPosition: {x: -77.48, y: -30.37, z: 80.15}
   m_LocalScale: {x: 2.369961, y: 1, z: 2.00126}
   m_Children: []
   m_Father: {fileID: 357713093}
@@ -2564,7 +2564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736937790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 46.69, y: -9.08, z: -25.86}
+  m_LocalPosition: {x: -9.51, y: -1.505, z: 15.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2584,7 +2584,7 @@ GameObject:
   - component: {fileID: 737333806}
   m_Layer: 0
   m_Name: floor
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -4548,7 +4548,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614252734}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.72, y: -30.37, z: -20.05}
+  m_LocalPosition: {x: 14.69, y: -30.37, z: -20.85}
   m_LocalScale: {x: 2.365482, y: 1, z: 2.00126}
   m_Children: []
   m_Father: {fileID: 357713093}
@@ -5216,7 +5216,7 @@ PrefabInstance:
     - target: {fileID: 6500856714365375663, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6119995
+      value: 1.04
       objectReference: {fileID: 0}
     - target: {fileID: 6500856714365375663, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
