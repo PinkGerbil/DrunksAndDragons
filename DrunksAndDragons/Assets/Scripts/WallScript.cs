@@ -30,7 +30,6 @@ public class WallScript : MonoBehaviour
         if(!CompareTag("Player") && !CompareTag("Enemy"))
         {
             colliders.Add(other);
-            Debug.Log("help");
         }
     }
 }

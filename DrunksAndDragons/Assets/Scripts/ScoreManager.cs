@@ -135,7 +135,6 @@ public class ScoreManager : MonoBehaviour
 
         for(int i = 0; i < scores.Length; i++)
         {
-            Debug.Log(i + 1 + " " + ranks[i].name + ": " + scores[i]);
             temp += i+1 + ". " + ranks[i].name + ":       " + scores[i] + "\n" + "\n";
         }
         gameOver.GetComponent<Text>().text = temp;
