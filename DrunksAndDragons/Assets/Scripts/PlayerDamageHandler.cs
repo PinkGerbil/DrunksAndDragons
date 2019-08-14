@@ -84,7 +84,7 @@ public class PlayerDamageHandler : MonoBehaviour
                 GetComponent<Collider>().isTrigger = false;
                 // set the player position to just above where the ray hit
                 Vector3 temp = hit.point;
-                temp.y = 1;
+                temp.y += 1;
                 transform.position = temp;
             }
         }
