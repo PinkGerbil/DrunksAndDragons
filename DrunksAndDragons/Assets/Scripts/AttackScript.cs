@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(timeStop), typeof(PlayerInput), typeof(PlayerMoveScript))]
 public class AttackScript : MonoBehaviour
 {
-    const float playerWidth = 0.5f;
+    float playerWidth = 0.5f;
 
     [SerializeField] cameraShake cameraShake;
     [SerializeField] timeStop stopTime;
@@ -73,6 +73,8 @@ public class AttackScript : MonoBehaviour
 
         rigidbody = GetComponent<Rigidbody>();
         //change attackDuration to be same as attack animation time
+
+        playerWidth = transform.localScale.x * 0.5f;
     }
 
     // Update is called once per frame
@@ -86,7 +88,7 @@ public class AttackScript : MonoBehaviour
         }
         else if(lungeCountdown > 0)
         {
-            transform.position += lungeDir * 20 * Time.deltaTime;
+            transform.position += lungeDir * 20 * (playerWidth * 2) * Time.deltaTime;
             checkLungeCollision();
             lungeCountdown -= Time.deltaTime;
         }
