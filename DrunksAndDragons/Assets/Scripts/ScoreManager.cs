@@ -83,7 +83,10 @@ public class ScoreManager : MonoBehaviour
     {
         timeLength -= Time.deltaTime;
         int IntTime = Mathf.RoundToInt(timeLength);
-        timer.text = IntTime.ToString(); 
+        string minutes = ((int)IntTime / 60).ToString("00");
+        string seconds = Mathf.Floor(IntTime % 60).ToString("00");
+
+        timer.text = minutes + ":" + seconds; 
     }
 
     /// <summary>

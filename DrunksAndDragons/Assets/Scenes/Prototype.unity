@@ -251,15 +251,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 26834792}
   timeLength: 0
-  maxTime: 25.24
+  maxTime: 90
   wave: 0
   maxWaves: 0
   gameOver: {fileID: 1859686978}
   results: {fileID: 512672567}
   Player1: {fileID: 2069406062}
-  Player2: {fileID: 0}
-  Player3: {fileID: 0}
-  Player4: {fileID: 0}
+  Player2: {fileID: 1218673864}
+  Player3: {fileID: 1218673863}
+  Player4: {fileID: 1218673862}
   p1_Score: {fileID: 736728196}
   p2_Score: {fileID: 885997198}
   p3_Score: {fileID: 721620943}
@@ -3953,18 +3953,84 @@ PrefabInstance:
       propertyPath: blackboard
       value: 
       objectReference: {fileID: 7923830}
+    - target: {fileID: 8889305699210294319, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: HealthPanel
+      value: 
+      objectReference: {fileID: 1900454634}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: AttackPanel
+      value: 
+      objectReference: {fileID: 1570990861}
     - target: {fileID: 2942986365390005704, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: blackboard
       value: 
       objectReference: {fileID: 7923830}
+    - target: {fileID: 2942986365390005707, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: HealthPanel
+      value: 
+      objectReference: {fileID: 1076588540}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: AttackPanel
+      value: 
+      objectReference: {fileID: 1057524171}
     - target: {fileID: 662559065435560118, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: blackboard
       value: 
       objectReference: {fileID: 7923830}
+    - target: {fileID: 662559065435560117, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: HealthPanel
+      value: 
+      objectReference: {fileID: 341549901}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: AttackPanel
+      value: 
+      objectReference: {fileID: 1276573635}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f61d54eaa5d414f9fc55f93a77fbca, type: 3}
+--- !u!114 &1218673862 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 662559065435560105, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1218673861}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1218673863 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2942986365390005719, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1218673861}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1218673864 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8889305699210294323, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1218673861}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9639b0876571e3e4da3d6019e80ac0b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1244711644
 GameObject:
   m_ObjectHideFlags: 0
