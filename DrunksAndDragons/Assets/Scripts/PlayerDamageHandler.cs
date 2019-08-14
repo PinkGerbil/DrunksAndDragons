@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(AttackScript), typeof(Rigidbody))]
+[RequireComponent(typeof(AttackScript), typeof(Rigidbody), typeof(Animator))]
 public class PlayerDamageHandler : MonoBehaviour
 {
-
+    [SerializeField]
+    public Animator animator;
     [SerializeField] Rigidbody rigidbody;
     [SerializeField] AttackScript attackScript;
     [SerializeField]
@@ -46,6 +47,8 @@ public class PlayerDamageHandler : MonoBehaviour
 
     void Start()
     {
+        if (!animator)
+            animator = GetComponent<Animator>();
         spawnLocation = transform.position;
         if (!attackScript)
             attackScript = GetComponent<AttackScript>();
@@ -84,7 +87,7 @@ public class PlayerDamageHandler : MonoBehaviour
                 GetComponent<Collider>().isTrigger = false;
                 // set the player position to just above where the ray hit
                 Vector3 temp = hit.point;
-                temp.y += 1;
+                //temp.y += 1;
                 transform.position = temp;
             }
         }

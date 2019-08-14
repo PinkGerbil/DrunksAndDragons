@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerInput), typeof(Animator))]
 public class PlayerMoveScript : MonoBehaviour
 {
     [SerializeField]
@@ -22,7 +22,10 @@ public class PlayerMoveScript : MonoBehaviour
 
     Rigidbody rigidbody;
 
+    [SerializeField]
+    Animator animator;
 
+    bool isMoving = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,19 +35,28 @@ public class PlayerMoveScript : MonoBehaviour
         if (!attack)
             attack = GetComponent<AttackScript>();
         rigidbody = GetComponent<Rigidbody>();
+        if (!animator)
+            animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 moveDir = input.GetMoveDir;
-        if (moveDir != Vector3.zero && rigidbody.isKinematic && Time.timeScale > 0)
+        if (moveDir != Vector3.zero && rigidbody.isKinematic && Time.timeScale > 0 && speedMod > 0)
         {
             transform.position += moveDir * moveSpeed * speedMod * Time.deltaTime;
             Vector3 aimDir = moveDir;
             float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+            
+            isMoving = true;
         }
+        else if (isMoving)
+        {
+            isMoving = false;
+        }
+        animator.SetBool("Moving", isMoving);
     }
 
 
