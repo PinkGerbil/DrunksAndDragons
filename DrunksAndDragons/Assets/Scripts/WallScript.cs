@@ -20,7 +20,7 @@ public class WallScript : MonoBehaviour
     {
         foreach(Collider child in colliders)
         {
-            child.transform.position = boxCollider.ClosestPoint(child.transform.position) + transform.forward * 0.45f;
+            child.transform.position = boxCollider.ClosestPoint(child.transform.position) + transform.forward * 2.5f;
         }
         colliders.Clear();
     }
@@ -30,6 +30,7 @@ public class WallScript : MonoBehaviour
         if(!CompareTag("Player") && !CompareTag("Enemy"))
         {
             colliders.Add(other);
+            Debug.Log("help");
         }
     }
 }
