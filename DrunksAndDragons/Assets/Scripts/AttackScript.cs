@@ -150,7 +150,7 @@ public class AttackScript : MonoBehaviour
 
         attackDir = Quaternion.AngleAxis(-(sweepWidth * (1 - sweepCountdown * timeScalar)), Vector3.up) * attackDir;
 
-        Vector3 origin = transform.position;
+        Vector3 origin = transform.position + -transform.up * 0.25f;
         Debug.DrawLine(origin, origin + attackDir * (sweepRange + playerWidth), Color.green);
 
         if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange + playerWidth))
@@ -174,7 +174,7 @@ public class AttackScript : MonoBehaviour
     void checkLungeCollision()
     {
         Vector3 lungePerp = Vector3.Cross(transform.up, lungeDir);
-        Vector3 rayOrigin = transform.position + (-lungePerp * playerWidth);
+        Vector3 rayOrigin = transform.position + (-lungePerp * playerWidth) + (-transform.up * 0.25f);
 
         for (int i = 0; i < 5; i++)
         {
