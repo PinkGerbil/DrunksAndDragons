@@ -424,8 +424,7 @@ MonoBehaviour:
   - {fileID: 464057092}
   spawnAmount: 5
   waveMultiplierOn: 1
-  waveMultiplierStartValue: 1
-  multiplyAmount: 1
+  multiplyAmount: 2
   timeBetweenSpawn: 1
   startTimeBetweenWaves: 5
   addedTimeBetweenWaves: -1

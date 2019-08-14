@@ -36,7 +36,7 @@ public class AI : MonoBehaviour
     {
         //checking to see how many players there are in the scene by seeing how many player tags there are in startup
         float distanceToTarget = Vector3.Distance(transform.position, currentPlayer.transform.position);
-        if (distanceToTarget > 5 || !currentPlayer.Alive)
+        if (distanceToTarget > 25 || !currentPlayer.Alive)
             FindClosestPlayer();
         else if (distanceToTarget < attackRange)
             attack();
