@@ -99,10 +99,10 @@ public class PlayerDamageHandler : MonoBehaviour
         {
             Debug.Log("ded");
             respawnCountdown = respawnTime;
-            GetComponent<MeshRenderer>().enabled = false;
-            GetComponent<CapsuleCollider>().enabled = false;
+            transform.Find("group1").GetComponent<SkinnedMeshRenderer>().enabled = false;
+            transform.Find("polySurface3").GetComponent<SkinnedMeshRenderer>().enabled = false;
+            //GetComponent<CapsuleCollider>().enabled = false;
             //delete the following line when proper model is added
-            transform.GetChild(0).gameObject.SetActive(false);
         }
         else if(respawnCountdown > 0)
         {
@@ -112,11 +112,10 @@ public class PlayerDamageHandler : MonoBehaviour
             if (respawnCountdown <= 0)
             {
                 health = maxHealth;
-                GetComponent<MeshRenderer>().enabled = true;
-                GetComponent<CapsuleCollider>().enabled = true;
+                transform.Find("group1").GetComponent<SkinnedMeshRenderer>().enabled = true;
+                transform.Find("polySurface3").GetComponent<SkinnedMeshRenderer>().enabled = true;
                 transform.position = spawnLocation;
                 //delete the following line when proper model is added
-                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
     }

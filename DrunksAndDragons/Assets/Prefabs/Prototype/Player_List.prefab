@@ -51,8 +51,8 @@ MonoBehaviour:
   Player2: {fileID: 8889305700327708573}
   Player3: {fileID: 2942986366419994233}
   Player4: {fileID: 662559066486995719}
-  playerSelectScene: 
-  gameScene: 
+  playerSelectScene: Prototype_Menu
+  gameScene: Prototype
 --- !u!1001 &1092788804506913620
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -140,7 +140,7 @@ public class AttackScript : MonoBehaviour
         else
             dropPlayer();
 
-        if (!!heldPlayer)
+        if (heldPlayer != null)
         {
             attackCooldown += 0.5f * Time.deltaTime;
             setCooldownGauge();
@@ -164,8 +164,9 @@ public class AttackScript : MonoBehaviour
 
         Vector3 origin = transform.position + transform.up * 0.25f;
         Debug.DrawLine(origin, origin + attackDir * (sweepRange + playerWidth), Color.green);
+        int layerMask = 1 << 9;
 
-        if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange + playerWidth))
+        if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange + playerWidth, layerMask))
         {
             if (hit.collider.CompareTag("Enemy"))
             {
@@ -187,10 +188,10 @@ public class AttackScript : MonoBehaviour
     {
         Vector3 lungePerp = Vector3.Cross(transform.up, lungeDir);
         Vector3 rayOrigin = transform.position + (-lungePerp * playerWidth) + (Vector3.up * 0.25f);
-
+        int layerMask = 1 << 9;
         for (int i = 0; i < 5; i++)
         {
-            if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange + playerWidth))
+            if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange + playerWidth, layerMask))
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
@@ -247,7 +248,7 @@ public class AttackScript : MonoBehaviour
     {
         Vector3 rayOrigin = transform.position;
         Vector3 rayDir = transform.forward;
-        if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit firstHit, 3.0f))
+        if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit firstHit, grabRange))
         {
             if (firstHit.collider.CompareTag("Player") && !firstHit.collider.GetComponent<AttackScript>().heldPlayer)
             {
@@ -259,7 +260,7 @@ public class AttackScript : MonoBehaviour
         
         for (int i = 0; i < 4; i++)
         {
-            if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit hit, 3.0f))
+            if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit hit, grabRange))
             {
                 if (hit.collider.CompareTag("Player") && !firstHit.collider.GetComponent<AttackScript>().heldPlayer)
                 {
