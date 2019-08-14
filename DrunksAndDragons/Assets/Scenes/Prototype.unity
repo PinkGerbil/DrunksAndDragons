@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 71366515}
   - component: {fileID: 71366514}
   m_Layer: 5
-  m_Name: HealthFill
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -763,7 +763,7 @@ GameObject:
   - component: {fileID: 287518994}
   - component: {fileID: 287518993}
   m_Layer: 5
-  m_Name: StaminaFill
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2531,7 +2531,7 @@ GameObject:
   - component: {fileID: 1057524172}
   - component: {fileID: 1057524171}
   m_Layer: 5
-  m_Name: StaminaFill
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2605,7 +2605,7 @@ GameObject:
   - component: {fileID: 1076588541}
   - component: {fileID: 1076588540}
   m_Layer: 5
-  m_Name: HealthFill
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2827,7 +2827,7 @@ GameObject:
   - component: {fileID: 1276573636}
   - component: {fileID: 1276573635}
   m_Layer: 5
-  m_Name: StaminaFill
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3533,7 +3533,7 @@ GameObject:
   - component: {fileID: 1570990862}
   - component: {fileID: 1570990861}
   m_Layer: 5
-  m_Name: StaminaFill
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4066,7 +4066,7 @@ GameObject:
   - component: {fileID: 1900454635}
   - component: {fileID: 1900454634}
   m_Layer: 5
-  m_Name: HealthFill
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4252,26 +4252,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_List
       objectReference: {fileID: 0}
-    - target: {fileID: 5296900218036231200, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_Name
-      value: Player 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6319496142489943039, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_Name
-      value: Player 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 90645781927134560, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_Name
-      value: Player 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 856029153133536171, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_Name
-      value: Player 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6500856714365375663, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4357,104 +4337,19 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7971287261185388089, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8119622249362770406, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3660817638679541357, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3456751159924599310, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: AttackPanel
       value: 
       objectReference: {fileID: 287518993}
-    - target: {fileID: 5504053042639558769, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5504053042639558769, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: speedMod
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7688071172393538135, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: blackboard
-      value: 
-      objectReference: {fileID: 7923830}
     - target: {fileID: 768506975647449125, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: HealthPanel
       value: 
       objectReference: {fileID: 71366514}
-    - target: {fileID: 90645781927134563, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+    - target: {fileID: 7971287261185388089, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1288578236772934387, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: AttackPanel
-      value: 
-      objectReference: {fileID: 1276573635}
-    - target: {fileID: 8249320034643447948, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8249320034643447948, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: speedMod
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100310646336772778, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: blackboard
-      value: 
-      objectReference: {fileID: 7923830}
-    - target: {fileID: 3797487539300829400, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: HealthPanel
-      value: 
-      objectReference: {fileID: 341549901}
-    - target: {fileID: 6017535062562332024, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: AttackPanel
-      value: 
-      objectReference: {fileID: 1057524171}
-    - target: {fileID: 3465554585596571399, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3465554585596571399, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: speedMod
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1642634516725359905, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: blackboard
-      value: 
-      objectReference: {fileID: 7923830}
-    - target: {fileID: 8561349048964331347, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: HealthPanel
-      value: 
-      objectReference: {fileID: 1076588540}
-    - target: {fileID: 2051746214694373022, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_IsKinematic
+      propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5598984429869546151, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
@@ -4462,6 +4357,121 @@ PrefabInstance:
       propertyPath: AttackPanel
       value: 
       objectReference: {fileID: 1570990861}
+    - target: {fileID: 7557329848050962572, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: HealthPanel
+      value: 
+      objectReference: {fileID: 1900454634}
+    - target: {fileID: 8119622249362770406, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017535062562332024, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: AttackPanel
+      value: 
+      objectReference: {fileID: 1057524171}
+    - target: {fileID: 8561349048964331347, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: HealthPanel
+      value: 
+      objectReference: {fileID: 1076588540}
+    - target: {fileID: 3660817638679541357, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288578236772934387, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: AttackPanel
+      value: 
+      objectReference: {fileID: 1276573635}
+    - target: {fileID: 3797487539300829400, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: HealthPanel
+      value: 
+      objectReference: {fileID: 341549901}
+    - target: {fileID: 90645781927134563, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051746214694373022, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688071172393538135, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: blackboard
+      value: 
+      objectReference: {fileID: 7923830}
+    - target: {fileID: 6100310646336772778, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: blackboard
+      value: 
+      objectReference: {fileID: 7923830}
+    - target: {fileID: 1642634516725359905, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: blackboard
+      value: 
+      objectReference: {fileID: 7923830}
+    - target: {fileID: 647055508919321342, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: blackboard
+      value: 
+      objectReference: {fileID: 7923830}
+    - target: {fileID: 90645781927134560, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_Name
+      value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319496142489943039, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_Name
+      value: Player 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296900218036231200, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_Name
+      value: Player 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 856029153133536171, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_Name
+      value: Player 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504053042639558769, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504053042639558769, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: speedMod
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249320034643447948, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249320034643447948, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: speedMod
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465554585596571399, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465554585596571399, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: speedMod
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3326222121668495576, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: moveSpeed
@@ -4472,16 +4482,6 @@ PrefabInstance:
       propertyPath: speedMod
       value: 2.5
       objectReference: {fileID: 0}
-    - target: {fileID: 647055508919321342, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: blackboard
-      value: 
-      objectReference: {fileID: 7923830}
-    - target: {fileID: 7557329848050962572, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: HealthPanel
-      value: 
-      objectReference: {fileID: 1900454634}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f61d54eaa5d414f9fc55f93a77fbca, type: 3}
 --- !u!114 &2114994490 stripped
