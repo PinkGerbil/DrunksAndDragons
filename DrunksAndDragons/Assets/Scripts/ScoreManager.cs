@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class ScoreManager : MonoBehaviour
 
 
     public bool pointsShown;
+
+    float gameEndTimer = 0;
+    float gameEndTime = 5;
 
     /// <summary>
     /// Start is called before the first frame update and sets the variables that need setting
@@ -72,6 +76,16 @@ public class ScoreManager : MonoBehaviour
             if (!pointsShown)
             {
                 GameOverPoints();
+            }
+            else if(gameEndTimer > 0)
+            {
+                gameEndTimer -= Time.unscaledDeltaTime;
+                
+            }
+            else
+            {
+                Time.timeScale = 1;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
     }
@@ -144,6 +158,7 @@ public class ScoreManager : MonoBehaviour
         pointsShown = true;
 
         Time.timeScale = 0;
+        gameEndTimer = gameEndTime;
     }
 
     

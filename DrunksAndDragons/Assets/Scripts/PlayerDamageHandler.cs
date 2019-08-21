@@ -61,10 +61,14 @@ public class PlayerDamageHandler : MonoBehaviour
         if(rigidbody != null)
             rigidbody.isKinematic = true;
 
+        if (HealthPanel != null)
+            HealthPanel.transform.parent.gameObject.SetActive(gameObject.activeInHierarchy);
+       
     }
 
     void Update()
     {
+
         if (knockbackCountdown > 0)
         {
             knockbackCountdown -= Time.deltaTime;

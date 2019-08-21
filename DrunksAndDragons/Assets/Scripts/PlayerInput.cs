@@ -14,6 +14,8 @@ public class PlayerInput : MonoBehaviour
     public XboxController controller;
     public int controllerNum;
 
+    bool paused = false;
+
     void Start()
     {
         
@@ -31,7 +33,15 @@ public class PlayerInput : MonoBehaviour
                 GetComponent<AttackScript>().AttackPanel = blackboard.getAttackUI(playerID);
             }
             if (XCI.GetButtonDown(XboxButton.Start, controller))
+            {
                 blackboard.togglePause();
+                paused = !paused;
+            }
+
+            if (paused && XCI.GetButtonDown(XboxButton.Back))
+            {
+                Application.Quit();
+            }
         }
     }
 

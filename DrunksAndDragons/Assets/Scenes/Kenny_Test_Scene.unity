@@ -1916,6 +1916,11 @@ PrefabInstance:
       propertyPath: AttackPanel
       value: 
       objectReference: {fileID: 508694851}
+    - target: {fileID: 4026292650061605386, guid: 2c8887206aaae414c9ad1e0e26c37f87,
+        type: 3}
+      propertyPath: lungeDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8262162441647526483, guid: 2c8887206aaae414c9ad1e0e26c37f87,
         type: 3}
       propertyPath: blackboard
@@ -3246,6 +3251,11 @@ PrefabInstance:
       propertyPath: AttackPanel
       value: 
       objectReference: {fileID: 333297536}
+    - target: {fileID: 4026292650061605386, guid: 2c8887206aaae414c9ad1e0e26c37f87,
+        type: 3}
+      propertyPath: lungeDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8262162441647526483, guid: 2c8887206aaae414c9ad1e0e26c37f87,
         type: 3}
       propertyPath: blackboard
@@ -5103,6 +5113,11 @@ PrefabInstance:
       propertyPath: AttackPanel
       value: 
       objectReference: {fileID: 17731066}
+    - target: {fileID: 4026292650061605386, guid: 2c8887206aaae414c9ad1e0e26c37f87,
+        type: 3}
+      propertyPath: lungeDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8262162441647526483, guid: 2c8887206aaae414c9ad1e0e26c37f87,
         type: 3}
       propertyPath: blackboard
@@ -5632,6 +5647,11 @@ PrefabInstance:
       propertyPath: AttackPanel
       value: 
       objectReference: {fileID: 482504508}
+    - target: {fileID: 4026292650061605386, guid: 2c8887206aaae414c9ad1e0e26c37f87,
+        type: 3}
+      propertyPath: lungeDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8262162441647526483, guid: 2c8887206aaae414c9ad1e0e26c37f87,
         type: 3}
       propertyPath: blackboard

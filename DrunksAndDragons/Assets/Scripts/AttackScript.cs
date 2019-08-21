@@ -77,7 +77,10 @@ public class AttackScript : MonoBehaviour
             cameraShake = Camera.main.GetComponent<cameraShake>();
 
         rigidbody = GetComponent<Rigidbody>();
-        //change attackDuration to be same as attack animation time
+
+        if (AttackPanel != null)
+            AttackPanel.transform.parent.gameObject.SetActive(gameObject.activeInHierarchy);
+        
 
         playerWidth =  0.5f;
     }
@@ -86,7 +89,8 @@ public class AttackScript : MonoBehaviour
     void Update()
     {
 
-        if(sweepCountdown > 0)
+
+        if (sweepCountdown > 0)
         {
             checkSweepCollide();
             sweepCountdown -= Time.deltaTime;
@@ -216,7 +220,8 @@ public class AttackScript : MonoBehaviour
         {
             sweepCountdown = sweepDuration;
             attackCooldown = attackCooldownDuration;
-            animator.SetTrigger("Swiping");
+            if(animator != null)
+                animator.SetTrigger("Swiping");
             if(AttackPanel != null)
                 AttackPanel.fillAmount = 0;
         }
@@ -229,7 +234,8 @@ public class AttackScript : MonoBehaviour
     {
         if (attackCooldown <= 0)
         {
-            animator.SetTrigger("Lunging");
+            if(animator != null)
+                animator.SetTrigger("Lunging");
             lungeCountdown = lungeDuration * 4.5f;
             attackCooldown = attackCooldownDuration;
             lungeDir = transform.forward;
