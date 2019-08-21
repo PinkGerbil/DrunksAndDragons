@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(AttackScript), typeof(Rigidbody))]
+[RequireComponent(typeof(AttackScript), typeof(Rigidbody), typeof(Animator))]
 public class PlayerDamageHandler : MonoBehaviour
 {
-
+    [SerializeField]
+    public Animator animator;
     [SerializeField] Rigidbody rigidbody;
     [SerializeField] AttackScript attackScript;
     [SerializeField]
@@ -46,6 +47,8 @@ public class PlayerDamageHandler : MonoBehaviour
 
     void Start()
     {
+        if (!animator)
+            animator = GetComponent<Animator>();
         spawnLocation = transform.position;
         if (!attackScript)
             attackScript = GetComponent<AttackScript>();
@@ -58,10 +61,14 @@ public class PlayerDamageHandler : MonoBehaviour
         if(rigidbody != null)
             rigidbody.isKinematic = true;
 
+        if (HealthPanel != null)
+            HealthPanel.transform.parent.gameObject.SetActive(gameObject.activeInHierarchy);
+       
     }
 
     void Update()
     {
+
         if (knockbackCountdown > 0)
         {
             knockbackCountdown -= Time.deltaTime;
@@ -84,7 +91,7 @@ public class PlayerDamageHandler : MonoBehaviour
                 GetComponent<Collider>().isTrigger = false;
                 // set the player position to just above where the ray hit
                 Vector3 temp = hit.point;
-                temp.y = 1;
+                //temp.y += 1;
                 transform.position = temp;
             }
         }
@@ -96,10 +103,10 @@ public class PlayerDamageHandler : MonoBehaviour
         {
             Debug.Log("ded");
             respawnCountdown = respawnTime;
-            GetComponent<MeshRenderer>().enabled = false;
-            GetComponent<CapsuleCollider>().enabled = false;
+            transform.Find("group1").GetComponent<SkinnedMeshRenderer>().enabled = false;
+            transform.Find("polySurface3").GetComponent<SkinnedMeshRenderer>().enabled = false;
+            //GetComponent<CapsuleCollider>().enabled = false;
             //delete the following line when proper model is added
-            transform.GetChild(0).gameObject.SetActive(false);
         }
         else if(respawnCountdown > 0)
         {
@@ -109,11 +116,10 @@ public class PlayerDamageHandler : MonoBehaviour
             if (respawnCountdown <= 0)
             {
                 health = maxHealth;
-                GetComponent<MeshRenderer>().enabled = true;
-                GetComponent<CapsuleCollider>().enabled = true;
+                transform.Find("group1").GetComponent<SkinnedMeshRenderer>().enabled = true;
+                transform.Find("polySurface3").GetComponent<SkinnedMeshRenderer>().enabled = true;
                 transform.position = spawnLocation;
                 //delete the following line when proper model is added
-                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
     }

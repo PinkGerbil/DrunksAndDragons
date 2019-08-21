@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerInput), typeof(Animator))]
 public class PlayerMoveScript : MonoBehaviour
 {
     [SerializeField]
@@ -22,10 +22,13 @@ public class PlayerMoveScript : MonoBehaviour
 
     Rigidbody rigidbody;
 
+    [SerializeField]
+    Animator animator;
     [Tooltip("E.G. set how far in front of the player an object should be before a collision occurs")]
     [SerializeField]
     float playerRadius = 0.5f;
 
+    bool isMoving = false;
     [Tooltip("how tall is the player")]
     [SerializeField]
     float height = 2;
@@ -38,21 +41,30 @@ public class PlayerMoveScript : MonoBehaviour
         if (!attack)
             attack = GetComponent<AttackScript>();
         rigidbody = GetComponent<Rigidbody>();
+        if (!animator)
+            animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 moveDir = input.GetMoveDir;
-        if (moveDir != Vector3.zero && rigidbody.isKinematic && Time.timeScale > 0)
+        if (moveDir != Vector3.zero && rigidbody.isKinematic && Time.timeScale > 0 && speedMod > 0)
         {
             transform.position += moveDir * moveSpeed * speedMod * Time.deltaTime;
             Vector3 aimDir = moveDir;
             float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+            
+            isMoving = true;
 
             checkGrounded();
         }
+        else if (isMoving)
+        {
+            isMoving = false;
+        }
+        animator.SetBool("Moving", isMoving);
     }
 
     /// <summary>

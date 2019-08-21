@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class ScoreManager : MonoBehaviour
 
 
     public bool pointsShown;
+
+    float gameEndTimer = 0;
+    float gameEndTime = 5;
 
     /// <summary>
     /// Start is called before the first frame update and sets the variables that need setting
@@ -73,6 +77,16 @@ public class ScoreManager : MonoBehaviour
             {
                 GameOverPoints();
             }
+            else if(gameEndTimer > 0)
+            {
+                gameEndTimer -= Time.unscaledDeltaTime;
+                
+            }
+            else
+            {
+                Time.timeScale = 1;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
     }
 
@@ -83,7 +97,10 @@ public class ScoreManager : MonoBehaviour
     {
         timeLength -= Time.deltaTime;
         int IntTime = Mathf.RoundToInt(timeLength);
-        timer.text = IntTime.ToString(); 
+        string minutes = ((int)IntTime / 60).ToString("00");
+        string seconds = Mathf.Floor(IntTime % 60).ToString("00");
+
+        timer.text = minutes + ":" + seconds; 
     }
 
     /// <summary>
@@ -135,13 +152,13 @@ public class ScoreManager : MonoBehaviour
 
         for(int i = 0; i < scores.Length; i++)
         {
-            Debug.Log(i + 1 + " " + ranks[i].name + ": " + scores[i]);
             temp += i+1 + ". " + ranks[i].name + ":       " + scores[i] + "\n" + "\n";
         }
         gameOver.GetComponent<Text>().text = temp;
         pointsShown = true;
 
         Time.timeScale = 0;
+        gameEndTimer = gameEndTime;
     }
 
     

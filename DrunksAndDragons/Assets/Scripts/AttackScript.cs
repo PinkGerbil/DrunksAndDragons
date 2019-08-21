@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(timeStop), typeof(PlayerInput), typeof(PlayerMoveScript))]
 public class AttackScript : MonoBehaviour
 {
-    const float playerWidth = 0.5f;
+    float playerWidth = 0.5f;
 
     [SerializeField] cameraShake cameraShake;
     [SerializeField] timeStop stopTime;
@@ -17,6 +17,9 @@ public class AttackScript : MonoBehaviour
     [SerializeField]
     [Tooltip("AttackPanel should be a panel in the UI with a horizontal fill method")]
     public Image AttackPanel;
+
+    [SerializeField]
+    public Animator animator;
 
     public bool IsAttacking { get { return !(sweepCountdown <= 0 && lungeCountdown <= 0); } }
 
@@ -62,6 +65,8 @@ public class AttackScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!animator)
+            animator = GetComponent<Animator>();
         if (!input)
             input = GetComponent<PlayerInput>();
         if (!playerMove)
@@ -72,24 +77,36 @@ public class AttackScript : MonoBehaviour
             cameraShake = Camera.main.GetComponent<cameraShake>();
 
         rigidbody = GetComponent<Rigidbody>();
-        //change attackDuration to be same as attack animation time
+
+        if (AttackPanel != null)
+            AttackPanel.transform.parent.gameObject.SetActive(gameObject.activeInHierarchy);
+        
+
+        playerWidth =  0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(sweepCountdown > 0)
+
+        if (sweepCountdown > 0)
         {
             checkSweepCollide();
             sweepCountdown -= Time.deltaTime;
         }
         else if(lungeCountdown > 0)
         {
-            transform.position += lungeDir * 20 * Time.deltaTime;
-            checkLungeCollision();
+            if (lungeCountdown > lungeDuration)
+                lungeCountdown -= Time.deltaTime;
+            else
+            {
+                transform.position += lungeDir * 20 * Time.deltaTime;
+                checkLungeCollision();
+                lungeCountdown -= Time.deltaTime;
+                playerMove.speedMod = 1;
+            }
             playerMove.checkGrounded();
-            lungeCountdown -= Time.deltaTime;
         }
         else if(attackCooldown > 0 && !heldPlayer)
         {
@@ -106,6 +123,7 @@ public class AttackScript : MonoBehaviour
 
             if (input.GetLungePressed && !heldPlayer)
             {
+                
                 LungeAttack();
             }
 
@@ -127,7 +145,7 @@ public class AttackScript : MonoBehaviour
         else
             dropPlayer();
 
-        if (!!heldPlayer)
+        if (heldPlayer != null)
         {
             attackCooldown += 0.5f * Time.deltaTime;
             setCooldownGauge();
@@ -149,10 +167,11 @@ public class AttackScript : MonoBehaviour
 
         attackDir = Quaternion.AngleAxis(-(sweepWidth * (1 - sweepCountdown * timeScalar)), Vector3.up) * attackDir;
 
-        Vector3 origin = transform.position;
+        Vector3 origin = transform.position + transform.up * 0.25f;
         Debug.DrawLine(origin, origin + attackDir * (sweepRange + playerWidth), Color.green);
+        int layerMask = 1 << 9;
 
-        if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange + playerWidth))
+        if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange + playerWidth, layerMask))
         {
             if (hit.collider.CompareTag("Enemy"))
             {
@@ -173,11 +192,11 @@ public class AttackScript : MonoBehaviour
     void checkLungeCollision()
     {
         Vector3 lungePerp = Vector3.Cross(transform.up, lungeDir);
-        Vector3 rayOrigin = transform.position + (-lungePerp * playerWidth);
-
+        Vector3 rayOrigin = transform.position + (-lungePerp * playerWidth) + (Vector3.up * 0.25f);
+        int layerMask = 1 << 9;
         for (int i = 0; i < 5; i++)
         {
-            if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange + playerWidth))
+            if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange + playerWidth, layerMask))
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
@@ -202,6 +221,8 @@ public class AttackScript : MonoBehaviour
         {
             sweepCountdown = sweepDuration;
             attackCooldown = attackCooldownDuration;
+            if(animator != null)
+                animator.SetTrigger("Swiping");
             if(AttackPanel != null)
                 AttackPanel.fillAmount = 0;
         }
@@ -214,9 +235,13 @@ public class AttackScript : MonoBehaviour
     {
         if (attackCooldown <= 0)
         {
-            lungeCountdown = lungeDuration;
+            if(animator != null)
+                animator.SetTrigger("Lunging");
+            lungeCountdown = lungeDuration * 4.5f;
             attackCooldown = attackCooldownDuration;
             lungeDir = transform.forward;
+
+            playerMove.speedMod = 0;
             if (AttackPanel != null)
                 AttackPanel.fillAmount = 0;
         }
@@ -230,7 +255,7 @@ public class AttackScript : MonoBehaviour
     {
         Vector3 rayOrigin = transform.position;
         Vector3 rayDir = transform.forward;
-        if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit firstHit, 3.0f))
+        if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit firstHit, grabRange))
         {
             if (firstHit.collider.CompareTag("Player") && !firstHit.collider.GetComponent<AttackScript>().heldPlayer)
             {
@@ -242,7 +267,7 @@ public class AttackScript : MonoBehaviour
         
         for (int i = 0; i < 4; i++)
         {
-            if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit hit, 3.0f))
+            if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit hit, grabRange))
             {
                 if (hit.collider.CompareTag("Player") && !firstHit.collider.GetComponent<AttackScript>().heldPlayer)
                 {
@@ -263,6 +288,7 @@ public class AttackScript : MonoBehaviour
     {
         if (heldPlayer != null)
         {
+            heldPlayer.GetComponent<Animator>().SetTrigger("Thrown");
             heldPlayer.GetComponent<Collider>().isTrigger = true;
             Rigidbody other = heldPlayer.GetComponent<Rigidbody>();
             other.isKinematic = false;

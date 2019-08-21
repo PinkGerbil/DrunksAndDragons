@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 10809493}
   - component: {fileID: 10809492}
   - component: {fileID: 10809491}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (11)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 18208018}
   - component: {fileID: 18208017}
   - component: {fileID: 18208016}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (17)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1002,7 +1002,7 @@ GameObject:
   - component: {fileID: 202245950}
   - component: {fileID: 202245949}
   - component: {fileID: 202245948}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (28)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1093,7 +1093,7 @@ GameObject:
   - component: {fileID: 213560764}
   - component: {fileID: 213560763}
   - component: {fileID: 213560762}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (12)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1184,7 +1184,7 @@ GameObject:
   - component: {fileID: 255461590}
   - component: {fileID: 255461589}
   - component: {fileID: 255461588}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (16)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1543,7 +1543,7 @@ GameObject:
   - component: {fileID: 362393140}
   - component: {fileID: 362393139}
   - component: {fileID: 362393138}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (14)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2363,7 +2363,7 @@ GameObject:
   - component: {fileID: 675613233}
   - component: {fileID: 675613232}
   - component: {fileID: 675613231}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (31)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2559,6 +2559,11 @@ PrefabInstance:
       propertyPath: AttackPanel
       value: 
       objectReference: {fileID: 508694851}
+    - target: {fileID: 4026292650061605386, guid: 2c8887206aaae414c9ad1e0e26c37f87,
+        type: 3}
+      propertyPath: lungeDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8262162441647526483, guid: 2c8887206aaae414c9ad1e0e26c37f87,
         type: 3}
       propertyPath: blackboard
@@ -2598,7 +2603,7 @@ GameObject:
   - component: {fileID: 746598155}
   - component: {fileID: 746598154}
   - component: {fileID: 746598153}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (6)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2888,7 +2893,7 @@ GameObject:
   - component: {fileID: 800445155}
   - component: {fileID: 800445154}
   - component: {fileID: 800445153}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (27)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2979,7 +2984,7 @@ GameObject:
   - component: {fileID: 807722467}
   - component: {fileID: 807722466}
   - component: {fileID: 807722465}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (19)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3144,7 +3149,7 @@ GameObject:
   - component: {fileID: 824506404}
   - component: {fileID: 824506403}
   - component: {fileID: 824506402}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (20)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3235,7 +3240,7 @@ GameObject:
   - component: {fileID: 873660988}
   - component: {fileID: 873660987}
   - component: {fileID: 873660986}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (22)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3326,7 +3331,7 @@ GameObject:
   - component: {fileID: 886426887}
   - component: {fileID: 886426886}
   - component: {fileID: 886426885}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (5)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3508,7 +3513,7 @@ GameObject:
   - component: {fileID: 947753554}
   - component: {fileID: 947753553}
   - component: {fileID: 947753552}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (15)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4004,7 +4009,7 @@ GameObject:
   - component: {fileID: 1237207513}
   - component: {fileID: 1237207512}
   - component: {fileID: 1237207511}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (26)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4095,7 +4100,7 @@ GameObject:
   - component: {fileID: 1238878380}
   - component: {fileID: 1238878379}
   - component: {fileID: 1238878378}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (24)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4186,7 +4191,7 @@ GameObject:
   - component: {fileID: 1248040047}
   - component: {fileID: 1248040046}
   - component: {fileID: 1248040045}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4416,6 +4421,11 @@ PrefabInstance:
       propertyPath: AttackPanel
       value: 
       objectReference: {fileID: 333297536}
+    - target: {fileID: 4026292650061605386, guid: 2c8887206aaae414c9ad1e0e26c37f87,
+        type: 3}
+      propertyPath: lungeDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8262162441647526483, guid: 2c8887206aaae414c9ad1e0e26c37f87,
         type: 3}
       propertyPath: blackboard
@@ -4546,7 +4556,7 @@ GameObject:
   - component: {fileID: 1347011620}
   - component: {fileID: 1347011619}
   - component: {fileID: 1347011618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (13)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4696,7 +4706,7 @@ GameObject:
   - component: {fileID: 1418339410}
   - component: {fileID: 1418339409}
   - component: {fileID: 1418339408}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (3)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4920,7 +4930,7 @@ GameObject:
   - component: {fileID: 1459619775}
   - component: {fileID: 1459619774}
   - component: {fileID: 1459619773}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (23)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5176,7 +5186,7 @@ GameObject:
   - component: {fileID: 1505328371}
   - component: {fileID: 1505328370}
   - component: {fileID: 1505328369}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (8)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5433,7 +5443,7 @@ GameObject:
   - component: {fileID: 1557324692}
   - component: {fileID: 1557324691}
   - component: {fileID: 1557324690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (30)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5524,7 +5534,7 @@ GameObject:
   - component: {fileID: 1584304139}
   - component: {fileID: 1584304138}
   - component: {fileID: 1584304137}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (10)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5649,7 +5659,7 @@ GameObject:
   - component: {fileID: 1617678171}
   - component: {fileID: 1617678170}
   - component: {fileID: 1617678169}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (4)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -6224,7 +6234,7 @@ GameObject:
   - component: {fileID: 1779104757}
   - component: {fileID: 1779104756}
   - component: {fileID: 1779104755}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (18)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -6315,7 +6325,7 @@ GameObject:
   - component: {fileID: 1779207555}
   - component: {fileID: 1779207554}
   - component: {fileID: 1779207553}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (7)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -6406,7 +6416,7 @@ GameObject:
   - component: {fileID: 1783454938}
   - component: {fileID: 1783454937}
   - component: {fileID: 1783454936}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (25)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -6576,7 +6586,7 @@ GameObject:
   - component: {fileID: 1828010225}
   - component: {fileID: 1828010224}
   - component: {fileID: 1828010223}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -6758,7 +6768,7 @@ GameObject:
   - component: {fileID: 1850504111}
   - component: {fileID: 1850504110}
   - component: {fileID: 1850504109}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (21)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -6993,6 +7003,11 @@ PrefabInstance:
       propertyPath: AttackPanel
       value: 
       objectReference: {fileID: 17731066}
+    - target: {fileID: 4026292650061605386, guid: 2c8887206aaae414c9ad1e0e26c37f87,
+        type: 3}
+      propertyPath: lungeDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8262162441647526483, guid: 2c8887206aaae414c9ad1e0e26c37f87,
         type: 3}
       propertyPath: blackboard
@@ -7106,7 +7121,7 @@ GameObject:
   - component: {fileID: 1963610415}
   - component: {fileID: 1963610414}
   - component: {fileID: 1963610413}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (9)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -7271,7 +7286,7 @@ GameObject:
   - component: {fileID: 2083920821}
   - component: {fileID: 2083920820}
   - component: {fileID: 2083920819}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -7381,7 +7396,7 @@ GameObject:
   - component: {fileID: 2114429719}
   - component: {fileID: 2114429718}
   - component: {fileID: 2114429717}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (29)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -7537,6 +7552,11 @@ PrefabInstance:
       propertyPath: AttackPanel
       value: 
       objectReference: {fileID: 482504508}
+    - target: {fileID: 4026292650061605386, guid: 2c8887206aaae414c9ad1e0e26c37f87,
+        type: 3}
+      propertyPath: lungeDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8262162441647526483, guid: 2c8887206aaae414c9ad1e0e26c37f87,
         type: 3}
       propertyPath: blackboard
@@ -7645,11 +7665,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 8029757748504559217, guid: bfad4f2cba3da6d43bcafd859f8e6cb9,
-        type: 3}
-      propertyPath: UIcanvas
-      value: 
-      objectReference: {fileID: 101358162}
     - target: {fileID: 8029757748504559230, guid: bfad4f2cba3da6d43bcafd859f8e6cb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7705,5 +7720,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8029757748504559217, guid: bfad4f2cba3da6d43bcafd859f8e6cb9,
+        type: 3}
+      propertyPath: UIcanvas
+      value: 
+      objectReference: {fileID: 101358162}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfad4f2cba3da6d43bcafd859f8e6cb9, type: 3}

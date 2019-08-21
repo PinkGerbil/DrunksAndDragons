@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 264408059411136696}
   - component: {fileID: 264408059411136697}
   - component: {fileID: 264408059411136698}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 264408059411136699}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -128,5 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 264408059411136697}
-  attackRange: 1.56
+  attackRange: 2
   attackTime: 0.5

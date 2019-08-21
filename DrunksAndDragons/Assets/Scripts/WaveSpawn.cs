@@ -9,8 +9,8 @@ public class WaveSpawn : MonoBehaviour
 
     public int spawnAmount;
     [Header("increase enemies each wave")]
-    [Tooltip("set to 1 to spawn the set spawnAmount")]
-    public int waveMultiplierStartValue;
+
+    private int waveMultiplierStartValue = 1;
     [Tooltip("set true to increase enemy spawn amount each wave")]
     public bool waveMultiplierOn;
     [Tooltip("increases the amount spawned each wave")]

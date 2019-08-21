@@ -20,7 +20,7 @@ public class WallScript : MonoBehaviour
     {
         foreach(Collider child in colliders)
         {
-            child.transform.position = boxCollider.ClosestPoint(child.transform.position) + transform.forward * 0.45f;
+            child.transform.position = boxCollider.ClosestPoint(child.transform.position) + transform.forward * 0.5f;
         }
         colliders.Clear();
     }

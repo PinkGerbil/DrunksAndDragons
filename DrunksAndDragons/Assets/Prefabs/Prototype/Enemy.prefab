@@ -129,3 +129,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5261767409069727124}
   attackRange: 1.56
+  attackTime: 0.5
