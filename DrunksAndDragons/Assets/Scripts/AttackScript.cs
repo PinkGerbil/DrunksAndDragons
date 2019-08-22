@@ -106,6 +106,7 @@ public class AttackScript : MonoBehaviour
                 lungeCountdown -= Time.deltaTime;
                 playerMove.speedMod = 1;
             }
+            playerMove.checkGrounded();
         }
         else if(attackCooldown > 0 && !heldPlayer)
         {
@@ -291,7 +292,7 @@ public class AttackScript : MonoBehaviour
             heldPlayer.GetComponent<Collider>().isTrigger = true;
             Rigidbody other = heldPlayer.GetComponent<Rigidbody>();
             other.isKinematic = false;
-            other.AddForceAtPosition((transform.forward + transform.up).normalized * 500.0f, heldPlayer.transform.position - transform.forward * 0.5f);
+            other.AddForce((transform.forward + transform.up).normalized * 500.0f);
             heldPlayer = null;
             playerMove.speedMod = 1;
         }
