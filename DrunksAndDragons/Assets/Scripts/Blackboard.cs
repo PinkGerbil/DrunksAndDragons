@@ -5,87 +5,33 @@ using UnityEngine.UI;
 
 public class Blackboard : MonoBehaviour
 {
-
-    int nextPlayerID = 0;
-    [SerializeField] Canvas UIcanvas;
+    
     [SerializeField] Text pauseText;
 
-    List<PlayerDamageHandler> players;
-    List<Image> AttackPanels;
-    List<Image> HealthPanels;
+    [HideInInspector]
+    public List<GameObject> players = new List<GameObject>();
 
     bool paused = false;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        players = new List<PlayerDamageHandler>();
-        AttackPanels = new List<Image>();
-        HealthPanels = new List<Image>();
-        if (!UIcanvas)
-            UIcanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        if (!pauseText && UIcanvas != null)
-            pauseText = UIcanvas.transform.Find("Pause_Text").GetComponent<Text>();
-        foreach(Transform child in UIcanvas.transform)
-        {
-            Image[] images = child.GetComponentsInChildren<Image>();
-            foreach(Image image in images)
-            {
-                if (image.name == "Health")
-                    HealthPanels.Add(image);
-                else if (image.name == "Stamina")
-                    AttackPanels.Add(image);
-            }
-        }
     }
 
-    /// <summary>
-    /// Can be used by AI (if necessary) to find the nearest player.
-    /// </summary>
-    /// <param name="enemyPos"> the position of the enemy calling this function </param>
-    /// <returns> the damage handler for the closest player </returns>
-    public PlayerDamageHandler getNearestPlayer(Vector3 enemyPos)
+    void Update()
     {
-        float distance = Mathf.Infinity;
-        PlayerDamageHandler closest = null;
-        foreach (PlayerDamageHandler child in players)
-        {
-            float current = Vector3.Distance(enemyPos, child.transform.position);
-            if (current < distance)
-            {
-                closest = child;
-                distance = current;
-            }
-        }
-        return closest.GetComponent<PlayerDamageHandler>();
+
+        //Debug.Log(players.Count);
+
     }
 
-    /// <summary>
-    /// Add player to the players list, then return the ID requested and iterate nextPlayerID
-    /// </summary>
-    /// <param name="player"> The damage handler of the player calling this function </param>
-    /// <returns> The ID of the player requesting their playerID (nextPlayerID) </returns>
-    public int GetPlayerID(PlayerDamageHandler player)
+    public void addPlayer(GameObject player)
     {
         players.Add(player);
-        
-        return ++nextPlayerID; 
+        Debug.Log(players.Count);
     }
-
-    public Image getHealthUI(int ID)
-    {
-        if (HealthPanels[ID - 1] != null)
-            return HealthPanels[ID - 1];
-        else return null;
-    }
-
-    public Image getAttackUI(int ID)
-    {
-        if (AttackPanels[ID - 1] != null)
-            return AttackPanels[ID - 1];
-        else return null;
-    }
+    
+    
 
     public void togglePause(bool toggle)
     {

@@ -13,6 +13,7 @@ public class cameraShake : MonoBehaviour
     [Range(0,5)]
     public float shakeAmount = 0.7f;
 
+    bool shaking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +24,13 @@ public class cameraShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(shakeCountDown <= 0)
+        if(shakeCountDown <= 0 && shaking)
         {
             shakeCountDown = 0;
             transform.localPosition = originalPos;
+            shaking = false;
         }
-        else if (Time.timeScale == 1.0f)
+        else if (Time.timeScale == 1.0f && shaking)
         {
             transform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
 
@@ -45,6 +47,7 @@ public class cameraShake : MonoBehaviour
     {
         originalPos = transform.localPosition;
         shakeCountDown = ShakeDuration;
+        shaking = true;
     }
 
     /// <summary>
@@ -56,5 +59,6 @@ public class cameraShake : MonoBehaviour
     {
         originalPos = transform.localPosition;
         shakeCountDown = duration;
+        shaking = true;
     }
 }

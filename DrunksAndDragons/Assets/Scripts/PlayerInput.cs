@@ -18,20 +18,14 @@ public class PlayerInput : MonoBehaviour
 
     void Start()
     {
-        
+        if (blackboard != null)
+            blackboard.addPlayer(gameObject);
     }
 
     void Update()
     {
         if (blackboard != null)
         {
-            if (playerID == 0)
-            {
-                playerID = blackboard.GetPlayerID(GetComponent<PlayerDamageHandler>());
-
-                GetComponent<PlayerDamageHandler>().HealthPanel = blackboard.getHealthUI(playerID);
-                GetComponent<AttackScript>().AttackPanel = blackboard.getAttackUI(playerID);
-            }
             if (XCI.GetButtonDown(XboxButton.Start, controller))
             {
                 blackboard.togglePause();

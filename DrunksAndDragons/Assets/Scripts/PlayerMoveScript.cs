@@ -120,10 +120,6 @@ public class PlayerMoveScript : MonoBehaviour
                 {
                     ungrounded = false;
                 }
-                else
-                {
-                    Debug.Log("help");
-                }
             }
             origin += transform.right * playerRadius;
         }
