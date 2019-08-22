@@ -16,8 +16,6 @@ public class AI : MonoBehaviour
     [Range(0, 2)]
     float attackTime = 0.5f;
     float attackCountdown;
-
-    private int pointAmount = 20;
     
 
     // Start is called before the first frame update

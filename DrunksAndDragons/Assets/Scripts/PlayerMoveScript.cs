@@ -33,6 +33,10 @@ public class PlayerMoveScript : MonoBehaviour
     [SerializeField]
     float height = 2;
 
+    GameObject TopPoint;
+
+    float yOffset { get { return TopPoint.transform.position.y - transform.position.y;} }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +47,10 @@ public class PlayerMoveScript : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         if (!animator)
             animator = GetComponent<Animator>();
+        TopPoint = transform.Find("TopPoint").gameObject;
+        int layerMask = 1 << 11;
+        if (Physics.Raycast(TopPoint.transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, layerMask))
+            height = hit.distance;
     }
 
     // Update is called once per frame
@@ -56,9 +64,9 @@ public class PlayerMoveScript : MonoBehaviour
             float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
             
+            checkGrounded();
             isMoving = true;
 
-            checkGrounded();
         }
         else if (isMoving)
         {
@@ -73,22 +81,24 @@ public class PlayerMoveScript : MonoBehaviour
     /// </summary>
     public void checkGrounded()
     {
-        bool grounded = true;
-        Vector3 origin = transform.position + (-transform.right * playerRadius) + (transform.forward * playerRadius);
+        bool ungrounded = true;
+        Vector3 origin = TopPoint.transform.position + (-transform.right * playerRadius) + (transform.forward * playerRadius);
         Vector3 highest = Vector3.zero;
+
+        int layerMask = 1 << 11;
         for (int i = 0; i < 3; i++)
         {
-            if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit))
+            if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, Mathf.Infinity, layerMask))
             {
                 Vector3 temp = hit.point;
-                temp.y = transform.position.y;
+                temp.y = TopPoint.transform.position.y;
                 float distance = Vector3.Distance(temp, hit.point);
-                if (hit.collider.CompareTag("Environment") && distance <= height * 0.5f)
+                if (distance <= height)
                 {
-                    Vector3 current = Vector3.up * (height * 0.5f - distance);
-                    if (current.magnitude > highest.magnitude)
-                    highest = Vector3.up * (height * 0.5f - distance);
-                    grounded = false;
+                    Vector3 current = Vector3.up * (height - distance);
+                    if (current.y > highest.y)
+                        highest = current;
+                    ungrounded = false;
                 }
             }
             origin += transform.right * playerRadius;
@@ -98,25 +108,29 @@ public class PlayerMoveScript : MonoBehaviour
             transform.position += highest;
             return;
         }
-        origin = transform.position + (-transform.right * playerRadius) + (-transform.forward * playerRadius);
+        origin = TopPoint.transform.position + (-transform.right * playerRadius) + (-transform.forward * playerRadius);
         for (int i = 0; i < 3; i++)
         {
-            if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit))
+            if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, Mathf.Infinity, layerMask))
             {
-                Vector3 temp = hit.point;
-                temp.y = transform.position.y;
-                float distance = Vector3.Distance(temp, hit.point);
-                if (hit.collider.CompareTag("Environment") && distance <= height * 0.5f)
+                Vector3 temp = TopPoint.transform.position;
+                temp.y = hit.point.y;
+                float distance = Vector3.Distance(temp, TopPoint.transform.position);
+                if (distance <= height)
                 {
-                    grounded = false;
+                    ungrounded = false;
+                }
+                else
+                {
+                    Debug.Log("help");
                 }
             }
             origin += transform.right * playerRadius;
         }
 
-        if (grounded && Physics.Raycast(transform.position, Vector3.down, out RaycastHit ground))
+        if (ungrounded && Physics.Raycast(TopPoint.transform.position, Vector3.down, out RaycastHit ground, Mathf.Infinity, layerMask))
         {
-            transform.position = ground.point + (Vector3.up * (height * 0.5f));
+            transform.position = ground.point;
         }
     }
 
