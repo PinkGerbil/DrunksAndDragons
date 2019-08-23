@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6658547277966409500}
   - component: {fileID: 6658547277966409503}
-  - component: {fileID: 6658547277966409502}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: West Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,18 +44,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 43.232906, y: 10, z: 0.4571095}
   m_Center: {x: 0.21868613, y: 0, z: -3.314064e-10}
---- !u!114 &6658547277966409502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6658547277966409501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb77d722985e3547a6fc89a667b0ba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6658547278028975029
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,7 +53,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6658547278028975028}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Boundary Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,8 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6658547278340623500}
   - component: {fileID: 6658547278340623503}
-  - component: {fileID: 6658547278340623502}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: North Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,18 +122,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 27.851616, y: 10, z: 0.4571095}
   m_Center: {x: 0.3640628, y: 0, z: 0}
---- !u!114 &6658547278340623502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6658547278340623501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb77d722985e3547a6fc89a667b0ba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6658547278764376834
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,8 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6658547278764376837}
   - component: {fileID: 6658547278764376836}
-  - component: {fileID: 6658547278764376839}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: South Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,18 +166,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 28.053522, y: 10, z: 0.4571095}
   m_Center: {x: -0.27950191, y: 0, z: 0}
---- !u!114 &6658547278764376839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6658547278764376834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb77d722985e3547a6fc89a667b0ba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6658547279584141342
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,8 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6658547279584141313}
   - component: {fileID: 6658547279584141312}
-  - component: {fileID: 6658547279584141315}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: East Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,15 +210,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 43.97292, y: 10, z: 0.4571095}
   m_Center: {x: -0.6706648, y: 0, z: -0.0000000010163579}
---- !u!114 &6658547279584141315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6658547279584141342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb77d722985e3547a6fc89a667b0ba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

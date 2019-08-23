@@ -2740,7 +2740,11 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: -3.2860303
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6658547279584141315, guid: 8777b5387ca4c1e42b97d12298bf60e9, type: 3}
+    - {fileID: 6658547278764376839, guid: 8777b5387ca4c1e42b97d12298bf60e9, type: 3}
+    - {fileID: 6658547278340623502, guid: 8777b5387ca4c1e42b97d12298bf60e9, type: 3}
+    - {fileID: 6658547277966409502, guid: 8777b5387ca4c1e42b97d12298bf60e9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8777b5387ca4c1e42b97d12298bf60e9, type: 3}
 --- !u!1 &843177683
 GameObject:
@@ -4034,7 +4038,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1651164500}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CamHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

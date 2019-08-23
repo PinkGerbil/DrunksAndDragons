@@ -59,13 +59,25 @@ public class PlayerMoveScript : MonoBehaviour
         Vector3 moveDir = input.GetMoveDir;
         if (moveDir != Vector3.zero && rigidbody.isKinematic && Time.timeScale > 0 && speedMod > 0)
         {
-            transform.position += moveDir * moveSpeed * speedMod * Time.deltaTime;
             Vector3 aimDir = moveDir;
             float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
-            
-            checkGrounded();
-            isMoving = true;
+            RaycastHit block = checkInFront();
+            if (block.collider != null)
+            {
+                Vector3 nextPos = transform.position + transform.forward * moveSpeed * speedMod * Time.deltaTime;
+                Vector3 temp = block.collider.ClosestPointOnBounds(nextPos);
+                temp.y = transform.position.y;
+
+                transform.position = temp + (nextPos - temp).normalized * playerRadius;
+                
+            }
+            else
+            {
+                transform.position += transform.forward * moveSpeed * speedMod * Time.deltaTime;
+                checkGrounded();
+                isMoving = true;
+            }
 
         }
         else if (isMoving)
@@ -130,4 +142,22 @@ public class PlayerMoveScript : MonoBehaviour
         }
     }
 
+    RaycastHit checkInFront()
+    {
+        Vector3 origin = TopPoint.transform.position;
+        int dirInv = 1;
+
+        int layerMask = 1 << 11;
+        for (int i = 0; i < 3; i++)
+        {
+            if (Physics.Raycast(origin, transform.forward, out RaycastHit hit, playerRadius, layerMask))
+            {
+                return hit;
+            }
+            origin += transform.right * playerRadius * dirInv;
+            dirInv *= -2;
+        }
+        RaycastHit temp = new RaycastHit();
+        return temp;
+    }
 }
