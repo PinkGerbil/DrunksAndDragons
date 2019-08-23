@@ -16,13 +16,16 @@ public class AI : MonoBehaviour
     [Range(0, 2)]
     float attackTime = 0.5f;
     float attackCountdown;
+
+    public int dropChance;
+    public bool isDead;
     
 
     // Start is called before the first frame update
     void Start()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-        
+        isDead = false;
         FindClosestPlayer();
         
 
@@ -33,14 +36,28 @@ public class AI : MonoBehaviour
     void Update()
     {
         //checking to see how many players there are in the scene by seeing how many player tags there are in startup
-        float distanceToTarget = Vector3.Distance(transform.position, currentPlayer.transform.position);
-        if (distanceToTarget > 5 || !currentPlayer.Alive)
-            FindClosestPlayer();
-        else if (distanceToTarget < attackRange)
-            attack();
+        if (isDead == true)
+        {
+            int randomNum = Random.Range(0, 100);
+            if(randomNum <= dropChance)
+            {
+                //spawn the drop
+                Debug.Log("drop");
+                Destroy(this.gameObject);
+            }
+        }
         else
-            attackCountdown = attackTime;
-        
+        {
+            float distanceToTarget = Vector3.Distance(transform.position, currentPlayer.transform.position);
+            if (distanceToTarget > 5 || !currentPlayer.Alive)
+                FindClosestPlayer();
+            else if (distanceToTarget < attackRange)
+                attack();
+            else
+                attackCountdown = attackTime;
+        }
+
+     
     }
 
     //getting the closest player to this object if the player moves past a distance set above

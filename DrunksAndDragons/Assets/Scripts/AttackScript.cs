@@ -176,7 +176,7 @@ public class AttackScript : MonoBehaviour
             if (hit.collider.CompareTag("Enemy"))
             {
                 hit.collider.enabled = false;
-                Destroy(hit.collider.gameObject);
+                hit.collider.gameObject.GetComponent<AI>().isDead = true;
                 GetComponent<PlayerPoints>().AddPoints(100);
                 cameraShake.enableCamShake();
                 stopTime.enableTimeStop();
@@ -201,7 +201,7 @@ public class AttackScript : MonoBehaviour
                 if (hit.collider.CompareTag("Enemy"))
                 {
                     hit.collider.enabled = false;
-                    Destroy(hit.collider.gameObject);
+                    hit.collider.gameObject.GetComponent<AI>().isDead = true;
                     GetComponent<PlayerPoints>().AddPoints(100);
                     cameraShake.enableCamShake();
                     stopTime.enableTimeStop();
