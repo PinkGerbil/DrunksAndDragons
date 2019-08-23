@@ -28,7 +28,6 @@ public class Blackboard : MonoBehaviour
     public void addPlayer(GameObject player)
     {
         players.Add(player);
-
     }
     
     

@@ -15,7 +15,7 @@ public class CameraMove : MonoBehaviour
     float nextZoom;
 
     [SerializeField]
-    float camMoveSpeed;
+    float camMoveSpeed = 1;
 
     [SerializeField]
     [Range(-1, 1000)]

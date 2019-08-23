@@ -108,7 +108,6 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     public void GameOverPoints()
     {
-        int bestScore = -1;
 
         int[] scores = new int[4];
         GameObject[] ranks = new GameObject[4];
