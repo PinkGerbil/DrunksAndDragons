@@ -17,6 +17,15 @@ public class CameraMove : MonoBehaviour
     [SerializeField]
     float camMoveSpeed;
 
+    [SerializeField]
+    [Range(-1, 1000)]
+    float maxZoom;
+    [SerializeField]
+    [Range(-1000, 1)]
+    float minZoom;
+
+    public float PlayerScale = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +44,9 @@ public class CameraMove : MonoBehaviour
             nextPos = CalcCamPos();
             nextZoom = CalcCamZoom();
         }
-        transform.position = Vector3.Lerp(transform.position, (nextPos + -transform.forward * nextZoom) + originPoint, camMoveSpeed * Time.deltaTime);
+        
+
+        transform.localPosition = Vector3.Lerp(transform.localPosition, nextPos + -transform.forward * nextZoom, camMoveSpeed * Time.deltaTime);
 
         nextZoom = 0;
     }
@@ -59,11 +70,12 @@ public class CameraMove : MonoBehaviour
             foreach(GameObject child2 in players)
                 if(!child1.Equals(child2))
                 {
-                    float distance = Vector3.Distance(child1.transform.position, child2.transform.position);
+                    float distance = Vector3.Distance(child1.transform.position, child2.transform.position) / PlayerScale;
                     if (distance > temp)
                         temp = distance;
                 }
-
+        if(!(maxZoom < 0 && minZoom > 0))
+            temp = Mathf.Clamp(temp, minZoom, maxZoom);
         return temp;
     }
 }
