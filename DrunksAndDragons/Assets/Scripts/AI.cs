@@ -17,7 +17,13 @@ public class AI : MonoBehaviour
     float attackTime = 0.5f;
     float attackCountdown;
 
+    [Tooltip("chance that the enemy will drop a pickup 0 for never dropping and 100 for always dropping")]
+    [Range(0,100)]
     public int dropChance;
+
+    public GameObject coin;
+    public int maxCoinDrop;
+
     public bool isDead;
     
 
@@ -35,7 +41,6 @@ public class AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //checking to see how many players there are in the scene by seeing how many player tags there are in startup
         if (isDead == true)
         {
             int randomNum = Random.Range(0, 100);
@@ -43,9 +48,15 @@ public class AI : MonoBehaviour
             {
                 //spawn the drop
                 Debug.Log("drop");
-                Destroy(this.gameObject);
             }
+            int coinDropAmount = Random.Range(0, maxCoinDrop);
+            for(int i = 0; i < coinDropAmount; i++)
+            {
+                Instantiate(coin, this.transform.position, this.transform.rotation);
+            }
+            Destroy(this.gameObject);
         }
+        //checking to see how many players there are in the scene by seeing how many player tags there are in startup
         else
         {
             float distanceToTarget = Vector3.Distance(transform.position, currentPlayer.transform.position);
