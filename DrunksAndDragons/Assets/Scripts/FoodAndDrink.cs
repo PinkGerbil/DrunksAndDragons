@@ -6,6 +6,7 @@ public class FoodAndDrink : MonoBehaviour
 {
     //the amount by which will increase your health
     public int HealthAddAmount;
+    public int MaxHealthIncrease = 12;
 
     //the amount your stamina regeneration will be boosted by
     public int ReduceAttackCooldown;
@@ -28,14 +29,18 @@ public class FoodAndDrink : MonoBehaviour
     /// <param name="other">collider</param>
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Food")
+        if (other.gameObject.name == "Food")
         {
             PickUpFood(this.gameObject);
         }
-        else if(other.gameObject.name == "SpeedDrink")
+        else if (other.gameObject.name == "SpeedDrink")
         {
             PickUpSpeedBoost(this.gameObject);
             PickUpAttackCooldownBoost(this.gameObject);
+        }
+        else if (other.gameObject.name == "HealthIncrease")
+        {
+            PickUpHealthIncrease(this.gameObject);
         }
     }
     
@@ -114,5 +119,16 @@ public class FoodAndDrink : MonoBehaviour
         {
             player.GetComponent<PlayerDamageHandler>().health = player.GetComponent<PlayerDamageHandler>().maxHealth;
         }
+    }
+
+    /// <summary>
+    /// Pick up and item which will increase your max health by one and restore health to full
+    /// </summary>
+    /// <param name="player">GameObject being affected</param>
+    public void PickUpHealthIncrease(GameObject player)
+    {
+        if(player.GetComponent<PlayerDamageHandler>().maxHealth != MaxHealthIncrease)
+        player.GetComponent<PlayerDamageHandler>().maxHealth += 1;
+        player.GetComponent<PlayerDamageHandler>().health = player.GetComponent<PlayerDamageHandler>().maxHealth;
     }
 }
