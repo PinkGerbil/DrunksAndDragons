@@ -9,16 +9,23 @@ public class FoodAndDrink : MonoBehaviour
 
     //the amount your stamina regeneration will be boosted by
     public int ReduceAttackCooldown;
-    public float AttackCooldownDurationOriginal;
-    public bool ReducedAttackCooldown = false;
+    private float AttackCooldownDurationOriginal;
+    private bool ReducedAttackCooldown = false;
 
     public float SpeedModOriginal;
     public float SpeedBoost;
-    public bool SpeedBoosted = false;
+    private bool GinAndSonic = false;
 
-    public float timer;
+    private float timer;
     public float DurationOfDrink = 5;
-    
+
+    private float GinAndSonicTimer;
+    public float GinAndSonicDuration;
+
+    /// <summary>
+    /// When the player enters a trigger it will find it's name and do different things depending on the game object's name
+    /// </summary>
+    /// <param name="other">collider</param>
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "Food")
@@ -28,27 +35,28 @@ public class FoodAndDrink : MonoBehaviour
         else if(other.gameObject.name == "SpeedDrink")
         {
             PickUpSpeedBoost(this.gameObject);
-        }
-        else if (other.gameObject.name == "CooldownDrink")
-        {
             PickUpAttackCooldownBoost(this.gameObject);
         }
     }
-
-    // Update is called once per frame
+    
+    /// <summary>
+    /// Update is called once per frame 
+    /// </summary>
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer > DurationOfDrink && ReducedAttackCooldown)
+        GinAndSonicTimer += Time.deltaTime;
+        if(GinAndSonicTimer > GinAndSonicDuration && GinAndSonic)
         {
             DeactivateAttackCooldownBoost(this.gameObject);
-        }
-        if (timer > DurationOfDrink && SpeedBoosted)
-        {
             DeactivateSpeedBoost(this.gameObject);
         }
     }
 
+    /// <summary>
+    /// If the attack cooldown item is picked up it will reduce the cooldown between attacks
+    /// </summary>
+    /// <param name="player">GameObject being affected</param>
     public void PickUpAttackCooldownBoost(GameObject player)
     {
         timer = 0; 
@@ -57,34 +65,54 @@ public class FoodAndDrink : MonoBehaviour
             AttackCooldownDurationOriginal = player.GetComponent<AttackScript>().attackCooldownDuration;
         }
         player.GetComponent<AttackScript>().attackCooldownDuration /= 2;
-        ReducedAttackCooldown = true;
+        //ReducedAttackCooldown = true;
     }
 
+    /// <summary>
+    /// Reverts the cooldown between attacks to it's original cooldown
+    /// </summary>
+    /// <param name="player">GameObject being affected</param>
     public void DeactivateAttackCooldownBoost(GameObject player)
     {
         player.GetComponent<AttackScript>().attackCooldownDuration = AttackCooldownDurationOriginal;
         ReducedAttackCooldown = true;
     }
 
+    /// <summary>
+    /// If the speedboost item is acquired the player will gain more speed
+    /// </summary>
+    /// <param name="player">GameObject being affected</param>
     public void PickUpSpeedBoost(GameObject player)
     {
-        timer = 0;
+        GinAndSonicTimer = 0;
         if(SpeedModOriginal == 0)
         {
             SpeedModOriginal = player.GetComponent<PlayerMoveScript>().speedMod;
         }
         player.GetComponent<PlayerMoveScript>().speedMod *= SpeedBoost;
-        SpeedBoosted = true;
+        GinAndSonic = true;
     }
 
+    /// <summary>
+    /// Changes the speed of the affected game object to be the original modifier
+    /// </summary>
+    /// <param name="player">GameObject being affected</param>
     public void DeactivateSpeedBoost(GameObject player)
     {
-        SpeedBoosted = false;
+        GinAndSonic = false;
         player.GetComponent<PlayerMoveScript>().speedMod = SpeedModOriginal;
     }
 
+    /// <summary>
+    /// Picking up food will restore an amount of health to the player
+    /// </summary>
+    /// <param name="player">GameObject being affected</param>
     public void PickUpFood(GameObject player)
     {
         player.GetComponent<PlayerDamageHandler>().health += HealthAddAmount;
+        if(player.GetComponent<PlayerDamageHandler>().health > player.GetComponent<PlayerDamageHandler>().maxHealth)
+        {
+            player.GetComponent<PlayerDamageHandler>().health = player.GetComponent<PlayerDamageHandler>().maxHealth;
+        }
     }
 }
