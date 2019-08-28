@@ -27,15 +27,19 @@ public class CameraMove : MonoBehaviour
     [Range(0, 40)]
     float maxZoom;
     [SerializeField]
-    [Range(-20, 0)]
+    [Range(-40, 0)]
     float minZoom;
     [SerializeField]
+    [Range(-10, 0)]
     float xMinBounds;
     [SerializeField]
+    [Range(0, 10)]
     float xMaxBounds;
     [SerializeField]
+    [Range(-20, 0)]
     float zMinBounds;
     [SerializeField]
+    [Range(0, 20)]
     float zMaxBounds;
 
     // Start is called before the first frame update
