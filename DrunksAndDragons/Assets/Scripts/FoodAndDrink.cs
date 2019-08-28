@@ -97,7 +97,10 @@ public class FoodAndDrink : MonoBehaviour
         {
             SpeedModOriginal = player.GetComponent<PlayerMoveScript>().speedMod;
         }
-        player.GetComponent<PlayerMoveScript>().speedMod *= SpeedBoost;
+        if (GinAndSonic == false)
+        {
+            player.GetComponent<PlayerMoveScript>().speedMod *= SpeedBoost;
+        }
         GinAndSonic = true;
     }
 
