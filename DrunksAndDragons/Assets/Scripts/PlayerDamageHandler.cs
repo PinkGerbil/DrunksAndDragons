@@ -32,7 +32,7 @@ public class PlayerDamageHandler : MonoBehaviour
 
     [SerializeField]
     [Range(1,100)]
-    float knockbackForce = 25;
+    float knockbackForce = 15.0f;
 
     [SerializeField]
     [Range(1,10)]
@@ -71,14 +71,19 @@ public class PlayerDamageHandler : MonoBehaviour
 
         if (knockbackCountdown > 0)
         {
+            PlayerMoveScript temp = GetComponent<PlayerMoveScript>();
             knockbackCountdown -= Time.deltaTime;
-            transform.position += knockbackForce * isHitDir.normalized * Time.deltaTime;
+            if(!temp.checkInFront(transform.position + knockbackForce * isHitDir.normalized * Time.deltaTime))
+                transform.position += knockbackForce * isHitDir.normalized * Time.deltaTime;
+            temp.checkGrounded();
+
         }
         else if (IFrameTime > 0)
         {
             //Debug.Log(IFrameTime);
             isHitDir = Vector3.zero;
             IFrameTime -= Time.deltaTime;
+            rigidbody.isKinematic = true;
             if (IFrameTime < 0) IFrameTime = 0;
         }
 
@@ -139,6 +144,7 @@ public class PlayerDamageHandler : MonoBehaviour
         isHitDir.Normalize();
         isHitDir.y = 0;
         knockbackCountdown = knockbackTime;
+        rigidbody.isKinematic = false;
         IFrameTime = IFrames;
         health -= 1;
         isHit = false;

@@ -111,7 +111,9 @@ public class AI : MonoBehaviour
         if (!currentPlayer.Invincible && currentPlayer.Alive)
         {
             currentPlayer.isHit = true;
-            currentPlayer.isHitDir += (currentPlayer.transform.position - transform.position).normalized;
+            Vector3 hitDir = (currentPlayer.transform.position - transform.position);
+            hitDir.y = 0;
+            currentPlayer.isHitDir += hitDir.normalized;
         }
     }
 

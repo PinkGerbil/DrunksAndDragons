@@ -62,17 +62,7 @@ public class PlayerMoveScript : MonoBehaviour
             Vector3 aimDir = moveDir;
             float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
-            RaycastHit block = checkInFront();
-            if (block.collider != null)
-            {
-                Vector3 nextPos = transform.position + transform.forward * moveSpeed * speedMod * Time.deltaTime;
-                Vector3 temp = block.collider.ClosestPointOnBounds(nextPos);
-                temp.y = transform.position.y;
-
-                transform.position = temp + (nextPos - temp).normalized * playerRadius;
-                
-            }
-            else
+            if (!checkInFront(transform.position + transform.forward * moveSpeed * speedMod * Time.deltaTime))
             {
                 transform.position += transform.forward * moveSpeed * speedMod * Time.deltaTime;
                 checkGrounded();
@@ -141,23 +131,39 @@ public class PlayerMoveScript : MonoBehaviour
             transform.position = ground.point;
         }
     }
-
-    RaycastHit checkInFront()
+    public bool checkInFront(Vector3 nextPos)
     {
         Vector3 origin = TopPoint.transform.position;
         int dirInv = 1;
+        Vector3 hitDir = Vector3.Normalize(nextPos - transform.position);
+
+        // direction perpendicular to hitDir
+        Vector3 dirPerp = Vector3.Cross(Vector3.up, hitDir);
+
+        RaycastHit closest = new RaycastHit();
 
         int layerMask = 1 << 11;
         for (int i = 0; i < 3; i++)
         {
-            if (Physics.Raycast(origin, transform.forward, out RaycastHit hit, playerRadius, layerMask))
+            if (Physics.Raycast(origin, hitDir, out RaycastHit hit, playerRadius, layerMask))
             {
-                return hit;
+                if (closest.collider == null || hit.distance < closest.distance)
+                    closest = hit;
             }
-            origin += transform.right * playerRadius * dirInv;
+            origin += dirPerp * playerRadius * dirInv;
             dirInv *= -2;
         }
-        RaycastHit temp = new RaycastHit();
-        return temp;
+
+        if(closest.collider != null)
+        {
+            Vector3 temp = closest.collider.ClosestPointOnBounds(nextPos);
+            temp.y = transform.position.y;
+
+            transform.position = temp + (nextPos - temp).normalized * playerRadius;
+            return true;
+        }
+        else
+            return false;
     }
+
 }
