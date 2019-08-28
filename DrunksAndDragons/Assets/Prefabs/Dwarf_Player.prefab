@@ -402,6 +402,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2455fe521ec15a541a2f0b9e455e77ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerWidth: 0.5
+  playerHeight: 2
   cameraShake: {fileID: 0}
   stopTime: {fileID: 0}
   input: {fileID: 0}
@@ -417,7 +419,7 @@ MonoBehaviour:
   lungeRange: 0.5
   grabRange: 1.5
   grabWidth: 45
-  heldPlayer: {fileID: 0}
+  heldObject: {fileID: 0}
 --- !u!114 &2881682679395987096
 MonoBehaviour:
   m_ObjectHideFlags: 0

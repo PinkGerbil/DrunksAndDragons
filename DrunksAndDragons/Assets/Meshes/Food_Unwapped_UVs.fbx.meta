@@ -1,0 +1,226 @@
+fileFormatVersion: 2
+guid: 8e4c4aa56a8da06488295e06464a8840
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Big_Soup_Veggies_1
+    100002: Bread_1
+    100004: Bread_2
+    100006: Cheese_1
+    100008: Cheese_2
+    100010: //RootNode
+    100012: Grapes_1
+    100014: Half_Scone_1
+    100016: Half_Scone_2
+    100018: Pear_1
+    100020: Pie_Big_1
+    100022: Pie_Handle_1
+    100024: Pie_Handle_2
+    100026: Plate_Small_1
+    100028: Plate_Small_2
+    100030: Plate_Small_3
+    100032: Porridge_Small_1
+    100034: Salami_1
+    100036: Salami_Sliced_1
+    100038: Small_Berries_1
+    100040: Smoothie_1
+    100042: Soup_Big_Bowl_1
+    100044: Tavern_Mug_1
+    100046: Tavern_Mug_Handle
+    100048: Whole_Scone_1
+    100050: Whole_Scone_2
+    100052: Wine_Goblet_1
+    400000: Big_Soup_Veggies_1
+    400002: Bread_1
+    400004: Bread_2
+    400006: Cheese_1
+    400008: Cheese_2
+    400010: //RootNode
+    400012: Grapes_1
+    400014: Half_Scone_1
+    400016: Half_Scone_2
+    400018: Pear_1
+    400020: Pie_Big_1
+    400022: Pie_Handle_1
+    400024: Pie_Handle_2
+    400026: Plate_Small_1
+    400028: Plate_Small_2
+    400030: Plate_Small_3
+    400032: Porridge_Small_1
+    400034: Salami_1
+    400036: Salami_Sliced_1
+    400038: Small_Berries_1
+    400040: Smoothie_1
+    400042: Soup_Big_Bowl_1
+    400044: Tavern_Mug_1
+    400046: Tavern_Mug_Handle
+    400048: Whole_Scone_1
+    400050: Whole_Scone_2
+    400052: Wine_Goblet_1
+    2100000: lambert1
+    2300000: Big_Soup_Veggies_1
+    2300002: Bread_1
+    2300004: Bread_2
+    2300006: Cheese_1
+    2300008: Cheese_2
+    2300010: Grapes_1
+    2300012: Half_Scone_1
+    2300014: Half_Scone_2
+    2300016: Pear_1
+    2300018: Pie_Big_1
+    2300020: Pie_Handle_1
+    2300022: Pie_Handle_2
+    2300024: Plate_Small_1
+    2300026: Plate_Small_2
+    2300028: Plate_Small_3
+    2300030: Porridge_Small_1
+    2300032: Salami_1
+    2300034: Salami_Sliced_1
+    2300036: Small_Berries_1
+    2300038: Smoothie_1
+    2300040: Soup_Big_Bowl_1
+    2300042: Tavern_Mug_1
+    2300044: Tavern_Mug_Handle
+    2300046: Whole_Scone_1
+    2300048: Whole_Scone_2
+    2300050: Wine_Goblet_1
+    3300000: Big_Soup_Veggies_1
+    3300002: Bread_1
+    3300004: Bread_2
+    3300006: Cheese_1
+    3300008: Cheese_2
+    3300010: Grapes_1
+    3300012: Half_Scone_1
+    3300014: Half_Scone_2
+    3300016: Pear_1
+    3300018: Pie_Big_1
+    3300020: Pie_Handle_1
+    3300022: Pie_Handle_2
+    3300024: Plate_Small_1
+    3300026: Plate_Small_2
+    3300028: Plate_Small_3
+    3300030: Porridge_Small_1
+    3300032: Salami_1
+    3300034: Salami_Sliced_1
+    3300036: Small_Berries_1
+    3300038: Smoothie_1
+    3300040: Soup_Big_Bowl_1
+    3300042: Tavern_Mug_1
+    3300044: Tavern_Mug_Handle
+    3300046: Whole_Scone_1
+    3300048: Whole_Scone_2
+    3300050: Wine_Goblet_1
+    4300000: Tavern_Mug_1
+    4300002: Tavern_Mug_Handle
+    4300004: Pie_Big_1
+    4300006: Pie_Handle_1
+    4300008: Pie_Handle_2
+    4300010: Wine_Goblet_1
+    4300012: Plate_Small_1
+    4300014: Plate_Small_2
+    4300016: Plate_Small_3
+    4300018: Soup_Big_Bowl_1
+    4300020: Porridge_Small_1
+    4300022: Cheese_1
+    4300024: Cheese_2
+    4300026: Bread_1
+    4300028: Bread_2
+    4300030: Pear_1
+    4300032: Grapes_1
+    4300034: Salami_1
+    4300036: Salami_Sliced_1
+    4300038: Whole_Scone_1
+    4300040: Whole_Scone_2
+    4300042: Half_Scone_1
+    4300044: Half_Scone_2
+    4300046: Small_Berries_1
+    4300048: Big_Soup_Veggies_1
+    4300050: Smoothie_1
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

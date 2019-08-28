@@ -130,3 +130,8 @@ MonoBehaviour:
   agent: {fileID: 5261767409069727124}
   attackRange: 1.56
   attackTime: 0.5
+  powerUpdropChance: 0
+  powerUps: []
+  coin: {fileID: 2881682680496295213, guid: 1f8a0174d5c36684b9226fc60c257b43, type: 3}
+  maxCoinDrop: 1
+  isDead: 0

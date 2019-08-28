@@ -1,10 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPoints : MonoBehaviour
 {
-    public int points = 0;
+    int points;
+    public Text coinsText;
+
+    public void Start()
+    {
+        points = 20;
+    }
 
     public void AddPoints(int i)
     {
@@ -21,8 +28,12 @@ public class PlayerPoints : MonoBehaviour
         return points;
     }
 
-    private void Update()
+    public void Update()
     {
-        
+        if (points >= 999)
+        {
+            points = 999;
+        }
+        coinsText.text = points.ToString();
     }
 }
