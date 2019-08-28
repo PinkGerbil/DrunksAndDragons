@@ -128,7 +128,8 @@ public class PlayerMoveScript : MonoBehaviour
 
         if (ungrounded && Physics.Raycast(TopPoint.transform.position, Vector3.down, out RaycastHit ground, Mathf.Infinity, layerMask))
         {
-            transform.position = ground.point;
+            if (rigidbody.isKinematic)
+                transform.position = ground.point;
         }
     }
     public bool checkInFront(Vector3 nextPos)

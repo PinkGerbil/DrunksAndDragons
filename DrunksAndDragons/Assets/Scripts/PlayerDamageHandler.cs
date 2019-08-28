@@ -87,8 +87,8 @@ public class PlayerDamageHandler : MonoBehaviour
             if (IFrameTime < 0) IFrameTime = 0;
         }
 
-
-        if (!rigidbody.isKinematic && Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 1))
+        int layerMask = 1 << LayerMask.NameToLayer("Environment");
+        if (!rigidbody.isKinematic && Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 0.2f, layerMask))
         {
             if (hit.collider.CompareTag("Environment"))
             {

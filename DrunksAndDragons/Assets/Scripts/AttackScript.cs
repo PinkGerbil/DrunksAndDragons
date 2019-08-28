@@ -60,6 +60,10 @@ public class AttackScript : MonoBehaviour
     [Tooltip("The angle of the grab check in front of the player")]
     [Range(1, 360)]
     public float grabWidth = 45.0f;
+
+    [Tooltip("The force at which the player throws held items/players")]
+    [Range(0, 1000)]
+    public float throwForce = 500.0f;
     
     public GameObject heldObject = null;
 
@@ -104,11 +108,11 @@ public class AttackScript : MonoBehaviour
             else
             {
                 transform.position += lungeDir * 20 * Time.deltaTime;
+                playerMove.checkGrounded();
                 checkLungeCollision();
                 lungeCountdown -= Time.deltaTime;
                 playerMove.speedMod = 1;
             }
-            playerMove.checkGrounded();
         }
         else if(attackCooldown > 0 && !heldObject)
         {
@@ -116,6 +120,18 @@ public class AttackScript : MonoBehaviour
             setCooldownGauge();
         }
 
+        if (heldObject != null)
+        {
+            attackCooldown += 0.5f * Time.deltaTime;
+            setCooldownGauge();
+            float objectHeight;
+            if (heldObject.CompareTag("Player"))
+                objectHeight = 0;
+            else
+                objectHeight = heldObject.transform.localScale.y * 0.5f;
+            heldObject.transform.SetPositionAndRotation(transform.Find("TopPoint").position + new Vector3(0, objectHeight, 0), transform.Find("TopPoint").rotation);
+
+        }
         if (rigidbody.isKinematic && Time.timeScale > 0)
         {
             if (input.GetSweepPressed && !heldObject)
@@ -125,10 +141,9 @@ public class AttackScript : MonoBehaviour
 
             if (input.GetLungePressed && !heldObject)
             {
-                
+
                 LungeAttack();
             }
-
             if (input.GetGrabPressed)
             {
                 if (!heldObject)
@@ -148,21 +163,9 @@ public class AttackScript : MonoBehaviour
 
             }
         }
-        else
-            dropHeldObject();
 
-        if (heldObject != null)
-        {
-            attackCooldown += 0.5f * Time.deltaTime;
-            setCooldownGauge();
-            float objectHeight;
-            if (heldObject.CompareTag("Player"))
-                objectHeight = 0;
-            else
-                objectHeight = heldObject.transform.localScale.y * 0.5f;
-            heldObject.transform.SetPositionAndRotation(transform.position + (transform.up * (playerHeight + objectHeight) ), transform.rotation);
 
-        }
+
 
         if (attackCooldown >= 1 && heldObject != null)
             dropHeldObject();
@@ -308,7 +311,9 @@ public class AttackScript : MonoBehaviour
             }
             Rigidbody other = heldObject.GetComponent<Rigidbody>();
             other.isKinematic = false;
-            other.AddForce((transform.forward + transform.up).normalized * 500.0f);
+            Debug.Log(other.isKinematic);
+            other.AddForce((transform.forward + transform.up).normalized * throwForce);
+            
             heldObject = null;
             playerMove.speedMod = 1;
         }
