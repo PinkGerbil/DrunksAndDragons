@@ -20,27 +20,27 @@ public class CameraMove : MonoBehaviour
     public float PlayerScale = 1;
     
     [Header("Position Bounds")]
-    [Tooltip("Only set this to true if all bounds are set")]
+    [Tooltip("Enable the fields below to be applied to the camera position.")]
     [SerializeField]
     bool useBounds = false;
     [SerializeField]
     [Range(0, 40)]
-    float maxZoom;
+    float maxZoom = 20;
     [SerializeField]
-    [Range(-40, 0)]
-    float minZoom;
+    [Range(0, 40)]
+    float minZoom = 0;
     [SerializeField]
     [Range(-10, 0)]
-    float xMinBounds;
+    float xMinBounds = -5;
     [SerializeField]
     [Range(0, 10)]
-    float xMaxBounds;
+    float xMaxBounds = 5;
     [SerializeField]
     [Range(-20, 0)]
-    float zMinBounds;
+    float zMinBounds = -10;
     [SerializeField]
     [Range(0, 20)]
-    float zMaxBounds;
+    float zMaxBounds = 10;
 
     // Start is called before the first frame update
     void Start()
