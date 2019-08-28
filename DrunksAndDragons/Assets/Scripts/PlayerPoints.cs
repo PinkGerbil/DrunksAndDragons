@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerPoints : MonoBehaviour
 {
-    int points;
+    public int points;
     public Text coinsText;
 
     public void Start()

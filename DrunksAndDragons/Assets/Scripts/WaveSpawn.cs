@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveSpawn : MonoBehaviour
 {
     public GameObject aiGameObject;
     public Transform[] spawnLocation;
+
+    public Text WaveCountText;
+    public int waveCount = 0;
 
     public int spawnAmount;
     [Header("increase enemies each wave")]
@@ -48,12 +52,15 @@ public class WaveSpawn : MonoBehaviour
                 }
                 StartCoroutine(spawnDelay());
                 timer = 0;
+                waveCount++;
             }
         }
         else
         {
             timer = startTimeBetweenWaves;
         }
+
+        WaveCountText.text = waveCount.ToString();
     }
 
     //counts how many children there are

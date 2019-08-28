@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5261767409069727126
+--- !u!1 &8406051494218682850
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5261767409069727120}
-  - component: {fileID: 5261767409069727123}
-  - component: {fileID: 5261767409069727122}
-  - component: {fileID: 5261767409069727125}
-  - component: {fileID: 5261767409069727124}
-  - component: {fileID: 5261767409069727127}
-  m_Layer: 0
+  - component: {fileID: 2808836506421232581}
+  - component: {fileID: 227418800205672822}
+  - component: {fileID: 5793200361530837482}
+  - component: {fileID: 4688014190415036359}
+  - component: {fileID: 1521277894170889215}
+  - component: {fileID: 9106850866802311952}
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5261767409069727120
+--- !u!4 &2808836506421232581
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5261767409069727126}
+  m_GameObject: {fileID: 8406051494218682850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 9.866816, y: 10.294001, z: 6.8820214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5261767409069727123
+--- !u!33 &227418800205672822
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5261767409069727126}
+  m_GameObject: {fileID: 8406051494218682850}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5261767409069727122
+--- !u!23 &5793200361530837482
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5261767409069727126}
+  m_GameObject: {fileID: 8406051494218682850}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -80,29 +80,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5261767409069727125
+--- !u!65 &4688014190415036359
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5261767409069727126}
+  m_GameObject: {fileID: 8406051494218682850}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &5261767409069727124
+--- !u!195 &1521277894170889215
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5261767409069727126}
+  m_GameObject: {fileID: 8406051494218682850}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -115,23 +115,26 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5261767409069727127
+--- !u!114 &9106850866802311952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5261767409069727126}
+  m_GameObject: {fileID: 8406051494218682850}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 026d614967306ef4f9c5b0b8c10e5e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 5261767409069727124}
-  attackRange: 1.56
+  agent: {fileID: 1521277894170889215}
+  attackRange: 2
   attackTime: 0.5
-  powerUpdropChance: 0
-  powerUps: []
-  coin: {fileID: 2881682680496295213, guid: 1f8a0174d5c36684b9226fc60c257b43, type: 3}
-  maxCoinDrop: 1
+  powerUpdropChance: 20
+  powerUps:
+  - {fileID: 2418003000894282240, guid: 7ba20cb9c2d45f64ca2870d0a2e9581e, type: 3}
+  - {fileID: 1581599843373989352, guid: af338c41adec7af45b177fcb24f96f80, type: 3}
+  - {fileID: 4171199931188632242, guid: 8660319ec82f85945b59fac98b97f801, type: 3}
+  coin: {fileID: 2939554252357560733, guid: 37d3c6bf218f2e74c8cffd395c9021d1, type: 3}
+  maxCoinDrop: 5
   isDead: 0

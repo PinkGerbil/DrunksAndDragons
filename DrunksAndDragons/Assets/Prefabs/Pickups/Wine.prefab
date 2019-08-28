@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1902342415225191828}
   - component: {fileID: 602232763148655873}
   - component: {fileID: 2562850935661554832}
+  - component: {fileID: 4191835429268356329}
+  - component: {fileID: 8873404538399057697}
   m_Layer: 0
   m_Name: Wine
   m_TagString: SpeedDrink
@@ -78,6 +80,34 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &4191835429268356329
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171199931188632242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 55.473648
+  m_Height: 136.10312
+  m_Direction: 1
+  m_Center: {x: 0.000008278423, y: 65.026115, z: -0.4595518}
+--- !u!136 &8873404538399057697
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171199931188632242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 55.473648
+  m_Height: 136.10312
+  m_Direction: 1
+  m_Center: {x: 0.000008278423, y: 65.026115, z: -0.4595518}
 --- !u!1 &7088849264046698564
 GameObject:
   m_ObjectHideFlags: 0
