@@ -19,7 +19,9 @@ public class AI : MonoBehaviour
 
     [Tooltip("chance that the enemy will drop a pickup 0 for never dropping and 100 for always dropping")]
     [Range(0,100)]
-    public int dropChance;
+    public int powerUpdropChance;
+    public GameObject[] powerUps;
+
 
     public GameObject coin;
     public int maxCoinDrop;
@@ -44,10 +46,12 @@ public class AI : MonoBehaviour
         if (isDead == true)
         {
             int randomNum = Random.Range(0, 100);
-            if(randomNum <= dropChance)
+            if(randomNum <= powerUpdropChance)
             {
+                int whatPickup = Random.Range(0, powerUps.Length);
+                Instantiate(powerUps[whatPickup], this.transform.position, this.transform.rotation);
                 //spawn the drop
-                Debug.Log("drop");
+                //Debug.Log("drop");
             }
             int coinDropAmount = Random.Range(0, maxCoinDrop);
             for(int i = 0; i < coinDropAmount; i++)
