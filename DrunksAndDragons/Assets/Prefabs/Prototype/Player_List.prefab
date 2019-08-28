@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &430539744865267086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662559066486995719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3ebd670d7abc840889837f53ed620a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthAddAmount: 1
+  MaxHealthIncrease: 12
+  ReduceAttackCooldown: 0
+  SpeedModOriginal: 0
+  SpeedBoost: 2
+  DurationOfDrink: 5
+  GinAndSonicDuration: 20
 --- !u!1 &2840593953823831411
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,6 +72,63 @@ MonoBehaviour:
   Player4: {fileID: 662559066486995719}
   playerSelectScene: Prototype_Menu
   gameScene: Prototype
+--- !u!114 &6667426702209679986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2942986366419994233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3ebd670d7abc840889837f53ed620a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthAddAmount: 1
+  MaxHealthIncrease: 12
+  ReduceAttackCooldown: 0
+  SpeedModOriginal: 0
+  SpeedBoost: 2
+  DurationOfDrink: 5
+  GinAndSonicDuration: 20
+--- !u!114 &705183089111380428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8517220036142201313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3ebd670d7abc840889837f53ed620a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthAddAmount: 1
+  MaxHealthIncrease: 12
+  ReduceAttackCooldown: 0
+  SpeedModOriginal: 0
+  SpeedBoost: 2
+  DurationOfDrink: 5
+  GinAndSonicDuration: 20
+--- !u!114 &4872258129654912687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8889305700327708573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3ebd670d7abc840889837f53ed620a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthAddAmount: 1
+  MaxHealthIncrease: 12
+  ReduceAttackCooldown: 0
+  SpeedModOriginal: 0
+  SpeedBoost: 2
+  DurationOfDrink: 5
+  GinAndSonicDuration: 20
 --- !u!1001 &1092788804506913620
 PrefabInstance:
   m_ObjectHideFlags: 0

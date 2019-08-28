@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 428862534}
   m_Layer: 0
   m_Name: Food
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 658711494}
   m_Layer: 0
   m_Name: SpeedDrink
-  m_TagString: Untagged
+  m_TagString: SpeedDrink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 1072055117}
   m_Layer: 0
   m_Name: HealthIncrease
-  m_TagString: Untagged
+  m_TagString: HealthIncrease
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

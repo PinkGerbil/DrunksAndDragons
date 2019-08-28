@@ -29,18 +29,21 @@ public class FoodAndDrink : MonoBehaviour
     /// <param name="other">collider</param>
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Food")
+        if (other.gameObject.tag == "Food")
         {
             PickUpFood(this.gameObject);
+            Destroy(other.gameObject);
         }
-        else if (other.gameObject.name == "SpeedDrink")
+        else if (other.gameObject.tag == "SpeedDrink")
         {
             PickUpSpeedBoost(this.gameObject);
             PickUpAttackCooldownBoost(this.gameObject);
+            Destroy(other.gameObject);
         }
-        else if (other.gameObject.name == "HealthIncrease")
+        else if (other.gameObject.tag == "HealthIncrease")
         {
             PickUpHealthIncrease(this.gameObject);
+            Destroy(other.gameObject);
         }
     }
     

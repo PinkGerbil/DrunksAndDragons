@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Environment
   - Score
+  - Food
+  - SpeedDrink
+  - HealthIncrease
   layers:
   - Default
   - TransparentFX
