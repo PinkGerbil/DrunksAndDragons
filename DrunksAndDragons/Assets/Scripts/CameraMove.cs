@@ -17,14 +17,26 @@ public class CameraMove : MonoBehaviour
     [SerializeField]
     float camMoveSpeed = 1;
 
+    public float PlayerScale = 1;
+    
+    [Header("Position Bounds")]
+    [Tooltip("Only set this to true if all bounds are set")]
     [SerializeField]
-    [Range(-1, 1000)]
+    bool useBounds = false;
+    [SerializeField]
+    [Range(0, 40)]
     float maxZoom;
     [SerializeField]
-    [Range(-1000, 1)]
+    [Range(-20, 0)]
     float minZoom;
-
-    public float PlayerScale = 1;
+    [SerializeField]
+    float xMinBounds;
+    [SerializeField]
+    float xMaxBounds;
+    [SerializeField]
+    float zMinBounds;
+    [SerializeField]
+    float zMaxBounds;
 
     // Start is called before the first frame update
     void Start()
@@ -44,9 +56,23 @@ public class CameraMove : MonoBehaviour
             nextPos = CalcCamPos();
             nextZoom = CalcCamZoom();
         }
-        
+        if(useBounds)
+        {
+            Vector3 temp = transform.localPosition;
+            if (transform.localPosition.x < xMinBounds)
+                temp.x = xMinBounds;
+            if (transform.localPosition.x > xMaxBounds)
+                temp.x = xMaxBounds;
 
+            if (transform.localPosition.z < zMinBounds)
+                temp.z = zMinBounds;
+            if (transform.localPosition.z > zMaxBounds)
+                temp.z = zMaxBounds;
+
+            transform.localPosition = temp;
+        }
         transform.localPosition = Vector3.Lerp(transform.localPosition, nextPos + -transform.forward * nextZoom, camMoveSpeed * Time.deltaTime);
+
 
         nextZoom = 0;
     }
@@ -74,7 +100,7 @@ public class CameraMove : MonoBehaviour
                     if (distance > temp)
                         temp = distance;
                 }
-        if(!(maxZoom < 0 && minZoom > 0))
+        if(useBounds)
             temp = Mathf.Clamp(temp, minZoom, maxZoom);
         return temp;
     }
