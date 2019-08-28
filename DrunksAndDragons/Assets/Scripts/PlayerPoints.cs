@@ -11,6 +11,11 @@ public class PlayerPoints : MonoBehaviour
         points += i;
     }
 
+    public void LosePoints(int i)
+    {
+        points -= i;
+    }
+
     public int GetPoints()
     {
         return points;

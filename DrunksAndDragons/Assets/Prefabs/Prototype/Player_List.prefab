@@ -196,6 +196,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: food
+      value: 
+      objectReference: {fileID: 2746182327610996464, guid: af9b714456340404488c7fdad08ac474,
+        type: 3}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: speedUp
+      value: 
+      objectReference: {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c,
+        type: 3}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: healthUp
+      value: 
+      objectReference: {fileID: 3894575176415504023, guid: b5111a5bf7b612441817f60ad17ded75,
+        type: 3}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: healthUpPrice
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: speedUpPrice
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: foodPrice
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f8a0174d5c36684b9226fc60c257b43, type: 3}
 --- !u!1 &2942986366419994233 stripped
@@ -276,6 +309,39 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: food
+      value: 
+      objectReference: {fileID: 2746182327610996464, guid: af9b714456340404488c7fdad08ac474,
+        type: 3}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: speedUp
+      value: 
+      objectReference: {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c,
+        type: 3}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: healthUp
+      value: 
+      objectReference: {fileID: 3894575176415504023, guid: b5111a5bf7b612441817f60ad17ded75,
+        type: 3}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: healthUpPrice
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: speedUpPrice
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: foodPrice
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f8a0174d5c36684b9226fc60c257b43, type: 3}
@@ -358,6 +424,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: food
+      value: 
+      objectReference: {fileID: 2746182327610996464, guid: af9b714456340404488c7fdad08ac474,
+        type: 3}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: healthUp
+      value: 
+      objectReference: {fileID: 3894575176415504023, guid: b5111a5bf7b612441817f60ad17ded75,
+        type: 3}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: speedUp
+      value: 
+      objectReference: {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c,
+        type: 3}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: healthUpPrice
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: speedUpPrice
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: foodPrice
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f8a0174d5c36684b9226fc60c257b43, type: 3}
 --- !u!1 &8517220036142201313 stripped
@@ -438,6 +537,39 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: food
+      value: 
+      objectReference: {fileID: 2746182327610996464, guid: af9b714456340404488c7fdad08ac474,
+        type: 3}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: healthUp
+      value: 
+      objectReference: {fileID: 3894575176415504023, guid: b5111a5bf7b612441817f60ad17ded75,
+        type: 3}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: speedUp
+      value: 
+      objectReference: {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c,
+        type: 3}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: healthUpPrice
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: speedUpPrice
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881682679395987097, guid: 1f8a0174d5c36684b9226fc60c257b43,
+        type: 3}
+      propertyPath: foodPrice
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f8a0174d5c36684b9226fc60c257b43, type: 3}

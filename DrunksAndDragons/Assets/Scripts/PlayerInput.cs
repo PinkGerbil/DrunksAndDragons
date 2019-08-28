@@ -67,6 +67,8 @@ public class PlayerInput : MonoBehaviour
                 return true;
             return XCI.GetButtonDown(XboxButton.B, controller); } }
     public bool GetGrabReleased { get { return XCI.GetButtonUp(XboxButton.B, controller); } }
+
+    public bool getBuyPressed {get { return XCI.GetButtonDown(XboxButton.A, controller); } }
     ///
 
 

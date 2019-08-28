@@ -17,6 +17,8 @@ public class AttackScript : MonoBehaviour
     [SerializeField] PlayerInput input;
     [SerializeField] PlayerMoveScript playerMove;
 
+    [SerializeField] PlayerPoints points;
+
     [SerializeField]
     [Tooltip("AttackPanel should be a panel in the UI with a horizontal fill method")]
     public Image AttackPanel;
@@ -68,6 +70,14 @@ public class AttackScript : MonoBehaviour
     public GameObject heldObject = null;
 
     Rigidbody rigidbody;
+    
+    public GameObject healthUp;
+    public int healthUpPrice;
+    public GameObject speedUp;
+    public int speedUpPrice;
+    public GameObject food;
+    public int foodPrice;
+
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +92,8 @@ public class AttackScript : MonoBehaviour
             stopTime = GetComponent<timeStop>();
         if (!cameraShake)
             cameraShake = Camera.main.GetComponent<cameraShake>();
+        if (!points)
+            points = GetComponent<PlayerPoints>();
 
         rigidbody = GetComponent<Rigidbody>();
 
@@ -192,7 +204,7 @@ public class AttackScript : MonoBehaviour
             {
                 hit.collider.enabled = false;
                 hit.collider.gameObject.GetComponent<AI>().isDead = true;
-                GetComponent<PlayerPoints>().AddPoints(100);
+                points.AddPoints(100);                //GetComponent<PlayerPoints>().AddPoints(100);
                 cameraShake.enableCamShake();
                 stopTime.enableTimeStop();
             }
@@ -217,7 +229,7 @@ public class AttackScript : MonoBehaviour
                 {
                     hit.collider.enabled = false;
                     hit.collider.gameObject.GetComponent<AI>().isDead = true;
-                    GetComponent<PlayerPoints>().AddPoints(100);
+                    points.AddPoints(100);                //GetComponent<PlayerPoints>().AddPoints(100);
                     cameraShake.enableCamShake();
                     stopTime.enableTimeStop();
                 }
@@ -323,5 +335,25 @@ public class AttackScript : MonoBehaviour
     {
         if (AttackPanel != null)
             AttackPanel.fillAmount = 1 - ((1 / attackCooldownDuration) * attackCooldown);
+    }
+
+    //buying stuff in the bar
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "FoodShop" && input.getBuyPressed && points.points >= foodPrice)
+        {
+            Instantiate(food,this.transform.position,this.transform.rotation);
+            points.LosePoints(foodPrice);
+        }
+        else if (other.gameObject.tag == "SpeedDrinkShop" && input.getBuyPressed && points.points >= speedUpPrice)
+        {
+            Instantiate(speedUp, this.transform.position, this.transform.rotation);
+            points.LosePoints(speedUpPrice);
+        }
+        else if (other.gameObject.tag == "HealthIncreaseShop" && input.getBuyPressed && points.points >= healthUpPrice)
+        {
+            Instantiate(healthUp, this.transform.position, this.transform.rotation);
+            points.LosePoints(healthUpPrice);
+        }
     }
 }
