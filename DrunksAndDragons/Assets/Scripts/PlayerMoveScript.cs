@@ -110,7 +110,7 @@ public class PlayerMoveScript : MonoBehaviour
             transform.position += highest;
             return;
         }
-        origin = TopPoint.transform.position + (-transform.right * playerRadius) + (-transform.forward * playerRadius);
+        origin = transform.position + ((TopPoint.transform.position - transform.position).normalized * 0.75f) + (-transform.right * playerRadius) + (-transform.forward * playerRadius);
         for (int i = 0; i < 3; i++)
         {
             if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, Mathf.Infinity, layerMask))
@@ -157,10 +157,18 @@ public class PlayerMoveScript : MonoBehaviour
 
         if(closest.collider != null)
         {
-            Vector3 temp = closest.collider.ClosestPointOnBounds(nextPos);
-            temp.y = transform.position.y;
+            Vector3 temp1 = closest.collider.ClosestPointOnBounds(nextPos);
+            Vector3 temp2 = closest.collider.ClosestPointOnBounds(nextPos + (temp1 - nextPos).normalized * 100);
+            Vector3 newPos = new Vector3();
 
-            transform.position = temp + (nextPos - temp).normalized * playerRadius;
+            if (Vector3.Distance(closest.point, temp1) < Vector3.Distance(closest.point, temp2))
+                newPos = temp1;
+            else
+                newPos = temp2;
+
+            newPos.y = transform.position.y;
+
+            transform.position = newPos + (nextPos - newPos).normalized * playerRadius;
             return true;
         }
         else
