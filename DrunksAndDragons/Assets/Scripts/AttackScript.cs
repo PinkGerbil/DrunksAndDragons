@@ -204,7 +204,7 @@ public class AttackScript : MonoBehaviour
             {
                 hit.collider.enabled = false;
                 hit.collider.gameObject.GetComponent<AI>().isDead = true;
-                points.AddPoints(100);                //GetComponent<PlayerPoints>().AddPoints(100);
+                points.gainKills();
                 cameraShake.enableCamShake();
                 stopTime.enableTimeStop();
             }
@@ -229,7 +229,7 @@ public class AttackScript : MonoBehaviour
                 {
                     hit.collider.enabled = false;
                     hit.collider.gameObject.GetComponent<AI>().isDead = true;
-                    points.AddPoints(100);                //GetComponent<PlayerPoints>().AddPoints(100);
+                    points.gainKills();
                     cameraShake.enableCamShake();
                     stopTime.enableTimeStop();
                 }

@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class PlayerPoints : MonoBehaviour
 {
     public int points;
+    public int kills;
     public Text coinsText;
+    public Text killCount;
 
     public void Start()
     {
@@ -26,6 +28,16 @@ public class PlayerPoints : MonoBehaviour
     public int GetPoints()
     {
         return points;
+    }
+
+    public void gainKills()
+    {
+        kills++;
+    }
+
+    public int getKills()
+    {
+        return kills;
     }
 
     public void Update()
