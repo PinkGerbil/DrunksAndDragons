@@ -7,12 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
-    public Text timer;
-    public float timeLength;
-    public float maxTime;
-    public int wave;
-    public int maxWaves;
-    public GameObject gameOver;
+
+    //public GameObject gameOver;
     public GameObject results;
 
     List<PlayerPoints> players;
@@ -30,7 +26,12 @@ public class ScoreManager : MonoBehaviour
     public bool pointsShown;
 
     float gameEndTimer = 0;
-    float gameEndTime = 5;
+    float gameEndTime = 6;
+
+
+    public WaveSpawn waveMaster;
+    public int finalWaveNumber;
+    public GameObject endScreen;
 
     /// <summary>
     /// Start is called before the first frame update and sets the variables that need setting
@@ -43,8 +44,6 @@ public class ScoreManager : MonoBehaviour
         players.Add(Player3);
         players.Add(Player4);
         pointsShown = false; 
-        timeLength = maxTime;
-        wave = 1; 
     }
 
     /// <summary>
@@ -53,25 +52,20 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         //Shows and updates Player 1 score
-        p1_Score.text = "Score: " + Player1.GetPoints();
+        p1_Score.text = "Kills: " + Player1.getKills() + " and " + Player1.GetPoints() + " Gold";
         //Shows and updates Player 2 score
-        p2_Score.text = "Score: " + Player2.GetPoints();
+        p2_Score.text = "Kills: " + Player2.getKills() + " and " + Player2.GetPoints() + " Gold";
         //Shows and updates Player 3 score
-        p3_Score.text = "Score: " + Player3.GetPoints();
+        p3_Score.text = "Kills: " + Player3.getKills() + " and " + Player3.GetPoints() + " Gold";
         //Shows and updates Player 4 score
-        p4_Score.text = "Score: " + Player4.GetPoints();
+        p4_Score.text = "Kills: " + Player4.getKills() + " and " + Player4.GetPoints() + " Gold";
         //time ends new wave starts
-        if (timeLength > 0)
-        {
-            TimerUpdate();
-
-        }
-        else
+        if (waveMaster.waveCount == finalWaveNumber + 1)
         {
 
 
             //gameover
-            gameOver.SetActive(true);
+            //gameOver.SetActive(true);
             results.SetActive(true);
             if (!pointsShown)
             {
@@ -90,18 +84,6 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Timer update manages the timer and will change it accordingly
-    /// </summary>
-    void TimerUpdate()
-    {
-        timeLength -= Time.deltaTime;
-        int IntTime = Mathf.RoundToInt(timeLength);
-        string minutes = ((int)IntTime / 60).ToString("00");
-        string seconds = Mathf.Floor(IntTime % 60).ToString("00");
-
-        timer.text = minutes + ":" + seconds; 
-    }
 
     /// <summary>
     /// Tallies up all player scores and prints them in order of rank
@@ -117,13 +99,13 @@ public class ScoreManager : MonoBehaviour
         {
             if(scores.Length == 0)
             {
-                scores[0] = child.GetPoints();
+                scores[0] = child.getKills();
                 ranks[0] = child.gameObject;
                 continue;
             }
             for(int i = 0; i < scores.Length; i++)
             {
-                if(child.GetPoints() > scores[i])
+                if(child.getKills() > scores[i])
                 {
                     for(int j = 3; j > -1; j--)
                     {
@@ -133,13 +115,13 @@ public class ScoreManager : MonoBehaviour
                         ranks[j] = ranks[j - 1];
 
                     }
-                    scores[i] = child.GetPoints();
+                    scores[i] = child.getKills();
                     ranks[i] = child.gameObject;
                     break;
                 }
                 if (!ranks[i])
                 {
-                    scores[i] = child.GetPoints();
+                    scores[i] = child.getKills();
                     ranks[i] = child.gameObject;
                     break;
                 }
@@ -153,7 +135,7 @@ public class ScoreManager : MonoBehaviour
         {
             temp += i+1 + ". " + ranks[i].name + ":       " + scores[i] + "\n" + "\n";
         }
-        gameOver.GetComponent<Text>().text = temp;
+        //gameOver.GetComponent<Text>().text = temp;
         pointsShown = true;
 
         Time.timeScale = 0;
