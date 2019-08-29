@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
-
+using UnityEngine.SceneManagement;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField]
@@ -31,9 +31,9 @@ public class PlayerInput : MonoBehaviour
                 paused = !paused;
             }
 
-            if (paused && XCI.GetButtonDown(XboxButton.Back))
+            if (paused && XCI.GetButtonDown(XboxButton.Back, controller))
             {
-                Application.Quit();
+                SceneManager.LoadScene(0);
             }
         }
     }
