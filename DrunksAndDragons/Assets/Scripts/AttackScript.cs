@@ -194,9 +194,9 @@ public class AttackScript : MonoBehaviour
 
         attackDir = Quaternion.AngleAxis(-(sweepWidth * (1 - sweepCountdown * timeScalar)), Vector3.up) * attackDir;
 
-        Vector3 origin = transform.position + transform.up * 0.25f;
+        Vector3 origin = transform.position + (transform.Find("TopPoint").position - transform.position) * 0.25f;
         Debug.DrawLine(origin, origin + attackDir * (sweepRange + playerWidth), Color.green);
-        int layerMask = 1 << 9;
+        int layerMask = 1 << LayerMask.NameToLayer("Enemy"); ;
 
         if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange + playerWidth, layerMask))
         {
@@ -219,8 +219,8 @@ public class AttackScript : MonoBehaviour
     void checkLungeCollision()
     {
         Vector3 lungePerp = Vector3.Cross(transform.up, lungeDir);
-        Vector3 rayOrigin = transform.position + (-lungePerp * playerWidth) + (Vector3.up * 0.25f);
-        int layerMask = 1 << 9;
+        Vector3 rayOrigin = transform.position + (-lungePerp * playerWidth) + (transform.Find("TopPoint").position - transform.position) * 0.25f;
+        int layerMask = 1 << LayerMask.NameToLayer("Enemy");
         for (int i = 0; i < 5; i++)
         {
             if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange + playerWidth, layerMask))
@@ -280,7 +280,7 @@ public class AttackScript : MonoBehaviour
     /// <returns> The first player hit by a ray </returns>
     public GameObject GrabObject()
     {
-        Vector3 rayOrigin = transform.position;
+        Vector3 rayOrigin = transform.position + (transform.Find("TopPoint").position - transform.position) * 0.25f;
         Vector3 rayDir = transform.forward;
         int layerMask = (1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("Pickup"));
         if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit firstHit, grabRange, layerMask))
@@ -297,7 +297,7 @@ public class AttackScript : MonoBehaviour
         {
             if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit hit, grabRange, layerMask))
             {
-                if (!(firstHit.collider.CompareTag("Player") && firstHit.collider.GetComponent<AttackScript>().heldObject))
+                if (!(hit.collider.CompareTag("Player") && hit.collider.GetComponent<AttackScript>().heldObject))
                 {
 
                     return hit.collider.gameObject;

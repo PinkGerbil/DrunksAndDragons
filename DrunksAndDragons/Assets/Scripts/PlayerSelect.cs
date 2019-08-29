@@ -14,6 +14,7 @@ public class PlayerSelect : MonoBehaviour
     public GameObject Player2;
     public GameObject Player3;
     public GameObject Player4;
+    GameObject[] players = new GameObject[4];
 
     public static int p1;
     public static int p2;
@@ -35,6 +36,14 @@ public class PlayerSelect : MonoBehaviour
 
     private int controllerCount = 0;
 
+    void Start()
+    {
+        players[0] = Player1;
+        players[1] = Player2;
+        players[2] = Player3;
+        players[3] = Player4;
+    }
+
     /// <summary>
     /// Update is called once per frame
     /// </summary>
@@ -49,6 +58,18 @@ public class PlayerSelect : MonoBehaviour
             {
                 //make more efficient later
                 //loads next scene after character select
+                for(int i = 0; i < players.Length; i++)
+                {
+                    players[i].GetComponent<PlayerPoints>().enabled = true;
+                    players[i].GetComponent<PlayerInput>().enabled = true;
+                    players[i].GetComponent<PlayerDamageHandler>().enabled = true;
+                    players[i].GetComponent<AttackScript>().enabled = true;
+                    players[i].GetComponent<timeStop>().enabled = true;
+                    players[i].GetComponent<PlayerMoveScript>().enabled = true;
+                    players[i].GetComponent<CapsuleCollider>().enabled = true;
+                    players[i].GetComponent<FoodAndDrink>().enabled = true;
+                }
+
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }

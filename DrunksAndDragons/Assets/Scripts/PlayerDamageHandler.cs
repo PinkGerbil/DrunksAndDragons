@@ -88,17 +88,23 @@ public class PlayerDamageHandler : MonoBehaviour
         }
 
         int layerMask = 1 << LayerMask.NameToLayer("Environment");
-        if (!rigidbody.isKinematic && Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 0.2f, layerMask))
+        if (!rigidbody.isKinematic)
         {
-            if (hit.collider.CompareTag("Environment"))
+            if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 0.2f, layerMask))
             {
-                rigidbody.isKinematic = true;
-                GetComponent<Collider>().isTrigger = false;
-                // set the player position to just above where the ray hit
-                Vector3 temp = hit.point;
-                //temp.y += 1;
-                transform.position = temp;
+                if (hit.collider.CompareTag("Environment"))
+                {
+                    rigidbody.isKinematic = true;
+                    GetComponent<Collider>().isTrigger = false;
+                    // set the player position to just above where the ray hit
+                    Vector3 temp = hit.point;
+                    //temp.y += 1;
+                    transform.position = temp;
+                }
             }
+            Vector3 nextPos = transform.position + rigidbody.velocity * Time.deltaTime;
+            Debug.Log((nextPos - transform.position).normalized);
+            GetComponent<PlayerMoveScript>().checkInFront(nextPos);
         }
 
         if(HealthPanel != null && Alive)

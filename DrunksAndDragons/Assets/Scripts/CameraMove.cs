@@ -63,14 +63,14 @@ public class CameraMove : MonoBehaviour
         if(useBounds)
         {
             Vector3 temp = transform.localPosition;
-            if (transform.localPosition.x < xMinBounds)
+            if (temp.x < xMinBounds)
                 temp.x = xMinBounds;
-            if (transform.localPosition.x > xMaxBounds)
+            if (temp.x > xMaxBounds)
                 temp.x = xMaxBounds;
 
-            if (transform.localPosition.z < zMinBounds)
+            if (temp.z < zMinBounds)
                 temp.z = zMinBounds;
-            if (transform.localPosition.z > zMaxBounds)
+            if (temp.z > zMaxBounds)
                 temp.z = zMaxBounds;
 
             transform.localPosition = temp;

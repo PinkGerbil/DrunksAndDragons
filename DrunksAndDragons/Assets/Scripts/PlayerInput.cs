@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-[RequireComponent(typeof(PlayerMoveScript), typeof(PlayerDamageHandler))]
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField]

@@ -87,7 +87,7 @@ public class PlayerMoveScript : MonoBehaviour
         Vector3 origin = TopPoint.transform.position + (-transform.right * playerRadius) + (transform.forward * playerRadius);
         Vector3 highest = Vector3.zero;
 
-        int layerMask = 1 << 11;
+        int layerMask = 1 << LayerMask.NameToLayer("Environment");
         for (int i = 0; i < 3; i++)
         {
             if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, Mathf.Infinity, layerMask))
@@ -143,7 +143,7 @@ public class PlayerMoveScript : MonoBehaviour
 
         RaycastHit closest = new RaycastHit();
 
-        int layerMask = 1 << 11;
+        int layerMask = 1 << LayerMask.NameToLayer("Environment");
         for (int i = 0; i < 3; i++)
         {
             if (Physics.Raycast(origin, hitDir, out RaycastHit hit, playerRadius, layerMask))
