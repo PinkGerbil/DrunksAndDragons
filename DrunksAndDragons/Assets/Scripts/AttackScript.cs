@@ -51,10 +51,14 @@ public class AttackScript : MonoBehaviour
     [Tooltip("How wide the sweep attack should be")]
     [Range(1, 360)]
     public float sweepWidth = 45;
+    [Tooltip("how much damage the sweep does")]
+    public int sweepDamage;
 
     [Tooltip("How far in front the rays of the lunge attack reach")]
     [Range(0, 5)]
     public float lungeRange = 0.5f;
+    [Tooltip("how much damage the lunge does")]
+    public int lungeDamage;
 
     [Tooltip("How far away the player can grab another player from")]
     [Range(0, 5)]
@@ -206,7 +210,7 @@ public class AttackScript : MonoBehaviour
                 if (hit.collider.gameObject.GetComponent<AI>().timeAIInvulnurable <= 0)
                 { 
                     hit.collider.enabled = false;
-                    hit.collider.gameObject.GetComponent<AI>().takeDamage(1);
+                    hit.collider.gameObject.GetComponent<AI>().takeDamage(sweepDamage);
                     if (hit.collider.gameObject.GetComponent<AI>().isDead)
                     {
                         points.gainKills();
@@ -240,7 +244,7 @@ public class AttackScript : MonoBehaviour
                     if (hit.collider.gameObject.GetComponent<AI>().timeAIInvulnurable <= 0)
                     {
                         hit.collider.enabled = false;
-                        hit.collider.gameObject.GetComponent<AI>().takeDamage(1);
+                        hit.collider.gameObject.GetComponent<AI>().takeDamage(lungeDamage);
                         if (hit.collider.gameObject.GetComponent<AI>().isDead)
                         {
                             points.gainKills();
