@@ -26,8 +26,13 @@ public class AI : MonoBehaviour
     public GameObject coin;
     public int maxCoinDrop;
 
+
+    public int health;
     public bool isDead;
-    
+
+    public float timeAIInvulnurable;
+    private float baseAIinvTime;
+    public bool beingHit = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,13 +43,19 @@ public class AI : MonoBehaviour
         
 
         attackCountdown = attackTime;
+        baseAIinvTime = timeAIInvulnurable;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isDead == true)
+        if (timeAIInvulnurable > 0)
         {
+            timeAIInvulnurable -= Time.deltaTime;
+        }
+        if (health <= 0)
+        {
+            isDead = true;
             int randomNum = Random.Range(0, 100);
             if(randomNum <= powerUpdropChance)
             {
@@ -119,6 +130,24 @@ public class AI : MonoBehaviour
             hitDir.y = 0;
             currentPlayer.isHitDir += hitDir.normalized;
         }
+    }
+
+    public void takeDamage(int damage)
+    {
+        if (timeAIInvulnurable <= 0)
+        {
+            health -= damage;
+            timeAIInvulnurable = baseAIinvTime;
+        }
+        if(health <= 0)
+        {
+            isDead = true;
+        }
+    }
+
+    public int getHealth()
+    {
+        return health;
     }
 
 }

@@ -200,14 +200,24 @@ public class AttackScript : MonoBehaviour
 
         if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange + playerWidth, layerMask))
         {
+            hit.collider.enabled = true;
             if (hit.collider.CompareTag("Enemy"))
             {
-                hit.collider.enabled = false;
-                hit.collider.gameObject.GetComponent<AI>().isDead = true;
-                points.gainKills();
-                cameraShake.enableCamShake();
-                stopTime.enableTimeStop();
+                if (hit.collider.gameObject.GetComponent<AI>().timeAIInvulnurable <= 0)
+                { 
+                    hit.collider.enabled = false;
+                    hit.collider.gameObject.GetComponent<AI>().takeDamage(1);
+                    if (hit.collider.gameObject.GetComponent<AI>().isDead)
+                    {
+                        points.gainKills();
+                    }
+                    cameraShake.enableCamShake();
+                    stopTime.enableTimeStop();
+                    //hit.collider.gameObject.GetComponent<AI>().timeAIInvulnurable++;
+                }
             }
+            hit.collider.enabled = true;
+
         }
 
     }
@@ -227,12 +237,19 @@ public class AttackScript : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    hit.collider.enabled = false;
-                    hit.collider.gameObject.GetComponent<AI>().isDead = true;
-                    points.gainKills();
-                    cameraShake.enableCamShake();
-                    stopTime.enableTimeStop();
+                    if (hit.collider.gameObject.GetComponent<AI>().timeAIInvulnurable <= 0)
+                    {
+                        hit.collider.enabled = false;
+                        hit.collider.gameObject.GetComponent<AI>().takeDamage(1);
+                        if (hit.collider.gameObject.GetComponent<AI>().isDead)
+                        {
+                            points.gainKills();
+                        }
+                        cameraShake.enableCamShake();
+                        stopTime.enableTimeStop();
+                    }
                 }
+                hit.collider.enabled = true;
             }
             rayOrigin += lungePerp * 0.2f;
             Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * (lungeRange + playerWidth)), Color.red);
