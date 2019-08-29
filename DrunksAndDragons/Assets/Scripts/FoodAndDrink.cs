@@ -27,7 +27,7 @@ public class FoodAndDrink : MonoBehaviour
     /// When the player enters a trigger it will find it's name and do different things depending on the game object's name
     /// </summary>
     /// <param name="other">collider</param>
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //temporary way to activate the drinks
     {
         if (other.gameObject.tag == "Food")
         {
@@ -67,13 +67,16 @@ public class FoodAndDrink : MonoBehaviour
     /// <param name="player">GameObject being affected</param>
     public void PickUpAttackCooldownBoost(GameObject player)
     {
-        timer = 0; 
         if(AttackCooldownDurationOriginal == 0)
         {
             AttackCooldownDurationOriginal = player.GetComponent<AttackScript>().attackCooldownDuration;
         }
-        player.GetComponent<AttackScript>().attackCooldownDuration /= 2;
-        //ReducedAttackCooldown = true;
+        if (!ReducedAttackCooldown)
+        {
+            player.GetComponent<AttackScript>().attackCooldownDuration /= 2;
+            ReducedAttackCooldown = true;
+        }
+        timer = 0;
     }
 
     /// <summary>
@@ -100,8 +103,8 @@ public class FoodAndDrink : MonoBehaviour
         if (GinAndSonic == false)
         {
             player.GetComponent<PlayerMoveScript>().speedMod *= SpeedBoost;
+            GinAndSonic = true;
         }
-        GinAndSonic = true;
     }
 
     /// <summary>
@@ -134,7 +137,9 @@ public class FoodAndDrink : MonoBehaviour
     public void PickUpHealthIncrease(GameObject player)
     {
         if(player.GetComponent<PlayerDamageHandler>().maxHealth != MaxHealthIncrease)
-        player.GetComponent<PlayerDamageHandler>().maxHealth += 1;
+        {
+            player.GetComponent<PlayerDamageHandler>().maxHealth += 1;
+        }
         player.GetComponent<PlayerDamageHandler>().health = player.GetComponent<PlayerDamageHandler>().maxHealth;
     }
 }
