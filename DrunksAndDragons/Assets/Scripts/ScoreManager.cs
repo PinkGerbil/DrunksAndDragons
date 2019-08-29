@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
 
     public WaveSpawn waveMaster;
     public int finalWaveNumber;
-    public GameObject endScreen;
+    //public GameObject endScreen;
 
     /// <summary>
     /// Start is called before the first frame update and sets the variables that need setting
@@ -52,13 +52,13 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         //Shows and updates Player 1 score
-        p1_Score.text = "Kills: " + Player1.getKills() + " and " + Player1.GetPoints() + " Gold";
+        p1_Score.text = "Player 1:    " + Player1.getKills() + " Kills | " + Player1.GetPoints() + " Gold";
         //Shows and updates Player 2 score
-        p2_Score.text = "Kills: " + Player2.getKills() + " and " + Player2.GetPoints() + " Gold";
+        p2_Score.text = "Player 2:    " + Player2.getKills() + " Kills | " + Player2.GetPoints() + " Gold";
         //Shows and updates Player 3 score
-        p3_Score.text = "Kills: " + Player3.getKills() + " and " + Player3.GetPoints() + " Gold";
+        p3_Score.text = "Player 3:    " + Player3.getKills() + " Kills | " + Player3.GetPoints() + " Gold";
         //Shows and updates Player 4 score
-        p4_Score.text = "Kills: " + Player4.getKills() + " and " + Player4.GetPoints() + " Gold";
+        p4_Score.text = "Player 4:    " + Player4.getKills() + " Kills | " + Player4.GetPoints() + " Gold";
         //time ends new wave starts
         if (waveMaster.waveCount == finalWaveNumber + 1)
         {
