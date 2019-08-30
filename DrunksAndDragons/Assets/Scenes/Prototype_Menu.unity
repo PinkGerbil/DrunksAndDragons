@@ -229,7 +229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &202736784
 RectTransform:
   m_ObjectHideFlags: 0
@@ -362,12 +362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a95d9637404b948b1f37e2f9dc578f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 202736785}
-  timeLength: 0
-  maxTime: 3
-  wave: 0
-  maxWaves: 5
-  gameOver: {fileID: 1474364943}
   results: {fileID: 0}
   Player1: {fileID: 0}
   Player2: {fileID: 0}
@@ -378,6 +372,8 @@ MonoBehaviour:
   p3_Score: {fileID: 0}
   p4_Score: {fileID: 0}
   pointsShown: 0
+  waveMaster: {fileID: 0}
+  finalWaveNumber: 0
 --- !u!114 &267371463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1682,6 +1678,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2942986366419994239, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 662559065435560116, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_UseGravity
@@ -1808,11 +1809,6 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2942986366419994235, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2942986366419994239, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_Layer
       value: 8

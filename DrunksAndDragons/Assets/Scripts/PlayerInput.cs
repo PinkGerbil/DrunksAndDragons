@@ -33,6 +33,8 @@ public class PlayerInput : MonoBehaviour
 
             if (paused && XCI.GetButtonDown(XboxButton.Back, controller))
             {
+                blackboard.togglePause();
+                paused = !paused;
                 SceneManager.LoadScene(0);
             }
         }

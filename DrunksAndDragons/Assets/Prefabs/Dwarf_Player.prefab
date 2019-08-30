@@ -273,7 +273,6 @@ GameObject:
   - component: {fileID: 2881682679395987100}
   - component: {fileID: 2881682679395987103}
   - component: {fileID: 2881682679395987097}
-  - component: {fileID: 2881682679395987096}
   - component: {fileID: 2881682679395987099}
   - component: {fileID: 2689507102940744695}
   m_Layer: 10
@@ -350,6 +349,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
+  kills: 0
+  coinsText: {fileID: 0}
+  killCount: {fileID: 0}
 --- !u!114 &2881682679395987100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,10 +406,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWidth: 0.5
   playerHeight: 2
-  cameraShake: {fileID: 0}
-  stopTime: {fileID: 0}
   input: {fileID: 0}
   playerMove: {fileID: 0}
+  points: {fileID: 0}
   AttackPanel: {fileID: 0}
   animator: {fileID: 0}
   attackCooldownDuration: 1
@@ -419,20 +420,14 @@ MonoBehaviour:
   lungeRange: 0.5
   grabRange: 1.5
   grabWidth: 45
+  throwForce: 500
   heldObject: {fileID: 0}
---- !u!114 &2881682679395987096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2881682680496295213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1b4d815420cd2d4ba7bfd0befa9dfb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeStopDuration: 0.25
+  healthUp: {fileID: 0}
+  healthUpPrice: 0
+  speedUp: {fileID: 0}
+  speedUpPrice: 0
+  food: {fileID: 0}
+  foodPrice: 0
 --- !u!114 &2881682679395987099
 MonoBehaviour:
   m_ObjectHideFlags: 0

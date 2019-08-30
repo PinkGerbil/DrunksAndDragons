@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 264408059411136696}
   - component: {fileID: 264408059411136697}
   - component: {fileID: 264408059411136698}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -137,4 +137,7 @@ MonoBehaviour:
   - {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c, type: 3}
   coin: {fileID: 2939554252357560733, guid: 37d3c6bf218f2e74c8cffd395c9021d1, type: 3}
   maxCoinDrop: 5
+  health: 0
   isDead: 0
+  timeAIInvulnurable: 0
+  beingHit: 0

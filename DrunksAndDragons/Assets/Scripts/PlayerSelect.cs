@@ -64,7 +64,6 @@ public class PlayerSelect : MonoBehaviour
                     players[i].GetComponent<PlayerInput>().enabled = true;
                     players[i].GetComponent<PlayerDamageHandler>().enabled = true;
                     players[i].GetComponent<AttackScript>().enabled = true;
-                    players[i].GetComponent<timeStop>().enabled = true;
                     players[i].GetComponent<PlayerMoveScript>().enabled = true;
                     players[i].GetComponent<CapsuleCollider>().enabled = true;
                     players[i].GetComponent<FoodAndDrink>().enabled = true;

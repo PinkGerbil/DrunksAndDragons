@@ -165,10 +165,9 @@ public class PlayerMoveScript : MonoBehaviour
                 newPos = temp1;
             else
                 newPos = temp2;
-
+            newPos += (nextPos - newPos).normalized * playerRadius;
             newPos.y = transform.position.y;
-
-            transform.position = newPos + (nextPos - newPos).normalized * playerRadius;
+            transform.position = newPos;
             return true;
         }
         else

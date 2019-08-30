@@ -103,7 +103,7 @@ public class PlayerDamageHandler : MonoBehaviour
                 }
             }
             Vector3 nextPos = transform.position + rigidbody.velocity * Time.deltaTime;
-            Debug.Log((nextPos - transform.position).normalized);
+            
             GetComponent<PlayerMoveScript>().checkInFront(nextPos);
         }
 

@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(timeStop), typeof(PlayerInput), typeof(PlayerMoveScript))]
+[RequireComponent(typeof(PlayerInput), typeof(PlayerMoveScript))]
 public class AttackScript : MonoBehaviour
 {
     [SerializeField]
     float playerWidth = 0.5f;
     [SerializeField]
     float playerHeight = 2;
-
-    [SerializeField] cameraShake cameraShake;
-    [SerializeField] timeStop stopTime;
 
     [SerializeField] PlayerInput input;
     [SerializeField] PlayerMoveScript playerMove;
@@ -92,10 +89,6 @@ public class AttackScript : MonoBehaviour
             input = GetComponent<PlayerInput>();
         if (!playerMove)
             playerMove = GetComponent<PlayerMoveScript>();
-        if (!stopTime)
-            stopTime = GetComponent<timeStop>();
-        if (!cameraShake)
-            cameraShake = Camera.main.GetComponent<cameraShake>();
         if (!points)
             points = GetComponent<PlayerPoints>();
 
@@ -215,8 +208,6 @@ public class AttackScript : MonoBehaviour
                     {
                         points.gainKills();
                     }
-                    cameraShake.enableCamShake();
-                    stopTime.enableTimeStop();
                     //hit.collider.gameObject.GetComponent<AI>().timeAIInvulnurable++;
                 }
             }
@@ -249,8 +240,6 @@ public class AttackScript : MonoBehaviour
                         {
                             points.gainKills();
                         }
-                        cameraShake.enableCamShake();
-                        stopTime.enableTimeStop();
                     }
                 }
                 hit.collider.enabled = true;
