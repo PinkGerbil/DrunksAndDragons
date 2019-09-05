@@ -1,0 +1,194 @@
+fileFormatVersion: 2
+guid: 4a08c6c60bcc3f54f852c58192597af6
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Big_Table_Broken_1
+    100004: Big_Table_Broken_2
+    100006: Big_Table_Broken_3
+    100008: Big_Table_Unbroken_1
+    100010: Coin
+    100012: Keg_2
+    100014: Long_Bench_1
+    100016: Long_Bench_2
+    100018: Long_Table_A
+    100020: Small_Table_Broken_1
+    100022: Small_Table_Broken_2
+    100024: Small_Table_Broken_3
+    100026: Small_Table_Broken_4
+    100028: Small_Table_Unbroken_1
+    100030: Stool_Broken_1
+    100032: Stool_Broken_2
+    100034: Stool_Broken_3
+    100036: Stool_Unbroken_1
+    100038: Tavren_Bar
+    400000: //RootNode
+    400002: Big_Table_Broken_1
+    400004: Big_Table_Broken_2
+    400006: Big_Table_Broken_3
+    400008: Big_Table_Unbroken_1
+    400010: Coin
+    400012: Keg_2
+    400014: Long_Bench_1
+    400016: Long_Bench_2
+    400018: Long_Table_A
+    400020: Small_Table_Broken_1
+    400022: Small_Table_Broken_2
+    400024: Small_Table_Broken_3
+    400026: Small_Table_Broken_4
+    400028: Small_Table_Unbroken_1
+    400030: Stool_Broken_1
+    400032: Stool_Broken_2
+    400034: Stool_Broken_3
+    400036: Stool_Unbroken_1
+    400038: Tavren_Bar
+    2100000: StingrayPBS1
+    2300000: Big_Table_Broken_1
+    2300002: Big_Table_Broken_2
+    2300004: Big_Table_Broken_3
+    2300006: Big_Table_Unbroken_1
+    2300008: Coin
+    2300010: Keg_2
+    2300012: Long_Bench_1
+    2300014: Long_Bench_2
+    2300016: Long_Table_A
+    2300018: Small_Table_Broken_1
+    2300020: Small_Table_Broken_2
+    2300022: Small_Table_Broken_3
+    2300024: Small_Table_Broken_4
+    2300026: Small_Table_Unbroken_1
+    2300028: Stool_Broken_1
+    2300030: Stool_Broken_2
+    2300032: Stool_Broken_3
+    2300034: Stool_Unbroken_1
+    2300036: Tavren_Bar
+    3300000: Big_Table_Broken_1
+    3300002: Big_Table_Broken_2
+    3300004: Big_Table_Broken_3
+    3300006: Big_Table_Unbroken_1
+    3300008: Coin
+    3300010: Keg_2
+    3300012: Long_Bench_1
+    3300014: Long_Bench_2
+    3300016: Long_Table_A
+    3300018: Small_Table_Broken_1
+    3300020: Small_Table_Broken_2
+    3300022: Small_Table_Broken_3
+    3300024: Small_Table_Broken_4
+    3300026: Small_Table_Unbroken_1
+    3300028: Stool_Broken_1
+    3300030: Stool_Broken_2
+    3300032: Stool_Broken_3
+    3300034: Stool_Unbroken_1
+    3300036: Tavren_Bar
+    4300000: Long_Table_A
+    4300002: Long_Bench_1
+    4300004: Long_Bench_2
+    4300006: Tavren_Bar
+    4300008: Coin
+    4300010: Small_Table_Broken_1
+    4300012: Small_Table_Broken_2
+    4300014: Small_Table_Broken_3
+    4300016: Small_Table_Broken_4
+    4300018: Stool_Broken_1
+    4300020: Stool_Broken_2
+    4300022: Stool_Broken_3
+    4300024: Keg_2
+    4300026: Small_Table_Unbroken_1
+    4300028: Big_Table_Unbroken_1
+    4300030: Stool_Unbroken_1
+    4300032: Big_Table_Broken_1
+    4300034: Big_Table_Broken_2
+    4300036: Big_Table_Broken_3
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StingrayPBS1
+    second: {fileID: 2100000, guid: 04f6dec47127ead42936aacd363174d5, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
