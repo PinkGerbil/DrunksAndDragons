@@ -33,10 +33,13 @@ public class AI : MonoBehaviour
     public float timeAIInvulnurable;
     private float baseAIinvTime;
     public bool beingHit = false;
+    
+    Renderer renderer;
 
     // Start is called before the first frame update
     void Start()
     {
+        renderer = GetComponent<Renderer>();
         players = GameObject.FindGameObjectsWithTag("Player");
         isDead = false;
         FindClosestPlayer();
@@ -53,6 +56,8 @@ public class AI : MonoBehaviour
         {
             timeAIInvulnurable -= Time.deltaTime;
         }
+        else
+            renderer.material.color = Color.white;
         if (health <= 0)
         {
             isDead = true;
@@ -136,6 +141,7 @@ public class AI : MonoBehaviour
     {
         if (timeAIInvulnurable <= 0)
         {
+            renderer.material.color = Color.red;
             health -= damage;
             timeAIInvulnurable = baseAIinvTime;
         }
