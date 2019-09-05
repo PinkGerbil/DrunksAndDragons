@@ -246,8 +246,6 @@ public class AttackScript : MonoBehaviour
             hit.collider.enabled = true;
             if (hit.collider.CompareTag("Enemy"))
             {
-                if (hit.collider.gameObject.GetComponent<AI>().timeAIInvulnurable <= 0)
-                { 
                     hit.collider.enabled = false;
                     hit.collider.gameObject.GetComponent<AI>().takeDamage(sweepDamage);
                     if (hit.collider.gameObject.GetComponent<AI>().isDead)
@@ -255,7 +253,6 @@ public class AttackScript : MonoBehaviour
                         points.gainKills();
                     }
                     //hit.collider.gameObject.GetComponent<AI>().timeAIInvulnurable++;
-                }
             }
             hit.collider.enabled = true;
 
@@ -278,15 +275,12 @@ public class AttackScript : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    if (hit.collider.gameObject.GetComponent<AI>().timeAIInvulnurable <= 0)
-                    {
                         hit.collider.enabled = false;
                         hit.collider.gameObject.GetComponent<AI>().takeDamage(lungeDamage);
                         if (hit.collider.gameObject.GetComponent<AI>().isDead)
                         {
                             points.gainKills();
                         }
-                    }
                 }
                 hit.collider.enabled = true;
             }

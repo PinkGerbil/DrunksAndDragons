@@ -30,8 +30,8 @@ public class AI : MonoBehaviour
     public int health;
     public bool isDead;
 
-    public float timeAIInvulnurable;
-    private float baseAIinvTime;
+    public float KnockbackPeriod;
+    private float KnockbackTime;
     public bool beingHit = false;
     
     Renderer renderer;
@@ -46,15 +46,15 @@ public class AI : MonoBehaviour
         
 
         attackCountdown = attackTime;
-        baseAIinvTime = timeAIInvulnurable;
+        KnockbackTime = KnockbackPeriod;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timeAIInvulnurable > 0)
+        if (KnockbackPeriod > 0)
         {
-            timeAIInvulnurable -= Time.deltaTime;
+            KnockbackPeriod -= Time.deltaTime;
         }
         else
             renderer.material.color = Color.white;
@@ -139,12 +139,9 @@ public class AI : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        if (timeAIInvulnurable <= 0)
-        {
-            renderer.material.color = Color.red;
-            health -= damage;
-            timeAIInvulnurable = baseAIinvTime;
-        }
+        renderer.material.color = Color.red;
+        health -= damage;
+        KnockbackPeriod = KnockbackTime;
         if(health <= 0)
         {
             isDead = true;
