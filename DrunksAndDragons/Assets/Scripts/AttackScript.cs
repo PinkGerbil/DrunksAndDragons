@@ -49,12 +49,14 @@ public class AttackScript : MonoBehaviour
     [Range(1, 360)]
     public float sweepWidth = 45;
     [Tooltip("how much damage the sweep does")]
+    [Range(0, 6)]
     public int sweepDamage;
 
     [Tooltip("How far in front the rays of the lunge attack reach")]
     [Range(0, 5)]
     public float lungeRange = 0.5f;
     [Tooltip("how much damage the lunge does")]
+    [Range(0, 6)]
     public int lungeDamage;
 
     [Tooltip("How far away the player can grab another player from")]
@@ -248,6 +250,7 @@ public class AttackScript : MonoBehaviour
             Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * (lungeRange + playerWidth)), Color.red);
         }
     }
+
 
     /// <summary>
     /// Start the sweep attack by starting the sweepCountdown and attackCooldown

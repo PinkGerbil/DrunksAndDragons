@@ -4207,6 +4207,16 @@ PrefabInstance:
       propertyPath: AttackPanel
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: sweepDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: lungeDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 662559065435560114, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -4226,6 +4236,16 @@ PrefabInstance:
         type: 3}
       propertyPath: AttackPanel
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: sweepDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: lungeDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2942986365390005708, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
@@ -4247,6 +4267,16 @@ PrefabInstance:
       propertyPath: AttackPanel
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8517220037259680341, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: sweepDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517220037259680341, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: lungeDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8517220037259680340, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -4266,6 +4296,16 @@ PrefabInstance:
         type: 3}
       propertyPath: AttackPanel
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: sweepDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: lungeDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8889305699210294312, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
