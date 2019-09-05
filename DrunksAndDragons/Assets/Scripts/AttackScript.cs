@@ -63,7 +63,7 @@ public class AttackScript : MonoBehaviour
     public float punchTime = 0.2f;
     [HideInInspector]
     public float punchCountdown = 0;
-    [Range(0, 2)]
+    [Range(0, 10)]
     public float comboGracePeriod = 0.5f;
     float comboGraceCountdown = 0;
     [Range(0, 6)]
@@ -95,11 +95,16 @@ public class AttackScript : MonoBehaviour
     public GameObject food;
     public int foodPrice;
 
+    string[] animationStrings =
+    {
+        "punch1",
+        "punch2"
+    };
+    int curPunchAnim = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
         if (!animator)
             animator = GetComponent<Animator>();
         if (!input)
@@ -122,13 +127,18 @@ public class AttackScript : MonoBehaviour
     {
         if (comboGraceCountdown > 0)
             comboGraceCountdown -= Time.deltaTime;
+        else
+            curPunchAnim = 0;
 
         if(punchCountdown > 0)
         {
             punchCountdown -= Time.deltaTime;
             checkPunch();
-            if (punchCountdown > 0)
+            if (punchCountdown <= 0)
+            {
                 comboGraceCountdown = comboGracePeriod;
+                playerMove.speedMod = 1;
+            }
         }
         else if (sweepCountdown > 0)
         {
@@ -166,7 +176,7 @@ public class AttackScript : MonoBehaviour
             heldObject.transform.SetPositionAndRotation(transform.Find("TopPoint").position + new Vector3(0, objectHeight, 0), transform.Find("TopPoint").rotation);
 
         }
-        if (rigidbody.isKinematic && Time.timeScale > 0)
+        if (rigidbody.isKinematic)
         {
             if (input.GetSweepPressed && !heldObject)
             {
@@ -210,9 +220,11 @@ public class AttackScript : MonoBehaviour
     {
         Vector3 origin = transform.position + transform.forward * playerWidth + attackPoint;
         int layerMask = 1 << LayerMask.NameToLayer("Enemy");
-
+        float switchdir = -1;
+        float widthScale = 0.5f;
         for(int i = 0; i < 3; i++)
         {
+            switchdir *= -1;
             if(Physics.Raycast(origin, transform.forward, out RaycastHit hit, punchRange, layerMask))
             {
                 Debug.DrawLine(origin, origin + transform.forward * punchRange, Color.green);
@@ -222,7 +234,8 @@ public class AttackScript : MonoBehaviour
                     points.gainKills();
                 }
             }
-            origin += transform.right * (playerWidth * 0.5f);
+            origin += transform.right * (playerWidth * widthScale) * switchdir;
+            widthScale += 0.5f;
         }
     }
 
@@ -294,11 +307,15 @@ public class AttackScript : MonoBehaviour
         if(punchCountdown <= 0)
         {
             punchCountdown = punchTime;
-            if (animator != null)
-                if (comboGraceCountdown > 0)
-                    Debug.Log("No alt-punch animation implemented");
-                else
-                    Debug.Log("No punch animation implemented");
+            playerMove.speedMod = 0;
+            if (animator != null && !animator.GetCurrentAnimatorStateInfo(0).IsName("punch1") && !animator.GetCurrentAnimatorStateInfo(0).IsName("punch2"))
+            {
+                animator.SetTrigger(animationStrings[curPunchAnim++]);
+                //animator.SetTrigger("punch1");
+                
+                if (curPunchAnim == animationStrings.Length)
+                    curPunchAnim = 0;
+            }
 
         }
     }

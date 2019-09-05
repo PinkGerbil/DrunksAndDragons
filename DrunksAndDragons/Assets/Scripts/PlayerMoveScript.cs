@@ -57,7 +57,7 @@ public class PlayerMoveScript : MonoBehaviour
     void Update()
     {
         Vector3 moveDir = input.GetMoveDir;
-        if (moveDir != Vector3.zero && rigidbody.isKinematic && Time.timeScale > 0 && speedMod > 0)
+        if (moveDir != Vector3.zero && rigidbody.isKinematic && speedMod > 0)
         {
             Vector3 aimDir = moveDir;
             float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
