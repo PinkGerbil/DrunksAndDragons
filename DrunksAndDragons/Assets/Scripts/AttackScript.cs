@@ -59,6 +59,18 @@ public class AttackScript : MonoBehaviour
     [Range(0, 6)]
     public int lungeDamage;
 
+    [Range(0, 2)]
+    public float punchTime = 0.2f;
+    [HideInInspector]
+    public float punchCountdown = 0;
+    [Range(0, 2)]
+    public float comboGracePeriod = 0.5f;
+    float comboGraceCountdown = 0;
+    [Range(0, 6)]
+    public int punchDamage = 1;
+    [Range(0, 3)]
+    public float punchRange = 0.5f;
+
     [Tooltip("How far away the player can grab another player from")]
     [Range(0, 5)]
     public float grabRange = 1.5f;
@@ -69,7 +81,9 @@ public class AttackScript : MonoBehaviour
     [Tooltip("The force at which the player throws held items/players")]
     [Range(0, 1000)]
     public float throwForce = 500.0f;
-    
+
+    Vector3 attackPoint { get { return (transform.Find("TopPoint").position - transform.position) * 0.25f; } }
+
     public GameObject heldObject = null;
 
     Rigidbody rigidbody;
@@ -85,6 +99,7 @@ public class AttackScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         if (!animator)
             animator = GetComponent<Animator>();
         if (!input)
@@ -105,9 +120,17 @@ public class AttackScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (comboGraceCountdown > 0)
+            comboGraceCountdown -= Time.deltaTime;
 
-
-        if (sweepCountdown > 0)
+        if(punchCountdown > 0)
+        {
+            punchCountdown -= Time.deltaTime;
+            checkPunch();
+            if (punchCountdown > 0)
+                comboGraceCountdown = comboGracePeriod;
+        }
+        else if (sweepCountdown > 0)
         {
             checkSweepCollide();
             sweepCountdown -= Time.deltaTime;
@@ -147,7 +170,8 @@ public class AttackScript : MonoBehaviour
         {
             if (input.GetSweepPressed && !heldObject)
             {
-                SweepAttack();
+                //SweepAttack();
+                PunchAttack();
             }
 
             if (input.GetLungePressed && !heldObject)
@@ -182,6 +206,26 @@ public class AttackScript : MonoBehaviour
             dropHeldObject();
     }
 
+    void checkPunch()
+    {
+        Vector3 origin = transform.position + transform.forward * playerWidth + attackPoint;
+        int layerMask = 1 << LayerMask.NameToLayer("Enemy");
+
+        for(int i = 0; i < 3; i++)
+        {
+            if(Physics.Raycast(origin, transform.forward, out RaycastHit hit, punchRange, layerMask))
+            {
+                Debug.DrawLine(origin, origin + transform.forward * punchRange, Color.green);
+                hit.collider.GetComponent<AI>().takeDamage(punchDamage);
+                if (hit.collider.gameObject.GetComponent<AI>().isDead)
+                {
+                    points.gainKills();
+                }
+            }
+            origin += transform.right * (playerWidth * 0.5f);
+        }
+    }
+
     /// <summary>
     /// Fire out one ray each frame. The direction of the frame relative to the player depends on the sweepCountdown
     /// </summary>
@@ -193,7 +237,7 @@ public class AttackScript : MonoBehaviour
 
         attackDir = Quaternion.AngleAxis(-(sweepWidth * (1 - sweepCountdown * timeScalar)), Vector3.up) * attackDir;
 
-        Vector3 origin = transform.position + (transform.Find("TopPoint").position - transform.position) * 0.25f;
+        Vector3 origin = transform.position + attackPoint;
         Debug.DrawLine(origin, origin + attackDir * (sweepRange + playerWidth), Color.green);
         int layerMask = 1 << LayerMask.NameToLayer("Enemy"); ;
 
@@ -226,7 +270,7 @@ public class AttackScript : MonoBehaviour
     void checkLungeCollision()
     {
         Vector3 lungePerp = Vector3.Cross(transform.up, lungeDir);
-        Vector3 rayOrigin = transform.position + (-lungePerp * playerWidth) + (transform.Find("TopPoint").position - transform.position) * 0.25f;
+        Vector3 rayOrigin = transform.position + (-lungePerp * playerWidth) + attackPoint;
         int layerMask = 1 << LayerMask.NameToLayer("Enemy");
         for (int i = 0; i < 5; i++)
         {
@@ -250,7 +294,20 @@ public class AttackScript : MonoBehaviour
             Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * (lungeRange + playerWidth)), Color.red);
         }
     }
+    
+    public void PunchAttack()
+    {
+        if(punchCountdown <= 0)
+        {
+            punchCountdown = punchTime;
+            if (animator != null)
+                if (comboGraceCountdown > 0)
+                    Debug.Log("No alt-punch animation implemented");
+                else
+                    Debug.Log("No punch animation implemented");
 
+        }
+    }
 
     /// <summary>
     /// Start the sweep attack by starting the sweepCountdown and attackCooldown
@@ -293,7 +350,7 @@ public class AttackScript : MonoBehaviour
     /// <returns> The first player hit by a ray </returns>
     public GameObject GrabObject()
     {
-        Vector3 rayOrigin = transform.position + (transform.Find("TopPoint").position - transform.position) * 0.25f;
+        Vector3 rayOrigin = transform.position + attackPoint;
         Vector3 rayDir = transform.forward;
         int layerMask = (1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("Pickup"));
         if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit firstHit, grabRange, layerMask))
