@@ -414,17 +414,17 @@ MonoBehaviour:
   attackCooldownDuration: 1
   attackCooldown: 0
   sweepDuration: 0.4
-  lungeDuration: 0.15
   sweepRange: 2
   sweepWidth: 180
   sweepDamage: 1
+  lungeDuration: 0.15
   lungeRange: 0.5
   lungeDamage: 1
-  punchTime: 0.2
+  punchTime: 0.2335
   punchCountdown: 0
-  comboGracePeriod: 1
   punchDamage: 1
   punchRange: 0.5
+  comboGracePeriod: 1
   grabRange: 1.5
   grabWidth: 45
   throwForce: 500

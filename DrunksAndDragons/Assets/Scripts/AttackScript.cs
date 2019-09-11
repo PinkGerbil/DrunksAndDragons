@@ -6,39 +6,45 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PlayerInput), typeof(PlayerMoveScript))]
 public class AttackScript : MonoBehaviour
 {
+    [Tooltip("The distance from the player's center to the player's edge")]
     [SerializeField]
-    float playerWidth = 0.5f;
+    float playerRadius = 0.5f;
 
-    [SerializeField] PlayerInput input;
-    [SerializeField] PlayerMoveScript playerMove;
 
-    [SerializeField] PlayerPoints points;
+    PlayerInput input;
+    PlayerMoveScript playerMove;
 
-    [SerializeField]
-    [Tooltip("AttackPanel should be a panel in the UI with a horizontal fill method")]
+    PlayerPoints points;
+
+    
+    [HideInInspector]
     public Image AttackPanel;
 
-    [SerializeField]
+    [HideInInspector]
     public Animator animator;
 
     public bool IsAttacking { get { return !(sweepCountdown <= 0 && lungeCountdown <= 0); } }
 
     // consider having multiple attackCooldownDurations depending on what attack was used
+    [Tooltip("The length of the cooldown some attacks have (currently only throw)")]
     [Range(0, 5)]
     public float attackCooldownDuration = 1.0f;
     [HideInInspector]
     public float attackCooldown = 0;
 
+    [Header("Pickups & Produce")]
+    public GameObject healthUp;
+    public int healthUpPrice;
+    public GameObject speedUp;
+    public int speedUpPrice;
+    public GameObject food;
+    public int foodPrice;
+
+    [Header("Sweep")]
     [Tooltip("How fast the sweep occurs")]
     [Range(0,5)]
     public float sweepDuration = 0.25f;
     float sweepCountdown = 0;
-
-    [Tooltip("How long the lunge attack lasts")]
-    [Range(0, 5)]
-    public float lungeDuration = 0.15f;
-    float lungeCountdown = 0;
-    Vector3 lungeDir;
 
     [Tooltip("The range of the sweep attack")]
     [Range(0, 10)]
@@ -50,6 +56,14 @@ public class AttackScript : MonoBehaviour
     [Range(0, 6)]
     public int sweepDamage;
 
+    [Header("Lunge")]
+    [Tooltip("How long the lunge attack lasts")]
+    [Range(0, 5)]
+    public float lungeDuration = 0.15f;
+    float lungeCountdown = 0;
+    Vector3 lungeDir;
+
+
     [Tooltip("How far in front the rays of the lunge attack reach")]
     [Range(0, 5)]
     public float lungeRange = 0.5f;
@@ -57,18 +71,24 @@ public class AttackScript : MonoBehaviour
     [Range(0, 6)]
     public int lungeDamage;
 
+    [Header("Punch/Combo")]
+    [Tooltip("How long the punch collision check lasts")]
     [Range(0, 2)]
     public float punchTime = 0.2f;
     [HideInInspector]
     public float punchCountdown = 0;
+    [Tooltip("How much a regular punch does")]
+    [Range(0, 6)]
+    public int punchDamage = 1;
+    [Tooltip("How far the punch reaches")]
+    [Range(0, 3)]
+    public float punchRange = 0.5f;
+    [Tooltip("How long the player has between hits before the combo resets")]
     [Range(0, 10)]
     public float comboGracePeriod = 0.5f;
     float comboGraceCountdown = 0;
-    [Range(0, 6)]
-    public int punchDamage = 1;
-    [Range(0, 3)]
-    public float punchRange = 0.5f;
 
+    [Header("Grab/Throw")]
     [Tooltip("How far away the player can grab another player from")]
     [Range(0, 5)]
     public float grabRange = 1.5f;
@@ -82,16 +102,11 @@ public class AttackScript : MonoBehaviour
 
     Vector3 attackPoint { get { return (transform.Find("TopPoint").position - transform.position) * 0.25f; } }
 
-    public GameObject heldObject = null;
+    GameObject heldObject = null;
+    public bool isHoldingObject { get { return heldObject != null; } }
 
     Rigidbody rigidbody;
     
-    public GameObject healthUp;
-    public int healthUpPrice;
-    public GameObject speedUp;
-    public int speedUpPrice;
-    public GameObject food;
-    public int foodPrice;
 
     string[] animationTriggerStrings =
     {
@@ -231,7 +246,7 @@ public class AttackScript : MonoBehaviour
     void checkPunch()
     {
         if (hitEnemies.Count != 0) hitEnemies.Clear();
-        Vector3 origin = transform.position + transform.forward * playerWidth + attackPoint;
+        Vector3 origin = transform.position + transform.forward * playerRadius + attackPoint;
         int layerMask = 1 << LayerMask.NameToLayer("Enemy");
         float switchdir = -1;
         float widthScale = 0.5f;
@@ -258,7 +273,7 @@ public class AttackScript : MonoBehaviour
                     hitEnemies.Add(hit.collider.gameObject);
                 }
             }
-            origin += transform.right * (playerWidth * widthScale) * switchdir;
+            origin += transform.right * (playerRadius * widthScale) * switchdir;
             widthScale += 0.5f;
         }
         hitEnemies.Clear();
@@ -276,10 +291,10 @@ public class AttackScript : MonoBehaviour
         attackDir = Quaternion.AngleAxis(-(sweepWidth * (1 - sweepCountdown * timeScalar)), Vector3.up) * attackDir;
 
         Vector3 origin = transform.position + attackPoint;
-        Debug.DrawLine(origin, origin + attackDir * (sweepRange + playerWidth), Color.green);
+        Debug.DrawLine(origin, origin + attackDir * (sweepRange + playerRadius), Color.green);
         int layerMask = 1 << LayerMask.NameToLayer("Enemy"); ;
 
-        if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange + playerWidth, layerMask))
+        if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange + playerRadius, layerMask))
         {
             hit.collider.enabled = true;
             if (hit.collider.CompareTag("Enemy"))
@@ -305,11 +320,11 @@ public class AttackScript : MonoBehaviour
     void checkLungeCollision()
     {
         Vector3 lungePerp = Vector3.Cross(transform.up, lungeDir);
-        Vector3 rayOrigin = transform.position + (-lungePerp * playerWidth) + attackPoint;
+        Vector3 rayOrigin = transform.position + (-lungePerp * playerRadius) + attackPoint;
         int layerMask = 1 << LayerMask.NameToLayer("Enemy");
         for (int i = 0; i < 5; i++)
         {
-            if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange + playerWidth, layerMask))
+            if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange + playerRadius, layerMask))
             {
                 bool wasHit = false;
                 foreach (GameObject child in hitEnemies)
@@ -329,7 +344,7 @@ public class AttackScript : MonoBehaviour
                 }
             }
             rayOrigin += lungePerp * 0.2f;
-            Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * (lungeRange + playerWidth)), Color.red);
+            Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * (lungeRange + playerRadius)), Color.red);
         }
     }
     
@@ -398,7 +413,7 @@ public class AttackScript : MonoBehaviour
         int layerMask = (1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("Pickup"));
         if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit firstHit, grabRange, layerMask))
         {
-            if (!(firstHit.collider.CompareTag("Player") && firstHit.collider.GetComponent<AttackScript>().heldObject)) // returns false if the target is holding something/someone
+            if (!(firstHit.collider.CompareTag("Player") && firstHit.collider.GetComponent<AttackScript>().isHoldingObject)) // returns false if the target is holding something/someone
             {
                 bool isHeld = false;
                 foreach (GameObject child in heldObjects)
@@ -420,7 +435,7 @@ public class AttackScript : MonoBehaviour
         {
             if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit hit, grabRange, layerMask))
             {
-                if (!(hit.collider.CompareTag("Player") && hit.collider.GetComponent<AttackScript>().heldObject))
+                if (!(hit.collider.CompareTag("Player") && hit.collider.GetComponent<AttackScript>().isHoldingObject))
                 {
                     bool isHeld = false;
                     foreach (GameObject child in heldObjects)

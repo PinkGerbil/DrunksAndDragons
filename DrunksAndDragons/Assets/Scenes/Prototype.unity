@@ -3207,6 +3207,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dfafd688f4d548f4989e632025e08784, type: 2}
+    - target: {fileID: 2300002, guid: 8c29d1f6e83b84f48b80d3f8a6fced1f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b89d63fe13534f94391775fb43cf6a38, type: 2}
     - target: {fileID: 2300010, guid: 8c29d1f6e83b84f48b80d3f8a6fced1f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3227,10 +3231,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dfafd688f4d548f4989e632025e08784, type: 2}
-    - target: {fileID: 2300002, guid: 8c29d1f6e83b84f48b80d3f8a6fced1f, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b89d63fe13534f94391775fb43cf6a38, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c29d1f6e83b84f48b80d3f8a6fced1f, type: 3}
 --- !u!4 &856837338 stripped
@@ -4981,11 +4981,6 @@ PrefabInstance:
       propertyPath: HealthPanel
       value: 
       objectReference: {fileID: 71366514}
-    - target: {fileID: 8517220037259680341, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: punchTime
-      value: 0.2335
-      objectReference: {fileID: 0}
     - target: {fileID: 8517220037259680340, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
