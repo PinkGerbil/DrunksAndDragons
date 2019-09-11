@@ -311,7 +311,7 @@ Animator:
   m_GameObject: {fileID: 2881682680496295213}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2a1452b1fb91ae64b91c6aee81f12c81, type: 3}
-  m_Controller: {fileID: 9100000, guid: 420b18197e9c84c49ac345e3b394c806, type: 2}
+  m_Controller: {fileID: 9100000, guid: 22e403ad30f8643468b85ac52f81950f, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -417,12 +417,12 @@ MonoBehaviour:
   lungeDuration: 0.15
   sweepRange: 2
   sweepWidth: 180
-  sweepDamage: 0
+  sweepDamage: 1
   lungeRange: 0.5
-  lungeDamage: 0
-  punchTime: 0.467
+  lungeDamage: 1
+  punchTime: 0.2
   punchCountdown: 0
-  comboGracePeriod: 0.5
+  comboGracePeriod: 1
   punchDamage: 1
   punchRange: 0.5
   grabRange: 1.5

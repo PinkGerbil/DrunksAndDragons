@@ -1152,7 +1152,7 @@ PrefabInstance:
     - target: {fileID: 2971401458762156673, guid: 188d52eb0ad65dd42b19a6bc00a42946,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2971401458762156673, guid: 188d52eb0ad65dd42b19a6bc00a42946,
         type: 3}
@@ -2675,7 +2675,7 @@ PrefabInstance:
     - target: {fileID: 6658547278028975028, guid: 8777b5387ca4c1e42b97d12298bf60e9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6658547278028975028, guid: 8777b5387ca4c1e42b97d12298bf60e9,
         type: 3}
@@ -3189,7 +3189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8c29d1f6e83b84f48b80d3f8a6fced1f, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8c29d1f6e83b84f48b80d3f8a6fced1f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3410,7 +3410,7 @@ PrefabInstance:
     - target: {fileID: 5667947509833340972, guid: b4f33246f71d21041a7f3c462d405fc0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5667947509833340972, guid: b4f33246f71d21041a7f3c462d405fc0,
         type: 3}
@@ -3703,7 +3703,7 @@ PrefabInstance:
     - target: {fileID: 2971401458762156673, guid: 188d52eb0ad65dd42b19a6bc00a42946,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 2971401458762156673, guid: 188d52eb0ad65dd42b19a6bc00a42946,
         type: 3}
@@ -3861,7 +3861,7 @@ PrefabInstance:
     - target: {fileID: 2971401458762156673, guid: 188d52eb0ad65dd42b19a6bc00a42946,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 2971401458762156673, guid: 188d52eb0ad65dd42b19a6bc00a42946,
         type: 3}
@@ -4653,7 +4653,7 @@ PrefabInstance:
     - target: {fileID: 6500856714365375663, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6500856714365375663, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
@@ -4823,18 +4823,66 @@ PrefabInstance:
     - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: sweepDamage
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: lungeDamage
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: punchTime
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: sweepDuration
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: sweepWidth
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: comboGracePeriod
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: healthUpPrice
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: speedUpPrice
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: foodPrice
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: healthUp
+      value: 
+      objectReference: {fileID: 3894575176415504023, guid: b5111a5bf7b612441817f60ad17ded75,
+        type: 3}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: speedUp
+      value: 
+      objectReference: {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c,
+        type: 3}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: food
+      value: 
+      objectReference: {fileID: 2418003000894282240, guid: 7ba20cb9c2d45f64ca2870d0a2e9581e,
+        type: 3}
     - target: {fileID: 662559065435560114, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -4858,18 +4906,66 @@ PrefabInstance:
     - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: sweepDamage
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: lungeDamage
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: punchTime
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: sweepDuration
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: sweepWidth
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: comboGracePeriod
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: healthUpPrice
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: speedUpPrice
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: foodPrice
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: healthUp
+      value: 
+      objectReference: {fileID: 3894575176415504023, guid: b5111a5bf7b612441817f60ad17ded75,
+        type: 3}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: speedUp
+      value: 
+      objectReference: {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c,
+        type: 3}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: food
+      value: 
+      objectReference: {fileID: 2418003000894282240, guid: 7ba20cb9c2d45f64ca2870d0a2e9581e,
+        type: 3}
     - target: {fileID: 2942986365390005708, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -4885,26 +4981,6 @@ PrefabInstance:
       propertyPath: HealthPanel
       value: 
       objectReference: {fileID: 71366514}
-    - target: {fileID: 8517220037259680341, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: AttackPanel
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8517220037259680341, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: sweepDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8517220037259680341, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: lungeDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8517220037259680341, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: punchTime
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 8517220037259680340, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -4928,18 +5004,66 @@ PrefabInstance:
     - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: sweepDamage
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: lungeDamage
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: punchTime
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: comboGracePeriod
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: sweepDuration
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: sweepWidth
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: healthUpPrice
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: speedUpPrice
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: foodPrice
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: healthUp
+      value: 
+      objectReference: {fileID: 3894575176415504023, guid: b5111a5bf7b612441817f60ad17ded75,
+        type: 3}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: speedUp
+      value: 
+      objectReference: {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c,
+        type: 3}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: food
+      value: 
+      objectReference: {fileID: 2418003000894282240, guid: 7ba20cb9c2d45f64ca2870d0a2e9581e,
+        type: 3}
     - target: {fileID: 8889305699210294312, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -4958,16 +5082,6 @@ PrefabInstance:
     - target: {fileID: 8517220036153767139, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8517220036149578275, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 22e403ad30f8643468b85ac52f81950f, type: 2}
-    - target: {fileID: 8517220036149578275, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_CullingMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2942986365390005719, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
@@ -5428,7 +5542,7 @@ PrefabInstance:
     - target: {fileID: 364349680403225324, guid: 7a722ebfc57e1e44bbddc108f524c508,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 364349680403225324, guid: 7a722ebfc57e1e44bbddc108f524c508,
         type: 3}
@@ -5660,7 +5774,7 @@ PrefabInstance:
     - target: {fileID: 1162676794303324228, guid: 0d5aa4c1a9aa9bd4cbc325a698f0f36a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1162676794303324228, guid: 0d5aa4c1a9aa9bd4cbc325a698f0f36a,
         type: 3}
@@ -6062,7 +6176,7 @@ PrefabInstance:
     - target: {fileID: 364349680403225324, guid: 7a722ebfc57e1e44bbddc108f524c508,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 364349680403225324, guid: 7a722ebfc57e1e44bbddc108f524c508,
         type: 3}
@@ -6146,7 +6260,7 @@ PrefabInstance:
     - target: {fileID: 2971401458762156673, guid: 188d52eb0ad65dd42b19a6bc00a42946,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2971401458762156673, guid: 188d52eb0ad65dd42b19a6bc00a42946,
         type: 3}
@@ -6393,7 +6507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4a08c6c60bcc3f54f852c58192597af6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4a08c6c60bcc3f54f852c58192597af6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7309,7 +7423,7 @@ PrefabInstance:
     - target: {fileID: 3033880208065214947, guid: ce39ce3d9a6def6489e9fa85d695d1a3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3033880208065214947, guid: ce39ce3d9a6def6489e9fa85d695d1a3,
         type: 3}
@@ -7392,7 +7506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: effb2a8eb11035d4a927f845282a6497, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: effb2a8eb11035d4a927f845282a6497, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8336,7 +8450,7 @@ PrefabInstance:
     - target: {fileID: 4322700299577418678, guid: ccc943c1c6cd46e4da92109a298ce6c6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4322700299577418678, guid: ccc943c1c6cd46e4da92109a298ce6c6,
         type: 3}
@@ -8489,7 +8603,7 @@ PrefabInstance:
     - target: {fileID: 7882417246172896415, guid: d1fe5c9739680794b9d855be6aa55776,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7882417246172896415, guid: d1fe5c9739680794b9d855be6aa55776,
         type: 3}
