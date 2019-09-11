@@ -102,6 +102,9 @@ public class AttackScript : MonoBehaviour
     };
     int curPunchAnim = 0;
 
+    List<GameObject> hitEnemies = new List<GameObject>();
+    static List<GameObject> heldObjects = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -155,6 +158,8 @@ public class AttackScript : MonoBehaviour
                 playerMove.checkGrounded();
                 checkLungeCollision();
                 lungeCountdown -= Time.deltaTime;
+                if (lungeCountdown <= 0)
+                    hitEnemies.Clear();
                 playerMove.speedMod = 1;
             }
         }
@@ -193,7 +198,7 @@ public class AttackScript : MonoBehaviour
             {
                 if (!heldObject)
                 {
-                    heldObject = GrabObject();
+                    GrabObject();
                     if (heldObject != null)
                     {
                         playerMove.speedMod = 0.25f;
@@ -218,6 +223,7 @@ public class AttackScript : MonoBehaviour
 
     void checkPunch()
     {
+        if (hitEnemies.Count != 0) hitEnemies.Clear();
         Vector3 origin = transform.position + transform.forward * playerWidth + attackPoint;
         int layerMask = 1 << LayerMask.NameToLayer("Enemy");
         float switchdir = -1;
@@ -227,16 +233,28 @@ public class AttackScript : MonoBehaviour
             switchdir *= -1;
             if(Physics.Raycast(origin, transform.forward, out RaycastHit hit, punchRange, layerMask))
             {
-                Debug.DrawLine(origin, origin + transform.forward * punchRange, Color.green);
-                hit.collider.GetComponent<AI>().takeDamage(punchDamage);
-                if (hit.collider.gameObject.GetComponent<AI>().isDead)
+                bool wasHit = false;
+
+                foreach(GameObject child in hitEnemies)
+                    if(hit.collider.gameObject.Equals(child))
+                    {
+                        wasHit = true;
+                        break;
+                    }
+                if(!wasHit)
                 {
-                    points.gainKills();
+                    hit.collider.GetComponent<AI>().takeDamage(punchDamage);
+                    if(hit.collider.gameObject.GetComponent<AI>().isDead)
+                    {
+                        points.gainKills();
+                    }
+                    hitEnemies.Add(hit.collider.gameObject);
                 }
             }
             origin += transform.right * (playerWidth * widthScale) * switchdir;
             widthScale += 0.5f;
         }
+        hitEnemies.Clear();
     }
 
     /// <summary>
@@ -286,16 +304,22 @@ public class AttackScript : MonoBehaviour
         {
             if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange + playerWidth, layerMask))
             {
-                if (hit.collider.CompareTag("Enemy"))
+                bool wasHit = false;
+                foreach (GameObject child in hitEnemies)
+                    if (hit.collider.gameObject.Equals(child))
+                    {
+                        wasHit = true;
+                        break;
+                    }
+                if(!wasHit)
                 {
-                        hit.collider.enabled = false;
-                        hit.collider.gameObject.GetComponent<AI>().takeDamage(lungeDamage);
-                        if (hit.collider.gameObject.GetComponent<AI>().isDead)
-                        {
-                            points.gainKills();
-                        }
+                    hit.collider.enabled = false;
+                    hit.collider.gameObject.GetComponent<AI>().takeDamage(lungeDamage);
+                    if (hit.collider.gameObject.GetComponent<AI>().isDead)
+                        points.gainKills();
+                    hit.collider.enabled = true;
+                    hitEnemies.Add(hit.collider.gameObject);
                 }
-                hit.collider.enabled = true;
             }
             rayOrigin += lungePerp * 0.2f;
             Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * (lungeRange + playerWidth)), Color.red);
@@ -359,7 +383,7 @@ public class AttackScript : MonoBehaviour
     /// check an area in front of the players, then return the first located player
     /// </summary>
     /// <returns> The first player hit by a ray </returns>
-    public GameObject GrabObject()
+    public void GrabObject()
     {
         Vector3 rayOrigin = transform.position + attackPoint;
         Vector3 rayDir = transform.forward;
@@ -368,7 +392,17 @@ public class AttackScript : MonoBehaviour
         {
             if (!(firstHit.collider.CompareTag("Player") && firstHit.collider.GetComponent<AttackScript>().heldObject))
             {
-                return firstHit.collider.gameObject;
+                bool isHeld = false;
+                foreach (GameObject child in heldObjects)
+                    if (!firstHit.collider.gameObject.Equals(child))
+                        isHeld = true;
+
+                if (isHeld)
+                {
+                    heldObject = firstHit.collider.gameObject;
+                    heldObjects.Add(heldObject);
+                    return;
+                }
             }
         }
 
@@ -380,14 +414,22 @@ public class AttackScript : MonoBehaviour
             {
                 if (!(hit.collider.CompareTag("Player") && hit.collider.GetComponent<AttackScript>().heldObject))
                 {
-
-                    return hit.collider.gameObject;
+                    bool isHeld = false;
+                    foreach (GameObject child in heldObjects)
+                        if (!firstHit.collider.gameObject.Equals(child))
+                            isHeld = true;
+                    if (isHeld)
+                    {
+                        heldObject = hit.collider.gameObject;
+                        heldObjects.Add(heldObject);
+                        return;
+                    }
                 }
             }
             rayDir = Quaternion.AngleAxis(grabWidth * 0.25f, Vector3.up) * rayDir;
 
         }
-        return null;
+        return;
     }
 
     /// <summary>
@@ -406,7 +448,7 @@ public class AttackScript : MonoBehaviour
             other.isKinematic = false;
             Debug.Log(other.isKinematic);
             other.AddForce((transform.forward + transform.up).normalized * throwForce);
-            
+            heldObjects.Remove(heldObject);
             heldObject = null;
             playerMove.speedMod = 1;
         }
