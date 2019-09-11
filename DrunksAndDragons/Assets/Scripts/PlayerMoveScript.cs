@@ -62,7 +62,7 @@ public class PlayerMoveScript : MonoBehaviour
             Vector3 aimDir = moveDir;
             float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
-            if (!checkInFront(transform.position + transform.forward * moveSpeed * speedMod * Time.deltaTime))
+            if (!CheckInDirection(transform.position + transform.forward * moveSpeed * speedMod * Time.deltaTime))
             {
                 transform.position += transform.forward * moveSpeed * speedMod * Time.deltaTime;
                 checkGrounded();
@@ -132,11 +132,18 @@ public class PlayerMoveScript : MonoBehaviour
                 transform.position = ground.point;
         }
     }
-    public bool checkInFront(Vector3 nextPos)
+
+    /// <summary>
+    /// Check the direction the player is moving and make sure they don't go through any walls or environment.
+    /// </summary>
+    /// <param name="nextPos"> the position the player will be in after force is applied </param>
+    /// <returns> true if the player will collide with something </returns>
+    public bool CheckInDirection(Vector3 nextPos)
     {
         Vector3 origin = TopPoint.transform.position;
         int dirInv = 1;
         Vector3 hitDir = Vector3.Normalize(nextPos - transform.position);
+        //origin -= hitDir * playerRadius;
 
         // direction perpendicular to hitDir
         Vector3 dirPerp = Vector3.Cross(Vector3.up, hitDir);

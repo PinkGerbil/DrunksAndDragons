@@ -73,10 +73,11 @@ public class PlayerDamageHandler : MonoBehaviour
         {
             PlayerMoveScript temp = GetComponent<PlayerMoveScript>();
             knockbackCountdown -= Time.deltaTime;
-            if(!temp.checkInFront(transform.position + knockbackForce * isHitDir.normalized * Time.deltaTime))
+            if (!temp.CheckInDirection(transform.position + knockbackForce * isHitDir.normalized * Time.deltaTime))
+            {
                 transform.position += knockbackForce * isHitDir.normalized * Time.deltaTime;
-            temp.checkGrounded();
-
+                temp.checkGrounded();
+            }
         }
         else if (IFrameTime > 0)
         {
@@ -104,7 +105,7 @@ public class PlayerDamageHandler : MonoBehaviour
             }
             Vector3 nextPos = transform.position + rigidbody.velocity * Time.deltaTime;
             
-            GetComponent<PlayerMoveScript>().checkInFront(nextPos);
+            GetComponent<PlayerMoveScript>().CheckInDirection(nextPos);
         }
 
         if(HealthPanel != null && Alive)

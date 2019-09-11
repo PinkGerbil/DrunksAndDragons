@@ -4833,7 +4833,7 @@ PrefabInstance:
     - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: punchTime
-      value: 0.2
+      value: 0.2335
       objectReference: {fileID: 0}
     - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
@@ -4916,7 +4916,7 @@ PrefabInstance:
     - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: punchTime
-      value: 0.2
+      value: 0.2335
       objectReference: {fileID: 0}
     - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
@@ -4981,6 +4981,11 @@ PrefabInstance:
       propertyPath: HealthPanel
       value: 
       objectReference: {fileID: 71366514}
+    - target: {fileID: 8517220037259680341, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: punchTime
+      value: 0.2335
+      objectReference: {fileID: 0}
     - target: {fileID: 8517220037259680340, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -5014,7 +5019,7 @@ PrefabInstance:
     - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: punchTime
-      value: 0.2
+      value: 0.2335
       objectReference: {fileID: 0}
     - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}

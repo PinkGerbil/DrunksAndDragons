@@ -8,8 +8,6 @@ public class AttackScript : MonoBehaviour
 {
     [SerializeField]
     float playerWidth = 0.5f;
-    [SerializeField]
-    float playerHeight = 2;
 
     [SerializeField] PlayerInput input;
     [SerializeField] PlayerMoveScript playerMove;
@@ -95,7 +93,7 @@ public class AttackScript : MonoBehaviour
     public GameObject food;
     public int foodPrice;
 
-    string[] animationStrings =
+    string[] animationTriggerStrings =
     {
         "punch1",
         "punch2"
@@ -149,17 +147,27 @@ public class AttackScript : MonoBehaviour
         }
         else if(lungeCountdown > 0)
         {
+            
             if (lungeCountdown > lungeDuration)
                 lungeCountdown -= Time.deltaTime;
             else
             {
-                transform.position += lungeDir * 20 * Time.deltaTime;
-                playerMove.checkGrounded();
+                if (!playerMove.CheckInDirection(transform.position + lungeDir * 20 * Time.deltaTime))
+                {
+                    transform.position += lungeDir * 20 * Time.deltaTime;
+                    playerMove.checkGrounded();
+                    lungeCountdown -= Time.deltaTime;
+                }
+                else
+                {
+                    lungeCountdown = 0;
+                }
                 checkLungeCollision();
-                lungeCountdown -= Time.deltaTime;
                 if (lungeCountdown <= 0)
+                {
                     hitEnemies.Clear();
-                playerMove.speedMod = 1;
+                    playerMove.speedMod = 1;
+                }
             }
         }
         else if(attackCooldown > 0 && !heldObject)
@@ -327,16 +335,17 @@ public class AttackScript : MonoBehaviour
     
     public void PunchAttack()
     {
-        if(punchCountdown <= punchTime * 0.5f)
+        if(punchCountdown <= punchTime * 0.75f)
         {
             punchCountdown = punchTime;
             playerMove.speedMod = 0;
-            if (animator != null && !animator.GetCurrentAnimatorStateInfo(0).IsName("punch1") && !animator.GetCurrentAnimatorStateInfo(0).IsName("punch2"))
+            if (animator != null)
             {
-                animator.SetTrigger(animationStrings[curPunchAnim++]);
-                //animator.SetTrigger("punch1");
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName(animationTriggerStrings[curPunchAnim]))
+                    Debug.Log("punch animation already playing");
+                animator.SetTrigger(animationTriggerStrings[curPunchAnim++]);
                 
-                if (curPunchAnim == animationStrings.Length)
+                if (curPunchAnim == animationTriggerStrings.Length)
                     curPunchAnim = 0;
             }
 
@@ -389,11 +398,11 @@ public class AttackScript : MonoBehaviour
         int layerMask = (1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("Pickup"));
         if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit firstHit, grabRange, layerMask))
         {
-            if (!(firstHit.collider.CompareTag("Player") && firstHit.collider.GetComponent<AttackScript>().heldObject))
+            if (!(firstHit.collider.CompareTag("Player") && firstHit.collider.GetComponent<AttackScript>().heldObject)) // returns false if the target is holding something/someone
             {
                 bool isHeld = false;
                 foreach (GameObject child in heldObjects)
-                    if (!firstHit.collider.gameObject.Equals(child))
+                    if (!firstHit.collider.gameObject.Equals(child)) // checks if the object isn't already held by someone else
                         isHeld = true;
 
                 if (isHeld)

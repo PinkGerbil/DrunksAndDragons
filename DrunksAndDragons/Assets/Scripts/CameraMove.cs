@@ -46,6 +46,10 @@ public class CameraMove : MonoBehaviour
     void Start()
     {
         originPoint = transform.position;
+
+        if (!blackboard)
+            blackboard = GameObject.Find("Game Manager").GetComponent<Blackboard>();
+
         players = blackboard.players;
     }
     

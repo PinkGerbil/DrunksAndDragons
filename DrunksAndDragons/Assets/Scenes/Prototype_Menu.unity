@@ -867,7 +867,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241320634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.38, z: -2.73}
+  m_LocalPosition: {x: 0, y: 3.38, z: -6.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1423,6 +1423,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_List
       objectReference: {fileID: 0}
+    - target: {fileID: 8517220037259680335, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 662559066487023399, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1451,6 +1456,16 @@ PrefabInstance:
     - target: {fileID: 8517220036142687681, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294323, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560105, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6500856714365375663, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
@@ -1658,22 +1673,7 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 662559065435560105, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2942986365390005719, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8517220037259680335, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889305699210294323, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_Enabled
       value: 0
