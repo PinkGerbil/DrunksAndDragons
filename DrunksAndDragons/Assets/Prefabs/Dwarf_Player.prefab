@@ -417,16 +417,24 @@ MonoBehaviour:
   lungeDuration: 0.15
   sweepRange: 2
   sweepWidth: 180
+  sweepDamage: 0
   lungeRange: 0.5
+  lungeDamage: 0
+  punchTime: 0.467
+  punchCountdown: 0
+  comboGracePeriod: 0.5
+  punchDamage: 1
+  punchRange: 0.5
   grabRange: 1.5
   grabWidth: 45
   throwForce: 500
   heldObject: {fileID: 0}
-  healthUp: {fileID: 0}
+  healthUp: {fileID: 3894575176415504023, guid: b5111a5bf7b612441817f60ad17ded75,
+    type: 3}
   healthUpPrice: 0
-  speedUp: {fileID: 0}
+  speedUp: {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c, type: 3}
   speedUpPrice: 0
-  food: {fileID: 0}
+  food: {fileID: 2418003000894282240, guid: 7ba20cb9c2d45f64ca2870d0a2e9581e, type: 3}
   foodPrice: 0
 --- !u!114 &2881682679395987099
 MonoBehaviour:

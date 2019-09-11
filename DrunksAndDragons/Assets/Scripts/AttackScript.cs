@@ -138,10 +138,9 @@ public class AttackScript : MonoBehaviour
             punchCountdown -= Time.deltaTime;
             checkPunch();
             if (punchCountdown <= 0)
-            {
-                comboGraceCountdown = comboGracePeriod;
                 playerMove.speedMod = 1;
-            }
+            else if(punchCountdown <= punchTime * 0.5f)
+                comboGraceCountdown = comboGracePeriod;
         }
         else if (sweepCountdown > 0)
         {
@@ -183,7 +182,7 @@ public class AttackScript : MonoBehaviour
         }
         if (rigidbody.isKinematic)
         {
-            if (input.GetSweepPressed && !heldObject)
+            if (input.GetPunchPressed && !heldObject)
             {
                 //SweepAttack();
                 PunchAttack();
@@ -328,7 +327,7 @@ public class AttackScript : MonoBehaviour
     
     public void PunchAttack()
     {
-        if(punchCountdown <= 0)
+        if(punchCountdown <= punchTime * 0.5f)
         {
             punchCountdown = punchTime;
             playerMove.speedMod = 0;
