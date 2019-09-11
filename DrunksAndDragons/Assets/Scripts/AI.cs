@@ -30,9 +30,18 @@ public class AI : MonoBehaviour
     public int health;
     public bool isDead;
 
-    public float KnockbackPeriod;
-    private float KnockbackTime;
+    [Header("AI Being Hit")]
+    [Tooltip("how long the ai will be stunned for")]
+    public float stunPeriod;
+    private float stunTime;
+    [Tooltip("how much force will be applied to the ai")]
+    public float knockbackStrength;
+    [Tooltip("how long the ai will be knocked back for")]
+    public float knockbackPeriod;
+    private float knockbackTime;
     public bool beingHit = false;
+
+    private Vector3 AIHitDir;
     
     Renderer renderer;
 
@@ -46,18 +55,34 @@ public class AI : MonoBehaviour
         
 
         attackCountdown = attackTime;
-        KnockbackTime = KnockbackPeriod;
+        stunTime = stunPeriod;
+        stunTime = 0;
+        knockbackTime = knockbackPeriod;
+        knockbackTime = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (KnockbackPeriod > 0)
+        if (stunTime > 0)
         {
-            KnockbackPeriod -= Time.deltaTime;
+            if(!agent.isStopped)
+                agent.isStopped = true;
+
+            if (knockbackTime > 0)
+            {
+                this.transform.position += knockbackStrength * AIHitDir * Time.deltaTime;
+                knockbackTime -= Time.deltaTime;
+            }
+            stunTime -= Time.deltaTime;
         }
         else
+        {
             renderer.material.color = Color.white;
+            if (agent.isStopped)
+                agent.isStopped = false;
+            FindClosestPlayer();
+        }
         if (health <= 0)
         {
             isDead = true;
@@ -77,7 +102,7 @@ public class AI : MonoBehaviour
             Destroy(this.gameObject);
         }
         //checking to see how many players there are in the scene by seeing how many player tags there are in startup
-        else
+        else if(stunTime <= 0)
         {
             float distanceToTarget = Vector3.Distance(transform.position, currentPlayer.transform.position);
             if (distanceToTarget > 5 || !currentPlayer.Alive)
@@ -139,9 +164,13 @@ public class AI : MonoBehaviour
 
     public void takeDamage(int damage)
     {
+        AIHitDir = (transform.position - currentPlayer.transform.position);
+        AIHitDir.y = 0;
+        AIHitDir = AIHitDir.normalized;
         renderer.material.color = Color.red;
         health -= damage;
-        KnockbackPeriod = KnockbackTime;
+        stunTime = stunPeriod;
+        knockbackTime = knockbackPeriod;
         if(health <= 0)
         {
             isDead = true;

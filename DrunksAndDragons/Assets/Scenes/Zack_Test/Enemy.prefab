@@ -137,7 +137,7 @@ MonoBehaviour:
   - {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c, type: 3}
   coin: {fileID: 2939554252357560733, guid: 37d3c6bf218f2e74c8cffd395c9021d1, type: 3}
   maxCoinDrop: 5
-  health: 0
+  health: 2
   isDead: 0
-  timeAIInvulnurable: 0
+  KnockbackPeriod: 0
   beingHit: 0
