@@ -7,10 +7,10 @@ public class Coin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int randomRot = Random.Range(0, 359);
-        int coinShootingX = Random.Range(-300, 300);
-        int coinShootingY = Random.Range(0, 800);
-        int coinShootingZ = Random.Range(-300, 300);
+        int randomRot = Random.Range(0, 50);
+        int coinShootingX = Random.Range(-25, 25);
+        int coinShootingY = Random.Range(0, 50);
+        int coinShootingZ = Random.Range(-25, 25);
 
         this.GetComponent<Rigidbody>().AddForce(new Vector3(coinShootingX, coinShootingY, coinShootingZ));
     }

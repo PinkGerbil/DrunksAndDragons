@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8406051494218682850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.866816, y: 10.294001, z: 6.8820214}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.9025, y: 1.9025, z: 1.9025}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -135,11 +135,11 @@ MonoBehaviour:
   - {fileID: 2418003000894282240, guid: 7ba20cb9c2d45f64ca2870d0a2e9581e, type: 3}
   - {fileID: 1581599843373989352, guid: af338c41adec7af45b177fcb24f96f80, type: 3}
   - {fileID: 4171199931188632242, guid: 8660319ec82f85945b59fac98b97f801, type: 3}
-  coin: {fileID: 2939554252357560733, guid: f641be506f785dd4ca312d72bf268cd0, type: 3}
+  coin: {fileID: 2939554252357560733, guid: 37d3c6bf218f2e74c8cffd395c9021d1, type: 3}
   maxCoinDrop: 5
   health: 3
   isDead: 0
-  stunPeriod: 1
+  stunPeriod: 0.33
   knockbackStrength: 20
-  knockbackPeriod: 0.2
+  knockbackPeriod: 0.1
   beingHit: 0
