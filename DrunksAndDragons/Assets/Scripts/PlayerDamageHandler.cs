@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -155,5 +155,13 @@ public class PlayerDamageHandler : MonoBehaviour
         IFrameTime = IFrames;
         health -= 1;
         isHit = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "aoe")
+        {
+            getHit();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,6 +8,7 @@ public class AI : MonoBehaviour
 
     public NavMeshAgent agent;
     public float attackRange;
+    public float aggroRange;
 
     private GameObject[] players;
     PlayerDamageHandler currentPlayer = null;
@@ -45,6 +46,21 @@ public class AI : MonoBehaviour
     
     Renderer renderer;
 
+    //boss stuff
+    [Header("Boss")]
+    public GameObject aoeAttack;
+
+    public float aoeCooldownMin;
+    public float aoeCooldownMax;
+
+    private float aoeCooldown;
+
+
+    public int coinDropAmount;
+    public float timeBetweenCoinSpawns;
+    private bool coroutineRunning = true;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,9 +82,11 @@ public class AI : MonoBehaviour
     {
         if (stunTime > 0)
         {
-            if(!agent.isStopped)
-                agent.isStopped = true;
-
+            if (!isDead)
+            {
+                if (!agent.isStopped)
+                    agent.isStopped = true;
+            }
             if (knockbackTime > 0)
             {
                 this.transform.position += knockbackStrength * AIHitDir * Time.deltaTime;
@@ -79,11 +97,14 @@ public class AI : MonoBehaviour
         else
         {
             renderer.material.color = Color.white;
-            if (agent.isStopped)
-                agent.isStopped = false;
+            if (!isDead)
+            {
+                if (agent.isStopped)
+                    agent.isStopped = false;
+            }
             FindClosestPlayer();
         }
-        if (health <= 0)
+        if (health <= 0 && this.gameObject.name != "Boss(Clone)")
         {
             isDead = true;
             int randomNum = Random.Range(0, 100);
@@ -105,15 +126,29 @@ public class AI : MonoBehaviour
         else if(stunTime <= 0)
         {
             float distanceToTarget = Vector3.Distance(transform.position, currentPlayer.transform.position);
-            if (distanceToTarget > 5 || !currentPlayer.Alive)
+
+            if (distanceToTarget > aggroRange || !currentPlayer.Alive)
                 FindClosestPlayer();
             else if (distanceToTarget < attackRange)
                 attack();
             else
                 attackCountdown = attackTime;
         }
+        if (this.gameObject.name == "Boss(Clone)")
+        {
+            if (isDead == true && coroutineRunning == true)
+            {
+                StartCoroutine(coinDrop());
+                coroutineRunning = false;
+            }
+            if (aoeCooldown <= 0 && !isDead)
+            {
+                AoEAttack();
+                aoeCooldown = Random.Range(aoeCooldownMin, aoeCooldownMax);
+            }
+            aoeCooldown -= Time.deltaTime;
+        }
 
-     
     }
 
     //getting the closest player to this object if the player moves past a distance set above
@@ -126,11 +161,14 @@ public class AI : MonoBehaviour
                 continue;
 
             float curDistance = Vector3.Distance(transform.position, child.transform.position);
-            if (curDistance < closest)
+            if (!isDead)
             {
-                closest = curDistance;
-                currentPlayer = child.GetComponent<PlayerDamageHandler>();
-                agent.destination = currentPlayer.transform.position;
+                if (curDistance < closest && !agent.isStopped)
+                {
+                    closest = curDistance;
+                    currentPlayer = child.GetComponent<PlayerDamageHandler>();
+                    agent.destination = currentPlayer.transform.position;
+                }
             }
             
         }
@@ -180,6 +218,32 @@ public class AI : MonoBehaviour
     public int getHealth()
     {
         return health;
+    }
+
+    IEnumerator coinDrop()
+    {
+        agent.enabled = false;
+        for (int i = 0; i < coinDropAmount; i++)
+        {
+            int randomRotX = Random.Range(0, 359);
+            int randomRotY = Random.Range(0, 359);
+            int randomRotZ = Random.Range(0, 359);
+
+            Instantiate(coin, this.transform.position, Quaternion.Euler(randomRotX, randomRotY, randomRotZ));
+
+            yield return new WaitForSeconds(timeBetweenCoinSpawns);
+        }
+        Destroy(this.gameObject);
+    }
+    void AoEAttack()
+    {
+        int maxNum = -1;
+        foreach (GameObject child in players)
+        {
+            maxNum++;
+        }
+        int playerNum = Random.Range(0, maxNum);
+        Instantiate(aoeAttack, players[playerNum].transform.position, this.transform.rotation);
     }
 
 }

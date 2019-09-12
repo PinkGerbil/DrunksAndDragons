@@ -10,6 +10,7 @@ TagManager:
   - HealthIncrease
   - Food
   - SpeedDrink
+  - aoe
   layers:
   - Default
   - TransparentFX

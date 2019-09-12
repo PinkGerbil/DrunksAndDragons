@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    public int xAxis;
+    public int yAxis;
+    public int zAxis;
+
     // Start is called before the first frame update
     void Start()
     {
-        int randomRot = Random.Range(0, 50);
-        int coinShootingX = Random.Range(-25, 25);
-        int coinShootingY = Random.Range(0, 50);
-        int coinShootingZ = Random.Range(-25, 25);
+        int coinShootingX = Random.Range(-xAxis, xAxis);
+        int coinShootingY = Random.Range(0, yAxis);
+        int coinShootingZ = Random.Range(-zAxis, zAxis);
 
         this.GetComponent<Rigidbody>().AddForce(new Vector3(coinShootingX, coinShootingY, coinShootingZ));
     }

@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class WaveSpawn : MonoBehaviour
 {
+    public GameObject scoreManager;
     public GameObject aiGameObject;
     public Transform[] spawnLocation;
+
+    public GameObject boss;
+    public Transform bossSpawnLocation;
 
     public Text WaveCountText;
     public int waveCount = 0;
@@ -45,6 +49,8 @@ public class WaveSpawn : MonoBehaviour
         {
             if(timer < 0)
             {
+                waveCount++;
+
                 startTimeBetweenWaves = startTimeBetweenWaves + addedTimeBetweenWaves;
                 if(startTimeBetweenWaves < 0)
                 {
@@ -52,7 +58,6 @@ public class WaveSpawn : MonoBehaviour
                 }
                 StartCoroutine(spawnDelay());
                 timer = 0;
-                waveCount++;
             }
         }
         else
@@ -76,6 +81,10 @@ public class WaveSpawn : MonoBehaviour
     //delays each spawn of enemies by a set amount of time
     IEnumerator spawnDelay()
     {
+        if(scoreManager.GetComponent<ScoreManager>().finalWaveNumber == waveCount)
+        {
+            Instantiate(boss, bossSpawnLocation.position, bossSpawnLocation.rotation,this.transform);
+        }
         for(int i = 0; i < (spawnAmount * waveMultiplierStartValue); i++)
         {
             int index = Random.Range(0, spawnLocation.Length);
