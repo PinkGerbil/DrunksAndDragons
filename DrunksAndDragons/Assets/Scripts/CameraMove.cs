@@ -57,10 +57,10 @@ public class CameraMove : MonoBehaviour
         players = blackboard.players;
 
         float avgScaleMag = 0;
-        foreach (GameObject child in players)
-            avgScaleMag += child.transform.localScale.magnitude;
-        avgScaleMag /= players.Count * 2;
-        Debug.Log(avgScaleMag);
+        //foreach (GameObject child in players)
+        //    avgScaleMag += child.transform.localScale.magnitude;
+        //avgScaleMag /= players.Count * 2;
+
     }
     
 

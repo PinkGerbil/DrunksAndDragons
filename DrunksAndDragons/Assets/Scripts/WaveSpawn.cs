@@ -37,7 +37,7 @@ public class WaveSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = startTimeBetweenWaves;  
+        timer = startTimeBetweenWaves;
     }
 
     // Update is called once per frame
@@ -81,7 +81,7 @@ public class WaveSpawn : MonoBehaviour
     //delays each spawn of enemies by a set amount of time
     IEnumerator spawnDelay()
     {
-        if(scoreManager.GetComponent<ScoreManager>().finalWaveNumber == waveCount)
+        if(scoreManager != null && scoreManager.GetComponent<ScoreManager>().finalWaveNumber == waveCount)
         {
             Instantiate(boss, bossSpawnLocation.position, bossSpawnLocation.rotation,this.transform);
         }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
@@ -93,6 +93,7 @@ public class PlayerMoveScript : MonoBehaviour
         {
             if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, Mathf.Infinity, layerMask))
             {
+                Debug.DrawLine(origin, origin + Vector3.down * yOffset);
                 Vector3 temp = hit.point;
                 temp.y = TopPoint.transform.position.y;
                 float distance = Vector3.Distance(temp, hit.point);
@@ -129,28 +130,29 @@ public class PlayerMoveScript : MonoBehaviour
 
         if (ungrounded && Physics.Raycast(TopPoint.transform.position, Vector3.down, out RaycastHit ground, Mathf.Infinity, layerMask))
         {
+            Debug.DrawLine(TopPoint.transform.position, TopPoint.transform.position + Vector3.down * (yOffset * 2));
             if (rigidbody.isKinematic)
                 transform.position = ground.point;
         }
     }
 
     /// <summary>
-    /// Check the direction the player is moving and make sure they don't go through any walls or environment.
+    /// check if the player will collide with anything after moving, and perform a restitution in advance if necessary
     /// </summary>
     /// <param name="nextPos"> the position the player will be in after force is applied </param>
     /// <returns> true if the player will collide with something </returns>
     public bool CheckInDirection(Vector3 nextPos)
     {
-        Vector3 origin = TopPoint.transform.position;
-        int dirInv = 1;
+        Vector3 origin = nextPos;
+        origin.y = TopPoint.transform.position.y;
         Vector3 hitDir = Vector3.Normalize(nextPos - transform.position);
-        //origin -= hitDir * playerRadius;
 
         // direction perpendicular to hitDir
         Vector3 dirPerp = Vector3.Cross(Vector3.up, hitDir);
 
-        RaycastHit closest = new RaycastHit();
+        RaycastHit closest = new RaycastHit(); // this variable will be used to store the closest RaycastHit from the following loop
 
+        int originDirOffset = 1; // used to control the direction of the origin offset occurring at the end of each for loop iteration
         int layerMask = 1 << LayerMask.NameToLayer("Environment");
         for (int i = 0; i < 3; i++)
         {
@@ -159,23 +161,19 @@ public class PlayerMoveScript : MonoBehaviour
                 if (closest.collider == null || hit.distance < closest.distance)
                     closest = hit;
             }
-            origin += dirPerp * playerRadius * dirInv;
-            dirInv *= -2;
+            origin += dirPerp * playerRadius * originDirOffset;
+            originDirOffset *= -2;
         }
 
         if(closest.collider != null)
         {
-            Vector3 temp1 = closest.collider.ClosestPointOnBounds(nextPos);
-            Vector3 temp2 = closest.collider.ClosestPointOnBounds(nextPos + (temp1 - nextPos).normalized * 100);
-            Vector3 newPos = new Vector3();
-
-            if (Vector3.Distance(closest.point, temp1) < Vector3.Distance(closest.point, temp2))
-                newPos = temp1;
-            else
-                newPos = temp2;
-            newPos += (nextPos - newPos).normalized * playerRadius;
-            newPos.y = transform.position.y;
-            transform.position = newPos;
+            Vector3 projectPlane = Vector3.Normalize(closest.normal);
+            Vector3 movement = nextPos - transform.position;
+            movement = Vector3.ProjectOnPlane(movement, projectPlane);
+            if (!CheckInDirection(transform.position + movement))
+            {
+                transform.position += movement;
+            }
             return true;
         }
         else
