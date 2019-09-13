@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 264408059411136697}
   attackRange: 2
+  aggroRange: 5
   attackTime: 0.5
   powerUpdropChance: 50
   powerUps:
@@ -139,5 +140,12 @@ MonoBehaviour:
   maxCoinDrop: 5
   health: 2
   isDead: 0
-  KnockbackPeriod: 0
+  stunPeriod: 0
+  knockbackStrength: 0
+  knockbackPeriod: 0
   beingHit: 0
+  aoeAttack: {fileID: 0}
+  aoeCooldownMin: 0
+  aoeCooldownMax: 0
+  coinDropAmount: 0
+  timeBetweenCoinSpawns: 0

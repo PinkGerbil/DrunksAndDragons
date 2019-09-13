@@ -129,17 +129,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1521277894170889215}
   attackRange: 2
+  aggroRange: 5
   attackTime: 0.5
   powerUpdropChance: 20
   powerUps:
   - {fileID: 2418003000894282240, guid: 7ba20cb9c2d45f64ca2870d0a2e9581e, type: 3}
   - {fileID: 1581599843373989352, guid: af338c41adec7af45b177fcb24f96f80, type: 3}
   - {fileID: 4171199931188632242, guid: 8660319ec82f85945b59fac98b97f801, type: 3}
-  coin: {fileID: 2939554252357560733, guid: f641be506f785dd4ca312d72bf268cd0, type: 3}
+  coin: {fileID: 2939554252357560733, guid: 37d3c6bf218f2e74c8cffd395c9021d1, type: 3}
   maxCoinDrop: 5
-  health: 3
+  maxHealth: 2
   isDead: 0
   stunPeriod: 0.33
   knockbackStrength: 20
   knockbackPeriod: 0.1
   beingHit: 0
+  boss: {fileID: 4101305014517579967, guid: 1bc15c2a79823b944b8ac8d9b24d5590, type: 3}
+  aoeAttack: {fileID: 9111283032176898066, guid: d146d87c97b779d4abdad11da264b138,
+    type: 3}
+  aoeCooldownMin: 10
+  aoeCooldownMax: 20
+  knockbackAttackRange: 0
+  knockbackAttackCooldown: 0
+  channelDuration: 0
+  channeling: 0
+  healRange: 3
+  healAmount: 2
+  coinDropAmount: 500
+  timeBetweenCoinSpawns: 0.1

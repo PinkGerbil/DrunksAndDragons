@@ -9,8 +9,7 @@ public class WaveSpawn : MonoBehaviour
     public GameObject aiGameObject;
     public Transform[] spawnLocation;
 
-    public GameObject boss;
-    public Transform bossSpawnLocation;
+
 
     public Text WaveCountText;
     public int waveCount = 0;
@@ -32,6 +31,12 @@ public class WaveSpawn : MonoBehaviour
     private float timer;
     private int childNumber;
 
+    [Header("boss")]
+    [Tooltip("will spawn the boss if on(spawns on last wave)")]
+    public bool bossOn;
+    public GameObject boss;
+    [Tooltip("where the boss will spawn")]
+    public Transform bossSpawnLocation;
 
 
     // Start is called before the first frame update
@@ -81,7 +86,7 @@ public class WaveSpawn : MonoBehaviour
     //delays each spawn of enemies by a set amount of time
     IEnumerator spawnDelay()
     {
-        if(scoreManager != null && scoreManager.GetComponent<ScoreManager>().finalWaveNumber == waveCount)
+        if(scoreManager != null && scoreManager.GetComponent<ScoreManager>().finalWaveNumber == waveCount && bossOn)
         {
             Instantiate(boss, bossSpawnLocation.position, bossSpawnLocation.rotation,this.transform);
         }

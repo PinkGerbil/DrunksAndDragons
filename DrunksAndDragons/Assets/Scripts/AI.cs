@@ -27,8 +27,8 @@ public class AI : MonoBehaviour
     public GameObject coin;
     public int maxCoinDrop;
 
-
-    public int health;
+    public int maxHealth;
+    private int health;
     public bool isDead;
 
     [Header("AI Being Hit")]
@@ -48,14 +48,31 @@ public class AI : MonoBehaviour
 
     //boss stuff
     [Header("Boss")]
+    public GameObject boss;
+    [Header("aoe attack")]
     public GameObject aoeAttack;
-
     public float aoeCooldownMin;
     public float aoeCooldownMax;
 
     private float aoeCooldown;
 
-
+    [Header("(not finished does nothing yet) knockback attack")]
+    [Tooltip("how big the knockback will be")]
+    public float knockbackAttackRange;
+    private int withinRange;
+    public float knockbackAttackCooldown;
+    private float knockbackAttackCD;
+    [Header("healing ability")]
+    [Tooltip("how long the boss channels the heal for")]
+    public float channelDuration;
+    private float channelTimer;
+    [Tooltip("leave off")]
+    public bool channeling;
+    [Tooltip("distance the ai has to be to the boss to heal it")]
+    public float healRange;
+    [Tooltip("how much each ai will heal the boss for")]
+    public int healAmount;
+    [Header("coin drop")]
     public int coinDropAmount;
     public float timeBetweenCoinSpawns;
     private bool coroutineRunning = true;
@@ -68,18 +85,33 @@ public class AI : MonoBehaviour
         players = GameObject.FindGameObjectsWithTag("Player");
         isDead = false;
         FindClosestPlayer();
-        
+
+        boss = GameObject.Find("Boss(Clone)");
 
         attackCountdown = attackTime;
         stunTime = stunPeriod;
         stunTime = 0;
         knockbackTime = knockbackPeriod;
         knockbackTime = 0;
+        withinRange = 0;
+        health = maxHealth;
+        channelTimer = channelDuration;
     }
 
     // Update is called once per frame
     void Update()
-    {
+    { 
+        //if the boss is channeling for healing basic ai will go to him
+        if(boss != null && boss.GetComponent<AI>().channeling && this.gameObject.name != "Boss(Clone)")
+        {
+            agent.destination = boss.transform.position;
+        }
+        //when basic ai is withing set range they will die and heal the boss
+        if(boss != null && boss.GetComponent<AI>().channeling && Vector3.Distance(this.transform.position, boss.transform.position) < healRange && this.gameObject.name != "Boss(Clone)")
+        {
+            boss.GetComponent<AI>().heal(healAmount);
+            Destroy(this.gameObject);
+        }
         if (stunTime > 0)
         {
             if (!isDead)
@@ -99,10 +131,20 @@ public class AI : MonoBehaviour
             renderer.material.color = Color.white;
             if (!isDead)
             {
-                if (agent.isStopped)
-                    agent.isStopped = false;
+                if (agent.enabled)
+                {
+                    if (agent.isStopped)
+                        agent.isStopped = false;
+                }
             }
-            FindClosestPlayer();
+            if (boss != null && !boss.GetComponent<AI>().channeling)
+            {
+                FindClosestPlayer();
+            }
+            else if(boss == null)
+            {
+                FindClosestPlayer();
+            }
         }
         if (health <= 0 && this.gameObject.name != "Boss(Clone)")
         {
@@ -123,7 +165,7 @@ public class AI : MonoBehaviour
             Destroy(this.gameObject);
         }
         //checking to see how many players there are in the scene by seeing how many player tags there are in startup
-        else if(stunTime <= 0)
+        else if(boss != null && stunTime <= 0 && !boss.GetComponent<AI>().channeling && !isDead)
         {
             float distanceToTarget = Vector3.Distance(transform.position, currentPlayer.transform.position);
 
@@ -134,19 +176,56 @@ public class AI : MonoBehaviour
             else
                 attackCountdown = attackTime;
         }
+        else if (boss == null && stunTime <= 0 && !isDead)
+        {
+            float distanceToTarget = Vector3.Distance(transform.position, currentPlayer.transform.position);
+
+            if (distanceToTarget > aggroRange || !currentPlayer.Alive)
+                FindClosestPlayer();
+            else if (distanceToTarget < attackRange)
+                attack();
+            else
+                attackCountdown = attackTime;
+        }
+        //boss things
         if (this.gameObject.name == "Boss(Clone)")
         {
+            //when dead will drop lots of coins in random directions 
             if (isDead == true && coroutineRunning == true)
             {
                 StartCoroutine(coinDrop());
                 coroutineRunning = false;
             }
+            //picks a random player and puts a damaging aoe at their feet and does damage every set amount of time in aoe.cs
             if (aoeCooldown <= 0 && !isDead)
             {
                 AoEAttack();
                 aoeCooldown = Random.Range(aoeCooldownMin, aoeCooldownMax);
             }
+            //wip knockback attack that when multiple players are close to the boss he will knock them back
+            KnockbackAttackCheck();
+            if(withinRange >= 2 && knockbackAttackCD <= 0)
+            {
+                KnockbackAttack();
+                knockbackAttackCD = knockbackAttackCooldown;
+            }
+            //when the boss is at half health or less he will start channeling that will call all basic ai to him where they will die to heal him
+            if(health <= maxHealth/2 && channelTimer > 0 && !isDead)
+            {
+                channeling = true;
+            }
+            if(channeling)
+            {
+                channelTimer -= Time.deltaTime;
+                if (channelTimer <= 0)
+                {
+                    channeling = false;
+                }
+            }
+
+            withinRange = 0;
             aoeCooldown -= Time.deltaTime;
+            knockbackAttackCD -= Time.deltaTime;
         }
 
     }
@@ -215,14 +294,21 @@ public class AI : MonoBehaviour
         }
     }
 
+    public void heal(int healingAmount)
+    {
+        health += healAmount;
+    }
+
     public int getHealth()
     {
         return health;
     }
 
+    //spawns coins facing random directions to then be launched by the start function on coin.cs
     IEnumerator coinDrop()
     {
-        agent.enabled = false;
+        this.gameObject.GetComponent<Collider>().enabled = false;
+        agent.isStopped = true;
         for (int i = 0; i < coinDropAmount; i++)
         {
             int randomRotX = Random.Range(0, 359);
@@ -235,6 +321,7 @@ public class AI : MonoBehaviour
         }
         Destroy(this.gameObject);
     }
+    //puts a aoe on the feet of a random player to deal damage to them and whoever stays standing in it
     void AoEAttack()
     {
         int maxNum = -1;
@@ -245,5 +332,27 @@ public class AI : MonoBehaviour
         int playerNum = Random.Range(0, maxNum);
         Instantiate(aoeAttack, players[playerNum].transform.position, this.transform.rotation);
     }
+
+    //checks to see how many players are within a set range
+    void KnockbackAttackCheck()
+    {
+        foreach (GameObject child in players)
+        {
+            if (!child.GetComponent<PlayerDamageHandler>().Alive)
+                continue;
+            float distance = Vector3.Distance(transform.position, child.transform.position);
+            if (distance <= knockbackAttackRange)
+            {
+                withinRange++;
+            }
+        }
+        
+    }
+    //knocks back players who are close
+    void KnockbackAttack()
+    {
+        //actual attack
+    }
+
 
 }
