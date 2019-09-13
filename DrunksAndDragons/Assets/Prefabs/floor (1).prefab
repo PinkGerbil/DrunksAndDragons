@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5667947508265499147}
   - component: {fileID: 5667947508265499144}
   - component: {fileID: 5667947508265499145}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Plane (9)
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 5667947508523616294}
   - component: {fileID: 5667947508523616295}
   - component: {fileID: 5667947508523616292}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 5667947508543313451}
   - component: {fileID: 5667947508543313448}
   - component: {fileID: 5667947508543313449}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: top of stairs
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 5667947509093604373}
   - component: {fileID: 5667947509093604370}
   - component: {fileID: 5667947509093604371}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Plane (3)
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 5667947509113471445}
   - component: {fileID: 5667947509113471442}
   - component: {fileID: 5667947509113471443}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Plane (10)
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 5667947509502568933}
   - component: {fileID: 5667947509502568930}
   - component: {fileID: 5667947509502568931}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: top of stairs
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 5667947509537672921}
   - component: {fileID: 5667947509537672902}
   - component: {fileID: 5667947509537672903}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: floor
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   - component: {fileID: 5667947509571324236}
   - component: {fileID: 5667947509571324237}
   - component: {fileID: 5667947509571324234}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: stairs
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -748,7 +748,7 @@ GameObject:
   - component: {fileID: 5667947509755251683}
   - component: {fileID: 5667947509755251680}
   - component: {fileID: 5667947509755251681}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: stairs
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -840,7 +840,7 @@ GameObject:
   - component: {fileID: 5667947509819915975}
   - component: {fileID: 5667947509819915972}
   - component: {fileID: 5667947509819915973}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Plane (6)
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -929,7 +929,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5667947509833340972}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -976,7 +976,7 @@ GameObject:
   - component: {fileID: 5667947509994005338}
   - component: {fileID: 5667947509994005339}
   - component: {fileID: 5667947509994005336}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: floor
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -1068,7 +1068,7 @@ GameObject:
   - component: {fileID: 5667947510031765755}
   - component: {fileID: 5667947510031765752}
   - component: {fileID: 5667947510031765753}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: stairs
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -1160,7 +1160,7 @@ GameObject:
   - component: {fileID: 5667947510033921542}
   - component: {fileID: 5667947510033921543}
   - component: {fileID: 5667947510033921540}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: floor
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -1252,7 +1252,7 @@ GameObject:
   - component: {fileID: 5667947510141505153}
   - component: {fileID: 5667947510141505166}
   - component: {fileID: 5667947510141505167}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: stairs
   m_TagString: Environment
   m_Icon: {fileID: 0}

@@ -44,7 +44,7 @@ public class AI : MonoBehaviour
 
     private Vector3 AIHitDir;
     
-    Renderer renderer;
+    new Renderer renderer;
 
     //boss stuff
     [Header("Boss")]

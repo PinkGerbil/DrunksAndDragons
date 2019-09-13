@@ -56,7 +56,7 @@ public class CameraMove : MonoBehaviour
 
         players = blackboard.players;
 
-        float avgScaleMag = 0;
+        //float avgScaleMag = 0;
         //foreach (GameObject child in players)
         //    avgScaleMag += child.transform.localScale.magnitude;
         //avgScaleMag /= players.Count * 2;
@@ -67,6 +67,7 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (players.Count == 0)
         {
             players = blackboard.players;

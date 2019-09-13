@@ -105,7 +105,7 @@ public class AttackScript : MonoBehaviour
     GameObject heldObject = null;
     public bool isHoldingObject { get { return heldObject != null; } }
 
-    Rigidbody rigidbody;
+    new Rigidbody rigidbody;
     
 
     string[] animationTriggerStrings =
@@ -417,10 +417,12 @@ public class AttackScript : MonoBehaviour
             {
                 bool isHeld = false;
                 foreach (GameObject child in heldObjects)
-                    if (!firstHit.collider.gameObject.Equals(child)) // checks if the object isn't already held by someone else
+                    if (firstHit.collider.gameObject.Equals(child)) // checks if the object isn't already held by someone else
+                    {
                         isHeld = true;
+                    }
 
-                if (isHeld)
+                if (!isHeld)
                 {
                     heldObject = firstHit.collider.gameObject;
                     heldObjects.Add(heldObject);
@@ -439,9 +441,11 @@ public class AttackScript : MonoBehaviour
                 {
                     bool isHeld = false;
                     foreach (GameObject child in heldObjects)
-                        if (!firstHit.collider.gameObject.Equals(child))
+                        if (firstHit.collider.gameObject.Equals(child))
+                        {
                             isHeld = true;
-                    if (isHeld)
+                        }
+                    if (!isHeld)
                     {
                         heldObject = hit.collider.gameObject;
                         heldObjects.Add(heldObject);
@@ -462,6 +466,7 @@ public class AttackScript : MonoBehaviour
     {
         if (heldObject != null)
         {
+            
             if (heldObject.CompareTag("Player"))
             {
                 heldObject.GetComponent<Animator>().SetTrigger("Thrown");
@@ -469,7 +474,6 @@ public class AttackScript : MonoBehaviour
             }
             Rigidbody other = heldObject.GetComponent<Rigidbody>();
             other.isKinematic = false;
-            Debug.Log(other.isKinematic);
             other.AddForce((transform.forward + transform.up).normalized * throwForce);
             heldObjects.Remove(heldObject);
             heldObject = null;

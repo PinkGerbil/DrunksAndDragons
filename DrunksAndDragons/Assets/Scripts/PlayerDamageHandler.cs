@@ -8,7 +8,7 @@ public class PlayerDamageHandler : MonoBehaviour
 {
     [SerializeField]
     public Animator animator;
-    [SerializeField] Rigidbody rigidbody;
+    [SerializeField] new Rigidbody rigidbody;
     [SerializeField] AttackScript attackScript;
     [SerializeField]
     [Tooltip("HealthPanel should be a panel in the UI with a horizontal fill method")]
@@ -48,6 +48,8 @@ public class PlayerDamageHandler : MonoBehaviour
     float respawnTime = 5;
     float respawnCountdown = 0;
 
+    Vector3 heldVelocity = Vector3.zero;
+
     void Start()
     {
         if (!animator)
@@ -69,9 +71,39 @@ public class PlayerDamageHandler : MonoBehaviour
        
     }
 
+    void FixedUpdate()
+    {
+        int layerMask = 1 << LayerMask.NameToLayer("Floor");
+        if (!rigidbody.isKinematic)
+        {
+            if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 0.2f, layerMask))
+            {
+                rigidbody.isKinematic = true;
+                GetComponent<Collider>().isTrigger = false;
+                // set the player position to just above where the ray hit
+                Vector3 temp = hit.point;
+                //temp.y += 1;
+                transform.position = temp;
+            }
+            Debug.Log(rigidbody.velocity);
+            Vector3 nextPos = transform.position + rigidbody.velocity * Time.deltaTime;
+
+            if (GetComponent<PlayerMoveScript>().CheckInDirection(nextPos))
+            {
+                heldVelocity = rigidbody.velocity;
+                rigidbody.velocity = Vector3.zero;
+            }
+        }
+
+    }
+
     void Update()
     {
-
+        if (heldVelocity != Vector3.zero)
+        {
+            rigidbody.velocity = heldVelocity;
+            heldVelocity = Vector3.zero;
+        }
         if (knockbackCountdown > 0)
         {
             PlayerMoveScript temp = GetComponent<PlayerMoveScript>();
@@ -91,25 +123,6 @@ public class PlayerDamageHandler : MonoBehaviour
             if (IFrameTime < 0) IFrameTime = 0;
         }
 
-        int layerMask = 1 << LayerMask.NameToLayer("Environment");
-        if (!rigidbody.isKinematic)
-        {
-            if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 0.2f, layerMask))
-            {
-                if (hit.collider.CompareTag("Environment"))
-                {
-                    rigidbody.isKinematic = true;
-                    GetComponent<Collider>().isTrigger = false;
-                    // set the player position to just above where the ray hit
-                    Vector3 temp = hit.point;
-                    //temp.y += 1;
-                    transform.position = temp;
-                }
-            }
-            Vector3 nextPos = transform.position + rigidbody.velocity * Time.deltaTime;
-            
-            GetComponent<PlayerMoveScript>().CheckInDirection(nextPos);
-        }
 
         if(HealthPanel != null && Alive)
             HealthPanel.fillAmount = (1.0f / maxHealth) * health;

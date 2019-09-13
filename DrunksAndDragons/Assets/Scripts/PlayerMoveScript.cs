@@ -21,7 +21,7 @@ public class PlayerMoveScript : MonoBehaviour
 
     public float speedMod = 1;
 
-    Rigidbody rigidbody;
+    new Rigidbody rigidbody;
 
     [SerializeField]
     Animator animator;
@@ -88,7 +88,7 @@ public class PlayerMoveScript : MonoBehaviour
         Vector3 origin = TopPoint.transform.position + (-transform.right * playerRadius) + (transform.forward * playerRadius);
         Vector3 highest = Vector3.zero;
 
-        int layerMask = 1 << LayerMask.NameToLayer("Environment");
+        int layerMask = 1 << LayerMask.NameToLayer("Floor");
         for (int i = 0; i < 3; i++)
         {
             if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, Mathf.Infinity, layerMask))
@@ -143,8 +143,8 @@ public class PlayerMoveScript : MonoBehaviour
     /// <returns> true if the player will collide with something </returns>
     public bool CheckInDirection(Vector3 nextPos)
     {
-        Vector3 origin = nextPos;
-        origin.y = TopPoint.transform.position.y;
+        Vector3 origin = transform.position;
+        //origin.y = TopPoint.transform.position.y;
         Vector3 hitDir = Vector3.Normalize(nextPos - transform.position);
 
         // direction perpendicular to hitDir
