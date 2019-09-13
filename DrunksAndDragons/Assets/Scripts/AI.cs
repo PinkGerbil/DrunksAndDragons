@@ -216,6 +216,10 @@ public class AI : MonoBehaviour
             }
             if(channeling)
             {
+                if(isDead)
+                {
+                    channeling = false;
+                }
                 channelTimer -= Time.deltaTime;
                 if (channelTimer <= 0)
                 {
