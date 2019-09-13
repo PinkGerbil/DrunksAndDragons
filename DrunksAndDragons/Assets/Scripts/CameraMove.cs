@@ -20,15 +20,9 @@ public class CameraMove : MonoBehaviour
     public float PlayerScale = 1;
     
     [Header("Position Bounds")]
-    [Tooltip("Enable the fields below to be applied to the camera position.")]
+    [Tooltip("Enable the bounds limiting the camera's X and Z positions. (when disabled, x/zMinBounds and x/zMaxBounds do nothing)")]
     [SerializeField]
-    bool useBounds = false;
-    [SerializeField]
-    [Range(0, 40)]
-    float maxZoom = 20;
-    [SerializeField]
-    [Range(0, 40)]
-    float minZoom = 0;
+    bool usePositionBounds = true;
     [SerializeField]
     [Range(-10, 0)]
     float xMinBounds = -5;
@@ -41,6 +35,16 @@ public class CameraMove : MonoBehaviour
     [SerializeField]
     [Range(0, 20)]
     float zMaxBounds = 10;
+    [Header("Zoom Limit")]
+    [Tooltip("Enable the limiters for zooming. (when disabled, maxZoom and minZoom do nothing)")]
+    [SerializeField]
+    bool useZoomBounds = true;
+    [SerializeField]
+    [Range(0, 40)]
+    float maxZoom = 20;
+    [SerializeField]
+    [Range(0, 40)]
+    float minZoom = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +55,12 @@ public class CameraMove : MonoBehaviour
             blackboard = GameObject.Find("Game Manager").GetComponent<Blackboard>();
 
         players = blackboard.players;
+
+        float avgScaleMag = 0;
+        foreach (GameObject child in players)
+            avgScaleMag += child.transform.localScale.magnitude;
+        avgScaleMag /= players.Count * 2;
+        Debug.Log(avgScaleMag);
     }
     
 
@@ -58,13 +68,16 @@ public class CameraMove : MonoBehaviour
     void Update()
     {
         if (players.Count == 0)
+        {
             players = blackboard.players;
+            Debug.Log("Shiet");
+        }
         else
         {
             nextPos = CalcCamPos();
             nextZoom = CalcCamZoom();
         }
-        if(useBounds)
+        if(usePositionBounds)
         {
             Vector3 temp = transform.localPosition;
             if (temp.x < xMinBounds)
@@ -108,7 +121,7 @@ public class CameraMove : MonoBehaviour
                     if (distance > temp)
                         temp = distance;
                 }
-        if(useBounds)
+        if(useZoomBounds)
             temp = Mathf.Clamp(temp, minZoom, maxZoom);
         return temp;
     }

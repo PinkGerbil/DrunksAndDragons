@@ -389,7 +389,7 @@ MonoBehaviour:
   isHit: 0
   isHitDir: {x: 0, y: 0, z: 0}
   knockbackTime: 0.2
-  knockbackForce: 25
+  knockbackForce: 10.03
   maxHealth: 6
   health: 0
   respawnTime: 5
@@ -405,14 +405,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2455fe521ec15a541a2f0b9e455e77ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWidth: 0.5
-  input: {fileID: 0}
-  playerMove: {fileID: 0}
-  points: {fileID: 0}
+  playerRadius: 0.5
   AttackPanel: {fileID: 0}
   animator: {fileID: 0}
   attackCooldownDuration: 1
   attackCooldown: 0
+  healthUp: {fileID: 3894575176415504023, guid: b5111a5bf7b612441817f60ad17ded75,
+    type: 3}
+  healthUpPrice: 0
+  speedUp: {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c, type: 3}
+  speedUpPrice: 0
+  food: {fileID: 2418003000894282240, guid: 7ba20cb9c2d45f64ca2870d0a2e9581e, type: 3}
+  foodPrice: 0
   sweepDuration: 0.4
   sweepRange: 2
   sweepWidth: 180
@@ -428,14 +432,6 @@ MonoBehaviour:
   grabRange: 1.5
   grabWidth: 45
   throwForce: 500
-  heldObject: {fileID: 0}
-  healthUp: {fileID: 3894575176415504023, guid: b5111a5bf7b612441817f60ad17ded75,
-    type: 3}
-  healthUpPrice: 0
-  speedUp: {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c, type: 3}
-  speedUpPrice: 0
-  food: {fileID: 2418003000894282240, guid: 7ba20cb9c2d45f64ca2870d0a2e9581e, type: 3}
-  foodPrice: 0
 --- !u!114 &2881682679395987099
 MonoBehaviour:
   m_ObjectHideFlags: 0

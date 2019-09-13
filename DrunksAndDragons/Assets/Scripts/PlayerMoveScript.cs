@@ -15,6 +15,7 @@ public class PlayerMoveScript : MonoBehaviour
     AttackScript attack;
 
     [SerializeField] 
+    [Tooltip("How fast the player moves")]
     [Range(1, 10)]
     float moveSpeed = 5;
 
@@ -24,7 +25,7 @@ public class PlayerMoveScript : MonoBehaviour
 
     [SerializeField]
     Animator animator;
-    [Tooltip("E.G. set how far in front of the player an object should be before a collision occurs")]
+    [Tooltip("Set how far in front of the player an object should be before a collision occurs")]
     [SerializeField]
     float playerRadius = 0.5f;
 
