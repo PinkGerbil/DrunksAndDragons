@@ -167,16 +167,17 @@ public class AttackScript : MonoBehaviour
                 lungeCountdown -= Time.deltaTime;
             else
             {
-                if (!playerMove.CheckInDirection(transform.position + lungeDir * 20 * Time.deltaTime))
+                Vector3 colnorm = playerMove.CheckInDirection(transform.position + lungeDir * 20 * Time.deltaTime);
+                if (colnorm == Vector3.zero)
                 {
                     transform.position += lungeDir * 20 * Time.deltaTime;
                     playerMove.checkGrounded();
-                    lungeCountdown -= Time.deltaTime;
                 }
                 else
                 {
-                    lungeCountdown = 0;
+                    transform.position += Vector3.ProjectOnPlane(lungeDir * 20 * Time.deltaTime, colnorm);
                 }
+                lungeCountdown -= Time.deltaTime;
                 checkLungeCollision();
                 if (lungeCountdown <= 0)
                 {

@@ -63,13 +63,17 @@ public class PlayerMoveScript : MonoBehaviour
             Vector3 aimDir = moveDir;
             float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
-            if (!CheckInDirection(transform.position + transform.forward * moveSpeed * speedMod * Time.deltaTime))
+            Vector3 collisionNormal = CheckInDirection(transform.position + transform.forward * moveSpeed * speedMod * Time.deltaTime);
+            if (collisionNormal == Vector3.zero)
             {
                 transform.position += transform.forward * moveSpeed * speedMod * Time.deltaTime;
                 checkGrounded();
                 isMoving = true;
             }
-
+            else
+            {
+                transform.position += Vector3.ProjectOnPlane(transform.forward * moveSpeed * speedMod * Time.deltaTime, collisionNormal);
+            }   
         }
         else if (isMoving)
         {
@@ -140,8 +144,8 @@ public class PlayerMoveScript : MonoBehaviour
     /// check if the player will collide with anything after moving, and perform a restitution in advance if necessary
     /// </summary>
     /// <param name="nextPos"> the position the player will be in after force is applied </param>
-    /// <returns> true if the player will collide with something </returns>
-    public bool CheckInDirection(Vector3 nextPos)
+    /// <returns> returns a collision normal if a ray hits a wall </returns>
+    public Vector3 CheckInDirection(Vector3 nextPos)
     {
         Vector3 origin = transform.position;
         //origin.y = TopPoint.transform.position.y;
@@ -167,17 +171,30 @@ public class PlayerMoveScript : MonoBehaviour
 
         if(closest.collider != null)
         {
-            Vector3 projectPlane = Vector3.Normalize(closest.normal);
-            Vector3 movement = nextPos - transform.position;
-            movement = Vector3.ProjectOnPlane(movement, projectPlane);
-            if (!CheckInDirection(transform.position + movement))
+            //Vector3 projectPlane = Vector3.Normalize(closest.normal);
+            //Vector3 movement = nextPos - transform.position;
+            //movement = Vector3.ProjectOnPlane(movement, projectPlane);
+            //if (!CheckInDirection(transform.position + movement))
+            //{
+            //    transform.position += movement;
+            //}
+            Vector3 colNorm = CheckInDirection(transform.position + Vector3.ProjectOnPlane(nextPos - transform.position, closest.normal));
+            Vector3 temp = colNorm;
+
+            while(temp != Vector3.zero)
             {
-                transform.position += movement;
+                temp = CheckInDirection(transform.position + Vector3.ProjectOnPlane(nextPos - transform.position, temp));
+                if (temp != Vector3.zero)
+                    colNorm = temp;
             }
-            return true;
+
+            if (temp != Vector3.zero)
+                return temp;
+
+            return closest.normal;
         }
         else
-            return false;
+            return Vector3.zero;
     }
 
 }

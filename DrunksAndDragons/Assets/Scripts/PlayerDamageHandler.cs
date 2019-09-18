@@ -88,10 +88,11 @@ public class PlayerDamageHandler : MonoBehaviour
             Debug.Log(rigidbody.velocity);
             Vector3 nextPos = transform.position + rigidbody.velocity * Time.deltaTime;
 
-            if (GetComponent<PlayerMoveScript>().CheckInDirection(nextPos))
+            Vector3 colNorm = GetComponent<PlayerMoveScript>().CheckInDirection(nextPos);
+            if (colNorm != Vector3.zero)
             {
-                heldVelocity = rigidbody.velocity;
-                rigidbody.velocity = Vector3.zero;
+                //heldVelocity = rigidbody.velocity;
+                rigidbody.velocity = Vector3.ProjectOnPlane(rigidbody.velocity, colNorm);
             }
         }
 
@@ -108,10 +109,15 @@ public class PlayerDamageHandler : MonoBehaviour
         {
             PlayerMoveScript temp = GetComponent<PlayerMoveScript>();
             knockbackCountdown -= Time.deltaTime;
-            if (!temp.CheckInDirection(transform.position + knockbackSpeed * isHitDir.normalized * Time.deltaTime))
+            Vector3 colNorm = temp.CheckInDirection(transform.position + knockbackSpeed * isHitDir.normalized * Time.deltaTime);
+            if (colNorm == Vector3.zero)
             {
                 transform.position += knockbackSpeed * isHitDir.normalized * Time.deltaTime;
                 temp.checkGrounded();
+            }
+            else
+            {
+                transform.position += Vector3.ProjectOnPlane(knockbackSpeed * isHitDir.normalized * Time.deltaTime, colNorm);
             }
         }
         else if (IFrameTime > 0)
