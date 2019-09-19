@@ -198,7 +198,7 @@ public class AttackScript : MonoBehaviour
             setCooldownGauge();
             float objectHeight;
             if (heldObject.CompareTag("Player"))
-                objectHeight = 0;
+                objectHeight = transform.Find("TopPoint").position.y;
             else
                 objectHeight = heldObject.transform.localScale.y * 0.5f;
             heldObject.transform.SetPositionAndRotation(transform.Find("TopPoint").position + new Vector3(0, objectHeight, 0), transform.Find("TopPoint").rotation);
