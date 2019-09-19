@@ -50,19 +50,27 @@ public class AI : MonoBehaviour
     [Header("Boss")]
     public GameObject boss;
     [Header("aoe attack")]
+    public bool aoeOn;
     public GameObject aoeAttack;
     public float aoeCooldownMin;
     public float aoeCooldownMax;
 
     private float aoeCooldown;
 
+    [Header("damaging trail")]
+    public bool trailOn;
+    public float trailCooldown;
+    private float trailCD;
+
     [Header("(not finished does nothing yet) knockback attack")]
     [Tooltip("how big the knockback will be")]
+    public bool knockbackOn;
     public float knockbackAttackRange;
     private int withinRange;
     public float knockbackAttackCooldown;
     private float knockbackAttackCD;
     [Header("healing ability")]
+    public bool healingOn;
     [Tooltip("how long the boss channels the heal for")]
     public float channelDuration;
     private float channelTimer;
@@ -128,7 +136,10 @@ public class AI : MonoBehaviour
         }
         else
         {
-            renderer.material.color = Color.white;
+            if (this.name != "Boss(Clone)")
+            {
+                renderer.material.color = Color.white;
+            }
             if (!isDead)
             {
                 if (agent.enabled)
@@ -197,20 +208,25 @@ public class AI : MonoBehaviour
                 coroutineRunning = false;
             }
             //picks a random player and puts a damaging aoe at their feet and does damage every set amount of time in aoe.cs
-            if (aoeCooldown <= 0 && !isDead)
+            if (aoeCooldown <= 0 && !isDead && aoeOn)
             {
                 AoEAttack();
                 aoeCooldown = Random.Range(aoeCooldownMin, aoeCooldownMax);
             }
+            if(trailCD <= 0 && !isDead && trailOn)
+            {
+                bossTrailAttack();
+                trailCD = trailCooldown;
+            }
             //wip knockback attack that when multiple players are close to the boss he will knock them back
             KnockbackAttackCheck();
-            if(withinRange >= 2 && knockbackAttackCD <= 0)
+            if(withinRange >= 2 && knockbackAttackCD <= 0 && knockbackOn)
             {
                 KnockbackAttack();
                 knockbackAttackCD = knockbackAttackCooldown;
             }
             //when the boss is at half health or less he will start channeling that will call all basic ai to him where they will die to heal him
-            if(health <= maxHealth/2 && channelTimer > 0 && !isDead)
+            if(health <= maxHealth/2 && channelTimer > 0 && !isDead && healingOn)
             {
                 channeling = true;
             }
@@ -229,6 +245,7 @@ public class AI : MonoBehaviour
 
             withinRange = 0;
             aoeCooldown -= Time.deltaTime;
+            trailCD -= Time.deltaTime;
             knockbackAttackCD -= Time.deltaTime;
         }
 
@@ -335,6 +352,11 @@ public class AI : MonoBehaviour
         }
         int playerNum = Random.Range(0, maxNum);
         Instantiate(aoeAttack, players[playerNum].transform.position, this.transform.rotation);
+    }
+
+    void bossTrailAttack()
+    {
+        Instantiate(aoeAttack, this.transform.position - new Vector3(0,1.1f,0), this.transform.rotation);
     }
 
     //checks to see how many players are within a set range

@@ -265,7 +265,10 @@ public class AttackScript : MonoBehaviour
                     }
                 if(!wasHit)
                 {
-                    hit.collider.GetComponent<AI>().takeDamage(punchDamage);
+                    if (!hit.collider.gameObject.GetComponent<AI>().channeling)
+                    {
+                        hit.collider.GetComponent<AI>().takeDamage(punchDamage);
+                    }
                     if(hit.collider.gameObject.GetComponent<AI>().isDead)
                     {
                         points.gainKills();
@@ -300,11 +303,14 @@ public class AttackScript : MonoBehaviour
             if (hit.collider.CompareTag("Enemy"))
             {
                     hit.collider.enabled = false;
+                if (!hit.collider.gameObject.GetComponent<AI>().channeling)
+                {
                     hit.collider.gameObject.GetComponent<AI>().takeDamage(sweepDamage);
-                    if (hit.collider.gameObject.GetComponent<AI>().isDead)
-                    {
-                        points.gainKills();
-                    }
+                }
+                if (hit.collider.gameObject.GetComponent<AI>().isDead)
+                {
+                    points.gainKills();
+                }
                     //hit.collider.gameObject.GetComponent<AI>().timeAIInvulnurable++;
             }
             hit.collider.enabled = true;
@@ -336,7 +342,10 @@ public class AttackScript : MonoBehaviour
                 if(!wasHit)
                 {
                     hit.collider.enabled = false;
-                    hit.collider.gameObject.GetComponent<AI>().takeDamage(lungeDamage);
+                    if (!hit.collider.gameObject.GetComponent<AI>().channeling)
+                    {
+                        hit.collider.gameObject.GetComponent<AI>().takeDamage(lungeDamage);
+                    }
                     if (hit.collider.gameObject.GetComponent<AI>().isDead)
                         points.gainKills();
                     hit.collider.enabled = true;
