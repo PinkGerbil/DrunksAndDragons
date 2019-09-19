@@ -324,6 +324,19 @@ public class AI : MonoBehaviour
         }
     }
 
+    public void takeDamage(int damage, Vector3 dir)
+    {
+        AIHitDir = dir;
+        renderer.material.color = Color.red;
+        health -= damage;
+        stunTime = stunPeriod;
+        knockbackTime = knockbackPeriod;
+        if (health <= 0)
+        {
+            isDead = true;
+        }
+    }
+
     public void heal(int healingAmount)
     {
         health += healAmount;

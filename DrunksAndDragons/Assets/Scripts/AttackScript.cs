@@ -480,6 +480,10 @@ public class AttackScript : MonoBehaviour
                 heldObject.GetComponent<Animator>().SetTrigger("Thrown");
                 heldObject.GetComponent<Collider>().isTrigger = true;
             }
+            else
+            {
+                heldObject.GetComponent<ThrowableObject>().wasThrown = true;
+            }
             Rigidbody other = heldObject.GetComponent<Rigidbody>();
             other.isKinematic = false;
             other.AddForce((transform.forward + transform.up).normalized * throwForce);
