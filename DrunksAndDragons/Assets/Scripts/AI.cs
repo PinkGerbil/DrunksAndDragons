@@ -133,8 +133,11 @@ public class AI : MonoBehaviour
         {
             if (!isDead)
             {
-                if (!agent.isStopped)
-                    agent.isStopped = true;
+                if (agent.enabled)
+                {
+                    if (!agent.isStopped)
+                        agent.isStopped = true;
+                }
             }
             if (knockbackTime > 0)
             {

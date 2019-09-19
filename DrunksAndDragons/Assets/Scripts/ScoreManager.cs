@@ -71,12 +71,12 @@ public class ScoreManager : MonoBehaviour
             {
                 GameOverPoints();
             }
-            else if(gameEndTimer > 0)
-            {
-                gameEndTimer -= Time.unscaledDeltaTime;
-                
-            }
-            else
+            //else if(gameEndTimer > 0)
+            //{
+            //    gameEndTimer -= Time.unscaledDeltaTime;
+            //    
+            //}
+            if (XboxCtrlrInput.XCI.GetButtonDown(XboxCtrlrInput.XboxButton.A, XboxCtrlrInput.XboxController.All) || Input.GetKey(KeyCode.Backspace))
             {
                 Time.timeScale = 1;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
