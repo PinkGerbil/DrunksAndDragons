@@ -13,6 +13,7 @@ public class PlayerDamageHandler : MonoBehaviour
     [SerializeField]
     [Tooltip("HealthPanel should be a panel in the UI with a horizontal fill method")]
     public Image HealthPanel;
+    public GameObject Player_Icon;
 
     public bool Invincible { get { return !(IFrameTime <= 0 && !attackScript.IsAttacking && rigidbody.isKinematic); } }
     public bool Alive { get { return health > 0; } }
@@ -135,6 +136,8 @@ public class PlayerDamageHandler : MonoBehaviour
             respawnCountdown = respawnTime;
             transform.Find("group1").GetComponent<SkinnedMeshRenderer>().enabled = false;
             transform.Find("polySurface3").GetComponent<SkinnedMeshRenderer>().enabled = false;
+            Player_Icon.GetComponent<SpriteRenderer>().enabled = false; 
+            GetComponent<PlayerMoveScript>().enabled = false; 
             //GetComponent<CapsuleCollider>().enabled = false;
             //delete the following line when proper model is added
         }
@@ -148,6 +151,8 @@ public class PlayerDamageHandler : MonoBehaviour
                 health = maxHealth;
                 transform.Find("group1").GetComponent<SkinnedMeshRenderer>().enabled = true;
                 transform.Find("polySurface3").GetComponent<SkinnedMeshRenderer>().enabled = true;
+                Player_Icon.GetComponent<SpriteRenderer>().enabled = true;
+                GetComponent<PlayerMoveScript>().enabled = true;
                 transform.position = spawnLocation;
                 //delete the following line when proper model is added
             }
