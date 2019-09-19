@@ -149,6 +149,8 @@ public class AI : MonoBehaviour
             {
                 renderer.material.color = Color.white;
             }
+            else
+                renderer.material.color = Color.green;
             if (!isDead)
             {
                 if (agent.enabled)
