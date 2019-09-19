@@ -87,6 +87,7 @@ public class AttackScript : MonoBehaviour
     [Range(0, 10)]
     public float comboGracePeriod = 0.5f;
     float comboGraceCountdown = 0;
+    bool punchQueued = false;
 
     [Header("Grab/Throw")]
     [Tooltip("How far away the player can grab another player from")]
@@ -359,14 +360,12 @@ public class AttackScript : MonoBehaviour
     
     public void PunchAttack()
     {
-        if(punchCountdown <= punchTime * 0.75f)
+        if(punchCountdown <= punchTime * 0.25f)
         {
             punchCountdown = punchTime;
             playerMove.speedMod = 0;
             if (animator != null)
             {
-                if (animator.GetCurrentAnimatorStateInfo(0).IsName(animationTriggerStrings[curPunchAnim]))
-                    Debug.Log("punch animation already playing");
                 animator.SetTrigger(animationTriggerStrings[curPunchAnim++]);
                 
                 if (curPunchAnim == animationTriggerStrings.Length)
