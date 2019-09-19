@@ -153,7 +153,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9ebd9ecbc60a04a4181272ad9abbb6bf, type: 2}
+  - {fileID: 2100000, guid: 1fd72d939bdae854295b48421dd84058, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -250,8 +250,8 @@ MonoBehaviour:
   channeling: 0
   healRange: 0
   healAmount: 2
-  coinDropAmount: 500
-  timeBetweenCoinSpawns: 0.05
+  coinDropAmount: 300
+  timeBetweenCoinSpawns: 0.001
 --- !u!1001 &3802185958817768721
 PrefabInstance:
   m_ObjectHideFlags: 0

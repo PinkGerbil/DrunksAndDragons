@@ -104,5 +104,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb56c42d06bae8c498bb6a64ebb703b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aoeDuration: 5
+  aoeDuration: 10
   timeBetweenHits: 1

@@ -380,7 +380,7 @@ public class AI : MonoBehaviour
 
     void bossTrailAttack()
     {
-        Instantiate(aoeAttack, this.transform.position - new Vector3(0,1.1f,0), this.transform.rotation);
+        Instantiate(aoeAttack, this.transform.position - new Vector3(0,1.25f,0), this.transform.rotation);
     }
 
     //checks to see how many players are within a set range
