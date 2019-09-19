@@ -93,7 +93,6 @@ public class PlayerMoveScript : MonoBehaviour
         {
             if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, Mathf.Infinity, layerMask))
             {
-                Debug.DrawLine(origin, origin + Vector3.down * yOffset);
                 Vector3 temp = hit.point;
                 temp.y = TopPoint.transform.position.y;
                 float distance = Vector3.Distance(temp, hit.point);
@@ -153,9 +152,10 @@ public class PlayerMoveScript : MonoBehaviour
         RaycastHit closest = new RaycastHit(); // this variable will be used to store the closest RaycastHit from the following loop
 
         int originDirOffset = 1; // used to control the direction of the origin offset occurring at the end of each for loop iteration
-        int layerMask = 1 << LayerMask.NameToLayer("Environment");
+        int layerMask = 1 << (LayerMask.NameToLayer("Environment") | LayerMask.NameToLayer("Floor"));
         for (int i = 0; i < 3; i++)
         {
+            Debug.DrawRay(origin, hitDir);
             if (Physics.Raycast(origin, hitDir, out RaycastHit hit, playerRadius, layerMask))
             {
                 if (closest.collider == null || hit.distance < closest.distance)
