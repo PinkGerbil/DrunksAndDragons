@@ -28,7 +28,7 @@ public class ThrowableObject : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
-        if(wasThrown && rigidbody.velocity == Vector3.zero)
+        else if(wasThrown && rigidbody.velocity == Vector3.zero)
         {
             rigidbody.isKinematic = true;
             wasThrown = false;
