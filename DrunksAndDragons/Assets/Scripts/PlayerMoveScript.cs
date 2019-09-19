@@ -173,6 +173,7 @@ public class PlayerMoveScript : MonoBehaviour
             if (!CheckInDirection(transform.position + movement))
             {
                 transform.position += movement;
+                checkGrounded();
             }
             return true;
         }
