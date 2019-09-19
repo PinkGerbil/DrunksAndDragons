@@ -152,7 +152,7 @@ public class PlayerMoveScript : MonoBehaviour
         RaycastHit closest = new RaycastHit(); // this variable will be used to store the closest RaycastHit from the following loop
 
         int originDirOffset = 1; // used to control the direction of the origin offset occurring at the end of each for loop iteration
-        int layerMask = 1 << (LayerMask.NameToLayer("Environment") | LayerMask.NameToLayer("Floor"));
+        int layerMask = 1 << LayerMask.NameToLayer("Environment");
         for (int i = 0; i < 3; i++)
         {
             Debug.DrawRay(origin, hitDir);
