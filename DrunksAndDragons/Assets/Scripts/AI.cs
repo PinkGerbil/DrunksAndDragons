@@ -49,27 +49,36 @@ public class AI : MonoBehaviour
     //boss stuff
     [Header("Boss")]
     public GameObject boss;
+
+    //aoe attack
     [Header("aoe attack")]
+    [Tooltip("allows the boss to do this action or not")]
     public bool aoeOn;
     public GameObject aoeAttack;
     public float aoeCooldownMin;
     public float aoeCooldownMax;
-
     private float aoeCooldown;
 
+    //a damaging trail 
     [Header("damaging trail")]
+    [Tooltip("allows the boss to do this action or not")]
     public bool trailOn;
     public float trailCooldown;
     private float trailCD;
 
+    //knockback attack
     [Header("(not finished does nothing yet) knockback attack")]
-    [Tooltip("how big the knockback will be")]
+    [Tooltip("allows the boss to do this action or not")]
     public bool knockbackOn;
+    [Tooltip("how big the knockback will be")]
     public float knockbackAttackRange;
     private int withinRange;
     public float knockbackAttackCooldown;
     private float knockbackAttackCD;
+
+    //healing ability
     [Header("healing ability")]
+    [Tooltip("allows the boss to do this action or not")]
     public bool healingOn;
     [Tooltip("how long the boss channels the heal for")]
     public float channelDuration;
