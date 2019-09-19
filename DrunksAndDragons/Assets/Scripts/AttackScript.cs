@@ -203,7 +203,7 @@ public class AttackScript : MonoBehaviour
             heldObject.transform.SetPositionAndRotation(transform.Find("TopPoint").position + new Vector3(0, objectHeight, 0), transform.Find("TopPoint").rotation);
 
         }
-        if (rigidbody.isKinematic)
+        if (rigidbody.isKinematic && !GetComponent<PlayerDamageHandler>().isKnockedBack)
         {
             if (input.GetPunchPressed && !heldObject)
             {

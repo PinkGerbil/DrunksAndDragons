@@ -97,6 +97,8 @@ public class PlayerDamageHandler : MonoBehaviour
 
     }
 
+    public bool isKnockedBack { get { return knockbackCountdown > 0; } }
+
     void Update()
     {
         if (heldVelocity != Vector3.zero)
@@ -164,6 +166,8 @@ public class PlayerDamageHandler : MonoBehaviour
     /// </summary>
     void getHit()
     {
+        if (animator != null)
+            animator.SetTrigger("WasHit");
         isHitDir.Normalize();
         isHitDir.y = 0;
         knockbackCountdown = knockbackTime;
