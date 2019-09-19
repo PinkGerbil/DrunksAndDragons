@@ -482,7 +482,7 @@ public class AttackScript : MonoBehaviour
             }
             else
             {
-                heldObject.GetComponent<ThrowableObject>().wasThrown = true;
+                heldObject.GetComponent<ThrowableObject>().setThrown();
             }
             Rigidbody other = heldObject.GetComponent<Rigidbody>();
             other.isKinematic = false;

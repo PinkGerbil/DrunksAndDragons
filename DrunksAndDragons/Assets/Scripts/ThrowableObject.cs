@@ -14,6 +14,9 @@ public class ThrowableObject : MonoBehaviour
 
     Rigidbody rigidbody;
 
+    float maxTimer = 1;
+    float timer = 0;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -21,6 +24,10 @@ public class ThrowableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
         if(wasThrown && rigidbody.velocity == Vector3.zero)
         {
             rigidbody.isKinematic = true;
@@ -36,5 +43,10 @@ public class ThrowableObject : MonoBehaviour
             hitDir.y = 0;
             collision.collider.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
         }
+    }
+    public void setThrown()
+    {
+        timer = maxTimer;
+        wasThrown = true;
     }
 }
