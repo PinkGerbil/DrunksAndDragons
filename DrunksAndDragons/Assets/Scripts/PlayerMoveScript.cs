@@ -19,7 +19,14 @@ public class PlayerMoveScript : MonoBehaviour
     [Range(1, 10)]
     float moveSpeed = 5;
 
-    public float speedMod = 1;
+    /// <summary>
+    /// A speed modifier that reduces player speed when the player is carrying another player
+    /// </summary>
+    public float carrySpeedMod = 1;
+    /// <summary>
+    /// A speed Modifier that increases the player speed after the player consumes food or drink
+    /// </summary>
+    public float consumableSpeedMod = 1;
 
     new Rigidbody rigidbody;
 
@@ -37,6 +44,12 @@ public class PlayerMoveScript : MonoBehaviour
     GameObject TopPoint;
 
     float yOffset { get { return TopPoint.transform.position.y - transform.position.y;} }
+
+    /// <summary>
+    /// Returns the position the player will be in if they walk forward this frame. (carrySpeedMod should be applied before consumableSpeedMod)
+    /// </summary>
+    Vector3 nextPosition { get { return transform.position + transform.forward * moveSpeed * carrySpeedMod * consumableSpeedMod * Time.deltaTime; } }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -58,14 +71,14 @@ public class PlayerMoveScript : MonoBehaviour
     void Update()
     {
         Vector3 moveDir = input.GetMoveDir;
-        if (moveDir != Vector3.zero && rigidbody.isKinematic && speedMod > 0)
+        if (moveDir != Vector3.zero && rigidbody.isKinematic && carrySpeedMod > 0 && consumableSpeedMod > 0)
         {
             Vector3 aimDir = moveDir;
             float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
-            if (!CheckInDirection(transform.position + transform.forward * moveSpeed * speedMod * Time.deltaTime))
+            if (!CheckInDirection(nextPosition))
             {
-                transform.position += transform.forward * moveSpeed * speedMod * Time.deltaTime;
+                transform.position += nextPosition;
                 checkGrounded();
                 isMoving = true;
             }

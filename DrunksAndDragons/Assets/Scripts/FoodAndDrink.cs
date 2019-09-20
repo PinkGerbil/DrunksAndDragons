@@ -98,11 +98,11 @@ public class FoodAndDrink : MonoBehaviour
         GinAndSonicTimer = 0;
         if(SpeedModOriginal == 0)
         {
-            SpeedModOriginal = player.GetComponent<PlayerMoveScript>().speedMod;
+            SpeedModOriginal = player.GetComponent<PlayerMoveScript>().consumableSpeedMod;
         }
         if (GinAndSonic == false)
         {
-            player.GetComponent<PlayerMoveScript>().speedMod *= SpeedBoost;
+            player.GetComponent<PlayerMoveScript>().consumableSpeedMod *= SpeedBoost;
             GinAndSonic = true;
         }
     }
@@ -114,7 +114,7 @@ public class FoodAndDrink : MonoBehaviour
     public void DeactivateSpeedBoost(GameObject player)
     {
         GinAndSonic = false;
-        player.GetComponent<PlayerMoveScript>().speedMod = SpeedModOriginal;
+        player.GetComponent<PlayerMoveScript>().consumableSpeedMod = SpeedModOriginal;
     }
 
     /// <summary>

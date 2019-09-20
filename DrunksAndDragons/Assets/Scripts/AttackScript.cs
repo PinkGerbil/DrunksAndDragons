@@ -152,7 +152,7 @@ public class AttackScript : MonoBehaviour
             punchCountdown -= Time.deltaTime;
             checkPunch();
             if (punchCountdown <= 0)
-                playerMove.speedMod = 1;
+                playerMove.carrySpeedMod = 1;
             else if(punchCountdown <= punchTime * 0.5f)
                 comboGraceCountdown = comboGracePeriod;
         }
@@ -182,7 +182,7 @@ public class AttackScript : MonoBehaviour
                 if (lungeCountdown <= 0)
                 {
                     hitEnemies.Clear();
-                    playerMove.speedMod = 1;
+                    playerMove.carrySpeedMod = 1;
                 }
             }
         }
@@ -224,8 +224,9 @@ public class AttackScript : MonoBehaviour
                     GrabObject();
                     if (heldObject != null)
                     {
-                        playerMove.speedMod = 0.25f;
-                        if(!heldObject.CompareTag("Player"))
+                        if (heldObject.CompareTag("Player"))
+                            playerMove.carrySpeedMod = 0.25f;
+                        else
                             heldObject.GetComponent<Rigidbody>().isKinematic = true;
                     }
                 }
@@ -363,7 +364,7 @@ public class AttackScript : MonoBehaviour
         if(punchCountdown <= punchTime * 0.25f)
         {
             punchCountdown = punchTime;
-            playerMove.speedMod = 0;
+            playerMove.carrySpeedMod = 0;
             if (animator != null)
             {
                 animator.SetTrigger(animationTriggerStrings[curPunchAnim++]);
@@ -404,7 +405,7 @@ public class AttackScript : MonoBehaviour
             attackCooldown = attackCooldownDuration;
             lungeDir = transform.forward;
 
-            playerMove.speedMod = 0;
+            playerMove.carrySpeedMod = 0;
             if (AttackPanel != null)
                 AttackPanel.fillAmount = 0;
         }
@@ -489,7 +490,7 @@ public class AttackScript : MonoBehaviour
             other.AddForce((transform.forward + transform.up).normalized * throwForce);
             heldObjects.Remove(heldObject);
             heldObject = null;
-            playerMove.speedMod = 1;
+            playerMove.carrySpeedMod = 1;
         }
     }
 

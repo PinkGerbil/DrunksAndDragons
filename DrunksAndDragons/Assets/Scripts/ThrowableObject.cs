@@ -34,6 +34,11 @@ public class ThrowableObject : MonoBehaviour
             wasThrown = false;
         }
     }
+    public void setThrown()
+    {
+        timer = maxTimer;
+        wasThrown = true;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -43,10 +48,5 @@ public class ThrowableObject : MonoBehaviour
             hitDir.y = 0;
             collision.collider.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
         }
-    }
-    public void setThrown()
-    {
-        timer = maxTimer;
-        wasThrown = true;
     }
 }
