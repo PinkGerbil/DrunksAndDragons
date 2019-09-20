@@ -196,12 +196,14 @@ public class AttackScript : MonoBehaviour
         {
             attackCooldown += 0.5f * Time.deltaTime;
             setCooldownGauge();
-            float objectHeight;
             if (heldObject.CompareTag("Player"))
-                objectHeight = transform.Find("TopPoint").position.y;
+                heldObject.transform.SetPositionAndRotation(transform.Find("TopPoint").position, transform.Find("TopPoint").rotation);
             else
+            {
+                float objectHeight;
                 objectHeight = heldObject.transform.localScale.y * 0.5f;
-            heldObject.transform.SetPositionAndRotation(transform.Find("TopPoint").position + new Vector3(0, objectHeight, 0), transform.Find("TopPoint").rotation);
+                heldObject.transform.SetPositionAndRotation(transform.Find("TopPoint").position + new Vector3(0, objectHeight, 0), transform.Find("TopPoint").rotation);
+            }
 
         }
         if (rigidbody.isKinematic && !GetComponent<PlayerDamageHandler>().isKnockedBack)

@@ -78,7 +78,7 @@ public class PlayerMoveScript : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
             if (!CheckInDirection(nextPosition))
             {
-                transform.position += nextPosition;
+                transform.position = nextPosition;
                 checkGrounded();
                 isMoving = true;
             }

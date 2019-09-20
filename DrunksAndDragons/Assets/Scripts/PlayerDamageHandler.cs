@@ -91,8 +91,10 @@ public class PlayerDamageHandler : MonoBehaviour
 
             if (GetComponent<PlayerMoveScript>().CheckInDirection(nextPos))
             {
+                float temp = rigidbody.velocity.y;
                 heldVelocity = rigidbody.velocity;
-                rigidbody.velocity = Vector3.zero;
+                //rigidbody.velocity = Vector3.zero;
+                rigidbody.velocity.Set(0, temp, 0);
             }
         }
 
