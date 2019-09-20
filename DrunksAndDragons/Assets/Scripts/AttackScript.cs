@@ -25,12 +25,12 @@ public class AttackScript : MonoBehaviour
 
     public bool IsAttacking { get { return !(sweepCountdown <= 0 && lungeCountdown <= 0); } }
 
-    // consider having multiple attackCooldownDurations depending on what attack was used
-    [Tooltip("The length of the cooldown some attacks have (currently only throw)")]
+    
+    [Tooltip("How Long the player can carry objects or other players for")]
     [Range(0, 5)]
-    public float attackCooldownDuration = 1.0f;
+    public float MaxCarryStamina = 1.0f;
     [HideInInspector]
-    public float attackCooldown = 0;
+    public float carryStamina = 0;
 
     [Header("Pickups & Produce")]
     public GameObject healthUp;
@@ -186,18 +186,15 @@ public class AttackScript : MonoBehaviour
                 }
             }
         }
-        else if(attackCooldown > 0 && !heldObject)
-        {
-            attackCooldown -= Time.deltaTime;
-            setCooldownGauge();
-        }
 
         if (heldObject != null)
         {
-            attackCooldown += 0.5f * Time.deltaTime;
-            setCooldownGauge();
+
             if (heldObject.CompareTag("Player"))
+            {
+                carryStamina -= Time.deltaTime;
                 heldObject.transform.SetPositionAndRotation(transform.Find("TopPoint").position, transform.Find("TopPoint").rotation);
+            }
             else
             {
                 float objectHeight;
@@ -226,6 +223,7 @@ public class AttackScript : MonoBehaviour
                     GrabObject();
                     if (heldObject != null)
                     {
+                        carryStamina = MaxCarryStamina;
                         if (heldObject.CompareTag("Player"))
                             playerMove.carrySpeedMod = 0.25f;
                         else
@@ -243,7 +241,7 @@ public class AttackScript : MonoBehaviour
 
 
 
-        if (attackCooldown >= 1 && heldObject != null)
+        if (carryStamina <= 0 && heldObject != null)
             dropHeldObject();
     }
 
@@ -377,34 +375,18 @@ public class AttackScript : MonoBehaviour
 
         }
     }
-
-    /// <summary>
-    /// Start the sweep attack by starting the sweepCountdown and attackCooldown
-    /// </summary>
-    public void SweepAttack()
-    {
-        if (attackCooldown <= 0)
-        {
-            sweepCountdown = sweepDuration;
-            attackCooldown = attackCooldownDuration;
-            if(animator != null)
-                animator.SetTrigger("Swiping");
-            if(AttackPanel != null)
-                AttackPanel.fillAmount = 0;
-        }
-    }
+    
 
     /// <summary>
     /// Start the lunge attack by starting the lungeCountdown and attackCooldown
     /// </summary>
     public void LungeAttack()
     {
-        if (attackCooldown <= 0)
+        if (lungeCountdown <= 0)
         {
             if(animator != null)
                 animator.SetTrigger("Lunging");
             lungeCountdown = lungeDuration * 4.5f;
-            attackCooldown = attackCooldownDuration;
             lungeDir = transform.forward;
 
             playerMove.carrySpeedMod = 0;
@@ -495,12 +477,7 @@ public class AttackScript : MonoBehaviour
             playerMove.carrySpeedMod = 1;
         }
     }
-
-    void setCooldownGauge()
-    {
-        if (AttackPanel != null)
-            AttackPanel.fillAmount = 1 - ((1 / attackCooldownDuration) * attackCooldown);
-    }
+    
 
     //buying stuff in the bar
     private void OnTriggerStay(Collider other)

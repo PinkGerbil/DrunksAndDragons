@@ -48,12 +48,12 @@ public class PlayerInput : MonoBehaviour
     /// <summary>
     /// all the get functions for button inputs. Used for attack buttons and grab button.
     /// </summary>
-    public bool GetSweepHeld { get { return XCI.GetButton(XboxButton.X, controller); } }
+    public bool GetPunchHeld { get { return XCI.GetButton(XboxButton.X, controller); } }
     public bool GetPunchPressed { get {
             if (playerID == 1 && Input.GetMouseButtonDown(0))
                 return true;
             return  XCI.GetButtonDown(XboxButton.X, controller); } }
-    public bool GetSweepReleased { get { return XCI.GetButtonUp(XboxButton.X, controller); } }
+    public bool GetPunchReleased { get { return XCI.GetButtonUp(XboxButton.X, controller); } }
 
     public bool GetLungeHeld { get { return XCI.GetButton(XboxButton.Y, controller); } }
     public bool GetLungePressed { get {

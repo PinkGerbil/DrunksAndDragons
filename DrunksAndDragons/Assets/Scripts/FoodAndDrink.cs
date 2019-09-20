@@ -69,11 +69,11 @@ public class FoodAndDrink : MonoBehaviour
     {
         if(AttackCooldownDurationOriginal == 0)
         {
-            AttackCooldownDurationOriginal = player.GetComponent<AttackScript>().attackCooldownDuration;
+            AttackCooldownDurationOriginal = player.GetComponent<AttackScript>().MaxCarryStamina;
         }
         if (!ReducedAttackCooldown)
         {
-            player.GetComponent<AttackScript>().attackCooldownDuration /= 2;
+            player.GetComponent<AttackScript>().MaxCarryStamina *= 2;
             ReducedAttackCooldown = true;
         }
         timer = 0;
@@ -85,7 +85,7 @@ public class FoodAndDrink : MonoBehaviour
     /// <param name="player">GameObject being affected</param>
     public void DeactivateAttackCooldownBoost(GameObject player)
     {
-        player.GetComponent<AttackScript>().attackCooldownDuration = AttackCooldownDurationOriginal;
+        player.GetComponent<AttackScript>().MaxCarryStamina = AttackCooldownDurationOriginal;
         ReducedAttackCooldown = true;
     }
 
