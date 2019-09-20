@@ -330,11 +330,11 @@ public class AttackScript : MonoBehaviour
     void checkLungeCollision()
     {
         Vector3 lungePerp = Vector3.Cross(transform.up, lungeDir);
-        Vector3 rayOrigin = transform.position + (-lungePerp * playerRadius) + attackPoint;
+        Vector3 rayOrigin = transform.position + (-lungePerp * playerRadius) + (-transform.forward * playerRadius)+ attackPoint;
         int layerMask = 1 << LayerMask.NameToLayer("Enemy");
         for (int i = 0; i < 5; i++)
         {
-            if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange + playerRadius, layerMask))
+            if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange + playerRadius * 2, layerMask))
             {
                 bool wasHit = false;
                 foreach (GameObject child in hitEnemies)
@@ -348,7 +348,7 @@ public class AttackScript : MonoBehaviour
                     hit.collider.enabled = false;
                     if (!hit.collider.gameObject.GetComponent<AI>().channeling)
                     {
-                        hit.collider.gameObject.GetComponent<AI>().takeDamage(lungeDamage);
+                        hit.collider.gameObject.GetComponent<AI>().takeDamage(lungeDamage, lungeDir);
                     }
                     if (hit.collider.gameObject.GetComponent<AI>().isDead)
                         points.gainKills();
@@ -357,7 +357,7 @@ public class AttackScript : MonoBehaviour
                 }
             }
             rayOrigin += lungePerp * 0.2f;
-            Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * (lungeRange + playerRadius)), Color.red);
+            Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * (lungeRange + playerRadius * 2)), Color.red);
         }
     }
     
