@@ -242,9 +242,11 @@ MonoBehaviour:
   aoeCooldownMax: 20
   trailOn: 1
   trailCooldown: 5
-  knockbackOn: 0
-  knockbackAttackRange: 0
-  knockbackAttackCooldown: 0
+  knockbackOn: 1
+  knockback: {fileID: 1740988602417169011, guid: 849eeb42230e03e42848227ddea6a337,
+    type: 3}
+  knockbackCheckRange: 3
+  knockbackAttackCooldown: 5
   healingOn: 1
   channelDuration: 5
   channeling: 0

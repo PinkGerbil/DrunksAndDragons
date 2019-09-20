@@ -67,11 +67,12 @@ public class AI : MonoBehaviour
     private float trailCD;
 
     //knockback attack
-    [Header("(not finished does nothing yet) knockback attack")]
+    [Header("knockback attack")]
     [Tooltip("allows the boss to do this action or not")]
     public bool knockbackOn;
-    [Tooltip("how big the knockback will be")]
-    public float knockbackAttackRange;
+    public GameObject knockback;
+    [Tooltip("how close the players have to be for the boss to do the knockback")]
+    public float knockbackCheckRange;
     private int withinRange;
     public float knockbackAttackCooldown;
     private float knockbackAttackCD;
@@ -227,6 +228,7 @@ public class AI : MonoBehaviour
                 AoEAttack();
                 aoeCooldown = Random.Range(aoeCooldownMin, aoeCooldownMax);
             }
+            //leaves damaging aoe behind the boss each time this if is true
             if(trailCD <= 0 && !isDead && trailOn)
             {
                 bossTrailAttack();
@@ -234,7 +236,7 @@ public class AI : MonoBehaviour
             }
             //wip knockback attack that when multiple players are close to the boss he will knock them back
             KnockbackAttackCheck();
-            if(withinRange >= 2 && knockbackAttackCD <= 0 && knockbackOn)
+            if(withinRange >= 2 && knockbackAttackCD <= 0 && knockbackOn && !isDead)
             {
                 KnockbackAttack();
                 knockbackAttackCD = knockbackAttackCooldown;
@@ -394,7 +396,7 @@ public class AI : MonoBehaviour
             if (!child.GetComponent<PlayerDamageHandler>().Alive)
                 continue;
             float distance = Vector3.Distance(transform.position, child.transform.position);
-            if (distance <= knockbackAttackRange)
+            if (distance <= knockbackCheckRange)
             {
                 withinRange++;
             }
@@ -404,7 +406,7 @@ public class AI : MonoBehaviour
     //knocks back players who are close
     void KnockbackAttack()
     {
-        //actual attack
+        Instantiate(knockback,transform.position,transform.rotation);
     }
 
 

@@ -192,5 +192,14 @@ public class PlayerDamageHandler : MonoBehaviour
         {
             getHit();
         }
+        
+        if(other.gameObject.tag == "knockback")
+        {
+            Vector3 hitDir = (transform.position - other.transform.position);
+            hitDir.y = 0;
+            isHitDir += hitDir.normalized;
+
+            getHit();
+        }
     }
 }
