@@ -55,11 +55,7 @@ public class CameraMove : MonoBehaviour
             blackboard = GameObject.Find("Game Manager").GetComponent<Blackboard>();
 
         players = blackboard.players;
-
-        //float avgScaleMag = 0;
-        //foreach (GameObject child in players)
-        //    avgScaleMag += child.transform.localScale.magnitude;
-        //avgScaleMag /= players.Count * 2;
+        
 
     }
     
@@ -71,7 +67,6 @@ public class CameraMove : MonoBehaviour
         if (players.Count == 0)
         {
             players = blackboard.players;
-            Debug.Log("Shiet");
         }
         else
         {
@@ -118,12 +113,12 @@ public class CameraMove : MonoBehaviour
             foreach(GameObject child2 in players)
                 if(!child1.Equals(child2))
                 {
-                    float distance = Vector3.Distance(child1.transform.position, child2.transform.position) / PlayerScale;
+                    float distance = Vector3.Distance(child1.transform.position, child2.transform.position);
                     if (distance > temp)
                         temp = distance;
                 }
         if(useZoomBounds)
             temp = Mathf.Clamp(temp, minZoom, maxZoom);
-        return temp;
+        return temp / PlayerScale;
     }
 }
