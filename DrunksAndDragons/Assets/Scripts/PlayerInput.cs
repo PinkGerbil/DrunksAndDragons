@@ -95,7 +95,7 @@ public class PlayerInput : MonoBehaviour
             }
             return dir.normalized;
         } }
-    ///
+
 
     public int getPlayerID { get { return playerID; } }
 }

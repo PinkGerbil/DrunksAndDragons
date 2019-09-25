@@ -416,8 +416,15 @@ public class AttackScript : MonoBehaviour
 
                 if (!isHeld)
                 {
-                    heldObject = firstHit.collider.gameObject;
-                    heldObjects.Add(heldObject);
+                    if(firstHit.collider.GetComponent<Rigidbody>() != null)
+                    {
+                        heldObject = firstHit.collider.gameObject;
+                        heldObjects.Add(heldObject);
+                    }
+                    else
+                    {
+                        firstHit.collider.GetComponent<TableFlip>().flip();
+                    }
                     return;
                 }
             }
@@ -439,9 +446,15 @@ public class AttackScript : MonoBehaviour
                         }
                     if (!isHeld)
                     {
-                        heldObject = hit.collider.gameObject;
-                        heldObjects.Add(heldObject);
-                        return;
+                        if (hit.collider.GetComponent<Rigidbody>() != null)
+                        {
+                            heldObject = hit.collider.gameObject;
+                            heldObjects.Add(heldObject);
+                        }
+                        else
+                        {
+                            hit.collider.GetComponent<TableFlip>().flip();
+                        }
                     }
                 }
             }

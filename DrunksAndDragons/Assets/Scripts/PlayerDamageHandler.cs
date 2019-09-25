@@ -82,9 +82,7 @@ public class PlayerDamageHandler : MonoBehaviour
             {
                 rigidbody.isKinematic = true;
                 GetComponent<Collider>().isTrigger = false;
-                // set the player position to just above where the ray hit
                 Vector3 temp = hit.point;
-                //temp.y += 1;
                 transform.position = temp;
             }
             Debug.Log(rigidbody.velocity);
@@ -96,7 +94,6 @@ public class PlayerDamageHandler : MonoBehaviour
                 temp.y = rigidbody.velocity.y;
                 heldVelocity = rigidbody.velocity;
                 heldVelocity.y = 0;
-                //rigidbody.velocity = Vector3.zero;
                 rigidbody.velocity = temp;
             }
         }
@@ -124,7 +121,6 @@ public class PlayerDamageHandler : MonoBehaviour
         }
         else if (IFrameTime > 0)
         {
-            //Debug.Log(IFrameTime);
             isHitDir = Vector3.zero;
             IFrameTime -= Time.deltaTime;
             rigidbody.isKinematic = true;
@@ -147,8 +143,6 @@ public class PlayerDamageHandler : MonoBehaviour
             transform.Find("polySurface3").GetComponent<SkinnedMeshRenderer>().enabled = false;
             Player_Icon.GetComponent<SpriteRenderer>().enabled = false; 
             GetComponent<PlayerMoveScript>().enabled = false; 
-            //GetComponent<CapsuleCollider>().enabled = false;
-            //delete the following line when proper model is added
         }
         else if(respawnCountdown > 0)
         {
@@ -163,7 +157,6 @@ public class PlayerDamageHandler : MonoBehaviour
                 Player_Icon.GetComponent<SpriteRenderer>().enabled = true;
                 GetComponent<PlayerMoveScript>().enabled = true;
                 transform.position = spawnLocation;
-                //delete the following line when proper model is added
             }
         }
     }

@@ -95,6 +95,9 @@ public class PlayerMoveScript : MonoBehaviour
         {
             shopSpeedIncrease = 0;
         }
+
+        if (transform.position.y < -4)
+            transform.position = new Vector3(0, -3, 0);
     }
 
     /// <summary>
@@ -171,7 +174,7 @@ public class PlayerMoveScript : MonoBehaviour
         RaycastHit closest = new RaycastHit(); // this variable will be used to store the closest RaycastHit from the following loop
 
         int originDirOffset = 1; // used to control the direction of the origin offset occurring at the end of each for loop iteration
-        int layerMask = 1 << LayerMask.NameToLayer("Environment");
+        int layerMask = (1 << LayerMask.NameToLayer("Environment")) | (1 << LayerMask.NameToLayer("Pickup"));
         for (int i = 0; i < 3; i++)
         {
             Debug.DrawRay(origin, hitDir);
