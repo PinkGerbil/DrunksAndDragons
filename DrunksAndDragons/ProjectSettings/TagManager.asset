@@ -11,6 +11,10 @@ TagManager:
   - Food
   - SpeedDrink
   - aoe
+  - knockback
+  - SpeedDrinkShop
+  - FullHealShop
+  - HealthIncreaseShop
   layers:
   - Default
   - TransparentFX

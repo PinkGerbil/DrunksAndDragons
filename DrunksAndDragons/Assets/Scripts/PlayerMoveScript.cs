@@ -18,6 +18,8 @@ public class PlayerMoveScript : MonoBehaviour
     [Tooltip("How fast the player moves")]
     [Range(1, 10)]
     float moveSpeed = 5;
+    [Tooltip("float that increases players speed permanently")]
+    public float shopSpeedIncrease;
 
     /// <summary>
     /// A speed modifier that reduces player speed when the player is carrying another player
@@ -48,7 +50,7 @@ public class PlayerMoveScript : MonoBehaviour
     /// <summary>
     /// Returns the position the player will be in if they walk forward this frame. (carrySpeedMod should be applied before consumableSpeedMod)
     /// </summary>
-    Vector3 nextPosition { get { return transform.position + transform.forward * moveSpeed * carrySpeedMod * consumableSpeedMod * Time.deltaTime; } }
+    Vector3 nextPosition { get { return transform.position + transform.forward * (moveSpeed + shopSpeedIncrease) * carrySpeedMod * consumableSpeedMod * Time.deltaTime; } }
     
 
     // Start is called before the first frame update
@@ -89,6 +91,10 @@ public class PlayerMoveScript : MonoBehaviour
             isMoving = false;
         }
         animator.SetBool("Moving", isMoving);
+        if(!gameObject.GetComponent<PlayerDamageHandler>().Alive && shopSpeedIncrease > 0 && gameObject.GetComponent<AttackScript>().loseSpeedUpOnDeath)
+        {
+            shopSpeedIncrease = 0;
+        }
     }
 
     /// <summary>

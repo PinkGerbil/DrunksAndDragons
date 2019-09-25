@@ -33,12 +33,11 @@ public class AttackScript : MonoBehaviour
     public float carryStamina = 0;
 
     [Header("Pickups & Produce")]
-    public GameObject healthUp;
+    public int fullHealPrice;
+    public bool loseHealthUpOnDeath;
     public int healthUpPrice;
-    public GameObject speedUp;
+    public bool loseSpeedUpOnDeath;
     public int speedUpPrice;
-    public GameObject food;
-    public int foodPrice;
 
     [Header("Sweep")]
     [Tooltip("How fast the sweep occurs")]
@@ -482,19 +481,20 @@ public class AttackScript : MonoBehaviour
     //buying stuff in the bar
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "FoodShop" && input.getBuyPressed && points.points >= foodPrice)
+        if (other.gameObject.tag == "FullHealShop" && input.getBuyPressed && points.points >= fullHealPrice)
         {
-            Instantiate(food,this.transform.position,this.transform.rotation);
-            points.LosePoints(foodPrice);
+            gameObject.GetComponent<PlayerDamageHandler>().health = gameObject.GetComponent<PlayerDamageHandler>().maxHealth;
+            points.LosePoints(fullHealPrice);
         }
         else if (other.gameObject.tag == "SpeedDrinkShop" && input.getBuyPressed && points.points >= speedUpPrice)
         {
-            Instantiate(speedUp, this.transform.position, this.transform.rotation);
+            this.gameObject.GetComponent<PlayerMoveScript>().shopSpeedIncrease++;
             points.LosePoints(speedUpPrice);
         }
         else if (other.gameObject.tag == "HealthIncreaseShop" && input.getBuyPressed && points.points >= healthUpPrice)
         {
-            Instantiate(healthUp, this.transform.position, this.transform.rotation);
+            gameObject.GetComponent<PlayerDamageHandler>().maxHealth++;
+            gameObject.GetComponent<PlayerDamageHandler>().health++;
             points.LosePoints(healthUpPrice);
         }
     }

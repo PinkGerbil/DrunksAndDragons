@@ -31,6 +31,9 @@ public class WaveSpawn : MonoBehaviour
     private float timer;
     private int childNumber;
 
+    [Tooltip("will be automatically turned on for the time between waves")]
+    public bool shopOpen;
+
     [Header("boss")]
     [Tooltip("will spawn the boss if on(spawns on last wave)")]
     public bool bossOn;
@@ -42,7 +45,7 @@ public class WaveSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = startTimeBetweenWaves;
+        timer = 0;
     }
 
     // Update is called once per frame
@@ -52,8 +55,13 @@ public class WaveSpawn : MonoBehaviour
         //if there is no children of the spawnmaster then start spawning enemies 
         if(numberOfChildren() == 0)
         {
+            if(timer > 0)
+            {
+                shopOpen = true;
+            }
             if(timer < 0)
             {
+                shopOpen = false;
                 waveCount++;
 
                 startTimeBetweenWaves = startTimeBetweenWaves + addedTimeBetweenWaves;

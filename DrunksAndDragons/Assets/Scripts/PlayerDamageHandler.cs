@@ -41,6 +41,7 @@ public class PlayerDamageHandler : MonoBehaviour
     [Tooltip("The max health of the player")]
     [Range(1,10)]
     public int maxHealth = 6;
+    private int originalMaxHealth;
     public int health;
 
     Vector3 spawnLocation;
@@ -58,7 +59,7 @@ public class PlayerDamageHandler : MonoBehaviour
         spawnLocation = transform.position;
         if (!attackScript)
             attackScript = GetComponent<AttackScript>();
-
+        originalMaxHealth = maxHealth;
         health = maxHealth;
 
         if(!rigidbody)
@@ -138,6 +139,10 @@ public class PlayerDamageHandler : MonoBehaviour
         {
             Debug.Log("ded");
             respawnCountdown = respawnTime;
+            if (gameObject.GetComponent<AttackScript>().loseHealthUpOnDeath)
+            {
+                maxHealth = originalMaxHealth;
+            }
             transform.Find("group1").GetComponent<SkinnedMeshRenderer>().enabled = false;
             transform.Find("polySurface3").GetComponent<SkinnedMeshRenderer>().enabled = false;
             Player_Icon.GetComponent<SpriteRenderer>().enabled = false; 
