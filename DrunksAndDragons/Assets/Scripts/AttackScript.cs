@@ -32,12 +32,13 @@ public class AttackScript : MonoBehaviour
     [HideInInspector]
     public float carryStamina = 0;
 
-    [Header("Pickups & Produce")]
+    [Header("shop Pickups & Produce")]
     public int fullHealPrice;
     public bool loseHealthUpOnDeath;
     public int healthUpPrice;
     public bool loseSpeedUpOnDeath;
     public int speedUpPrice;
+    public int livesUpPrice;
 
     [Header("Sweep")]
     [Tooltip("How fast the sweep occurs")]
@@ -510,5 +511,11 @@ public class AttackScript : MonoBehaviour
             gameObject.GetComponent<PlayerDamageHandler>().health++;
             points.LosePoints(healthUpPrice);
         }
+        else if (other.gameObject.tag == "LivesUpShop" && input.getBuyPressed && points.points >= livesUpPrice)
+        {
+            gameObject.GetComponent<PlayerDamageHandler>().lives++;
+            points.LosePoints(livesUpPrice);
+        }
     }
+
 }
