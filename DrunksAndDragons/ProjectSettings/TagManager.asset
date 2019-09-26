@@ -15,6 +15,7 @@ TagManager:
   - SpeedDrinkShop
   - FullHealShop
   - HealthIncreaseShop
+  - LivesUpShop
   layers:
   - Default
   - TransparentFX
