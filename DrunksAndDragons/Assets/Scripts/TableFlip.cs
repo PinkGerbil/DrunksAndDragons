@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TableFlip : MonoBehaviour
 {
-    bool flipped { get { return flipCountdown > 0; } }
+    bool isFlipping { get { return flipCountdown > 0; } }
 
     [SerializeField]
     [Tooltip("How much damage is done when the table collides with an enemy")]
@@ -73,7 +73,7 @@ public class TableFlip : MonoBehaviour
 
     public void flip(Vector3 flipperPos)
     {
-        if (!flipped)
+        if (!isFlipping && resetCountdown <= 0)
         {
             Debug.Log("Table Flipped");
             resetCountdown = ResetTime;
@@ -114,7 +114,7 @@ public class TableFlip : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (flipped && other.CompareTag("Enemy"))
+        if (isFlipping && other.CompareTag("Enemy"))
         {
             foreach (GameObject child in hitEnemies)
                 if (other.gameObject.Equals(child))
