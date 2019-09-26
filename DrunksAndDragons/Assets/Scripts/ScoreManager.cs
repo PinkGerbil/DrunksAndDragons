@@ -31,6 +31,7 @@ public class ScoreManager : MonoBehaviour
 
     public WaveSpawn waveMaster;
     public int finalWaveNumber;
+    private bool gameLost;
     //public GameObject endScreen;
 
     /// <summary>
@@ -60,7 +61,11 @@ public class ScoreManager : MonoBehaviour
         //Shows and updates Player 4 score
         p4_Score.text = "Player 4:    " + Player4.getKills() + " Kills | " + Player4.GetPoints() + " Gold";
         //time ends new wave starts
-        if (waveMaster.waveCount == finalWaveNumber + 1)
+        if(Player1.GetComponent<PlayerDamageHandler>().lives < 0 && Player2.GetComponent<PlayerDamageHandler>().lives < 0 && Player3.GetComponent<PlayerDamageHandler>().lives < 0&& Player4.GetComponent<PlayerDamageHandler>().lives < 0)
+        {
+            gameLost = true;
+        }
+        if (waveMaster.waveCount == finalWaveNumber + 1 || gameLost)
         {
 
 
