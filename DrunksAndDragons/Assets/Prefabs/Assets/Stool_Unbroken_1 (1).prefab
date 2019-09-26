@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1820975226433520686}
   m_Layer: 11
   m_Name: Stool_Unbroken_1 (1)
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,3 +123,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   wasThrown: 0
+  objectHealth: 3

@@ -207,7 +207,6 @@ public class AttackScript : MonoBehaviour
         {
             if (input.GetPunchPressed && !heldObject)
             {
-                //SweepAttack();
                 PunchAttack();
             }
 
@@ -417,14 +416,14 @@ public class AttackScript : MonoBehaviour
 
                 if (!isHeld)
                 {
-                    if(firstHit.collider.GetComponent<Rigidbody>() != null)
+                    if(!firstHit.collider.CompareTag("Environment"))
                     {
                         heldObject = firstHit.collider.gameObject;
                         heldObjects.Add(heldObject);
                     }
                     else
                     {
-                        firstHit.collider.GetComponent<TableFlip>().flip();
+                        firstHit.collider.GetComponent<TableFlip>().flip(transform.position);
                     }
                     return;
                 }
@@ -447,14 +446,14 @@ public class AttackScript : MonoBehaviour
                         }
                     if (!isHeld)
                     {
-                        if (hit.collider.GetComponent<Rigidbody>() != null)
+                        if (!firstHit.collider.CompareTag("Environment"))
                         {
                             heldObject = hit.collider.gameObject;
                             heldObjects.Add(heldObject);
                         }
                         else
                         {
-                            hit.collider.GetComponent<TableFlip>().flip();
+                            hit.collider.GetComponent<TableFlip>().flip(transform.position);
                         }
                     }
                 }

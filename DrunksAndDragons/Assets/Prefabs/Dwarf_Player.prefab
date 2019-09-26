@@ -385,11 +385,12 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   attackScript: {fileID: 0}
   HealthPanel: {fileID: 0}
+  Player_Icon: {fileID: 0}
   IFrames: 0.5
   isHit: 0
   isHitDir: {x: 0, y: 0, z: 0}
-  knockbackTime: 0.2
-  knockbackForce: 10.03
+  knockbackTime: 0.4665
+  knockbackSpeed: 15
   maxHealth: 6
   health: 0
   respawnTime: 5
@@ -408,15 +409,13 @@ MonoBehaviour:
   playerRadius: 0.5
   AttackPanel: {fileID: 0}
   animator: {fileID: 0}
-  attackCooldownDuration: 1
-  attackCooldown: 0
-  healthUp: {fileID: 3894575176415504023, guid: b5111a5bf7b612441817f60ad17ded75,
-    type: 3}
+  MaxCarryStamina: 1
+  carryStamina: 0
+  fullHealPrice: 0
+  loseHealthUpOnDeath: 0
   healthUpPrice: 0
-  speedUp: {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c, type: 3}
+  loseSpeedUpOnDeath: 0
   speedUpPrice: 0
-  food: {fileID: 2418003000894282240, guid: 7ba20cb9c2d45f64ca2870d0a2e9581e, type: 3}
-  foodPrice: 0
   sweepDuration: 0.4
   sweepRange: 2
   sweepWidth: 180
@@ -447,7 +446,9 @@ MonoBehaviour:
   input: {fileID: 2881682679395987100}
   attack: {fileID: 2881682679395987097}
   moveSpeed: 5
-  speedMod: 1
+  shopSpeedIncrease: 0
+  carrySpeedMod: 1
+  consumableSpeedMod: 1
   animator: {fileID: 0}
   playerRadius: 0.5
   height: 2
