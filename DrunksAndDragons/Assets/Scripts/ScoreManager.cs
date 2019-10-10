@@ -40,11 +40,16 @@ public class ScoreManager : MonoBehaviour
     public void Start()
     {
         players = new List<PlayerPoints>();
-        players.Add(Player1);
-        players.Add(Player2);
-        players.Add(Player3);
-        players.Add(Player4);
         pointsShown = false; 
+    }
+
+    private void Awake()
+    {
+        if (Player1.gameObject.activeInHierarchy) players.Add(Player1);
+        if (Player2.gameObject.activeInHierarchy) players.Add(Player2);
+        if (Player3.gameObject.activeInHierarchy) players.Add(Player3);
+        if (Player4.gameObject.activeInHierarchy) players.Add(Player4);
+        
     }
 
     /// <summary>
@@ -61,7 +66,11 @@ public class ScoreManager : MonoBehaviour
         //Shows and updates Player 4 score
         p4_Score.text = "Player 4:    " + Player4.getKills() + " Kills | " + Player4.GetPoints() + " Gold";
         //time ends new wave starts
-        if(Player1.GetComponent<PlayerDamageHandler>().lives < 0 && Player2.GetComponent<PlayerDamageHandler>().lives < 0 && Player3.GetComponent<PlayerDamageHandler>().lives < 0&& Player4.GetComponent<PlayerDamageHandler>().lives < 0)
+        bool playersAlive = false;
+        foreach (PlayerPoints child in players)
+            if (child.GetComponent<PlayerDamageHandler>().lives > 0)
+                playersAlive = true;
+        if(!playersAlive)
         {
             gameLost = true;
         }
