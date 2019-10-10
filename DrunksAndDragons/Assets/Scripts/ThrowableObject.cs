@@ -57,26 +57,53 @@ public class ThrowableObject : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Debug.Log(collision.collider.name);
+    //    if(wasThrown && collision.collider.CompareTag("Enemy"))
+    //    {
+    //        foreach (GameObject child in hitEnemies)
+    //            if (collision.collider.gameObject.Equals(child))
+    //                return;
+    //        if (objectHealth <= 1)
+    //        {
+    //            Vector3 hitDir = -collision.contacts[1].normal;
+    //            hitDir.y = 0;
+    //            collision.collider.GetComponent<AI>().takeDamage(damage * 2, hitDir.normalized);
+    //            ObjectBreak();
+    //        }
+    //        else
+    //        {
+    //            Vector3 hitDir = -collision.contacts[1].normal;
+    //            hitDir.y = 0;
+    //            collision.collider.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
+    //            hitEnemies.Add(collision.collider.gameObject);
+    //            objectHealth--;
+    //        }
+    //    }
+    //}
+
+    void OnTriggerEnter(Collider other)
     {
-        if(wasThrown && collision.collider.CompareTag("Enemy"))
+        if(wasThrown && other.CompareTag("Enemy"))
         {
             foreach (GameObject child in hitEnemies)
-                if (collision.collider.gameObject.Equals(child))
+                if (other.gameObject.Equals(child))
                     return;
             if (objectHealth <= 1)
             {
-                Vector3 hitDir = collision.collider.transform.position - transform.position;
+                Vector3 hitDir = (other.ClosestPointOnBounds(transform.position) - transform.position).normalized;
                 hitDir.y = 0;
-                collision.collider.GetComponent<AI>().takeDamage(damage * 2, hitDir.normalized);
+                other.GetComponent<AI>().takeDamage(damage * 2, hitDir.normalized);
                 ObjectBreak();
             }
             else
             {
-                Vector3 hitDir = collision.collider.transform.position - transform.position;
+                Vector3 hitDir = (other.ClosestPointOnBounds(transform.position) - transform.position).normalized;
                 hitDir.y = 0;
-                collision.collider.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
-                hitEnemies.Add(collision.collider.gameObject);
+                Debug.Log(hitDir.normalized);
+                other.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
+                hitEnemies.Add(other.gameObject);
                 objectHealth--;
             }
         }

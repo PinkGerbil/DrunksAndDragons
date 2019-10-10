@@ -466,7 +466,7 @@ MonoBehaviour:
   comboGracePeriod: 1
   grabRange: 1.5
   grabWidth: 45
-  throwForce: 500
+  throwForce: 450
 --- !u!114 &2881682679395987099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,11 +479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c9de00319c4ba46b0cb4443a2b51a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnMove:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   input: {fileID: 2881682679395987100}
   attack: {fileID: 2881682679395987097}
   moveSpeed: 5
