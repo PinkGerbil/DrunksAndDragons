@@ -86,7 +86,7 @@ public class PlayerDamageHandler : MonoBehaviour
                 Vector3 temp = hit.point;
                 transform.position = temp;
             }
-            Debug.Log(rigidbody.velocity);
+
             Vector3 nextPos = transform.position + rigidbody.velocity * Time.deltaTime;
 
             if (GetComponent<PlayerMoveScript>().CheckInDirection(nextPos))

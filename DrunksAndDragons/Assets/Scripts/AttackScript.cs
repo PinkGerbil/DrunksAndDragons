@@ -462,13 +462,13 @@ public class AttackScript : MonoBehaviour
                 {
                     bool isHeld = false;
                     foreach (GameObject child in heldObjects)
-                        if (firstHit.collider.gameObject.Equals(child))
+                        if (hit.collider.gameObject.Equals(child))
                         {
                             isHeld = true;
                         }
                     if (!isHeld)
                     {
-                        if (!firstHit.collider.CompareTag("Environment"))
+                        if (!hit.collider.CompareTag("Environment"))
                         {
                             heldObject = hit.collider.gameObject;
                             heldObjects.Add(heldObject);
