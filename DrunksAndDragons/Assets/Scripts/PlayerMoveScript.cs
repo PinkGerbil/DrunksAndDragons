@@ -96,9 +96,7 @@ public class PlayerMoveScript : MonoBehaviour
         {
             shopSpeedIncrease = 0;
         }
-
-        if (transform.position.y < -4)
-            transform.position = new Vector3(0, -3, 0);
+        
     }
 
     /// <summary>
