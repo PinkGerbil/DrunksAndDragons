@@ -132,7 +132,7 @@ public class PlayerDamageHandler : MonoBehaviour
         if(HealthPanel != null && Alive)
             HealthPanel.fillAmount = (1.0f / maxHealth) * health;
 
-        if(lives < 0)
+        if(lives <= 0)
         {
             HealthPanel.fillAmount = 0;
         }
@@ -151,7 +151,7 @@ public class PlayerDamageHandler : MonoBehaviour
             Player_Icon.GetComponent<SpriteRenderer>().enabled = false; 
             GetComponent<PlayerMoveScript>().enabled = false; 
         }
-        else if(respawnCountdown > 0 && lives >= 0)
+        else if(respawnCountdown > 0 && lives > 0)
         {
             respawnCountdown -= Time.deltaTime;
             if(HealthPanel != null)
