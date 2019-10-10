@@ -467,6 +467,9 @@ MonoBehaviour:
   grabRange: 1.5
   grabWidth: 45
   throwForce: 450
+  dodgeSpeed: 15
+  dodgeTime: 0.45
+  dodgeCooldown: 0.1
 --- !u!114 &2881682679395987099
 MonoBehaviour:
   m_ObjectHideFlags: 0

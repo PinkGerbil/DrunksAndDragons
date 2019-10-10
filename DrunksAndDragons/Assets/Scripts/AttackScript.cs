@@ -31,7 +31,7 @@ public class AttackScript : MonoBehaviour
     [HideInInspector]
     public Animator animator;
 
-    public bool IsAttacking { get { return !(sweepCountdown <= 0 && lungeCountdown <= 0 && punchCountdown <= 0); } }
+    public bool IsAttacking { get { return !(sweepCountdown <= 0 && lungeCountdown <= 0 && punchCountdown <= 0 && dodgeCountdown <= 0); } }
 
     
     [Tooltip("How Long the player can carry objects or other players for")]
@@ -109,6 +109,22 @@ public class AttackScript : MonoBehaviour
     [Range(0, 1000)]
     public float throwForce = 500.0f;
 
+
+    [Header("Dodge")]
+    [SerializeField]
+    [Tooltip("How fast dodge moves")]
+    float dodgeSpeed = 25;
+    [SerializeField]
+    [Tooltip("How long dodge lasts")]
+    float dodgeTime = 0.25f;
+    float dodgeCountdown = 0;
+    [SerializeField]
+    [Tooltip("How long the player has to wait to dodge again")]
+    float dodgeCooldown = 0.25f;
+    float dodgeCooldownCountdown = 0;
+
+    bool isDodging { get { return dodgeCountdown > 0; } }
+
     Vector3 attackPoint { get { return (transform.Find("TopPoint").position - transform.position) * 0.25f; } }
 
     GameObject heldObject = null;
@@ -116,6 +132,8 @@ public class AttackScript : MonoBehaviour
 
     new Rigidbody rigidbody;
     
+
+
 
     string[] animationTriggerStrings =
     {
@@ -195,6 +213,20 @@ public class AttackScript : MonoBehaviour
                 }
             }
         }
+        else if(dodgeCountdown > 0)
+        {
+            dodgeCountdown -= Time.deltaTime;
+            if(!playerMove.CheckInDirection(transform.position + transform.forward * dodgeSpeed * Time.deltaTime))
+                transform.position += transform.forward * dodgeSpeed * Time.deltaTime;
+            playerMove.checkGrounded();
+            if (dodgeCountdown <= 0)
+                dodgeCooldownCountdown = dodgeCooldown;
+        }
+        
+        if(dodgeCooldownCountdown > 0)
+        {
+            dodgeCooldownCountdown -= Time.deltaTime;
+        }
 
         if (heldObject != null)
         {
@@ -219,13 +251,12 @@ public class AttackScript : MonoBehaviour
                 PunchAttack();
                 
             }
-
-            if (input.GetLungePressed && !heldObject)
+            else if (input.GetLungePressed && !heldObject)
             {
 
                 LungeAttack();
             }
-            if (input.GetGrabPressed)
+            else if (input.GetGrabPressed)
             {
                 if (!heldObject)
                 {
@@ -245,6 +276,8 @@ public class AttackScript : MonoBehaviour
                 }
 
             }
+            if (input.GetDodgePressed)
+                dodgeRoll();
         }
 
 
@@ -252,6 +285,15 @@ public class AttackScript : MonoBehaviour
 
         if (carryStamina <= 0 && heldObject != null)
             dropHeldObject();
+    }
+
+    void dodgeRoll()
+    {
+        if (dodgeCountdown <= 0 && dodgeCooldownCountdown <= 0)
+        {
+            dodgeCountdown = dodgeTime;
+            animator.SetTrigger("Dodge");
+        }
     }
 
     void checkPunch()

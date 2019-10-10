@@ -13,6 +13,7 @@ public class ThrowableObject : MonoBehaviour
     public bool wasThrown = false;
 
     Rigidbody rigidbody;
+    Collider thisCollider;
 
     float maxTimer = 1;
     float timer = 0;
@@ -24,9 +25,12 @@ public class ThrowableObject : MonoBehaviour
 
     List<GameObject> hitEnemies = new List<GameObject>();
 
+
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        thisCollider = GetComponent<Collider>();
     }
     // Update is called once per frame
     void Update()
@@ -90,21 +94,17 @@ public class ThrowableObject : MonoBehaviour
             foreach (GameObject child in hitEnemies)
                 if (other.gameObject.Equals(child))
                     return;
-            if (objectHealth <= 1)
+            Vector3 hitDir = (other.ClosestPointOnBounds(transform.position) - transform.position).normalized;
+            hitDir.y = 0;
+            other.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
+            Debug.Log(rigidbody.velocity);
+            rigidbody.velocity = (rigidbody.velocity.normalized - hitDir * 2).normalized * rigidbody.velocity.magnitude * 2;
+            Debug.Log(rigidbody.velocity);
+            hitEnemies.Add(other.gameObject);
+            objectHealth--;
+            if (objectHealth <= 0)
             {
-                Vector3 hitDir = (other.ClosestPointOnBounds(transform.position) - transform.position).normalized;
-                hitDir.y = 0;
-                other.GetComponent<AI>().takeDamage(damage * 2, hitDir.normalized);
                 ObjectBreak();
-            }
-            else
-            {
-                Vector3 hitDir = (other.ClosestPointOnBounds(transform.position) - transform.position).normalized;
-                hitDir.y = 0;
-                Debug.Log(hitDir.normalized);
-                other.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
-                hitEnemies.Add(other.gameObject);
-                objectHealth--;
             }
         }
     }

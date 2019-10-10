@@ -48,26 +48,30 @@ public class PlayerInput : MonoBehaviour
     /// <summary>
     /// all the get functions for button inputs. Used for attack buttons and grab button.
     /// </summary>
-    public bool GetPunchHeld { get { return XCI.GetButton(XboxButton.X, controller); } }
+    public bool GetPunchHeld { get { return XCI.GetButton(XboxButton.A, controller); } }
     public bool GetPunchPressed { get {
             if (playerID == 1 && Input.GetMouseButtonDown(0))
                 return true;
-            return  XCI.GetButtonDown(XboxButton.X, controller); } }
-    public bool GetPunchReleased { get { return XCI.GetButtonUp(XboxButton.X, controller); } }
+            return  XCI.GetButtonDown(XboxButton.A, controller); } }
+    public bool GetPunchReleased { get { return XCI.GetButtonUp(XboxButton.A, controller); } }
 
-    public bool GetLungeHeld { get { return XCI.GetButton(XboxButton.Y, controller); } }
+    public bool GetLungeHeld { get { return XCI.GetButton(XboxButton.B, controller); } }
     public bool GetLungePressed { get {
             if (playerID == 1 && Input.GetMouseButtonDown(1))
                 return true;
-            return XCI.GetButtonDown(XboxButton.Y, controller); } }
-    public bool GetLungeReleased { get { return XCI.GetButtonUp(XboxButton.Y, controller); } }
+            return XCI.GetButtonDown(XboxButton.B, controller); } }
+    public bool GetLungeReleased { get { return XCI.GetButtonUp(XboxButton.B, controller); } }
 
-    public bool GetGrabHeld { get { return XCI.GetButton(XboxButton.B, controller); } }
+    public bool GetGrabHeld { get { return XCI.GetButton(XboxButton.Y, controller); } }
     public bool GetGrabPressed { get {
             if (playerID == 1 && Input.GetKeyDown(KeyCode.Space))
                 return true;
-            return XCI.GetButtonDown(XboxButton.B, controller); } }
-    public bool GetGrabReleased { get { return XCI.GetButtonUp(XboxButton.B, controller); } }
+            return XCI.GetButtonDown(XboxButton.Y, controller); } }
+    public bool GetGrabReleased { get { return XCI.GetButtonUp(XboxButton.Y, controller); } }
+
+    public bool GetDodgePressed { get {
+            if (playerID == 1 && Input.GetKeyDown(KeyCode.E)) return true;
+            return XCI.GetButtonDown(XboxButton.X, controller); } }
 
     public bool getBuyPressed {get { return XCI.GetButtonDown(XboxButton.A, controller); } }
     ///

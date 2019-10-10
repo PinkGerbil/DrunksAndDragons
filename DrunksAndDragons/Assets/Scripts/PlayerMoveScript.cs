@@ -195,6 +195,8 @@ public class PlayerMoveScript : MonoBehaviour
 
         if(closest.collider != null)
         {
+            if (closest.normal == -hitDir.normalized)
+                return true;
             Vector3 projectPlane = Vector3.Normalize(closest.normal);
             Vector3 movement = nextPos - transform.position;
             movement = Vector3.ProjectOnPlane(movement, projectPlane);
