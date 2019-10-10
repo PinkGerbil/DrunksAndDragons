@@ -40,11 +40,15 @@ public class ScoreManager : MonoBehaviour
     public void Start()
     {
         players = new List<PlayerPoints>();
+        players.Add(Player1);
+        players.Add(Player2);
         pointsShown = false; 
     }
+    
 
-    private void Awake()
+    public void checkPlayers()
     {
+        players.Clear();
         if (Player1.gameObject.activeInHierarchy) players.Add(Player1);
         if (Player2.gameObject.activeInHierarchy) players.Add(Player2);
         if (Player3.gameObject.activeInHierarchy) players.Add(Player3);
@@ -57,6 +61,8 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     void Update()
     {
+        checkPlayers();
+
         //Shows and updates Player 1 score
         p1_Score.text = "Player 1:    " + Player1.getKills() + " Kills | " + Player1.GetPoints() + " Gold";
         //Shows and updates Player 2 score
@@ -66,14 +72,12 @@ public class ScoreManager : MonoBehaviour
         //Shows and updates Player 4 score
         p4_Score.text = "Player 4:    " + Player4.getKills() + " Kills | " + Player4.GetPoints() + " Gold";
         //time ends new wave starts
+        
         bool playersAlive = false;
         foreach (PlayerPoints child in players)
             if (child.GetComponent<PlayerDamageHandler>().lives > 0)
                 playersAlive = true;
-        if(!playersAlive)
-        {
-            gameLost = true;
-        }
+        gameLost = !playersAlive;
         if (waveMaster.waveCount == finalWaveNumber + 1 || gameLost)
         {
 
@@ -145,7 +149,7 @@ public class ScoreManager : MonoBehaviour
 
         string temp = "Results" + "\n" + "\n";
 
-        for(int i = 0; i < scores.Length; i++)
+        for(int i = 0; i < players.Count; i++)
         {
             temp += i+1 + ". " + ranks[i].name + ":       " + scores[i] + "\n" + "\n";
         }

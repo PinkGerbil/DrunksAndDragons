@@ -68,7 +68,7 @@ public class PlayerSelect : MonoBehaviour
                     players[i].GetComponent<CapsuleCollider>().enabled = true;
                     players[i].GetComponent<FoodAndDrink>().enabled = true;
                 }
-
+                
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }

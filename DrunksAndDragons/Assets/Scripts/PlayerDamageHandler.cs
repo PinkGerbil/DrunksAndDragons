@@ -182,8 +182,8 @@ public class PlayerDamageHandler : MonoBehaviour
     {
         if (animator != null)
             animator.SetTrigger("WasHit");
-        isHitDir.Normalize();
         isHitDir.y = 0;
+        isHitDir.Normalize();
         knockbackCountdown = knockbackTime;
         rigidbody.isKinematic = false;
         IFrameTime = IFrames;

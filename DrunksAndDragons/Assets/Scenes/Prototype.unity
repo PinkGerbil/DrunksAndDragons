@@ -4738,38 +4738,10 @@ PrefabInstance:
       propertyPath: Player_Icon
       value: 
       objectReference: {fileID: 1017747802}
-    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+    - target: {fileID: 662559065435560117, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
-      propertyPath: foodPrice
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: healthUp
-      value: 
-      objectReference: {fileID: 3894575176415504023, guid: b5111a5bf7b612441817f60ad17ded75,
-        type: 3}
-    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: speedUp
-      value: 
-      objectReference: {fileID: 4127272031321347652, guid: 7820c528a09ac3045bfe0b858e2eb37c,
-        type: 3}
-    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: food
-      value: 
-      objectReference: {fileID: 2746182327610996464, guid: af9b714456340404488c7fdad08ac474,
-        type: 3}
-    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: attackCooldownDuration
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: dodgeSpeed
-      value: 25
+      propertyPath: lives
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 662559065435560114, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
@@ -4791,10 +4763,10 @@ PrefabInstance:
       propertyPath: Player_Icon
       value: 
       objectReference: {fileID: 968411839}
-    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+    - target: {fileID: 2942986365390005707, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
-      propertyPath: dodgeSpeed
-      value: 25
+      propertyPath: lives
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2942986365390005708, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
@@ -4816,11 +4788,6 @@ PrefabInstance:
       propertyPath: Player_Icon
       value: 
       objectReference: {fileID: 1817167262}
-    - target: {fileID: 8517220037259680341, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
-        type: 3}
-      propertyPath: dodgeSpeed
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 8517220037259680340, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -4841,10 +4808,10 @@ PrefabInstance:
       propertyPath: Player_Icon
       value: 
       objectReference: {fileID: 916714102}
-    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+    - target: {fileID: 8889305699210294319, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
-      propertyPath: dodgeSpeed
-      value: 25
+      propertyPath: lives
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8889305699210294312, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
