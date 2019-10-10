@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using XboxCtrlrInput;
 
 [RequireComponent(typeof(PlayerInput), typeof(Animator))]
@@ -73,7 +74,7 @@ public class PlayerMoveScript : MonoBehaviour
     void Update()
     {
         Vector3 moveDir = input.GetMoveDir;
-        if (moveDir != Vector3.zero && rigidbody.isKinematic && carrySpeedMod > 0 && consumableSpeedMod > 0)
+        if (moveDir != Vector3.zero && rigidbody.isKinematic && carrySpeedMod > 0 && consumableSpeedMod > 0 && !attack.IsAttacking)
         {
             Vector3 aimDir = moveDir;
             float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
@@ -86,7 +87,7 @@ public class PlayerMoveScript : MonoBehaviour
             }
 
         }
-        else if (isMoving)
+        else
         {
             isMoving = false;
         }
@@ -175,16 +176,21 @@ public class PlayerMoveScript : MonoBehaviour
 
         int originDirOffset = 1; // used to control the direction of the origin offset occurring at the end of each for loop iteration
         int layerMask = (1 << LayerMask.NameToLayer("Environment")) | (1 << LayerMask.NameToLayer("Pickup"));
-        for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 4; j++)
         {
-            Debug.DrawRay(origin, hitDir);
-            if (Physics.Raycast(origin, hitDir, out RaycastHit hit, playerRadius, layerMask))
+            for (int i = 0; i < 3; i++)
             {
-                if (closest.collider == null || hit.distance < closest.distance)
-                    closest = hit;
+                Debug.DrawRay(origin, hitDir);
+                if (Physics.Raycast(origin, hitDir, out RaycastHit hit, playerRadius, layerMask))
+                {
+                    if (closest.collider == null || hit.distance < closest.distance)
+                        closest = hit;
+                }
+                origin += dirPerp * playerRadius * originDirOffset;
+                originDirOffset *= -2;
             }
-            origin += dirPerp * playerRadius * originDirOffset;
-            originDirOffset *= -2;
+            origin = transform.position + Vector3.up * height * (0.5f * (j + 1));
+            originDirOffset = 1;
         }
 
         if(closest.collider != null)

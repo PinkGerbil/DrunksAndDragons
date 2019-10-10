@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(PlayerInput), typeof(PlayerMoveScript))]
 public class AttackScript : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("Plays audio whenever the player lands a hit on an enemy")]
+    UnityEvent OnHit;
+    [SerializeField]
+    [Tooltip("Plays audio whenever player starts a punch attack")]
+    UnityEvent OnAttack;
+
     [Tooltip("The distance from the player's center to the player's edge")]
     [SerializeField]
     float playerRadius = 0.5f;
@@ -23,7 +31,7 @@ public class AttackScript : MonoBehaviour
     [HideInInspector]
     public Animator animator;
 
-    public bool IsAttacking { get { return !(sweepCountdown <= 0 && lungeCountdown <= 0); } }
+    public bool IsAttacking { get { return !(sweepCountdown <= 0 && lungeCountdown <= 0 && punchCountdown <= 0); } }
 
     
     [Tooltip("How Long the player can carry objects or other players for")]
@@ -122,6 +130,7 @@ public class AttackScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         if (!animator)
             animator = GetComponent<Animator>();
         if (!input)
@@ -208,6 +217,7 @@ public class AttackScript : MonoBehaviour
             if (input.GetPunchPressed && !heldObject)
             {
                 PunchAttack();
+                
             }
 
             if (input.GetLungePressed && !heldObject)
@@ -251,7 +261,8 @@ public class AttackScript : MonoBehaviour
         int layerMask = 1 << LayerMask.NameToLayer("Enemy");
         float switchdir = -1;
         float widthScale = 0.5f;
-        for(int i = 0; i < 3; i++)
+        bool hitCollided = false;
+        for (int i = 0; i < 3; i++)
         {
             switchdir *= -1;
             if(Physics.Raycast(origin, transform.forward, out RaycastHit hit, punchRange, layerMask))
@@ -266,6 +277,7 @@ public class AttackScript : MonoBehaviour
                     }
                 if(!wasHit)
                 {
+                    hitCollided = true;
                     if (!hit.collider.gameObject.GetComponent<AI>().channeling)
                     {
                         hit.collider.GetComponent<AI>().takeDamage(punchDamage);
@@ -281,6 +293,8 @@ public class AttackScript : MonoBehaviour
             widthScale += 0.5f;
         }
         hitEnemies.Clear();
+        if (hitCollided)
+            OnHit.Invoke();
     }
 
     /// <summary>
@@ -329,6 +343,7 @@ public class AttackScript : MonoBehaviour
         Vector3 lungePerp = Vector3.Cross(transform.up, lungeDir);
         Vector3 rayOrigin = transform.position + (-lungePerp * playerRadius) + (-transform.forward * playerRadius)+ attackPoint;
         int layerMask = 1 << LayerMask.NameToLayer("Enemy");
+        bool hitCollided = false;
         for (int i = 0; i < 5; i++)
         {
             if (Physics.Raycast(rayOrigin, lungeDir, out RaycastHit hit, lungeRange + playerRadius * 2, layerMask))
@@ -342,6 +357,7 @@ public class AttackScript : MonoBehaviour
                     }
                 if(!wasHit)
                 {
+                    hitCollided = true;
                     hit.collider.enabled = false;
                     if (!hit.collider.gameObject.GetComponent<AI>().channeling)
                     {
@@ -356,12 +372,17 @@ public class AttackScript : MonoBehaviour
             rayOrigin += lungePerp * 0.2f;
             Debug.DrawLine(rayOrigin, rayOrigin + (lungeDir * (lungeRange + playerRadius * 2)), Color.red);
         }
+        if (hitCollided)
+        {
+            OnHit.Invoke();
+        }
     }
     
     public void PunchAttack()
     {
         if(punchCountdown <= punchTime * 0.25f)
         {
+            OnAttack.Invoke();
             punchCountdown = punchTime;
             playerMove.carrySpeedMod = 0;
             if (animator != null)
@@ -383,6 +404,7 @@ public class AttackScript : MonoBehaviour
     {
         if (lungeCountdown <= 0)
         {
+            OnAttack.Invoke();
             if(animator != null)
                 animator.SetTrigger("Lunging");
             lungeCountdown = lungeDuration * 4.5f;

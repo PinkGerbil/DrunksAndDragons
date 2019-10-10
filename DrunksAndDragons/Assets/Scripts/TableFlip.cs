@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TableFlip : MonoBehaviour
 {
-    bool isFlipping { get { return flipCountdown > 0; } }
+    bool isFlipping { get { return flipCountdown > 0 || GetComponent<Rigidbody>().velocity != Vector3.zero; } }
 
     [SerializeField]
     [Tooltip("How much damage is done when the table collides with an enemy")]
@@ -82,7 +82,6 @@ public class TableFlip : MonoBehaviour
             flipDir = (GetComponent<Collider>().ClosestPointOnBounds(flipperPos) - flipperPos);
             flipDir.y = 0;
             flipDir.Normalize();
-            Debug.Log(flipDir);
 
             findNextPos();
 
@@ -127,5 +126,6 @@ public class TableFlip : MonoBehaviour
             hitEnemies.Add(other.gameObject);
         }
     }
+    
 
 }
