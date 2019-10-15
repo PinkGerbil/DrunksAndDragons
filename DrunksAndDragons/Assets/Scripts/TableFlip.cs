@@ -57,14 +57,14 @@ public class TableFlip : MonoBehaviour
 
     public void flip(Vector3 flipperPos)
     {
-        if (!isFlipping && resetCountdown <= 0)
-        {
+        //if (!isFlipping && resetCountdown <= 0)
+        //{
             Debug.Log("Table Flipped");
             resetCountdown = ResetTime;
             GetComponent<Rigidbody>().AddForceAtPosition(((transform.position - flipperPos).normalized + Vector3.up).normalized * 500, GetComponent<Collider>().ClosestPointOnBounds(flipperPos));
             
 
-        }
+        //}
     }
     
 

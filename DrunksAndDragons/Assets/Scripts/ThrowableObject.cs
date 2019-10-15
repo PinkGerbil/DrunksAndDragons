@@ -99,7 +99,7 @@ public class ThrowableObject : MonoBehaviour
             other.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
             Debug.Log(rigidbody.velocity);
             rigidbody.velocity = (rigidbody.velocity.normalized - hitDir * 2).normalized * rigidbody.velocity.magnitude * 2;
-            Debug.Log(rigidbody.velocity);
+
             hitEnemies.Add(other.gameObject);
             objectHealth--;
             if (objectHealth <= 0)
