@@ -87,16 +87,15 @@ public class PlayerDamageHandler : MonoBehaviour
                 transform.position = temp;
             }
 
-            Vector3 nextPos = transform.position + rigidbody.velocity * Time.deltaTime;
+            Vector3 velocity = rigidbody.velocity;
 
-            if (GetComponent<PlayerMoveScript>().CheckInDirection(nextPos))
-            {
-                Vector3 temp = Vector3.zero;
-                temp.y = rigidbody.velocity.y;
-                heldVelocity = rigidbody.velocity;
-                heldVelocity.y = 0;
-                rigidbody.velocity = temp;
-            }
+            while (GetComponent<PlayerMoveScript>().CheckInDirection(velocity, out Vector3 colNorm))
+                velocity = Vector3.ProjectOnPlane(velocity, colNorm);
+            //Vector3 temp = Vector3.zero;
+            //temp.y = rigidbody.velocity.y;
+            //heldVelocity = rigidbody.velocity;
+            //heldVelocity.y = 0;
+            rigidbody.velocity = velocity;
         }
 
     }
@@ -105,20 +104,20 @@ public class PlayerDamageHandler : MonoBehaviour
 
     void Update()
     {
-        if (heldVelocity != Vector3.zero)
-        {
-            rigidbody.velocity += heldVelocity;
-            heldVelocity = Vector3.zero;
-        }
+        //if (heldVelocity != Vector3.zero)
+        //{
+        //    rigidbody.velocity += heldVelocity;
+        //    heldVelocity = Vector3.zero;
+        //}
         if (knockbackCountdown > 0)
         {
             PlayerMoveScript temp = GetComponent<PlayerMoveScript>();
             knockbackCountdown -= Time.deltaTime;
-            if (!temp.CheckInDirection(transform.position + knockbackSpeed * isHitDir.normalized * Time.deltaTime))
-            {
-                transform.position += knockbackSpeed * isHitDir.normalized * Time.deltaTime;
-                temp.checkGrounded();
-            }
+            Vector3 velocity = knockbackSpeed * isHitDir.normalized * Time.deltaTime;
+            while (temp.CheckInDirection(velocity, out Vector3 colNorm))
+                velocity = Vector3.ProjectOnPlane(velocity, colNorm);
+            transform.position += velocity;
+            temp.checkGrounded();
         }
         else if (IFrameTime > 0)
         {

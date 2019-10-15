@@ -51,7 +51,7 @@ public class PlayerMoveScript : MonoBehaviour
     /// <summary>
     /// Returns the position the player will be in if they walk forward this frame. (carrySpeedMod should be applied before consumableSpeedMod)
     /// </summary>
-    Vector3 nextPosition { get { return transform.position + transform.forward * (moveSpeed + shopSpeedIncrease) * carrySpeedMod * consumableSpeedMod * Time.deltaTime; } }
+    Vector3 velocity { get { return transform.forward * (moveSpeed + shopSpeedIncrease) * carrySpeedMod * consumableSpeedMod * Time.deltaTime; } }
     
 
     // Start is called before the first frame update
@@ -73,18 +73,22 @@ public class PlayerMoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         Vector3 moveDir = input.GetMoveDir;
         if (moveDir != Vector3.zero && rigidbody.isKinematic && carrySpeedMod > 0 && consumableSpeedMod > 0 && !attack.IsAttacking)
         {
-            Vector3 aimDir = moveDir;
-            float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
-            if (!CheckInDirection(nextPosition))
+            //Vector3 aimDir = moveDir;
+            //float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
+            //transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+            transform.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
+            Vector3 newVelocity = velocity;
+            while (CheckInDirection(newVelocity, out Vector3 colNorm))
             {
-                transform.position = nextPosition;
-                checkGrounded();
-                isMoving = true;
+                newVelocity = Vector3.ProjectOnPlane(newVelocity, colNorm);
             }
+            transform.position += newVelocity;
+            checkGrounded();
+            isMoving = true;
 
         }
         else
@@ -157,15 +161,14 @@ public class PlayerMoveScript : MonoBehaviour
     }
 
     /// <summary>
-    /// check if the player will collide with anything after moving, and perform a restitution in advance if necessary
+    /// Checks the direction the player is moving in a returns a colision normal
     /// </summary>
-    /// <param name="nextPos"> the position the player will be in after force is applied </param>
-    /// <returns> true if the player will collide with something </returns>
-    public bool CheckInDirection(Vector3 nextPos)
+    /// <param name="curVelocity">  </param>
+    /// <returns></returns>
+    public bool CheckInDirection(Vector3 curVelocity, out Vector3 colNorm)
     {
         Vector3 origin = transform.position;
-        //origin.y = TopPoint.transform.position.y;
-        Vector3 hitDir = Vector3.Normalize(nextPos - transform.position);
+        Vector3 hitDir = curVelocity.normalized;
 
         // direction perpendicular to hitDir
         Vector3 dirPerp = Vector3.Cross(Vector3.up, hitDir);
@@ -191,22 +194,16 @@ public class PlayerMoveScript : MonoBehaviour
             originDirOffset = 1;
         }
 
-        if(closest.collider != null)
+        if (closest.collider != null)
         {
-            if (closest.normal == -hitDir.normalized)
-                return true;
-            Vector3 projectPlane = Vector3.Normalize(closest.normal);
-            Vector3 movement = nextPos - transform.position;
-            movement = Vector3.ProjectOnPlane(movement, projectPlane);
-            if (!CheckInDirection(transform.position + movement))
-            {
-                transform.position += movement;
-                checkGrounded();
-            }
+            colNorm = closest.normal;
             return true;
         }
         else
+        {
+            colNorm = Vector3.zero;
             return false;
+        }
     }
 
 }

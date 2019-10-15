@@ -195,17 +195,15 @@ public class AttackScript : MonoBehaviour
                 lungeCountdown -= Time.deltaTime;
             else
             {
-                if (!playerMove.CheckInDirection(transform.position + lungeDir * 20 * Time.deltaTime))
+                Vector3 velocity = lungeDir * 20 * Time.deltaTime;
+                while (playerMove.CheckInDirection(velocity, out Vector3 colNorm))
                 {
-                    transform.position += lungeDir * 20 * Time.deltaTime;
-                    playerMove.checkGrounded();
-                    lungeCountdown -= Time.deltaTime;
+                    velocity = Vector3.ProjectOnPlane(velocity, colNorm);
                 }
-                else
-                {
-                    lungeCountdown = 0;
-                }
+                transform.position += velocity;
+                playerMove.checkGrounded();
                 checkLungeCollision();
+                lungeCountdown -= Time.deltaTime;
                 if (lungeCountdown <= 0)
                 {
                     hitEnemies.Clear();
@@ -216,8 +214,10 @@ public class AttackScript : MonoBehaviour
         else if(dodgeCountdown > 0)
         {
             dodgeCountdown -= Time.deltaTime;
-            if(!playerMove.CheckInDirection(transform.position + transform.forward * dodgeSpeed * Time.deltaTime))
-                transform.position += transform.forward * dodgeSpeed * Time.deltaTime;
+            Vector3 velocity = transform.forward * dodgeSpeed * Time.deltaTime;
+            while (playerMove.CheckInDirection(velocity, out Vector3 colNorm))
+                velocity = Vector3.ProjectOnPlane(velocity, colNorm);
+            transform.position += velocity;
             playerMove.checkGrounded();
             if (dodgeCountdown <= 0)
                 dodgeCooldownCountdown = dodgeCooldown;
