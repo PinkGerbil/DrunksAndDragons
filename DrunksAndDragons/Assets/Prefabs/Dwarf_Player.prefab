@@ -353,6 +353,7 @@ MonoBehaviour:
   kills: 0
   coinsText: {fileID: 0}
   killCount: {fileID: 0}
+  killPointMultiplier: 0
 --- !u!114 &2881682679395987100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,7 +459,7 @@ MonoBehaviour:
   sweepDamage: 1
   lungeDuration: 0.15
   lungeRange: 0.5
-  lungeDamage: 1
+  lungeDamage: 2
   punchTime: 0.2335
   punchCountdown: 0
   punchDamage: 1
@@ -486,6 +487,7 @@ MonoBehaviour:
   attack: {fileID: 2881682679395987097}
   moveSpeed: 5
   shopSpeedIncrease: 0
+  shopSpeedIncreaseLimit: 0
   carrySpeedMod: 1
   consumableSpeedMod: 1
   animator: {fileID: 0}

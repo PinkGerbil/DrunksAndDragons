@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   results: {fileID: 563751107}
+  players: []
   Player1: {fileID: 63977970}
   Player2: {fileID: 682952256}
   Player3: {fileID: 1257653822}
@@ -9146,6 +9147,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 12996827047276242, guid: 910dbc8ec887feb42b23f9833a85260d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 12996827047276242, guid: 910dbc8ec887feb42b23f9833a85260d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 12996827047276242, guid: 910dbc8ec887feb42b23f9833a85260d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6433243090684570401, guid: 910dbc8ec887feb42b23f9833a85260d,
         type: 3}
