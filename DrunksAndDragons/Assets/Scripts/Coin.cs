@@ -8,7 +8,7 @@ public class Coin : MonoBehaviour
     public int yAxis;
     public int zAxis;
 
-    List<GameObject> players;
+    List<PlayerPoints> players;
 
     [SerializeField]
     [Tooltip("how fast the coin moves towards the player when the player is close enough")]
@@ -18,7 +18,8 @@ public class Coin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        players = GameObject.Find("Game Manager").GetComponent<Blackboard>().players;
+
+        players = GameObject.Find("Game Manager").GetComponent<ScoreManager>().players;
         int coinShootingX = Random.Range(-xAxis, xAxis);
         int coinShootingY = Random.Range(0, yAxis);
         int coinShootingZ = Random.Range(-zAxis, zAxis);
@@ -31,7 +32,7 @@ public class Coin : MonoBehaviour
     {
         Vector3 closest = Vector3.positiveInfinity;
 
-        foreach(GameObject child in players)
+        foreach(PlayerPoints child in players)
         {
             if (Vector3.Distance(child.transform.position, transform.position) < Vector3.Distance(closest, transform.position))
                 closest = child.transform.position;

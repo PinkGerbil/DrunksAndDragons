@@ -11,7 +11,7 @@ public class ScoreManager : MonoBehaviour
     //public GameObject gameOver;
     public GameObject results;
 
-    List<PlayerPoints> players;
+    public List<PlayerPoints> players;
     public PlayerPoints Player1;
     public PlayerPoints Player2;
     public PlayerPoints Player3;
