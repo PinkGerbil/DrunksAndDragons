@@ -123,9 +123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f163aa54522c024f8cbe8c9e5514cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xAxis: 250
-  yAxis: 300
-  zAxis: 250
+  xAxis: 0
+  yAxis: 0
+  zAxis: 0
+  acceleration: 2.5
 --- !u!135 &758806310688226220
 SphereCollider:
   m_ObjectHideFlags: 0
