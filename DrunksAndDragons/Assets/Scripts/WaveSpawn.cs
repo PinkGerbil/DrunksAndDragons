@@ -8,6 +8,8 @@ public class WaveSpawn : MonoBehaviour
     public GameObject scoreManager;
     public GameObject aiGameObject;
     public Transform[] spawnLocation;
+    private int previousSpawn;
+    private int index;
 
 
 
@@ -46,6 +48,7 @@ public class WaveSpawn : MonoBehaviour
     void Start()
     {
         timer = 0;
+        previousSpawn = Random.Range(0, spawnLocation.Length);
     }
 
     // Update is called once per frame
@@ -100,15 +103,22 @@ public class WaveSpawn : MonoBehaviour
         }
         for(int i = 0; i < (spawnAmount * waveMultiplierStartValue); i++)
         {
-            int index = Random.Range(0, spawnLocation.Length);
+            do { FindingIndex(); }
+            while (index == previousSpawn);
 
             Instantiate(aiGameObject, spawnLocation[index].position, Quaternion.Euler(0, 0, 0), this.transform);
-
+            previousSpawn = index;
             yield return new WaitForSeconds(timeBetweenSpawn);
         }
         if (waveMultiplierOn == true)
         {
             waveMultiplierStartValue = waveMultiplierStartValue + multiplyAmount;
         }
+    }
+
+    int FindingIndex()
+    {
+        index = Random.Range(0, spawnLocation.Length);
+        return index;
     }
 }
