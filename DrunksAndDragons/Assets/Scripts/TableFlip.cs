@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TableFlip : MonoBehaviour
 {
-    bool isFlipping { get { return GetComponent<Rigidbody>().velocity != Vector3.zero && resetCountdown > 0; } }
+    bool isFlipping { get { return GetComponent<Rigidbody>().velocity.magnitude > velocityMinMag && resetCountdown > 0; } }
 
     [SerializeField]
     [Tooltip("How much damage is done when the table collides with an enemy")]
@@ -16,6 +16,10 @@ public class TableFlip : MonoBehaviour
     [Range(1, 100)]
     float ResetTime = 20;
     float resetCountdown = 0;
+
+    [SerializeField]
+    [Tooltip("how slow the table has to be moving before it is considered to be stopped")]
+    float velocityMinMag = 0.1f;
     
 
     Vector3 nextPosition = Vector3.zero;
@@ -32,8 +36,11 @@ public class TableFlip : MonoBehaviour
 
     List<GameObject> hitEnemies = new List<GameObject>();
 
+    Rigidbody rigidbody;
+
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
 
         resetPos = transform.position;
@@ -42,9 +49,8 @@ public class TableFlip : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-        if(resetCountdown <= 0)
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+        if(!isFlipping)
+            rigidbody.velocity = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -58,23 +64,15 @@ public class TableFlip : MonoBehaviour
                 transform.SetPositionAndRotation(resetPos, resetRot);
             }
         }
-
-        
-
-        
+        Debug.DrawLine(transform.position, transform.position + rigidbody.velocity * Time.deltaTime);
     }
 
     public void flip(Vector3 flipperPos)
     {
-        //if (!isFlipping && resetCountdown <= 0)
-        //{
-            Debug.Log("Table Flipped");
         if(resetCountdown <= 0)
             resetCountdown = ResetTime;
-        GetComponent<Rigidbody>().AddForceAtPosition(((transform.position - flipperPos).normalized + Vector3.up).normalized * 500, GetComponent<Collider>().ClosestPointOnBounds(flipperPos));
+        rigidbody.AddForceAtPosition(((transform.position - flipperPos).normalized + Vector3.up).normalized * 500, GetComponent<Collider>().ClosestPointOnBounds(flipperPos));
             
-
-        //}
     }
     
 

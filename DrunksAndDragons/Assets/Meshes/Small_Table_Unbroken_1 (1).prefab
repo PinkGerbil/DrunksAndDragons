@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   ResetTime: 20
-  flipTime: 0.1
+  velocityMinMag: 0.1
 --- !u!64 &2088116786817770963
 MeshCollider:
   m_ObjectHideFlags: 0

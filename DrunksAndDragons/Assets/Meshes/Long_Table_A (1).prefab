@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   ResetTime: 20
-  flipTime: 0.175
+  velocityMinMag: 0.1
 --- !u!65 &5230919813003658180
 BoxCollider:
   m_ObjectHideFlags: 0
