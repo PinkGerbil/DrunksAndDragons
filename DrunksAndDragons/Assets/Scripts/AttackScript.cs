@@ -567,7 +567,7 @@ public class AttackScript : MonoBehaviour
             gameObject.GetComponent<PlayerDamageHandler>().health = gameObject.GetComponent<PlayerDamageHandler>().maxHealth;
             points.LosePoints(fullHealPrice);
         }
-        else if (other.gameObject.tag == "SpeedDrinkShop" && input.getBuyPressed && points.points >= speedUpPrice)
+        else if (other.gameObject.tag == "SpeedDrinkShop" && input.getBuyPressed && points.points >= speedUpPrice && gameObject.GetComponent<PlayerMoveScript>().shopSpeedIncrease < gameObject.GetComponent<PlayerMoveScript>().shopSpeedIncreaseLimit)
         {
             this.gameObject.GetComponent<PlayerMoveScript>().shopSpeedIncrease++;
             points.LosePoints(speedUpPrice);
