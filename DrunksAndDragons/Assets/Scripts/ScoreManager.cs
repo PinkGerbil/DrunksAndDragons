@@ -40,6 +40,8 @@ public class ScoreManager : MonoBehaviour
     public WaveSpawn waveMaster;
     public int finalWaveNumber;
     private bool gameLost;
+
+
     //public GameObject endScreen;
 
     /// <summary>
@@ -50,6 +52,8 @@ public class ScoreManager : MonoBehaviour
         players = new List<PlayerPoints>();
         players.Add(Player1);
         players.Add(Player2);
+        players.Add(Player3);
+        players.Add(Player4);
         pointsShown = false; 
     }
     

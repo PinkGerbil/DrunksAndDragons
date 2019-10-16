@@ -462,7 +462,7 @@ MonoBehaviour:
   punchTime: 0.2335
   punchCountdown: 0
   punchDamage: 1
-  punchRange: 0.5
+  punchRange: 3
   comboGracePeriod: 1
   grabRange: 1.5
   grabWidth: 45

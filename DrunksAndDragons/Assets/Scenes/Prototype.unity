@@ -258,6 +258,11 @@ MonoBehaviour:
   p2_Score: {fileID: 289076022}
   p3_Score: {fileID: 1156996699}
   p4_Score: {fileID: 1514824766}
+  p1_UI: {fileID: 1853737514}
+  p2_UI: {fileID: 265963850}
+  p3_UI: {fileID: 296832122}
+  p4_UI: {fileID: 878936628}
+  gameEndText: {fileID: 0}
   pointsShown: 1
   waveMaster: {fileID: 1826136152}
   finalWaveNumber: 5

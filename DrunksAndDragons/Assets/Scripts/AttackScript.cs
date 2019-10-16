@@ -310,12 +310,9 @@ public class AttackScript : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             switchdir *= -1;
-            Debug.DrawLine(origin, origin + transform.forward * punchRange, Color.red, 10);
             if (Physics.Raycast(origin, transform.forward, out RaycastHit hit, punchRange, layerMask))
             {
-                
                 bool wasHit = false;
-
                 foreach(GameObject child in hitEnemies)
                     if(hit.collider.gameObject.Equals(child))
                     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TableFlip : MonoBehaviour
 {
-    bool isFlipping { get { return GetComponent<Rigidbody>().velocity != Vector3.zero; } }
+    bool isFlipping { get { return GetComponent<Rigidbody>().velocity != Vector3.zero && resetCountdown > 0; } }
 
     [SerializeField]
     [Tooltip("How much damage is done when the table collides with an enemy")]
@@ -40,6 +40,13 @@ public class TableFlip : MonoBehaviour
         resetRot = transform.rotation;
     }
 
+    private void FixedUpdate()
+    {
+        
+        if(resetCountdown <= 0)
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -51,8 +58,6 @@ public class TableFlip : MonoBehaviour
                 transform.SetPositionAndRotation(resetPos, resetRot);
             }
         }
-        else
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         
 
@@ -83,7 +88,7 @@ public class TableFlip : MonoBehaviour
                     Debug.Log("already hit");
                     return;
                 }
-            Debug.Log("hit");
+
             other.GetComponent<AI>().takeDamage(damage, flipDir);
             hitEnemies.Add(other.gameObject);
         }

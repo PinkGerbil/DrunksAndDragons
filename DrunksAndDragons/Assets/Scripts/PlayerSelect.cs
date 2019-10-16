@@ -36,6 +36,10 @@ public class PlayerSelect : MonoBehaviour
 
     private int controllerCount = 0;
 
+    bool checkPlayers = false;
+
+    bool anyActive { get { return player1Active || player2Active || player3Active || player4Active; } }
+
     void Start()
     {
         players[0] = Player1;
@@ -49,16 +53,16 @@ public class PlayerSelect : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(SceneManager.GetActiveScene().name == playerSelectScene)
+        if (SceneManager.GetActiveScene().name == playerSelectScene)
         {
             SelectPlayers();
             ActivatePlayers();
 
-            if (XCI.GetButton(XboxButton.Back, XboxController.First))
+            if (XCI.GetButton(XboxButton.Back, XboxController.First) && anyActive)
             {
                 //make more efficient later
                 //loads next scene after character select
-                for(int i = 0; i < players.Length; i++)
+                for (int i = 0; i < players.Length; i++)
                 {
                     players[i].GetComponent<PlayerPoints>().enabled = true;
                     players[i].GetComponent<PlayerInput>().enabled = true;
@@ -68,10 +72,11 @@ public class PlayerSelect : MonoBehaviour
                     players[i].GetComponent<CapsuleCollider>().enabled = true;
                     players[i].GetComponent<FoodAndDrink>().enabled = true;
                 }
-                
+
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
+
         if (SceneManager.GetActiveScene().name == gameScene)
         {
             CheckActivePlayer();
