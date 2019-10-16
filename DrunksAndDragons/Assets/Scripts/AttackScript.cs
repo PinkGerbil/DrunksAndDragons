@@ -179,8 +179,11 @@ public class AttackScript : MonoBehaviour
             punchCountdown -= Time.deltaTime;
             checkPunch();
             if (punchCountdown <= 0)
+            {
                 playerMove.carrySpeedMod = 1;
-            else if(punchCountdown <= punchTime * 0.5f)
+                hitEnemies.Clear();
+            }
+            else if (punchCountdown <= punchTime * 0.5f)
                 comboGraceCountdown = comboGracePeriod;
         }
         else if (sweepCountdown > 0)
@@ -301,7 +304,6 @@ public class AttackScript : MonoBehaviour
 
     void checkPunch()
     {
-        if (hitEnemies.Count != 0) hitEnemies.Clear();
         Vector3 origin = transform.position - (transform.forward * playerRadius) + attackPoint;
         int layerMask = 1 << LayerMask.NameToLayer("Enemy");
         float switchdir = -1;
@@ -336,7 +338,6 @@ public class AttackScript : MonoBehaviour
             origin += transform.right * (playerRadius * widthScale) * switchdir;
             widthScale += 0.5f;
         }
-        hitEnemies.Clear();
         if (hitCollided)
             OnHit.Invoke();
     }
@@ -426,6 +427,7 @@ public class AttackScript : MonoBehaviour
     {
         if(punchCountdown <= punchTime * 0.25f)
         {
+            hitEnemies.Clear();
             OnAttack.Invoke();
             punchCountdown = punchTime;
             playerMove.carrySpeedMod = 0;
