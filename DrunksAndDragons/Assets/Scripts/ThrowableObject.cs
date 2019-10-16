@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(Collider), typeof(Rigidbody))]
+[RequireComponent(typeof(Collider), typeof(Rigidbody), typeof(NavMeshObstacle))]
 public class ThrowableObject : MonoBehaviour
 {
     [SerializeField]
@@ -48,6 +49,7 @@ public class ThrowableObject : MonoBehaviour
     }
     public void setThrown()
     {
+        GetComponent<NavMeshObstacle>().enabled = false;
         timer = maxTimer;
         wasThrown = true;
     }
@@ -60,32 +62,6 @@ public class ThrowableObject : MonoBehaviour
         // instantiate broken stool gameobject and destroy this.
         Destroy(gameObject);
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    Debug.Log(collision.collider.name);
-    //    if(wasThrown && collision.collider.CompareTag("Enemy"))
-    //    {
-    //        foreach (GameObject child in hitEnemies)
-    //            if (collision.collider.gameObject.Equals(child))
-    //                return;
-    //        if (objectHealth <= 1)
-    //        {
-    //            Vector3 hitDir = -collision.contacts[1].normal;
-    //            hitDir.y = 0;
-    //            collision.collider.GetComponent<AI>().takeDamage(damage * 2, hitDir.normalized);
-    //            ObjectBreak();
-    //        }
-    //        else
-    //        {
-    //            Vector3 hitDir = -collision.contacts[1].normal;
-    //            hitDir.y = 0;
-    //            collision.collider.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
-    //            hitEnemies.Add(collision.collider.gameObject);
-    //            objectHealth--;
-    //        }
-    //    }
-    //}
 
     void OnTriggerEnter(Collider other)
     {

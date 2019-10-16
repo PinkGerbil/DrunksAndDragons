@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshObstacle))]
 public class TableFlip : MonoBehaviour
 {
     bool isFlipping { get { return GetComponent<Rigidbody>().velocity.magnitude > velocityMinMag && resetCountdown > 0; } }
@@ -49,8 +51,11 @@ public class TableFlip : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!isFlipping)
+        if (!isFlipping)
+        {
             rigidbody.velocity = Vector3.zero;
+            GetComponent<NavMeshObstacle>().enabled = true;
+        }
     }
 
     // Update is called once per frame
@@ -62,6 +67,8 @@ public class TableFlip : MonoBehaviour
             if (resetCountdown <= 0)
             {
                 transform.SetPositionAndRotation(resetPos, resetRot);
+                rigidbody.velocity = Vector3.zero;
+                GetComponent<NavMeshObstacle>().enabled = true;
             }
         }
         Debug.DrawLine(transform.position, transform.position + rigidbody.velocity * Time.deltaTime);
@@ -69,6 +76,7 @@ public class TableFlip : MonoBehaviour
 
     public void flip(Vector3 flipperPos)
     {
+        GetComponent<NavMeshObstacle>().enabled = false;
         if(resetCountdown <= 0)
             resetCountdown = ResetTime;
         rigidbody.AddForceAtPosition(((transform.position - flipperPos).normalized + Vector3.up).normalized * 500, GetComponent<Collider>().ClosestPointOnBounds(flipperPos));
