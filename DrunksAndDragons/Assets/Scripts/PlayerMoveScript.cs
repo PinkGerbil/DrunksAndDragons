@@ -21,6 +21,7 @@ public class PlayerMoveScript : MonoBehaviour
     float moveSpeed = 5;
     [Tooltip("float that increases players speed permanently")]
     public float shopSpeedIncrease;
+    public float shopSpeedIncreaseLimit;
 
     /// <summary>
     /// A speed modifier that reduces player speed when the player is carrying another player
@@ -73,7 +74,10 @@ public class PlayerMoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(shopSpeedIncrease > shopSpeedIncreaseLimit)
+        {
+            shopSpeedIncrease = shopSpeedIncreaseLimit;
+        }
         Vector3 moveDir = input.GetMoveDir;
         if (moveDir != Vector3.zero && rigidbody.isKinematic && carrySpeedMod > 0 && consumableSpeedMod > 0 && !attack.IsAttacking)
         {

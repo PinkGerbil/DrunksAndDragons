@@ -9,6 +9,8 @@ public class PlayerPoints : MonoBehaviour
     public int kills;
     public Text coinsText;
     public Text killCount;
+    private int finalPoints;
+    public int killPointMultiplier;
 
     public void Start()
     {
@@ -42,10 +44,20 @@ public class PlayerPoints : MonoBehaviour
 
     public void Update()
     {
+        //totalPoints.text = countingPoints.ToString();
         if (points >= 999)
         {
             points = 999;
         }
         coinsText.text = points.ToString();
+    }
+
+    public void FinalScore()
+    {
+        finalPoints = points + (kills * killPointMultiplier);
+    }
+    public float GetFinalScore()
+    {
+        return finalPoints;
     }
 }

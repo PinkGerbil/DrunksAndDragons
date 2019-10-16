@@ -97,13 +97,13 @@ public class ScoreManager : MonoBehaviour
         checkPlayers();
 
         //Shows and updates Player 1 score
-        p1_Score.text = "Player 1:    " + Player1.getKills() + " Kills | " + Player1.GetPoints() + " Gold";
+        p1_Score.text = "Player 1:  " + Player1.getKills() + " Kills | " + Player1.GetPoints() + " Gold | " + " Points " + Player1.GetFinalScore();
         //Shows and updates Player 2 score
-        p2_Score.text = "Player 2:    " + Player2.getKills() + " Kills | " + Player2.GetPoints() + " Gold";
+        p2_Score.text = "Player 2:  " + Player2.getKills() + " Kills | " + Player2.GetPoints() + " Gold | " + " Points " + Player2.GetFinalScore();
         //Shows and updates Player 3 score
-        p3_Score.text = "Player 3:    " + Player3.getKills() + " Kills | " + Player3.GetPoints() + " Gold";
+        p3_Score.text = "Player 3:  " + Player3.getKills() + " Kills | " + Player3.GetPoints() + " Gold | " + " Points " + Player3.GetFinalScore();
         //Shows and updates Player 4 score
-        p4_Score.text = "Player 4:    " + Player4.getKills() + " Kills | " + Player4.GetPoints() + " Gold";
+        p4_Score.text = "Player 4:  " + Player4.getKills() + " Kills | " + Player4.GetPoints() + " Gold | " + " Points " + Player4.GetFinalScore();
         //time ends new wave starts
         
         bool playersAlive = false;
@@ -113,7 +113,16 @@ public class ScoreManager : MonoBehaviour
         gameLost = !playersAlive;
         if (waveMaster.waveCount == finalWaveNumber + 1 || gameLost)
         {
-            if(gameLost)
+            bool countingScore = true;
+            if (countingScore)
+            {
+                Player1.FinalScore();
+                Player2.FinalScore();
+                Player3.FinalScore();
+                Player4.FinalScore();
+                countingScore = false;
+            }
+            if (gameLost)
             {
                 gameEndText.text = "Game Over";
             }
