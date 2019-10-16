@@ -281,7 +281,10 @@ public class AttackScript : MonoBehaviour
         }
 
 
-
+        if(!gameObject.GetComponent<PlayerDamageHandler>().Alive && heldObject != null)
+        {
+            dropHeldObject();
+        }
 
         if (carryStamina <= 0 && heldObject != null)
             dropHeldObject();

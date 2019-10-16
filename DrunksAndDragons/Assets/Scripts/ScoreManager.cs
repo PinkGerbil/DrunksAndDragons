@@ -22,6 +22,14 @@ public class ScoreManager : MonoBehaviour
     public Text p3_Score;
     public Text p4_Score;
 
+    public GameObject p1_UI;
+    public GameObject p2_UI;
+    public GameObject p3_UI;
+    public GameObject p4_UI;
+
+
+    public Text gameEndText;
+
 
     public bool pointsShown;
 
@@ -50,10 +58,18 @@ public class ScoreManager : MonoBehaviour
     {
         players.Clear();
         if (Player1.gameObject.activeInHierarchy) players.Add(Player1);
+        else p1_UI.SetActive(false);
+
         if (Player2.gameObject.activeInHierarchy) players.Add(Player2);
+        else p2_UI.SetActive(false);
+
         if (Player3.gameObject.activeInHierarchy) players.Add(Player3);
+        else p3_UI.SetActive(false);
+
         if (Player4.gameObject.activeInHierarchy) players.Add(Player4);
-        
+        else p4_UI.SetActive(false);
+
+
     }
 
     /// <summary>
@@ -80,7 +96,14 @@ public class ScoreManager : MonoBehaviour
         gameLost = !playersAlive;
         if (waveMaster.waveCount == finalWaveNumber + 1 || gameLost)
         {
-
+            if(gameLost)
+            {
+                gameEndText.text = "Game Over";
+            }
+            else
+            {
+                gameEndText.text = "Level Complete";
+            }
 
             //gameover
             //gameOver.SetActive(true);
