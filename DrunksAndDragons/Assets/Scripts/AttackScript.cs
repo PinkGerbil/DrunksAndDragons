@@ -89,8 +89,8 @@ public class AttackScript : MonoBehaviour
     [Range(0, 6)]
     public int punchDamage = 1;
     [Tooltip("How far the punch reaches")]
-    [Range(0, 3)]
-    public float punchRange = 0.5f;
+    [Range(0, 6)]
+    public float punchRange = 3.0f;
     [Tooltip("How long the player has between hits before the combo resets")]
     [Range(0, 10)]
     public float comboGracePeriod = 0.5f;
@@ -302,7 +302,7 @@ public class AttackScript : MonoBehaviour
     void checkPunch()
     {
         if (hitEnemies.Count != 0) hitEnemies.Clear();
-        Vector3 origin = transform.position + transform.forward * playerRadius + attackPoint;
+        Vector3 origin = transform.position - (transform.forward * playerRadius) + attackPoint;
         int layerMask = 1 << LayerMask.NameToLayer("Enemy");
         float switchdir = -1;
         float widthScale = 0.5f;
@@ -310,8 +310,10 @@ public class AttackScript : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             switchdir *= -1;
-            if(Physics.Raycast(origin, transform.forward, out RaycastHit hit, punchRange, layerMask))
+            Debug.DrawLine(origin, origin + transform.forward * punchRange, Color.red, 10);
+            if (Physics.Raycast(origin, transform.forward, out RaycastHit hit, punchRange, layerMask))
             {
+                
                 bool wasHit = false;
 
                 foreach(GameObject child in hitEnemies)

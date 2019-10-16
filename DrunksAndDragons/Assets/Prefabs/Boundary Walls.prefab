@@ -88,6 +88,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 54.690353, y: 16.247812, z: 3.6511967}
   m_Center: {x: 5.500225, y: -3.5485976, z: -1.8019028}
+--- !u!1 &1929578414954004398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2950901776443289085}
+  - component: {fileID: 6086161518578582472}
+  m_Layer: 9
+  m_Name: North Wall (3)
+  m_TagString: Environment
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2950901776443289085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929578414954004398}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 19.43, y: 3.94, z: 12.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6658547278028975028}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &6086161518578582472
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929578414954004398}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.0694423, y: 1.0837536, z: 1.8944196}
+  m_Center: {x: -1.0009186, y: -2.6144621, z: -0.9235081}
 --- !u!1 &2446782707312008293
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +220,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25.123009, y: 16.829117, z: 3.5766528}
   m_Center: {x: 6.939515, y: 3.4145699, z: -1.8835018}
+--- !u!1 &3735328918584095023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 440194501518218540}
+  - component: {fileID: 1778081275376988876}
+  m_Layer: 9
+  m_Name: North Wall (4)
+  m_TagString: Environment
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &440194501518218540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3735328918584095023}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -13.4, y: 3.9399998, z: 40.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6658547278028975028}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &1778081275376988876
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3735328918584095023}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.0694423, y: 1.0837536, z: 1.8944196}
+  m_Center: {x: -1.0009186, y: -2.6144621, z: -0.9235081}
 --- !u!1 &4574712787402191924
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +390,8 @@ Transform:
   - {fileID: 5372808447769175115}
   - {fileID: 6293367667250817529}
   - {fileID: 4452115284909186907}
+  - {fileID: 2950901776443289085}
+  - {fileID: 440194501518218540}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -391,8 +481,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 83.28277, y: 16.418137, z: 2.5134199}
-  m_Center: {x: -3.6292846, y: 3.2090898, z: 0.012815484}
+  m_Size: {x: 83.28277, y: 16.418137, z: 2.5615292}
+  m_Center: {x: -3.6292846, y: 3.2090898, z: -0.011239183}
 --- !u!1 &6658547279584141342
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,11 +46,15 @@ public class TableFlip : MonoBehaviour
         if (resetCountdown > 0)
         {
             resetCountdown -= Time.deltaTime;
-            if(resetCountdown <= 0)
+            if (resetCountdown <= 0)
             {
                 transform.SetPositionAndRotation(resetPos, resetRot);
             }
         }
+        else
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        
 
         
     }
@@ -60,8 +64,9 @@ public class TableFlip : MonoBehaviour
         //if (!isFlipping && resetCountdown <= 0)
         //{
             Debug.Log("Table Flipped");
+        if(resetCountdown <= 0)
             resetCountdown = ResetTime;
-            GetComponent<Rigidbody>().AddForceAtPosition(((transform.position - flipperPos).normalized + Vector3.up).normalized * 500, GetComponent<Collider>().ClosestPointOnBounds(flipperPos));
+        GetComponent<Rigidbody>().AddForceAtPosition(((transform.position - flipperPos).normalized + Vector3.up).normalized * 500, GetComponent<Collider>().ClosestPointOnBounds(flipperPos));
             
 
         //}
