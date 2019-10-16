@@ -58,16 +58,29 @@ public class ScoreManager : MonoBehaviour
     {
         players.Clear();
         if (Player1.gameObject.activeInHierarchy) players.Add(Player1);
-        else p1_UI.SetActive(false);
+        else
+        {
+            p1_UI.SetActive(false);
+            p1_Score.gameObject.SetActive(false);
+        }
 
         if (Player2.gameObject.activeInHierarchy) players.Add(Player2);
-        else p2_UI.SetActive(false);
+        else {
+            p2_UI.SetActive(false);
+            p2_Score.gameObject.SetActive(false);
+        }
 
         if (Player3.gameObject.activeInHierarchy) players.Add(Player3);
-        else p3_UI.SetActive(false);
+        else {
+            p3_UI.SetActive(false);
+            p3_Score.gameObject.SetActive(false);
+        }
 
         if (Player4.gameObject.activeInHierarchy) players.Add(Player4);
-        else p4_UI.SetActive(false);
+        else {
+            p4_UI.SetActive(false);
+            p4_Score.gameObject.SetActive(false);
+        }
 
 
     }
