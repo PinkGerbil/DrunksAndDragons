@@ -30,6 +30,7 @@ public class ThrowableObject : MonoBehaviour
 
     void Start()
     {
+        
         rigidbody = GetComponent<Rigidbody>();
         thisCollider = GetComponent<Collider>();
     }

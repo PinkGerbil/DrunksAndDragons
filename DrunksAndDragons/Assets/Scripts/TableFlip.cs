@@ -53,7 +53,7 @@ public class TableFlip : MonoBehaviour
     {
         if (!isFlipping)
         {
-            rigidbody.velocity = Vector3.zero;
+            rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
             GetComponent<NavMeshObstacle>().enabled = true;
         }
     }

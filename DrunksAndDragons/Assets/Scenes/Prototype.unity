@@ -259,6 +259,7 @@ MonoBehaviour:
   p2_Score: {fileID: 289076022}
   p3_Score: {fileID: 1156996699}
   p4_Score: {fileID: 1514824766}
+  p1_Lives: {fileID: 0}
   p1_UI: {fileID: 1853737514}
   p2_UI: {fileID: 265963850}
   p3_UI: {fileID: 296832122}
@@ -4906,16 +4907,36 @@ PrefabInstance:
       propertyPath: coinsText
       value: 
       objectReference: {fileID: 2010279061}
+    - target: {fileID: 8517220037259680335, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 1955684680}
     - target: {fileID: 8889305699210294323, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: coinsText
       value: 
       objectReference: {fileID: 73750277}
+    - target: {fileID: 8889305699210294323, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 571306843}
     - target: {fileID: 662559065435560105, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: coinsText
       value: 
       objectReference: {fileID: 1312862143}
+    - target: {fileID: 662559065435560105, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: killCount
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560105, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 1663412545}
     - target: {fileID: 8517220036142201313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_Name
@@ -5131,6 +5152,11 @@ PrefabInstance:
       propertyPath: coinsText
       value: 
       objectReference: {fileID: 205969506}
+    - target: {fileID: 2942986365390005719, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 1082557098}
     - target: {fileID: 2942986366419994239, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_Layer

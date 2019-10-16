@@ -8,6 +8,7 @@ public class PlayerPoints : MonoBehaviour
     public int points;
     public int kills;
     public Text coinsText;
+    public Text livesText;
     public Text killCount;
     private int finalPoints;
     public int killPointMultiplier;
@@ -50,6 +51,7 @@ public class PlayerPoints : MonoBehaviour
             points = 999;
         }
         coinsText.text = points.ToString();
+        livesText.text = GetComponent<PlayerDamageHandler>().lives.ToString();
     }
 
     public void FinalScore()
