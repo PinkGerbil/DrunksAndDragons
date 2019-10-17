@@ -57,7 +57,10 @@ public class ScoreManager : MonoBehaviour
         pointsShown = false; 
     }
     
-
+    /// <summary>
+    /// Checks how many players are active
+    /// Sets the ui of the active players
+    /// </summary>
     public void checkPlayers()
     {
         players.Clear();
