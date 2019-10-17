@@ -144,8 +144,10 @@ public class AttackScript : MonoBehaviour
 
     List<GameObject> hitEnemies = new List<GameObject>();
     static List<GameObject> heldObjects = new List<GameObject>();
-
-    // Start is called before the first frame update
+    
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     void Start()
     {
 
@@ -166,7 +168,9 @@ public class AttackScript : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     void Update()
     {
         if (comboGraceCountdown > 0)
@@ -293,6 +297,9 @@ public class AttackScript : MonoBehaviour
             dropHeldObject();
     }
 
+    /// <summary>
+    /// Sets the cooldown of the dodge for the players.
+    /// </summary>
     void dodgeRoll()
     {
         if (dodgeCountdown <= 0 && dodgeCooldownCountdown <= 0)
@@ -302,6 +309,9 @@ public class AttackScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks to see if the punch hit anything
+    /// </summary>
     void checkPunch()
     {
         Vector3 origin = transform.position - (transform.forward * playerRadius) + attackPoint;
@@ -423,6 +433,9 @@ public class AttackScript : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Punch attack is called when the player punches
+    /// </summary>
     public void PunchAttack()
     {
         if(punchCountdown <= punchTime * 0.25f)
@@ -558,8 +571,10 @@ public class AttackScript : MonoBehaviour
         }
     }
     
-
-    //buying stuff in the bar
+    /// <summary>
+    /// buying stuff in the bar
+    /// </summary>
+    /// <param name="other">Collider to see which item they are buying</param>
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "FullHealShop" && input.getBuyPressed && points.points >= fullHealPrice)
