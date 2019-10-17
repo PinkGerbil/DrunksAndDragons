@@ -53,6 +53,9 @@ public class PlayerDamageHandler : MonoBehaviour
 
     Vector3 heldVelocity = Vector3.zero;
 
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     void Start()
     {
         if (!animator)
@@ -74,6 +77,9 @@ public class PlayerDamageHandler : MonoBehaviour
        
     }
 
+    /// <summary>
+    /// Fixed Update is called in a fixed timestep
+    /// </summary>
     void FixedUpdate()
     {
         int layerMask = 1 << LayerMask.NameToLayer("Floor");
@@ -100,8 +106,14 @@ public class PlayerDamageHandler : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Checks to see if the player has been knocked back
+    /// </summary>
     public bool isKnockedBack { get { return knockbackCountdown > 0; } }
 
+    /// <summary>
+    /// Update is called before every fram update
+    /// </summary>
     void Update()
     {
         //if (heldVelocity != Vector3.zero)
@@ -167,6 +179,9 @@ public class PlayerDamageHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Late Update is called after all other updates have finished their processes
+    /// </summary>
     void LateUpdate()
     {
         if (isHit)
@@ -190,6 +205,10 @@ public class PlayerDamageHandler : MonoBehaviour
         isHit = false;
     }
 
+    /// <summary>
+    /// Checks to see if the player has entered a damage collider
+    /// </summary>
+    /// <param name="other">Collider</param>
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "aoe")
