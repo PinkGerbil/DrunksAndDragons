@@ -12,12 +12,17 @@ public class Blackboard : MonoBehaviour
     public List<GameObject> players = new List<GameObject>();
 
     bool paused = false;
-
-    // Start is called before the first frame update
+    
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     void Start()
     {
     }
 
+    /// <summary>
+    /// Update is called once each frame
+    /// </summary>
     void Update()
     {
 
@@ -25,13 +30,19 @@ public class Blackboard : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Adds a player gameobject to the list of player
+    /// </summary>
+    /// <param name="player">Game Object being added to list</param>
     public void addPlayer(GameObject player)
     {
         players.Add(player);
-    }
-    
-    
+    }   
 
+    /// <summary>
+    /// Sets the game pause state to the one specified
+    /// </summary>
+    /// <param name="toggle">Pause state</param>
     public void togglePause(bool toggle)
     {
         pauseText.enabled = toggle;
@@ -42,6 +53,9 @@ public class Blackboard : MonoBehaviour
             Time.timeScale = 1;
     }
 
+    /// <summary>
+    /// Toggle the pause state of the game
+    /// </summary>
     public void togglePause()
     {
         paused = !paused;
