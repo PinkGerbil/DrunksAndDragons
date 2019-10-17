@@ -13,6 +13,7 @@ public class PlayerDamageHandler : MonoBehaviour
     [SerializeField]
     [Tooltip("HealthPanel should be a panel in the UI with a horizontal fill method")]
     public Image HealthPanel;
+    public Text LivesCounter;
     public GameObject Player_Icon;
 
     public bool Invincible { get { return !(IFrameTime <= 0 && !attackScript.IsAttacking && rigidbody.isKinematic); } }
@@ -177,6 +178,8 @@ public class PlayerDamageHandler : MonoBehaviour
                 transform.position = spawnLocation;
             }
         }
+
+        LivesCounter.text = lives.ToString(); 
     }
 
     /// <summary>

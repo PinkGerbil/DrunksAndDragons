@@ -5072,6 +5072,11 @@ PrefabInstance:
       propertyPath: lives
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560117, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: LivesCounter
+      value: 
+      objectReference: {fileID: 1663412545}
     - target: {fileID: 662559065435560114, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -5097,6 +5102,11 @@ PrefabInstance:
       propertyPath: lives
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005707, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: LivesCounter
+      value: 
+      objectReference: {fileID: 1082557098}
     - target: {fileID: 2942986365390005708, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -5117,6 +5127,11 @@ PrefabInstance:
       propertyPath: Player_Icon
       value: 
       objectReference: {fileID: 1817167262}
+    - target: {fileID: 8517220037259680339, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: LivesCounter
+      value: 
+      objectReference: {fileID: 1955684680}
     - target: {fileID: 8517220037259680340, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -5142,6 +5157,11 @@ PrefabInstance:
       propertyPath: lives
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294319, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: LivesCounter
+      value: 
+      objectReference: {fileID: 571306843}
     - target: {fileID: 8889305699210294312, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
