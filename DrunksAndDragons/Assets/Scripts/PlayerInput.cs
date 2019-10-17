@@ -15,12 +15,18 @@ public class PlayerInput : MonoBehaviour
 
     bool paused = false;
 
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     void Start()
     {
         if (blackboard != null)
             blackboard.addPlayer(gameObject);
     }
 
+    /// <summary>
+    /// Update is called before each frame update
+    /// </summary>
     void Update()
     {
         if (blackboard != null)
@@ -40,6 +46,10 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the controller to a new controller number
+    /// </summary>
+    /// <param name="newController"></param>
     public void SetController(XboxController newController)
     {
         controller = newController;
@@ -74,7 +84,7 @@ public class PlayerInput : MonoBehaviour
             return XCI.GetButtonDown(XboxButton.X, controller); } }
 
     public bool getBuyPressed {get { return XCI.GetButtonDown(XboxButton.A, controller); } }
-    ///
+
 
 
     /// <summary>

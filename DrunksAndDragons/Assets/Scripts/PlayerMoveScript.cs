@@ -53,9 +53,11 @@ public class PlayerMoveScript : MonoBehaviour
     /// Returns the position the player will be in if they walk forward this frame. (carrySpeedMod should be applied before consumableSpeedMod)
     /// </summary>
     Vector3 velocity { get { return transform.forward * (moveSpeed + shopSpeedIncrease) * carrySpeedMod * consumableSpeedMod * Time.deltaTime; } }
-    
 
-    // Start is called before the first frame update
+    
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     void Start()
     {
         if (!input)
@@ -70,8 +72,10 @@ public class PlayerMoveScript : MonoBehaviour
         if (Physics.Raycast(TopPoint.transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, layerMask))
             height = hit.distance;
     }
-
-    // Update is called once per frame
+    
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     void Update()
     {
         if(shopSpeedIncrease > shopSpeedIncreaseLimit)
