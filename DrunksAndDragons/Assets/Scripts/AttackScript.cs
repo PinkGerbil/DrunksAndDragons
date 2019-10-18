@@ -203,7 +203,7 @@ public class AttackScript : MonoBehaviour
             else
             {
                 Vector3 velocity = lungeDir * 20 * Time.deltaTime;
-                while (playerMove.CheckInDirection(velocity, out Vector3 colNorm))
+                for (int i = 0; i < 99 && playerMove.CheckInDirection(velocity, out Vector3 colNorm); i++)
                 {
                     velocity = Vector3.ProjectOnPlane(velocity, colNorm);
                 }
@@ -222,7 +222,7 @@ public class AttackScript : MonoBehaviour
         {
             dodgeCountdown -= Time.deltaTime;
             Vector3 velocity = transform.forward * dodgeSpeed * Time.deltaTime;
-            while (playerMove.CheckInDirection(velocity, out Vector3 colNorm))
+            for (int i = 0; i < 99 && playerMove.CheckInDirection(velocity, out Vector3 colNorm); i++)
                 velocity = Vector3.ProjectOnPlane(velocity, colNorm);
             transform.position += velocity;
             playerMove.checkGrounded();
@@ -284,7 +284,7 @@ public class AttackScript : MonoBehaviour
                 }
 
             }
-            if (input.GetDodgePressed)
+            if (input.GetDodgePressed && !heldObject)
                 dodgeRoll();
         }
 
