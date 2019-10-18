@@ -71,7 +71,6 @@ public class PlayerMoveScript : MonoBehaviour
         int layerMask = 1 << 11;
         if (Physics.Raycast(TopPoint.transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, layerMask))
             height = hit.distance;
-        checkGrounded();
     }
     
     /// <summary>
@@ -86,9 +85,6 @@ public class PlayerMoveScript : MonoBehaviour
         Vector3 moveDir = input.GetMoveDir;
         if (moveDir != Vector3.zero && rigidbody.isKinematic && carrySpeedMod > 0 && consumableSpeedMod > 0 && !attack.IsAttacking)
         {
-            //Vector3 aimDir = moveDir;
-            //float angle = Mathf.Atan2(aimDir.x, aimDir.z) * Mathf.Rad2Deg;
-            //transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
             transform.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
             Vector3 newVelocity = velocity;
             while (CheckInDirection(newVelocity, out Vector3 colNorm))

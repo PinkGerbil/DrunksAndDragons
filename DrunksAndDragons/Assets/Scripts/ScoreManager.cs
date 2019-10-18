@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
-
+    [SerializeField]
+    [Tooltip("how many points are kills worth")]
+    int killPoints = 50;
     //public GameObject gameOver;
     public GameObject results;
 
@@ -40,6 +42,7 @@ public class ScoreManager : MonoBehaviour
     public WaveSpawn waveMaster;
     public int finalWaveNumber;
     private bool gameLost;
+
 
 
     //public GameObject endScreen;
@@ -100,13 +103,13 @@ public class ScoreManager : MonoBehaviour
         checkPlayers();
 
         //Shows and updates Player 1 score
-        p1_Score.text = "Player 1:  " + Player1.getKills() + " Kills | " + Player1.GetPoints() + " Gold | " + " Points " + Player1.GetFinalScore();
+        p1_Score.text = "Player 1:  " + Player1.getKills() * killPoints + " Kills | " + Player1.GetPoints() + " Gold | " + " Points " + Player1.GetFinalScore();
         //Shows and updates Player 2 score
-        p2_Score.text = "Player 2:  " + Player2.getKills() + " Kills | " + Player2.GetPoints() + " Gold | " + " Points " + Player2.GetFinalScore();
+        p2_Score.text = "Player 2:  " + Player2.getKills() * killPoints + " Kills | " + Player2.GetPoints() + " Gold | " + " Points " + Player2.GetFinalScore();
         //Shows and updates Player 3 score
-        p3_Score.text = "Player 3:  " + Player3.getKills() + " Kills | " + Player3.GetPoints() + " Gold | " + " Points " + Player3.GetFinalScore();
+        p3_Score.text = "Player 3:  " + Player3.getKills() * killPoints + " Kills | " + Player3.GetPoints() + " Gold | " + " Points " + Player3.GetFinalScore();
         //Shows and updates Player 4 score
-        p4_Score.text = "Player 4:  " + Player4.getKills() + " Kills | " + Player4.GetPoints() + " Gold | " + " Points " + Player4.GetFinalScore();
+        p4_Score.text = "Player 4:  " + Player4.getKills() * killPoints + " Kills | " + Player4.GetPoints() + " Gold | " + " Points " + Player4.GetFinalScore();
         //time ends new wave starts
         
         bool playersAlive = false;

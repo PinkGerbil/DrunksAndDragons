@@ -64,20 +64,46 @@ public class ThrowableObject : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if(wasThrown && other.CompareTag("Enemy"))
-        {
-            foreach (GameObject child in hitEnemies)
-                if (other.gameObject.Equals(child))
-                    return;
-            Vector3 hitDir = (other.ClosestPointOnBounds(transform.position) - transform.position).normalized;
-            hitDir.y = 0;
-            other.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
-            Debug.Log(rigidbody.velocity);
-            rigidbody.velocity = (rigidbody.velocity.normalized - hitDir * 2).normalized * rigidbody.velocity.magnitude * 2;
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (wasThrown && other.CompareTag("Enemy"))
+    //    {
+    //        foreach (GameObject child in hitEnemies)
+    //            if (other.gameObject.Equals(child))
+    //                return;
+    //        Vector3 hitDir = (other.ClosestPointOnBounds(transform.position) - transform.position).normalized;
+    //        hitDir.y = 0;
+    //        other.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
+    //        Debug.Log(rigidbody.velocity);
+    //        rigidbody.velocity = (rigidbody.velocity.normalized - hitDir * 2).normalized * rigidbody.velocity.magnitude * 2;
 
-            hitEnemies.Add(other.gameObject);
+    //        hitEnemies.Add(other.gameObject);
+    //        objectHealth--;
+    //        if (objectHealth <= 0)
+    //        {
+    //            ObjectBreak();
+    //        }
+    //    }
+    //}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (wasThrown && collision.collider.CompareTag("Enemy"))
+        {
+
+            foreach (GameObject child in hitEnemies)
+                if (collision.collider.gameObject.Equals(child))
+                    return;
+
+            Vector3 colNorm = collision.contacts[0].normal;
+
+            Vector3 hitDir = Vector3.ProjectOnPlane(rigidbody.velocity, colNorm);
+            hitDir.y = 0;
+            collision.collider.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
+            Debug.Log(rigidbody.velocity);
+            //rigidbody.velocity = (rigidbody.velocity.normalized - (colNorm * 2)) * rigidbody.velocity.magnitude;
+
+            hitEnemies.Add(collision.collider.gameObject);
             objectHealth--;
             if (objectHealth <= 0)
             {

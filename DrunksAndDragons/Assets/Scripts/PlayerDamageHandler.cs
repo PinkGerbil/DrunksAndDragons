@@ -104,7 +104,7 @@ public class PlayerDamageHandler : MonoBehaviour
             
             if(wallTag == "Environment")
             {
-                transform.position += transform.right * 5 * Time.deltaTime;
+                transform.position += -Vector3.right * 5 * Time.fixedDeltaTime;
             }
             rigidbody.velocity = velocity;
         }

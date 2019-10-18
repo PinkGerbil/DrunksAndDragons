@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1628656532}
   m_Layer: 9
   m_Name: Ceiling
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 837767564585657299}
   m_Layer: 9
   m_Name: West Wall (2)
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 7877395536211387058}
   m_Layer: 9
   m_Name: North Wall (2)
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 6086161518578582472}
   m_Layer: 9
   m_Name: North Wall (3)
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 8580841443415550695}
   m_Layer: 9
   m_Name: North Wall (1)
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 3820559000369099824}
   m_Layer: 9
   m_Name: West Wall (4)
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 1778081275376988876}
   m_Layer: 9
   m_Name: North Wall (4)
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 3645650322958064405}
   m_Layer: 9
   m_Name: Angled R
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -437,6 +437,7 @@ Transform:
   - {fileID: 2950901776443289085}
   - {fileID: 440194501518218540}
   - {fileID: 1628656531}
+  - {fileID: 8208955111951480369}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -496,7 +497,7 @@ GameObject:
   - component: {fileID: 6658547278764376836}
   m_Layer: 9
   m_Name: South Wall
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -584,7 +585,7 @@ GameObject:
   - component: {fileID: 7152762886203006611}
   m_Layer: 9
   m_Name: West Wall (3)
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -616,6 +617,63 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 44.625683, y: 10.018033, z: 4.178169}
   m_Center: {x: -2.4772763, y: 0.009027898, z: 0.770708}
+--- !u!1 &8025254779991943300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8208955111951480369}
+  - component: {fileID: 7259913013978106047}
+  - component: {fileID: 8904339654172012481}
+  m_Layer: 9
+  m_Name: killBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8208955111951480369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025254779991943300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5, y: 6.09, z: -25.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6658547278028975028}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7259913013978106047
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025254779991943300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 42.704666, y: 2.8265104, z: 9.389883}
+  m_Center: {x: -1.7062637, y: -2.518392, z: 4.194941}
+--- !u!114 &8904339654172012481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025254779991943300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42163a53aa3546243bc2b1a5ca6a4f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8845856529726843463
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +686,7 @@ GameObject:
   - component: {fileID: 2465923157125991449}
   m_Layer: 9
   m_Name: Angled L
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
