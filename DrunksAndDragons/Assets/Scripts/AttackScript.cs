@@ -242,6 +242,7 @@ public class AttackScript : MonoBehaviour
             {
                 carryStamina -= Time.deltaTime;
                 heldObject.transform.SetPositionAndRotation(transform.Find("TopPoint").position, transform.Find("TopPoint").rotation);
+                heldObject.GetComponent<Rigidbody>().isKinematic = false;
             }
             else
             {

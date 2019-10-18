@@ -71,6 +71,7 @@ public class PlayerMoveScript : MonoBehaviour
         int layerMask = 1 << 11;
         if (Physics.Raycast(TopPoint.transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, layerMask))
             height = hit.distance;
+        checkGrounded();
     }
     
     /// <summary>
@@ -205,10 +206,59 @@ public class PlayerMoveScript : MonoBehaviour
         if (closest.collider != null)
         {
             colNorm = closest.normal;
+            if (closest.collider.gameObject.layer == LayerMask.NameToLayer("Pickup"))
+            {
+                colNorm.y = curVelocity.normalized.y;
+                colNorm.Normalize();
+                Debug.Log(colNorm);
+            }
             return true;
         }
         else
         {
+            colNorm = Vector3.zero;
+            return false;
+        }
+    }
+
+    public bool CheckInDirection(Vector3 curVelocity, out Vector3 colNorm, out string tag)
+    {
+        Vector3 origin = transform.position;
+        Vector3 hitDir = curVelocity.normalized;
+
+        // direction perpendicular to hitDir
+        Vector3 dirPerp = Vector3.Cross(Vector3.up, hitDir);
+
+        RaycastHit closest = new RaycastHit(); // this variable will be used to store the closest RaycastHit from the following loop
+
+        int originDirOffset = 1; // used to control the direction of the origin offset occurring at the end of each for loop iteration
+        int layerMask = (1 << LayerMask.NameToLayer("Environment")) | (1 << LayerMask.NameToLayer("Pickup"));
+        for (int j = 0; j < 4; j++)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Debug.DrawRay(origin, hitDir);
+                if (Physics.Raycast(origin, hitDir, out RaycastHit hit, playerRadius, layerMask))
+                {
+                    if (closest.collider == null || hit.distance < closest.distance)
+                        closest = hit;
+                }
+                origin += dirPerp * playerRadius * originDirOffset;
+                originDirOffset *= -2;
+            }
+            origin = transform.position + Vector3.up * height * (0.5f * (j + 1));
+            originDirOffset = 1;
+        }
+
+        if (closest.collider != null)
+        {
+            colNorm = closest.normal;
+            tag = closest.collider.tag;
+            return true;
+        }
+        else
+        {
+            tag = "untagged";
             colNorm = Vector3.zero;
             return false;
         }

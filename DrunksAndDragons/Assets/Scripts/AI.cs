@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Animator))]
 public class AI : MonoBehaviour
 {
-
+    Animator animator;
     public NavMeshAgent agent;
     public float attackRange;
     public float aggroRange;
@@ -99,6 +100,7 @@ public class AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         renderer = GetComponent<Renderer>();
         players = GameObject.FindGameObjectsWithTag("Player");
         isDead = false;
@@ -264,7 +266,10 @@ public class AI : MonoBehaviour
             trailCD -= Time.deltaTime;
             knockbackAttackCD -= Time.deltaTime;
         }
-
+        if (Vector3.Distance(agent.pathEndPosition, transform.position) <= 0.1f)
+            animator.SetBool("Moving", false);
+        else
+            animator.SetBool("Moving", true);
     }
 
     //getting the closest player to this object if the player moves past a distance set above
@@ -309,6 +314,7 @@ public class AI : MonoBehaviour
     {
         if (!currentPlayer.Invincible && currentPlayer.Alive)
         {
+            animator.SetTrigger("Hit");
             currentPlayer.isHit = true;
             Vector3 hitDir = (currentPlayer.transform.position - transform.position);
             hitDir.y = 0;

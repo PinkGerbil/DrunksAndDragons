@@ -259,7 +259,6 @@ MonoBehaviour:
   p2_Score: {fileID: 289076022}
   p3_Score: {fileID: 1156996699}
   p4_Score: {fileID: 1514824766}
-  p1_Lives: {fileID: 0}
   p1_UI: {fileID: 1853737514}
   p2_UI: {fileID: 265963850}
   p3_UI: {fileID: 296832122}
@@ -3213,6 +3212,59 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1628656530, guid: 8777b5387ca4c1e42b97d12298bf60e9, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735328918584095023, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446782707312008293, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929578414954004398, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845856529726843463, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574712787402191924, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872890587480255940, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560864263093668363, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212677593783101, guid: 8777b5387ca4c1e42b97d12298bf60e9, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293797588063289188, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658547278764376834, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8777b5387ca4c1e42b97d12298bf60e9, type: 3}
 --- !u!1 &843177683
@@ -4912,6 +4964,16 @@ PrefabInstance:
       propertyPath: livesText
       value: 
       objectReference: {fileID: 1955684680}
+    - target: {fileID: 662559066487023399, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01826354
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517220036142687681, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01826354
+      objectReference: {fileID: 0}
     - target: {fileID: 8889305699210294323, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: coinsText
@@ -5231,6 +5293,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889305700327803837, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01826354
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986366420490841, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01826354
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f61d54eaa5d414f9fc55f93a77fbca, type: 3}

@@ -95,13 +95,17 @@ public class PlayerDamageHandler : MonoBehaviour
             }
 
             Vector3 velocity = rigidbody.velocity;
-
-            while (GetComponent<PlayerMoveScript>().CheckInDirection(velocity, out Vector3 colNorm))
+            string wallTag = null;
+            while (GetComponent<PlayerMoveScript>().CheckInDirection(velocity, out Vector3 colNorm, out string tag))
+            {
                 velocity = Vector3.ProjectOnPlane(velocity, colNorm);
-            //Vector3 temp = Vector3.zero;
-            //temp.y = rigidbody.velocity.y;
-            //heldVelocity = rigidbody.velocity;
-            //heldVelocity.y = 0;
+                wallTag = tag;
+            }
+            
+            if(wallTag == "Environment")
+            {
+                transform.position += transform.right * 5 * Time.deltaTime;
+            }
             rigidbody.velocity = velocity;
         }
 
