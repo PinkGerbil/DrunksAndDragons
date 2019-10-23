@@ -36,7 +36,7 @@ public class PlayerDamageHandler : MonoBehaviour
     [SerializeField]
     [Tooltip("How fast the player moves during a knockback")]
     [Range(1,100)]
-    float knockbackSpeed = 15.0f;
+    float knockbackSpeed = 5.0f;
 
     [SerializeField]
     [Tooltip("The max health of the player")]
@@ -121,20 +121,20 @@ public class PlayerDamageHandler : MonoBehaviour
     /// </summary>
     void Update()
     {
-        //if (heldVelocity != Vector3.zero)
-        //{
-        //    rigidbody.velocity += heldVelocity;
-        //    heldVelocity = Vector3.zero;
-        //}
         if (knockbackCountdown > 0)
         {
-            PlayerMoveScript temp = GetComponent<PlayerMoveScript>();
+            PlayerMoveScript playerMove = GetComponent<PlayerMoveScript>();
             knockbackCountdown -= Time.deltaTime;
             Vector3 velocity = knockbackSpeed * isHitDir.normalized * Time.deltaTime;
-            while (temp.CheckInDirection(velocity, out Vector3 colNorm))
+            Debug.Log(velocity);
+            for (int i = 0; playerMove.CheckInDirection(velocity, out Vector3 colNorm) || i < 99; i++)
+            {
                 velocity = Vector3.ProjectOnPlane(velocity, colNorm);
+            }
+            velocity.y = 0;
+            Debug.Log(velocity);
             transform.position += velocity;
-            temp.checkGrounded();
+            playerMove.checkGrounded();
         }
         else if (IFrameTime > 0)
         {

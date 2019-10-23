@@ -5196,6 +5196,16 @@ PrefabInstance:
       propertyPath: LivesCounter
       value: 
       objectReference: {fileID: 1663412545}
+    - target: {fileID: 662559065435560117, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: knockbackSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560117, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: knockbackTime
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 662559065435560114, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -5226,6 +5236,16 @@ PrefabInstance:
       propertyPath: LivesCounter
       value: 
       objectReference: {fileID: 1082557098}
+    - target: {fileID: 2942986365390005707, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: knockbackSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005707, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: knockbackTime
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2942986365390005708, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -5251,6 +5271,16 @@ PrefabInstance:
       propertyPath: LivesCounter
       value: 
       objectReference: {fileID: 1955684680}
+    - target: {fileID: 8517220037259680339, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: knockbackSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517220037259680339, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: knockbackTime
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 8517220037259680340, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -5281,6 +5311,16 @@ PrefabInstance:
       propertyPath: LivesCounter
       value: 
       objectReference: {fileID: 571306843}
+    - target: {fileID: 8889305699210294319, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: knockbackSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294319, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: knockbackTime
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 8889305699210294312, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: timeStopDuration
@@ -5376,6 +5416,11 @@ PrefabInstance:
       propertyPath: livesUpPrice
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560115, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: dodgeTime
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: fullHealPrice
@@ -5390,6 +5435,11 @@ PrefabInstance:
         type: 3}
       propertyPath: livesUpPrice
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005709, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: dodgeTime
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8517220037259680341, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
@@ -5406,6 +5456,11 @@ PrefabInstance:
       propertyPath: livesUpPrice
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 8517220037259680341, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: dodgeTime
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: fullHealPrice
@@ -5420,6 +5475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: livesUpPrice
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294313, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: dodgeTime
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f61d54eaa5d414f9fc55f93a77fbca, type: 3}
