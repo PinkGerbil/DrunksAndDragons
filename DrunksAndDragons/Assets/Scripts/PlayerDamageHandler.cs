@@ -148,7 +148,7 @@ public class PlayerDamageHandler : MonoBehaviour
         if(HealthPanel != null && Alive)
             HealthPanel.fillAmount = (1.0f / maxHealth) * health;
 
-        if(lives <= 0)
+        if(lives <= 0 && HealthPanel != null)
         {
             HealthPanel.fillAmount = 0;
         }
@@ -183,7 +183,7 @@ public class PlayerDamageHandler : MonoBehaviour
             }
         }
 
-        LivesCounter.text = lives.ToString(); 
+        if(LivesCounter != null) LivesCounter.text = lives.ToString(); 
     }
 
     /// <summary>

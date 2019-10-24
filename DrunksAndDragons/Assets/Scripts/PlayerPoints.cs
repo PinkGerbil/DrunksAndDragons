@@ -75,8 +75,8 @@ public class PlayerPoints : MonoBehaviour
         {
             points = 999;
         }
-        coinsText.text = points.ToString();
-        livesText.text = GetComponent<PlayerDamageHandler>().lives.ToString();
+        if (coinsText != null) coinsText.text = points.ToString();
+        if (livesText != null) livesText.text = GetComponent<PlayerDamageHandler>().lives.ToString();
     }
 
     /// <summary>
