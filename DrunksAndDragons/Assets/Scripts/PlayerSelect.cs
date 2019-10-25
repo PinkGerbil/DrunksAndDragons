@@ -58,7 +58,7 @@ public class PlayerSelect : MonoBehaviour
             SelectPlayers();
             ActivatePlayers();
 
-            if (XCI.GetButton(XboxButton.Back, XboxController.First) && anyActive)
+            if (XCI.GetButton(XboxButton.Start, XboxController.First) && anyActive)
             {
                 //make more efficient later
                 //loads next scene after character select
@@ -113,7 +113,7 @@ public class PlayerSelect : MonoBehaviour
     private void SelectPlayers()
     {
         //if controller one's start button is pressed assign controller one to the next avaliable player
-        if (XCI.GetButtonDown(XboxButton.Start, XboxController.First))
+        if (XCI.GetButtonDown(XboxButton.A, XboxController.First))
         {
             //checks to see if the controller has already been assigned
             if (!isController1Active)
@@ -158,7 +158,7 @@ public class PlayerSelect : MonoBehaviour
             }
         }
         //if controller two's start button is pressed assign controller two to the next avaliable player
-        if (XCI.GetButtonDown(XboxButton.Start, XboxController.Second))
+        if (XCI.GetButtonDown(XboxButton.A, XboxController.Second))
         {
             //checks to see if the controller has already been assigned
             if (!isController2Active)
@@ -199,7 +199,7 @@ public class PlayerSelect : MonoBehaviour
             }
         }
         //if controller three's start button is pressed assign controller three to the next avaliable player
-        if (XCI.GetButtonDown(XboxButton.Start, XboxController.Third))
+        if (XCI.GetButtonDown(XboxButton.A, XboxController.Third))
         {
             //checks to see if the controller has already been assigned
             if (!isController3Active)
@@ -240,7 +240,7 @@ public class PlayerSelect : MonoBehaviour
             }
         }
         //if controller four's start button is pressed assign controller four to the next avaliable player
-        if (XCI.GetButtonDown(XboxButton.Start, XboxController.Fourth))
+        if (XCI.GetButtonDown(XboxButton.A, XboxController.Fourth))
         {
             //checks to see if the controller has already been assigned
             if (!isController4Active)
