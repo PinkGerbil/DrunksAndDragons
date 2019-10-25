@@ -126,13 +126,11 @@ public class PlayerDamageHandler : MonoBehaviour
             PlayerMoveScript playerMove = GetComponent<PlayerMoveScript>();
             knockbackCountdown -= Time.deltaTime;
             Vector3 velocity = knockbackSpeed * isHitDir.normalized * Time.deltaTime;
-            Debug.Log(velocity);
             for (int i = 0; playerMove.CheckInDirection(velocity, out Vector3 colNorm) || i < 99; i++)
             {
                 velocity = Vector3.ProjectOnPlane(velocity, colNorm);
             }
             velocity.y = 0;
-            Debug.Log(velocity);
             transform.position += velocity;
             playerMove.checkGrounded();
         }
@@ -156,7 +154,7 @@ public class PlayerDamageHandler : MonoBehaviour
         if (!Alive && respawnCountdown <= 0)
         {
             lives--;
-            Debug.Log("ded");
+
             respawnCountdown = respawnTime;
             if (gameObject.GetComponent<AttackScript>().loseHealthUpOnDeath)
             {
