@@ -87,7 +87,7 @@ public class PlayerMoveScript : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
             Vector3 newVelocity = velocity;
-            for (int i = 0; i < 99 && CheckInDirection(velocity, out Vector3 colNorm); i++)
+            while (CheckInDirection(newVelocity, out Vector3 colNorm))
             {
                 newVelocity = Vector3.ProjectOnPlane(newVelocity, colNorm);
             }
