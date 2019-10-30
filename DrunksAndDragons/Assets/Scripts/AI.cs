@@ -151,12 +151,15 @@ public class AI : MonoBehaviour
         }
         else
         {
-            if (this.name != "Boss(Clone)")
+            if (renderer != null)
             {
-                renderer.material.color = Color.white;
+                if (this.name != "Boss(Clone)")
+                {
+                    renderer.material.color = Color.white;
+                }
+                else
+                    renderer.material.color = Color.green;
             }
-            else
-                renderer.material.color = Color.green;
             if (!isDead)
             {
                 if (agent.enabled)
@@ -330,7 +333,8 @@ public class AI : MonoBehaviour
         AIHitDir = (transform.position - currentPlayer.transform.position);
         AIHitDir.y = 0;
         AIHitDir = AIHitDir.normalized;
-        renderer.material.color = Color.red;
+        if (renderer != null) renderer.material.color = Color.red;
+        if (animator != null) animator.SetTrigger("GetHit");
         health -= damage;
         stunTime = stunPeriod;
         knockbackTime = knockbackPeriod;
@@ -343,7 +347,8 @@ public class AI : MonoBehaviour
     public void takeDamage(int damage, Vector3 dir)
     {
         AIHitDir = dir;
-        renderer.material.color = Color.red;
+        if (renderer != null) renderer.material.color = Color.red;
+        if (animator != null) animator.SetTrigger("GetHit");
         health -= damage;
         stunTime = stunPeriod;
         knockbackTime = knockbackPeriod;
