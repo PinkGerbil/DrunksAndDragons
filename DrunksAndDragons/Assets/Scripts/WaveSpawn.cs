@@ -11,8 +11,8 @@ public class WaveSpawn : MonoBehaviour
     private int previousSpawn;
     private int index;
 
-
-
+    public GameObject shoptimerObject;
+    public Text shopTimer;
     public Text WaveCountText;
     public int waveCount = 0;
 
@@ -30,7 +30,7 @@ public class WaveSpawn : MonoBehaviour
     public float startTimeBetweenWaves;
     public float addedTimeBetweenWaves;
 
-    private float timer;
+    public float waveTimer;
     private int childNumber;
 
     [Tooltip("will be automatically turned on for the time between waves")]
@@ -47,23 +47,26 @@ public class WaveSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 0;
+        waveTimer = 0;
         previousSpawn = Random.Range(0, spawnLocation.Length);
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
+        shopTimer.text = waveTimer.ToString("#.00");
+        waveTimer -= Time.deltaTime;
         //if there is no children of the spawnmaster then start spawning enemies 
         if(numberOfChildren() == 0)
         {
-            if(timer > 0)
+            if(waveTimer > 0)
             {
+                shoptimerObject.SetActive(true);
                 shopOpen = true;
             }
-            if(timer < 0)
+            if(waveTimer < 0)
             {
+                shoptimerObject.SetActive(false);
                 shopOpen = false;
                 waveCount++;
 
@@ -73,12 +76,12 @@ public class WaveSpawn : MonoBehaviour
                     startTimeBetweenWaves = 0;
                 }
                 StartCoroutine(spawnDelay());
-                timer = 0;
+                waveTimer = 0;
             }
         }
         else
         {
-            timer = startTimeBetweenWaves;
+            waveTimer = startTimeBetweenWaves;
         }
 
         WaveCountText.text = waveCount.ToString();
