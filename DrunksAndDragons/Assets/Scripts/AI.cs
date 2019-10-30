@@ -85,6 +85,7 @@ public class AI : MonoBehaviour
     [Tooltip("how long the boss channels the heal for")]
     public float channelDuration;
     private float channelTimer;
+    public ParticleSystem channelingParticle;
     [Tooltip("leave off")]
     public bool channeling;
     [Tooltip("distance the ai has to be to the boss to heal it")]
@@ -250,6 +251,7 @@ public class AI : MonoBehaviour
             if(health <= maxHealth/2 && channelTimer > 0 && !isDead && healingOn)
             {
                 channeling = true;
+                channelingParticle.Play();
             }
             if(channeling)
             {
@@ -260,6 +262,7 @@ public class AI : MonoBehaviour
                 channelTimer -= Time.deltaTime;
                 if (channelTimer <= 0)
                 {
+                    channelingParticle.Stop();
                     channeling = false;
                 }
             }
