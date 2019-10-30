@@ -266,7 +266,7 @@ MonoBehaviour:
   gameEndText: {fileID: 752494399}
   pointsShown: 1
   waveMaster: {fileID: 1826136152}
-  finalWaveNumber: 5
+  finalWaveNumber: 1
 --- !u!1001 &9363866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8416,7 +8416,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: effb2a8eb11035d4a927f845282a6497, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 425e28fb1848de64497200ed50f96bd7, type: 2}
+      objectReference: {fileID: 2100000, guid: 73086bf5dc3b0724e9215ac0e879ca83, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: effb2a8eb11035d4a927f845282a6497, type: 3}
 --- !u!1 &1900454632

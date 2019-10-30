@@ -266,10 +266,13 @@ public class AI : MonoBehaviour
             trailCD -= Time.deltaTime;
             knockbackAttackCD -= Time.deltaTime;
         }
-        if (Vector3.Distance(agent.pathEndPosition, transform.position) <= 0.1f)
-            animator.SetBool("Moving", false);
-        else
-            animator.SetBool("Moving", true);
+        if(animator != null)
+        {
+            if (Vector3.Distance(agent.pathEndPosition, transform.position) <= 0.1f)
+                animator.SetBool("Moving", false);
+            else
+                animator.SetBool("Moving", true);
+        }
     }
 
     //getting the closest player to this object if the player moves past a distance set above
