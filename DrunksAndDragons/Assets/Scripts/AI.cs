@@ -320,7 +320,7 @@ public class AI : MonoBehaviour
     {
         if (!currentPlayer.Invincible && currentPlayer.Alive)
         {
-            animator.SetTrigger("Hit");
+            if (animator != null) animator.SetTrigger("Hit");
             currentPlayer.isHit = true;
             Vector3 hitDir = (currentPlayer.transform.position - transform.position);
             hitDir.y = 0;
