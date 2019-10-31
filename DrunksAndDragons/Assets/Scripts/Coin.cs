@@ -60,7 +60,7 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && other.gameObject.GetComponent<PlayerDamageHandler>().Alive)
         {
             other.GetComponent<PlayerPoints>().AddPoints(1);
             Destroy(this.gameObject);
