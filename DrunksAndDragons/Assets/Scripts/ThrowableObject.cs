@@ -46,6 +46,7 @@ public class ThrowableObject : MonoBehaviour
             rigidbody.isKinematic = true;
             wasThrown = false;
             hitEnemies.Clear();
+            GetComponent<NavMeshObstacle>().enabled = true;
         }
     }
     public void setThrown()
