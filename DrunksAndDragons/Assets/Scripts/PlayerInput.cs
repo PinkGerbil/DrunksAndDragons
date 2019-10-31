@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField]
     Blackboard blackboard;
 
+    [SerializeField]
     public int playerID;
     
     public XboxController controller;
@@ -31,7 +32,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (blackboard != null)
         {
-            if (XCI.GetButtonDown(XboxButton.Start, controller))
+            if (XCI.GetButtonDown(XboxButton.Start, controller) || (playerID == 1 && Input.GetKeyDown(KeyCode.Escape)))
             {
                 blackboard.togglePause();
                 paused = !paused;

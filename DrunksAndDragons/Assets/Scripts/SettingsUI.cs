@@ -26,11 +26,6 @@ public class SettingsUI : MonoBehaviour
 
     void OnEnable()
     {
-        string temp = "";
-        temp = (string)temp.Insert((int)temp.Length, ((string)new string("Words".ToCharArray())).ToString()).ToString();
-        Debug.Log(temp.ToString());
-
-
         fullScreen.Select();
         fullScreen.value = (int)Screen.fullScreenMode;
 

@@ -6,29 +6,14 @@ using UnityEngine.UI;
 public class Blackboard : MonoBehaviour
 {
     
-    [SerializeField] Text pauseText;
+    [SerializeField] GameObject pauseUI;
+    [SerializeField] GameObject settingsUI;
 
     [HideInInspector]
     public List<GameObject> players = new List<GameObject>();
 
     bool paused = false;
-    
-    /// <summary>
-    /// Start is called before the first frame update
-    /// </summary>
-    void Start()
-    {
-    }
-
-    /// <summary>
-    /// Update is called once each frame
-    /// </summary>
-    void Update()
-    {
-
-        //Debug.Log(players.Count);
-
-    }
+  
 
     /// <summary>
     /// Adds a player gameobject to the list of player
@@ -45,12 +30,15 @@ public class Blackboard : MonoBehaviour
     /// <param name="toggle">Pause state</param>
     public void togglePause(bool toggle)
     {
-        pauseText.enabled = toggle;
+        if (pauseUI != null) pauseUI.active = toggle;
         paused = toggle;
         if (toggle)
             Time.timeScale = 0;
         else
+        {
             Time.timeScale = 1;
+            if (settingsUI != null) settingsUI.active = false;
+        }
     }
 
     /// <summary>
@@ -59,10 +47,13 @@ public class Blackboard : MonoBehaviour
     public void togglePause()
     {
         paused = !paused;
-        pauseText.enabled = !pauseText.enabled;
+        pauseUI.SetActive(paused);
         if (paused)
             Time.timeScale = 0;
         else
+        {
             Time.timeScale = 1;
+            if (settingsUI != null) settingsUI.active = false;
+        }
     }
 }

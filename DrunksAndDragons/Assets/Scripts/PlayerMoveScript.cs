@@ -85,7 +85,7 @@ public class PlayerMoveScript : MonoBehaviour
         Vector3 moveDir = input.GetMoveDir;
         if (moveDir != Vector3.zero && rigidbody.isKinematic && carrySpeedMod > 0 && consumableSpeedMod > 0 && !attack.IsAttacking)
         {
-            transform.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
+            if(!(Time.timeScale == 0)) transform.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
             Vector3 newVelocity = velocity;
             while (CheckInDirection(newVelocity, out Vector3 colNorm))
             {
