@@ -11,10 +11,17 @@ public class WaveSpawn : MonoBehaviour
     private int previousSpawn;
     private int index;
 
+    [Header("shopTimer")]
     public GameObject shoptimerObject;
+    public Transform upPos;
+    public Transform downPos;
     public Text shopTimer;
+    private float lerpUpProgress;
+    private float lerpDownProgress;
+    public float lerpSpeed;
     public Text WaveCountText;
     public int waveCount = 0;
+
 
     public int spawnAmount;
     [Header("increase enemies each wave")]
@@ -54,19 +61,30 @@ public class WaveSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        shopTimer.text = waveTimer.ToString("#.00");
+        shopTimer.text = waveTimer.ToString("#.0");
         waveTimer -= Time.deltaTime;
         //if there is no children of the spawnmaster then start spawning enemies 
         if(numberOfChildren() == 0)
         {
             if(waveTimer > 0)
             {
-                shoptimerObject.SetActive(true);
+                if(lerpUpProgress < 1)
+                {
+                    lerpDownProgress = 0;
+                    shopTimer.gameObject.SetActive(true);
+                    lerpUpProgress += Time.deltaTime * lerpSpeed;
+                    shoptimerObject.transform.position = Vector3.Lerp(downPos.position, upPos.position, lerpUpProgress);
+                }
+                //shoptimerObject.SetActive(true);
                 shopOpen = true;
             }
             if(waveTimer < 0)
             {
-                shoptimerObject.SetActive(false);
+
+                //if (shoptimerObject.transform.position == downPos.position)
+                //{
+                //    shoptimerObject.SetActive(false);
+                //}
                 shopOpen = false;
                 waveCount++;
 
@@ -81,6 +99,13 @@ public class WaveSpawn : MonoBehaviour
         }
         else
         {
+            if (lerpDownProgress < 1)
+            {
+                lerpUpProgress = 0;
+                shopTimer.gameObject.SetActive(false);
+                lerpDownProgress += Time.deltaTime * lerpSpeed;
+                shoptimerObject.transform.position = Vector3.Lerp(upPos.position, downPos.position, lerpDownProgress);
+            }
             waveTimer = startTimeBetweenWaves;
         }
 
