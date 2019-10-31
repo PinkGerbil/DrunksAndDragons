@@ -245,6 +245,8 @@ public class PlayerMoveScript : MonoBehaviour
         {
             colNorm = closest.normal;
             tag = closest.collider.tag;
+            if (tag == "pickup")
+                Debug.Log(colNorm);
             return true;
         }
         else

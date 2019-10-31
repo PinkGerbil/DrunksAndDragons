@@ -15,8 +15,22 @@ public class SettingsUI : MonoBehaviour
 
     [SerializeField] GameObject MainMenu;
 
+    Vector2[] resolutionValues =
+    {
+        new Vector2(1024, 576),
+        new Vector2(1280, 720),
+        new Vector2(1366, 768),
+        new Vector2(1600, 900),
+        new Vector2(1920, 1080)
+    };
+
     void OnEnable()
     {
+        string temp = "";
+        temp = (string)temp.Insert((int)temp.Length, ((string)new string("Words".ToCharArray())).ToString()).ToString();
+        Debug.Log(temp.ToString());
+
+
         fullScreen.Select();
         fullScreen.value = (int)Screen.fullScreenMode;
 
@@ -37,19 +51,18 @@ public class SettingsUI : MonoBehaviour
 
     void setResolutions()
     {
-        Resolution[] resolutions = Screen.resolutions;
-        List<string> texts = new List<string>();
-        int curRes = 0;
-        for (int i = 0; i < resolutions.Length; i += 2)
-        {
-            if (Screen.resolutions[i].Equals(Screen.currentResolution))
-                curRes = i;
-            string temp = resolutions[i].ToString();
-            temp = temp.Remove(temp.Length - 7);
-            texts.Add(temp);
-        }
         resolution.ClearOptions();
-        resolution.AddOptions(texts);
+        int curRes = 0;
+        List<string> temp = new List<string>();
+        for(int i = 0; i < resolutionValues.Length; i++)
+        {
+            foreach (Resolution child in Screen.resolutions)
+                if (child.width == resolutionValues[i].x && child.height == resolutionValues[i].y)
+                    curRes = i;
+            temp.Add(resolutionValues[i].x + " x " + resolutionValues[i].y);
+        }
+
+        resolution.AddOptions(temp);
         resolution.value = curRes;
     }
 
@@ -64,12 +77,15 @@ public class SettingsUI : MonoBehaviour
             Screen.fullScreenMode = FullScreenMode.Windowed;
         else
             Screen.fullScreenMode = (FullScreenMode)value;
-        setResolutions();
+        //setResolutions();
     }
     void setResolution(int value)
     {
-        Resolution curRes = Screen.resolutions[value];
-        Screen.SetResolution(curRes.width, curRes.height, Screen.fullScreen);
+        //Resolution curRes = Screen.resolutions[value];
+        //Screen.SetResolution(curRes.width, curRes.height, Screen.fullScreen);
+        Screen.SetResolution((int)resolutionValues[value].x, (int)resolutionValues[value].y, Screen.fullScreen);
+        Debug.Log(resolutionValues[value]);
+        Debug.Log(Screen.currentResolution);
     }
 
     public void ExitSettings()

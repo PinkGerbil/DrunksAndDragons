@@ -124,6 +124,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1226672855003475393, guid: 401c1286dcd85dc4fa66fced7472dd23,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1226672855003475389, guid: 401c1286dcd85dc4fa66fced7472dd23,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -453,6 +458,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 625124016654563851, guid: 87b74822f5383924da4241fc5b224a4f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 42.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 625124016654563844, guid: 87b74822f5383924da4241fc5b224a4f,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 625124017524979767, guid: 87b74822f5383924da4241fc5b224a4f,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 625124017524979765, guid: 87b74822f5383924da4241fc5b224a4f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.530003
+      objectReference: {fileID: 0}
+    - target: {fileID: 625124017524979765, guid: 87b74822f5383924da4241fc5b224a4f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -8.940006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87b74822f5383924da4241fc5b224a4f, type: 3}
