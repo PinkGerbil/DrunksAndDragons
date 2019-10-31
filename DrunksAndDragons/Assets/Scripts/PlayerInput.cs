@@ -83,7 +83,7 @@ public class PlayerInput : MonoBehaviour
             if (playerID == 1 && Input.GetKeyDown(KeyCode.E)) return true;
             return XCI.GetButtonDown(XboxButton.X, controller); } }
 
-    public bool getBuyPressed {get { return XCI.GetButtonDown(XboxButton.A, controller); } }
+    public bool getBuyPressed {get { return XCI.GetButtonDown(XboxButton.A, controller) || Input.GetMouseButtonDown(0); } }
 
 
 

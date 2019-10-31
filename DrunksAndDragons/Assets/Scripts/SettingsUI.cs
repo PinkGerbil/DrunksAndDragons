@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,14 +39,18 @@ public class SettingsUI : MonoBehaviour
     {
         Resolution[] resolutions = Screen.resolutions;
         List<string> texts = new List<string>();
+        int curRes = 0;
         for (int i = 0; i < resolutions.Length; i += 2)
         {
+            if (Screen.resolutions[i].Equals(Screen.currentResolution))
+                curRes = i;
             string temp = resolutions[i].ToString();
             temp = temp.Remove(temp.Length - 7);
             texts.Add(temp);
         }
         resolution.ClearOptions();
         resolution.AddOptions(texts);
+        resolution.value = curRes;
     }
 
     void setVolume(float value)
