@@ -271,10 +271,10 @@ MonoBehaviour:
   p2_Score: {fileID: 289076022}
   p3_Score: {fileID: 1156996699}
   p4_Score: {fileID: 1514824766}
-  p1_UI: {fileID: 0}
-  p2_UI: {fileID: 0}
-  p3_UI: {fileID: 0}
-  p4_UI: {fileID: 0}
+  p1_UI: {fileID: 1934862849}
+  p2_UI: {fileID: 777500265}
+  p3_UI: {fileID: 1312719939}
+  p4_UI: {fileID: 195181320}
   gameEndText: {fileID: 752494399}
   pointsShown: 1
   waveMaster: {fileID: 1826136152}
@@ -1008,6 +1008,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e2bcac940c60db45a85d836efc86d7a, type: 3}
+--- !u!1 &195181320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6337069848874613777, guid: d8e82e1fa6cc9d14dabd18ebebb13537,
+    type: 3}
+  m_PrefabInstance: {fileID: 210443136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &210443136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1265,7 +1271,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -2.9999943, y: 29}
-  m_SizeDelta: {x: 465.8, y: 42.8}
+  m_SizeDelta: {x: 550, y: 42.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &289076022
 MonoBehaviour:
@@ -1617,7 +1623,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -3, y: 99}
-  m_SizeDelta: {x: 465.8, y: 42.8}
+  m_SizeDelta: {x: 550, y: 42.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &494333937
 MonoBehaviour:
@@ -2630,6 +2636,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6442773145239785538, guid: 1e2bcac940c60db45a85d836efc86d7a,
     type: 3}
   m_PrefabInstance: {fileID: 850383972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &777500265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3918278530637320001, guid: 62d487ef44a2ed14aa916d7be9f3fc81,
+    type: 3}
+  m_PrefabInstance: {fileID: 1953554721}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &778515966
 GameObject:
@@ -3906,7 +3918,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -2.9999943, y: -41}
-  m_SizeDelta: {x: 465.8, y: 42.8}
+  m_SizeDelta: {x: 550, y: 42.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156996699
 MonoBehaviour:
@@ -4775,6 +4787,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1278449764}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1312719939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2093121842277189467, guid: 65601575f526e0b459c7acf4174a0a06,
+    type: 3}
+  m_PrefabInstance: {fileID: 391997639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1327934453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5143,7 +5161,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -2.9999943, y: -111}
-  m_SizeDelta: {x: 465.8, y: 42.8}
+  m_SizeDelta: {x: 550, y: 42.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1514824766
 MonoBehaviour:
@@ -6725,6 +6743,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6442773145239785538, guid: 1e2bcac940c60db45a85d836efc86d7a,
     type: 3}
   m_PrefabInstance: {fileID: 1652025295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1934862849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5922283951116709452, guid: ff14ca9a245c056429aac7c013ace757,
+    type: 3}
+  m_PrefabInstance: {fileID: 1278449764}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1951227629 stripped
 Transform:
