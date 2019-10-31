@@ -202,11 +202,7 @@ public class PlayerMoveScript : MonoBehaviour
         if (closest.collider != null)
         {
             colNorm = closest.normal;
-            if (closest.collider.gameObject.layer == LayerMask.NameToLayer("Pickup"))
-            {
-                colNorm.y = curVelocity.normalized.y;
-                colNorm.Normalize();
-            }
+
             return true;
         }
         else
