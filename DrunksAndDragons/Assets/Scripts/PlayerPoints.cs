@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerPoints : MonoBehaviour
 {
     public int points;
+    public int totalCoins;
     public int kills;
     public Text coinsText;
     private int finalPoints;
@@ -17,6 +18,7 @@ public class PlayerPoints : MonoBehaviour
     public void Start()
     {
         points = 20;
+        totalCoins = points;
     }
 
     /// <summary>
@@ -26,6 +28,7 @@ public class PlayerPoints : MonoBehaviour
     public void AddPoints(int i)
     {
         points += i;
+        totalCoins += i;
     }
 
     /// <summary>
@@ -44,6 +47,11 @@ public class PlayerPoints : MonoBehaviour
     public int GetPoints()
     {
         return points;
+    }
+
+    public int getTotalCoins()
+    {
+        return totalCoins;
     }
 
     /// <summary>
