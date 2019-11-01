@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using XboxCtrlrInput;
 
 [RequireComponent(typeof(PlayerInput), typeof(Animator))]
@@ -22,6 +23,8 @@ public class PlayerMoveScript : MonoBehaviour
     [Tooltip("float that increases players speed permanently")]
     public float shopSpeedIncrease;
     public float shopSpeedIncreaseLimit;
+
+    [SerializeField] Image SpeedPanel;
 
     /// <summary>
     /// A speed modifier that reduces player speed when the player is carrying another player
@@ -106,6 +109,14 @@ public class PlayerMoveScript : MonoBehaviour
             shopSpeedIncrease = 0;
         }
         
+        if(SpeedPanel != null)
+        {
+            SpeedPanel.fillAmount = shopSpeedIncrease / shopSpeedIncreaseLimit; 
+        }
+        else
+        {
+            Debug.Log(shopSpeedIncrease / shopSpeedIncreaseLimit);
+        }
     }
 
     /// <summary>
