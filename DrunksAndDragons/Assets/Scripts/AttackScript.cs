@@ -252,7 +252,7 @@ public class AttackScript : MonoBehaviour
             }
 
         }
-        if (rigidbody.isKinematic && !GetComponent<PlayerDamageHandler>().isKnockedBack)
+        if (rigidbody.isKinematic && !GetComponent<PlayerDamageHandler>().isKnockedBack && dodgeCountdown <= 0)
         {
             if (input.GetPunchPressed && !heldObject)
             {

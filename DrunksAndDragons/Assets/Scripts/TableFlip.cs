@@ -84,23 +84,38 @@ public class TableFlip : MonoBehaviour
         rigidbody.AddForceAtPosition(((transform.position - flipperPos).normalized + Vector3.up).normalized * 500, GetComponent<Collider>().ClosestPointOnBounds(flipperPos));
             
     }
-    
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (isFlipping && other.CompareTag("Enemy"))
+        if (isFlipping && collision.collider.CompareTag("Enemy"))
         {
             foreach (GameObject child in hitEnemies)
-                if (other.gameObject.Equals(child))
+                if (collision.collider.gameObject.Equals(child))
                 {
                     Debug.Log("already hit");
                     return;
                 }
 
-            other.GetComponent<AI>().takeDamage(damage, flipDir);
-            hitEnemies.Add(other.gameObject);
+            collision.collider.GetComponent<AI>().takeDamage(damage, flipDir);
+            hitEnemies.Add(collision.collider.gameObject);
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (isFlipping && other.CompareTag("Enemy"))
+    //    {
+    //        foreach (GameObject child in hitEnemies)
+    //            if (other.gameObject.Equals(child))
+    //            {
+    //                Debug.Log("already hit");
+    //                return;
+    //            }
+    //
+    //        other.GetComponent<AI>().takeDamage(damage, flipDir);
+    //        hitEnemies.Add(other.gameObject);
+    //    }
+    //}
     
 
 }
