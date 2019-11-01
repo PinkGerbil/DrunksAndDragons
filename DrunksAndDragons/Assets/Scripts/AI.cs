@@ -290,6 +290,13 @@ public class AI : MonoBehaviour
             if (!child.GetComponent<PlayerDamageHandler>().Alive)
                 continue;
 
+            //meant to skip the player if there isnt a path that can be made
+            NavMeshPath testPath = new NavMeshPath();
+            agent.CalculatePath(child.transform.position, testPath);
+            if(testPath.status == NavMeshPathStatus.PathPartial)
+                continue;
+            
+            
             float curDistance = Vector3.Distance(transform.position, child.transform.position);
             if (!isDead)
             {
