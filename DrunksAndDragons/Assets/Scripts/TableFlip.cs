@@ -54,6 +54,7 @@ public class TableFlip : MonoBehaviour
         if (!isFlipping)
         {
             rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
+            hitEnemies.Clear();
             GetComponent<NavMeshObstacle>().enabled = true;
         }
     }
@@ -67,6 +68,7 @@ public class TableFlip : MonoBehaviour
             if (resetCountdown <= 0)
             {
                 transform.SetPositionAndRotation(resetPos, resetRot);
+                hitEnemies.Clear();
                 rigidbody.velocity = Vector3.zero;
                 GetComponent<NavMeshObstacle>().enabled = true;
             }

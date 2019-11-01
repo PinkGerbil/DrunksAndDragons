@@ -575,6 +575,30 @@ PrefabInstance:
       propertyPath: settings
       value: 
       objectReference: {fileID: 1976611898}
+    - target: {fileID: 8690271927757477897, guid: 401c1286dcd85dc4fa66fced7472dd23,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 71.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690271927757477897, guid: 401c1286dcd85dc4fa66fced7472dd23,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 3547383338580920484, guid: 401c1286dcd85dc4fa66fced7472dd23,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Drunks
+
+        &
+
+        Dragons'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3547383338580920484, guid: 401c1286dcd85dc4fa66fced7472dd23,
+        type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 401c1286dcd85dc4fa66fced7472dd23, type: 3}
 --- !u!1001 &4435512314108916550
