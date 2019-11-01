@@ -127,6 +127,7 @@ MonoBehaviour:
   yAxis: 0
   zAxis: 0
   acceleration: 2.5
+  AttractDistance: 10
 --- !u!135 &758806310688226220
 SphereCollider:
   m_ObjectHideFlags: 0

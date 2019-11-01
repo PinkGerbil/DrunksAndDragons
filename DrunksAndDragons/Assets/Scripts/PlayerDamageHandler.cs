@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XInputDotNetPure;
 
 [RequireComponent(typeof(AttackScript), typeof(Rigidbody), typeof(Animator))]
 public class PlayerDamageHandler : MonoBehaviour
@@ -136,6 +137,7 @@ public class PlayerDamageHandler : MonoBehaviour
         }
         else if (IFrameTime > 0)
         {
+            GamePad.SetVibration((PlayerIndex)GetComponent<PlayerInput>().controller, 0, 0);
             isHitDir = Vector3.zero;
             IFrameTime -= Time.deltaTime;
             rigidbody.isKinematic = true;
@@ -199,6 +201,7 @@ public class PlayerDamageHandler : MonoBehaviour
     /// </summary>
     void getHit()
     {
+        GamePad.SetVibration((PlayerIndex)GetComponent<PlayerInput>().controller, 100, 100);
         if (animator != null)
             animator.SetTrigger("WasHit");
         isHitDir.y = 0;

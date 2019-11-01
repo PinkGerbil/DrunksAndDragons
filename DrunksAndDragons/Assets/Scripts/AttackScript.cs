@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using XInputDotNetPure;
 
 [RequireComponent(typeof(PlayerInput), typeof(PlayerMoveScript))]
 public class AttackScript : MonoBehaviour
@@ -350,7 +351,10 @@ public class AttackScript : MonoBehaviour
             widthScale += 0.5f;
         }
         if (hitCollided)
+        {
+            GamePad.SetVibration((PlayerIndex)input.controller, 1, 1);
             OnHit.Invoke();
+        }
     }
 
     /// <summary>

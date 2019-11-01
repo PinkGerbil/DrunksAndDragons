@@ -15,7 +15,11 @@ public class Coin : MonoBehaviour
     float acceleration = 1;
     float velocity = 0;
 
-    private float coinMagnetTimer = 3;
+    [SerializeField]
+    [Tooltip("How close a player needs to be for the coin to be drawn to them")]
+    float AttractDistance = 3;
+
+    private float coinMagnetTimer = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +47,7 @@ public class Coin : MonoBehaviour
                     closest = child.transform.position;
             }
             closest.y = transform.position.y;
-            if (Vector3.Distance(transform.position, closest) < 3)
+            if (Vector3.Distance(transform.position, closest) < AttractDistance)
             {
                 GetComponent<Rigidbody>().isKinematic = true;
                 velocity += acceleration * Time.deltaTime;
