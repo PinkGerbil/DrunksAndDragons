@@ -13,6 +13,7 @@ public class WaveSpawn : MonoBehaviour
 
     [Header("shopTimer")]
     public GameObject shoptimerObject;
+    public GameObject waveObj;
     public Transform upPos;
     public Transform downPos;
     public Text shopTimer;
@@ -63,8 +64,13 @@ public class WaveSpawn : MonoBehaviour
     {
         shopTimer.text = waveTimer.ToString("#.0");
         waveTimer -= Time.deltaTime;
-        //if there is no children of the spawnmaster then start spawning enemies 
-        if(numberOfChildren() == 0)
+        //if there is no children of the spawnmaster then start spawning enemies
+        if (waveCount == scoreManager.GetComponent<ScoreManager>().finalWaveNumber + 1 || scoreManager.GetComponent<ScoreManager>().gameLost)
+        {
+            shoptimerObject.SetActive(false);
+            waveObj.SetActive(false);
+        }
+        if (numberOfChildren() == 0)
         {
             if(waveTimer > 0)
             {

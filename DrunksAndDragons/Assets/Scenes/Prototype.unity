@@ -280,6 +280,7 @@ MonoBehaviour:
   pointsShown: 1
   waveMaster: {fileID: 1826136152}
   finalWaveNumber: 2
+  gameLost: 0
 --- !u!1001 &9363866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1537,7 +1538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1889,7 +1890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2851,7 +2852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2865,7 +2866,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 65
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -4184,7 +4185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4294,6 +4295,11 @@ PrefabInstance:
       propertyPath: livesText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8517220037259680335, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: killPointMultiplier
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 662559066487023399, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -4314,6 +4320,11 @@ PrefabInstance:
       propertyPath: livesText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294323, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: killPointMultiplier
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 662559065435560105, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: coinsText
@@ -4328,6 +4339,11 @@ PrefabInstance:
         type: 3}
       propertyPath: livesText
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560105, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: killPointMultiplier
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8889305700327708573, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
@@ -4623,6 +4639,11 @@ PrefabInstance:
         type: 3}
       propertyPath: livesText
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005719, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: killPointMultiplier
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2942986366419994239, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
@@ -5442,7 +5463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5916,7 +5937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6876,6 +6897,7 @@ MonoBehaviour:
   - {fileID: 1238655451}
   - {fileID: 1053870179}
   shoptimerObject: {fileID: 746188706}
+  waveObj: {fileID: 1677034100}
   upPos: {fileID: 590664011}
   downPos: {fileID: 33952155}
   shopTimer: {fileID: 220338954}

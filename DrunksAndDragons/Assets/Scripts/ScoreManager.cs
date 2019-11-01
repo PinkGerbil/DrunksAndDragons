@@ -38,7 +38,7 @@ public class ScoreManager : MonoBehaviour
 
     public WaveSpawn waveMaster;
     public int finalWaveNumber;
-    private bool gameLost;
+    public bool gameLost;
 
 
 
@@ -127,10 +127,18 @@ public class ScoreManager : MonoBehaviour
             }
             if (gameLost)
             {
+                p1_UI.SetActive(false);
+                p2_UI.SetActive(false);
+                p3_UI.SetActive(false);
+                p4_UI.SetActive(false);
                 gameEndText.text = "Game Over";
             }
             else
             {
+                p1_UI.SetActive(false);
+                p2_UI.SetActive(false);
+                p3_UI.SetActive(false);
+                p4_UI.SetActive(false);
                 gameEndText.text = "Level Complete";
             }
 
