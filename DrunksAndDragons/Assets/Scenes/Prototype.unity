@@ -279,7 +279,7 @@ MonoBehaviour:
   gameEndText: {fileID: 752494399}
   pointsShown: 1
   waveMaster: {fileID: 1826136152}
-  finalWaveNumber: 2
+  finalWaveNumber: 5
   gameLost: 0
 --- !u!1001 &9363866
 PrefabInstance:
@@ -5225,21 +5225,41 @@ PrefabInstance:
       propertyPath: shopSpeedIncreaseLimit
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 662559065435560113, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: SpeedPanel
+      value: 
+      objectReference: {fileID: 525075599}
     - target: {fileID: 2942986365390005711, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: shopSpeedIncreaseLimit
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942986365390005711, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: SpeedPanel
+      value: 
+      objectReference: {fileID: 935849246}
+    - target: {fileID: 8517220037259680343, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: shopSpeedIncreaseLimit
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8517220037259680343, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
-      propertyPath: shopSpeedIncreaseLimit
-      value: 5
-      objectReference: {fileID: 0}
+      propertyPath: SpeedPanel
+      value: 
+      objectReference: {fileID: 444620603}
     - target: {fileID: 8889305699210294315, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: shopSpeedIncreaseLimit
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8889305699210294315, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: SpeedPanel
+      value: 
+      objectReference: {fileID: 1692775376}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f61d54eaa5d414f9fc55f93a77fbca, type: 3}
 --- !u!224 &1234987856 stripped
@@ -7497,7 +7517,7 @@ MonoBehaviour:
   waveMultiplierOn: 1
   multiplyAmount: 1
   timeBetweenSpawn: 1
-  startTimeBetweenWaves: 8
+  startTimeBetweenWaves: 25
   addedTimeBetweenWaves: 0
   waveTimer: 0
   shopOpen: 0
