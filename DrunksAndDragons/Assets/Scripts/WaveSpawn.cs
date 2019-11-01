@@ -109,7 +109,7 @@ public class WaveSpawn : MonoBehaviour
             waveTimer = startTimeBetweenWaves;
         }
 
-        WaveCountText.text = waveCount.ToString();
+        WaveCountText.text = waveCount.ToString() + "/" + scoreManager.GetComponent<ScoreManager>().finalWaveNumber;
     }
 
     //counts how many children there are
