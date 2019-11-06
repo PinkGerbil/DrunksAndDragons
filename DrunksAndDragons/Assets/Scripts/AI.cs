@@ -42,6 +42,7 @@ public class AI : MonoBehaviour
     public float knockbackPeriod;
     private float knockbackTime;
     public bool beingHit = false;
+    private bool hasTarget;
 
     private Vector3 AIHitDir;
     
@@ -199,6 +200,8 @@ public class AI : MonoBehaviour
         //checking to see how many players there are in the scene by seeing how many player tags there are in startup
         else if(boss != null && stunTime <= 0 && !boss.GetComponent<AI>().channeling && !isDead)
         {
+            agent.isStopped = false;
+
             float distanceToTarget = Vector3.Distance(transform.position, currentPlayer.transform.position);
 
             if (distanceToTarget > aggroRange || !currentPlayer.Alive)
@@ -208,8 +211,10 @@ public class AI : MonoBehaviour
             else
                 attackCountdown = attackTime;
         }
-        else if (boss == null && stunTime <= 0 && !isDead)
+        else if (boss == null && stunTime <= 0 && !isDead && hasTarget)
         {
+            agent.isStopped = false;
+
             float distanceToTarget = Vector3.Distance(transform.position, currentPlayer.transform.position);
 
             if (distanceToTarget > aggroRange || !currentPlayer.Alive)
@@ -218,6 +223,10 @@ public class AI : MonoBehaviour
                 attack();
             else
                 attackCountdown = attackTime;
+        }
+        else if (!hasTarget && !isDead)
+        {
+            agent.isStopped = true;
         }
         //boss things
         if (this.gameObject.name == "Boss(Clone)")
@@ -274,7 +283,7 @@ public class AI : MonoBehaviour
         }
         if(animator != null)
         {
-            if (Vector3.Distance(agent.pathEndPosition, transform.position) <= 0.1f)
+            if (Vector3.Distance(agent.pathEndPosition, transform.position) <= 0.1f || !hasTarget)
                 animator.SetBool("Moving", false);
             else
                 animator.SetBool("Moving", true);
@@ -294,14 +303,18 @@ public class AI : MonoBehaviour
             NavMeshPath testPath = new NavMeshPath();
             agent.CalculatePath(child.transform.position, testPath);
             if(testPath.status == NavMeshPathStatus.PathPartial)
+            {
+                hasTarget = false;
                 continue;
-            
-            
+            }
+
+
             float curDistance = Vector3.Distance(transform.position, child.transform.position);
             if (!isDead)
             {
                 if (curDistance < closest && !agent.isStopped)
                 {
+                    hasTarget = true;
                     closest = curDistance;
                     currentPlayer = child.GetComponent<PlayerDamageHandler>();
                     agent.destination = currentPlayer.transform.position;
