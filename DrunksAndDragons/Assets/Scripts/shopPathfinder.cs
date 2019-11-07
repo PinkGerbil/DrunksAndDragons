@@ -22,6 +22,11 @@ public class shopPathfinder : MonoBehaviour
         {
             foreach (GameObject child in players)
             {
+                if (!child.GetComponent<PlayerDamageHandler>().Alive)
+                    continue;
+                if (!child.activeInHierarchy)
+                    continue;
+              
                 Instantiate(shopPathfinderObj, child.transform.position, child.transform.rotation);
             }
             //for(int i = 0; i < players.Length; i++)
