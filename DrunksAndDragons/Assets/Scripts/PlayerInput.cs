@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
+using XInputDotNetPure;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField]
@@ -15,6 +16,8 @@ public class PlayerInput : MonoBehaviour
     public int controllerNum;
 
     bool paused = false;
+
+    float vibrationTimer = 0;
 
     /// <summary>
     /// Start is called before the first frame update
@@ -45,6 +48,20 @@ public class PlayerInput : MonoBehaviour
                 SceneManager.LoadScene(0);
             }
         }
+        if(vibrationTimer > 0)
+        {
+            vibrationTimer -= Time.deltaTime;
+            if (vibrationTimer <= 0)
+                GamePad.SetVibration((PlayerIndex)playerID - 1, 0, 0);
+        }
+    }
+
+    public void setVibration(float intensity, float time)
+    {
+        // playerID - 1 because playerIndex starts at 0
+        GamePad.SetVibration((PlayerIndex)playerID - 1, intensity, intensity);
+        Debug.Log("Rumble on controller: " + playerID);
+        vibrationTimer = time;
     }
 
     /// <summary>
@@ -113,4 +130,10 @@ public class PlayerInput : MonoBehaviour
 
 
     public int getPlayerID { get { return playerID; } }
+
+    private void OnApplicationQuit()
+    {
+        GamePad.SetVibration((PlayerIndex)playerID - 1, 0, 0);
+    }
+
 }

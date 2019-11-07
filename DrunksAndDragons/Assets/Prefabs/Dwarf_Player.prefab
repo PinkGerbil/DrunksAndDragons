@@ -350,9 +350,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
+  totalCoins: 0
   kills: 0
   coinsText: {fileID: 0}
-  killCount: {fileID: 0}
   killPointMultiplier: 0
 --- !u!114 &2881682679395987100
 MonoBehaviour:
@@ -386,6 +386,7 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   attackScript: {fileID: 0}
   HealthPanel: {fileID: 0}
+  LivesCounter: {fileID: 0}
   Player_Icon: {fileID: 0}
   IFrames: 0.5
   isHit: 0
@@ -487,7 +488,8 @@ MonoBehaviour:
   attack: {fileID: 2881682679395987097}
   moveSpeed: 5
   shopSpeedIncrease: 0
-  shopSpeedIncreaseLimit: 0
+  shopSpeedIncreaseLimit: 5
+  SpeedPanel: {fileID: 0}
   carrySpeedMod: 1
   consumableSpeedMod: 1
   animator: {fileID: 0}

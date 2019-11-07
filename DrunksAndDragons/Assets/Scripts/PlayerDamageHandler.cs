@@ -211,6 +211,7 @@ public class PlayerDamageHandler : MonoBehaviour
         IFrameTime = IFrames;
         health -= 1;
         isHit = false;
+        GetComponent<PlayerInput>().setVibration(0.5f, 0.25f);
     }
 
     /// <summary>

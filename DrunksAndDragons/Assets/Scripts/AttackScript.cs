@@ -32,7 +32,7 @@ public class AttackScript : MonoBehaviour
     [HideInInspector]
     public Animator animator;
 
-    public bool IsAttacking { get { return !(sweepCountdown <= 0 && lungeCountdown <= 0 && punchCountdown <= 0 && dodgeCountdown <= 0); } }
+    public bool IsAttacking { get { return !(lungeCountdown <= 0 && punchCountdown <= 0 && dodgeCountdown <= 0); } }
 
     
     [Tooltip("How Long the player can carry objects or other players for")]
@@ -48,22 +48,6 @@ public class AttackScript : MonoBehaviour
     public bool loseSpeedUpOnDeath;
     public int speedUpPrice;
     public int livesUpPrice;
-
-    [Header("Sweep")]
-    [Tooltip("How fast the sweep occurs")]
-    [Range(0,5)]
-    public float sweepDuration = 0.25f;
-    float sweepCountdown = 0;
-
-    [Tooltip("The range of the sweep attack")]
-    [Range(0, 10)]
-    public float sweepRange = 2;
-    [Tooltip("How wide the sweep attack should be")]
-    [Range(1, 360)]
-    public float sweepWidth = 45;
-    [Tooltip("how much damage the sweep does")]
-    [Range(0, 6)]
-    public int sweepDamage;
 
     [Header("Lunge")]
     [Tooltip("How long the lunge attack lasts")]
@@ -190,11 +174,6 @@ public class AttackScript : MonoBehaviour
             }
             else if (punchCountdown <= punchTime * 0.5f)
                 comboGraceCountdown = comboGracePeriod;
-        }
-        else if (sweepCountdown > 0)
-        {
-            checkSweepCollide();
-            sweepCountdown -= Time.deltaTime;
         }
         else if(lungeCountdown > 0)
         {
@@ -352,47 +331,11 @@ public class AttackScript : MonoBehaviour
         }
         if (hitCollided)
         {
-            GamePad.SetVibration((PlayerIndex)input.controller, 1, 1);
+            input.setVibration(1, 0.1f);
             OnHit.Invoke();
         }
     }
-
-    /// <summary>
-    /// Fire out one ray each frame. The direction of the frame relative to the player depends on the sweepCountdown
-    /// </summary>
-    void checkSweepCollide()
-    {
-        float timeScalar = 1 / sweepDuration;
-        Vector3 attackDir = transform.forward;
-        attackDir = Quaternion.AngleAxis(sweepWidth * 0.5f, Vector3.up) * attackDir;
-
-        attackDir = Quaternion.AngleAxis(-(sweepWidth * (1 - sweepCountdown * timeScalar)), Vector3.up) * attackDir;
-
-        Vector3 origin = transform.position + attackPoint;
-        Debug.DrawLine(origin, origin + attackDir * (sweepRange + playerRadius), Color.green);
-        int layerMask = 1 << LayerMask.NameToLayer("Enemy"); ;
-
-        if(Physics.Raycast(origin, attackDir, out RaycastHit hit, sweepRange + playerRadius, layerMask))
-        {
-            hit.collider.enabled = true;
-            if (hit.collider.CompareTag("Enemy"))
-            {
-                    hit.collider.enabled = false;
-                if (!hit.collider.gameObject.GetComponent<AI>().channeling)
-                {
-                    hit.collider.gameObject.GetComponent<AI>().takeDamage(sweepDamage);
-                }
-                if (hit.collider.gameObject.GetComponent<AI>().isDead)
-                {
-                    points.gainKills();
-                }
-                    //hit.collider.gameObject.GetComponent<AI>().timeAIInvulnurable++;
-            }
-            hit.collider.enabled = true;
-
-        }
-
-    }
+    
 
     /// <summary>
     /// Fire out five parallel rays in front of the player to check for enemies.
@@ -434,6 +377,7 @@ public class AttackScript : MonoBehaviour
         }
         if (hitCollided)
         {
+            input.setVibration(1, 0.1f);
             OnHit.Invoke();
         }
     }
