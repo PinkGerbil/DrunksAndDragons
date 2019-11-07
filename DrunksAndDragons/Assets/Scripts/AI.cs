@@ -194,7 +194,7 @@ public class AI : MonoBehaviour
             int coinDropAmount = Random.Range(0, maxCoinDrop);
             for(int i = 0; i < coinDropAmount; i++)
             {
-                Instantiate(coin, this.transform.position + new Vector3(0,1,0), this.transform.rotation);
+                Instantiate(coin, this.transform.position + new Vector3(0,2,0), this.transform.rotation);
             }
             Destroy(this.gameObject);
         }

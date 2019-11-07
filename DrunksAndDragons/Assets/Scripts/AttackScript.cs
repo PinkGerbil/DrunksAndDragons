@@ -48,6 +48,7 @@ public class AttackScript : MonoBehaviour
     public bool loseSpeedUpOnDeath;
     public int speedUpPrice;
     public int livesUpPrice;
+    public ParticleSystem spendParticle;
 
     [Header("Lunge")]
     [Tooltip("How long the lunge attack lasts")]
@@ -531,22 +532,26 @@ public class AttackScript : MonoBehaviour
     {
         if (other.gameObject.tag == "FullHealShop" && input.getBuyPressed && points.points >= fullHealPrice)
         {
+            spendParticle.Play();
             gameObject.GetComponent<PlayerDamageHandler>().health = gameObject.GetComponent<PlayerDamageHandler>().maxHealth;
             points.LosePoints(fullHealPrice);
         }
         else if (other.gameObject.tag == "SpeedDrinkShop" && input.getBuyPressed && points.points >= speedUpPrice && gameObject.GetComponent<PlayerMoveScript>().shopSpeedIncrease < gameObject.GetComponent<PlayerMoveScript>().shopSpeedIncreaseLimit)
         {
+            spendParticle.Play();
             this.gameObject.GetComponent<PlayerMoveScript>().shopSpeedIncrease++;
             points.LosePoints(speedUpPrice);
         }
         else if (other.gameObject.tag == "HealthIncreaseShop" && input.getBuyPressed && points.points >= healthUpPrice)
         {
+            spendParticle.Play();
             gameObject.GetComponent<PlayerDamageHandler>().maxHealth++;
             gameObject.GetComponent<PlayerDamageHandler>().health++;
             points.LosePoints(healthUpPrice);
         }
         else if (other.gameObject.tag == "LivesUpShop" && input.getBuyPressed && points.points >= livesUpPrice)
         {
+            spendParticle.Play();
             gameObject.GetComponent<PlayerDamageHandler>().lives++;
             points.LosePoints(livesUpPrice);
         }
