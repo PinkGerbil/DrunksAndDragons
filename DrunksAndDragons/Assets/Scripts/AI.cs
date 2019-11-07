@@ -43,6 +43,7 @@ public class AI : MonoBehaviour
     private float knockbackTime;
     public bool beingHit = false;
     private bool hasTarget;
+    private int skippedPlayers = 0;
 
     private Vector3 AIHitDir;
     
@@ -283,10 +284,14 @@ public class AI : MonoBehaviour
         }
         if(animator != null)
         {
-            if (Vector3.Distance(agent.pathEndPosition, transform.position) <= 0.1f || !hasTarget)
+            if (Vector3.Distance(agent.pathEndPosition, transform.position) <= 0.1f || agent.isStopped)
                 animator.SetBool("Moving", false);
             else
                 animator.SetBool("Moving", true);
+        }
+        if(!agent.hasPath)
+        {
+            hasTarget = false;
         }
     }
 
@@ -304,7 +309,7 @@ public class AI : MonoBehaviour
             agent.CalculatePath(child.transform.position, testPath);
             if(testPath.status == NavMeshPathStatus.PathPartial)
             {
-                hasTarget = false;
+                skippedPlayers++;
                 continue;
             }
 
@@ -321,6 +326,11 @@ public class AI : MonoBehaviour
                 }
             }
             
+        }
+        if(skippedPlayers >= 4)
+        {
+            hasTarget = false;
+            skippedPlayers = 0;
         }
     }
 
