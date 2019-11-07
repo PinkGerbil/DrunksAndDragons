@@ -501,19 +501,22 @@ public class AttackScript : MonoBehaviour
     {
         if (heldObject != null)
         {
+            Rigidbody other = heldObject.GetComponent<Rigidbody>();
+            other.isKinematic = false;
             
             if (heldObject.CompareTag("Player"))
             {
                 heldObject.GetComponent<Animator>().SetTrigger("Thrown");
                 heldObject.GetComponent<Collider>().isTrigger = true;
+                heldObject.GetComponent<PlayerInput>().startVibrate(0.25f);
+                other.AddForceAtPosition((transform.forward + transform.up).normalized * throwForce, other.ClosestPointOnBounds(other.transform.position - transform.forward * playerRadius));
             }
             else
             {
                 heldObject.GetComponent<ThrowableObject>().setThrown();
+                other.AddForceAtPosition((transform.forward + (transform.up * 0.1f)).normalized * throwForce, other.ClosestPointOnBounds(other.transform.position - transform.forward * playerRadius));
             }
-            Rigidbody other = heldObject.GetComponent<Rigidbody>();
-            other.isKinematic = false;
-            other.AddForceAtPosition((transform.forward + (transform.up * 0.1f)).normalized * throwForce, other.ClosestPointOnBounds(other.transform.position - transform.forward * playerRadius));
+            
             heldObjects.Remove(heldObject);
             heldObject = null;
             playerMove.carrySpeedMod = 1;

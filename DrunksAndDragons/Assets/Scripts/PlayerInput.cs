@@ -64,6 +64,16 @@ public class PlayerInput : MonoBehaviour
         vibrationTimer = time;
     }
 
+    public void startVibrate(float intensity)
+    {
+        GamePad.SetVibration((PlayerIndex)playerID - 1, intensity, intensity);
+    }
+
+    public void stopVibrate()
+    {
+        GamePad.SetVibration((PlayerIndex)playerID - 1, 0, 0);
+    }
+
     /// <summary>
     /// Sets the controller to a new controller number
     /// </summary>
@@ -135,5 +145,7 @@ public class PlayerInput : MonoBehaviour
     {
         GamePad.SetVibration((PlayerIndex)playerID - 1, 0, 0);
     }
+
+    
 
 }

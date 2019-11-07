@@ -93,6 +93,8 @@ public class PlayerDamageHandler : MonoBehaviour
                 GetComponent<Collider>().isTrigger = false;
                 Vector3 temp = hit.point;
                 transform.position = temp;
+                GetComponent<PlayerInput>().stopVibrate();
+                GetComponent<PlayerInput>().setVibration(1, 0.2f);
             }
 
             Vector3 velocity = rigidbody.velocity;
