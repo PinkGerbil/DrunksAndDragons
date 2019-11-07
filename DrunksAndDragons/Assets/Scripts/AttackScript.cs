@@ -513,7 +513,7 @@ public class AttackScript : MonoBehaviour
             }
             Rigidbody other = heldObject.GetComponent<Rigidbody>();
             other.isKinematic = false;
-            other.AddForceAtPosition((transform.forward + transform.up).normalized * throwForce, other.ClosestPointOnBounds(other.transform.position - transform.forward * playerRadius));
+            other.AddForceAtPosition((transform.forward + (transform.up * 0.1f)).normalized * throwForce, other.ClosestPointOnBounds(other.transform.position - transform.forward * playerRadius));
             heldObjects.Remove(heldObject);
             heldObject = null;
             playerMove.carrySpeedMod = 1;
