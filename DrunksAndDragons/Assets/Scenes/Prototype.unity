@@ -2811,7 +2811,7 @@ MonoBehaviour:
   xMinBounds: -10
   xMaxBounds: 8
   zMinBounds: 0
-  zMaxBounds: 0
+  zMaxBounds: 4.5
   useZoomBounds: 1
   maxZoom: 10
   minZoom: 1

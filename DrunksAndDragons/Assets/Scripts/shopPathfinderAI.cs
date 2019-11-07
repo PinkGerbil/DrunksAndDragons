@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class shopPathfinderAI : MonoBehaviour
 {
     private GameObject shopDestination;
+    private float timer = 8;
     private float timeBetweenStopNDestroy = 2;
     // Start is called before the first frame update
     void Start()
@@ -16,7 +17,8 @@ public class shopPathfinderAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.GetComponent<NavMeshAgent>().remainingDistance < 2)
+        timer -= Time.deltaTime;
+        if(timer < 0)
         {
             if (!gameObject.GetComponent<ParticleSystem>().isStopped)
             {
