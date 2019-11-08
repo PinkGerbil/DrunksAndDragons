@@ -483,6 +483,7 @@ Transform:
   - {fileID: 1628656531}
   - {fileID: 8208955111951480369}
   - {fileID: 7099713838482260916}
+  - {fileID: 3096664664059218250}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -719,6 +720,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42163a53aa3546243bc2b1a5ca6a4f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8439050396690358868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3096664664059218250}
+  - component: {fileID: 8140619794686385499}
+  m_Layer: 9
+  m_Name: shopCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3096664664059218250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439050396690358868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.17, z: -10.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6658547278028975028}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8140619794686385499
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439050396690358868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 42.983746, y: 3.061561, z: 4.1970496}
+  m_Center: {x: 4.005269, y: -1.0307811, z: 1.598525}
 --- !u!1 &8845856529726843463
 GameObject:
   m_ObjectHideFlags: 0
