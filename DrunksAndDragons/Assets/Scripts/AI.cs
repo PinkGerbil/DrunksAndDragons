@@ -26,6 +26,7 @@ public class AI : MonoBehaviour
 
 
     public GameObject coin;
+    public int minCoinDrop;
     public int maxCoinDrop;
 
     public int maxHealth;
@@ -191,7 +192,7 @@ public class AI : MonoBehaviour
                 //spawn the drop
                 //Debug.Log("drop");
             }
-            int coinDropAmount = Random.Range(0, maxCoinDrop);
+            int coinDropAmount = Random.Range(minCoinDrop, maxCoinDrop);
             for(int i = 0; i < coinDropAmount; i++)
             {
                 Instantiate(coin, this.transform.position + new Vector3(0,2,0), this.transform.rotation);

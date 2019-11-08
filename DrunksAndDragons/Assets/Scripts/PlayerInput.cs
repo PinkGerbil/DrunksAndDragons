@@ -48,12 +48,12 @@ public class PlayerInput : MonoBehaviour
                 SceneManager.LoadScene(0);
             }
         }
-        if(vibrationTimer > 0)
-        {
-            vibrationTimer -= Time.deltaTime;
-            if (vibrationTimer <= 0)
-                GamePad.SetVibration((PlayerIndex)playerID - 1, 0, 0);
-        }
+        //if(vibrationTimer > 0)
+        //{
+        //    vibrationTimer -= Time.deltaTime;
+        //    if (vibrationTimer <= 0)
+        //        GamePad.SetVibration((PlayerIndex)playerID - 1, 0, 0);
+        //}
     }
 
     public void setVibration(float intensity, float time)

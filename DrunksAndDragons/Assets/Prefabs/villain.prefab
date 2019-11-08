@@ -1713,7 +1713,8 @@ MonoBehaviour:
   - {fileID: 1581599843373989352, guid: af338c41adec7af45b177fcb24f96f80, type: 3}
   - {fileID: 4171199931188632242, guid: 8660319ec82f85945b59fac98b97f801, type: 3}
   coin: {fileID: 2939554252357560733, guid: 37d3c6bf218f2e74c8cffd395c9021d1, type: 3}
-  maxCoinDrop: 5
+  minCoinDrop: 2
+  maxCoinDrop: 6
   maxHealth: 4
   isDead: 0
   stunPeriod: 0.33
