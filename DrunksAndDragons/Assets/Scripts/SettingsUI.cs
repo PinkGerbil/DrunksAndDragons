@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using XboxCtrlrInput;
 
 
 public class SettingsUI : MonoBehaviour
@@ -23,6 +25,11 @@ public class SettingsUI : MonoBehaviour
         new Vector2(1600, 900),
         new Vector2(1920, 1080)
     };
+    PointerInputModule test;
+    public EventSystem eventSystem;
+    public Button backButton;
+    private float changeTimer;
+    private PointerEventData PointerEventData;
 
     void OnEnable()
     {
@@ -100,5 +107,122 @@ public class SettingsUI : MonoBehaviour
     public void quitApp()
     {
         Application.Quit();
+    }
+
+    private void Update()
+    {
+        //hard coding event system because xinput needs all controllers to do the same thing for it to work using the unity event system
+        changeTimer -= Time.unscaledDeltaTime;
+        //going up
+        if (XCI.GetAxis(XboxAxis.LeftStickY) > 0 && eventSystem.currentSelectedGameObject.name == "ContinueButton" && changeTimer < 0)
+        {
+            eventSystem.SetSelectedGameObject(volumeSlider.gameObject);
+            changeTimer = 0.4f;
+        }
+        if (XCI.GetAxis(XboxAxis.LeftStickY) > 0 && eventSystem.currentSelectedGameObject.name == "Volume_Slider" && changeTimer < 0)
+        {
+            eventSystem.SetSelectedGameObject(resolution.gameObject);
+            changeTimer = 0.4f;
+        }
+        if (XCI.GetAxis(XboxAxis.LeftStickY) > 0 && eventSystem.currentSelectedGameObject.name == "Resolution_Dropdown" && changeTimer < 0)
+        {
+            eventSystem.SetSelectedGameObject(fullScreen.gameObject);
+            changeTimer = 0.4f;
+        }
+        if (XCI.GetAxis(XboxAxis.LeftStickY) > 0 && eventSystem.currentSelectedGameObject.name == "Fullscreen_Dropdown" && changeTimer < 0)
+        {
+            eventSystem.SetSelectedGameObject(quality.gameObject);
+            changeTimer = 0.4f;
+        }
+        
+        
+        //going down
+        if (XCI.GetAxis(XboxAxis.LeftStickY) < 0 && eventSystem.currentSelectedGameObject.name == "Quality_Dropdown" && changeTimer < 0)
+        {
+            eventSystem.SetSelectedGameObject(fullScreen.gameObject);
+            changeTimer = 0.4f;
+        }
+        if (XCI.GetAxis(XboxAxis.LeftStickY) < 0 && eventSystem.currentSelectedGameObject.name == "Fullscreen_Dropdown" && changeTimer < 0)
+        {
+            eventSystem.SetSelectedGameObject(resolution.gameObject);
+            changeTimer = 0.4f;
+        }
+        if (XCI.GetAxis(XboxAxis.LeftStickY) < 0 && eventSystem.currentSelectedGameObject.name == "Resolution_Dropdown" && changeTimer < 0)
+        {
+            eventSystem.SetSelectedGameObject(volumeSlider.gameObject);
+            changeTimer = 0.4f;
+        }
+        if (XCI.GetAxis(XboxAxis.LeftStickY) < 0 && eventSystem.currentSelectedGameObject.name == "Volume_Slider" && changeTimer < 0)
+        {
+            eventSystem.SetSelectedGameObject(backButton.gameObject);
+            changeTimer = 0.4f;
+        }
+
+
+        //quality
+        if (XCI.GetButtonDown(XboxButton.A) && eventSystem.currentSelectedGameObject.name == "Quality_Dropdown")
+        {
+            if (quality.value < quality.options.Count - 1)
+            {
+                quality.value++;
+            }
+            else
+            {
+                quality.value = 0;
+            }
+        }
+        //fullscreen
+        if (XCI.GetButtonDown(XboxButton.A) && eventSystem.currentSelectedGameObject.name == "Fullscreen_Dropdown")
+        {
+            if (fullScreen.value < fullScreen.options.Count - 1)
+            {
+                fullScreen.value++;
+            }
+            else
+            {
+                fullScreen.value = 0;
+            }
+        }
+        //resolution
+        if (XCI.GetButtonDown(XboxButton.A) && eventSystem.currentSelectedGameObject.name == "Resolution_Dropdown")
+        {
+            if (resolution.value < resolution.options.Count - 1)
+            {
+                resolution.value++;
+            }
+            else
+            {
+                resolution.value = 0;
+            }
+        }
+
+        //volume
+        if (XCI.GetAxis(XboxAxis.LeftStickX) < 0 && eventSystem.currentSelectedGameObject.name == "Volume_Slider")
+        {
+            lowerVol(0.02f);
+        }
+        if (XCI.GetAxis(XboxAxis.LeftStickX) > 0 && eventSystem.currentSelectedGameObject.name == "Volume_Slider")
+        {
+            raiseVol(0.02f);
+        }
+        //back button
+        if (XCI.GetButtonDown(XboxButton.A) && eventSystem.currentSelectedGameObject.name == "ContinueButton")
+        {
+            backButton.onClick.Invoke();
+        }
+    }
+
+    public float raiseVol(float raisingAmount)
+    {
+        float temp = volumeSlider.value + raisingAmount;
+        volumeSlider.value = temp;
+        return volumeSlider.value;
+    }
+
+    public float lowerVol(float loweringAmount)
+    {
+        float temp = volumeSlider.value - loweringAmount;
+        volumeSlider.value = temp;
+        return volumeSlider.value;
     }
 }
