@@ -24,7 +24,7 @@ public class Coin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        //launches the coin in a random direction when spawned
         players = GameObject.Find("Game Manager").GetComponent<ScoreManager>().players;
         int coinShootingX = Random.Range(-xAxis, xAxis);
         int coinShootingY = Random.Range(0, yAxis);
@@ -39,6 +39,7 @@ public class Coin : MonoBehaviour
         coinMagnetTimer -= Time.deltaTime;
         Vector3 closest = Vector3.positiveInfinity;
 
+        //start to move towards the closest player
         if (coinMagnetTimer < 0)
         {
             foreach (PlayerPoints child in players)
@@ -61,7 +62,7 @@ public class Coin : MonoBehaviour
         }
     }
 
-
+    //getting picked up by an alive player
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player" && other.gameObject.GetComponent<PlayerDamageHandler>().Alive)

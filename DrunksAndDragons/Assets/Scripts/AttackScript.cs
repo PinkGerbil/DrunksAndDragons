@@ -530,6 +530,7 @@ public class AttackScript : MonoBehaviour
     /// <param name="other">Collider to see which item they are buying</param>
     private void OnTriggerStay(Collider other)
     {
+        //if you press the buy button while next to the shop it will remove coins and give the player the buff
         if (other.gameObject.tag == "FullHealShop" && input.getBuyPressed && points.points >= fullHealPrice)
         {
             spendParticle.Play();

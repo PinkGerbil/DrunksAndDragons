@@ -2210,75 +2210,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500552449}
   m_CullTransparentMesh: 0
---- !u!1001 &507858191
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 546359856}
-    m_Modifications:
-    - target: {fileID: 1592419930270832767, guid: 64aa0d27da97bfb4db2571f5524382db,
-        type: 3}
-      propertyPath: m_Name
-      value: spendParticle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592419930270832762, guid: 64aa0d27da97bfb4db2571f5524382db,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592419930270832762, guid: 64aa0d27da97bfb4db2571f5524382db,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592419930270832762, guid: 64aa0d27da97bfb4db2571f5524382db,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592419930270832762, guid: 64aa0d27da97bfb4db2571f5524382db,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592419930270832762, guid: 64aa0d27da97bfb4db2571f5524382db,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592419930270832762, guid: 64aa0d27da97bfb4db2571f5524382db,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592419930270832762, guid: 64aa0d27da97bfb4db2571f5524382db,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592419930270832762, guid: 64aa0d27da97bfb4db2571f5524382db,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592419930270832762, guid: 64aa0d27da97bfb4db2571f5524382db,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592419930270832762, guid: 64aa0d27da97bfb4db2571f5524382db,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592419930270832762, guid: 64aa0d27da97bfb4db2571f5524382db,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 64aa0d27da97bfb4db2571f5524382db, type: 3}
 --- !u!1 &525075597
 GameObject:
   m_ObjectHideFlags: 0
@@ -5038,6 +4969,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4156435509107428655, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2840593953823831411, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_Name
@@ -7180,9 +7116,9 @@ CanvasRenderer:
   m_CullTransparentMesh: 0
 --- !u!198 &1665857246 stripped
 ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1592419930270832765, guid: 64aa0d27da97bfb4db2571f5524382db,
+  m_CorrespondingSourceObject: {fileID: 4156435509107428648, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
     type: 3}
-  m_PrefabInstance: {fileID: 507858191}
+  m_PrefabInstance: {fileID: 1218673861}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1667220217 stripped
 Transform:

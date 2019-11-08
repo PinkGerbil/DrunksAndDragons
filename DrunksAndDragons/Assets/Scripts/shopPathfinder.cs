@@ -10,6 +10,10 @@ public class shopPathfinder : MonoBehaviour
     public GameObject shopPathfinderObj;
     private bool stopLoop;
     // Start is called before the first frame update
+
+
+
+    //spawns the pathfinding ai that guides the players to the shop
     void Start()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
@@ -20,6 +24,7 @@ public class shopPathfinder : MonoBehaviour
     {
         if(wavespawn.GetComponent<WaveSpawn>().shopOpen && !stopLoop)
         {
+            //will go through all players and chack if they are alive or in the game in the first place
             foreach (GameObject child in players)
             {
                 if (!child.GetComponent<PlayerDamageHandler>().Alive)

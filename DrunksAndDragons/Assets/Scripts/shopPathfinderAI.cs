@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+
+//just pathfinds towards the shop leaving particles, guiding players to the shop
 public class shopPathfinderAI : MonoBehaviour
 {
     private GameObject shopDestination;
@@ -18,6 +21,7 @@ public class shopPathfinderAI : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
+        //stops emmiting
         if(timer < 0)
         {
             if (!gameObject.GetComponent<ParticleSystem>().isStopped)
@@ -25,6 +29,7 @@ public class shopPathfinderAI : MonoBehaviour
                 gameObject.GetComponent<ParticleSystem>().Stop();
             }
             timeBetweenStopNDestroy -= Time.deltaTime;
+            //after the emmision is stopped it waits a little bit before fully deleting the emmiter
             if(timeBetweenStopNDestroy < 0)
             {
                 Destroy(gameObject);
