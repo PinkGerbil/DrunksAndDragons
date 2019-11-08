@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class SettingsUI : MonoBehaviour
 {
-    [SerializeField]    Slider volumeSlider;
+    [SerializeField] public Slider volumeSlider;
 
-    [SerializeField]    Dropdown fullScreen;
-    [SerializeField]    Dropdown resolution;
-    [SerializeField]    Dropdown quality;
+    [SerializeField] public Dropdown fullScreen;
+    [SerializeField] public Dropdown resolution;
+    [SerializeField] public Dropdown quality;
 
-    [SerializeField] GameObject MainMenu;
+    [SerializeField] public GameObject MainMenu;
 
     Vector2[] resolutionValues =
     {

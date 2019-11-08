@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField]    GameObject settings;
-    [SerializeField]    Button play;
+    [SerializeField] public GameObject settings;
+    [SerializeField] public Button play;
 
     void OnEnable()
     {

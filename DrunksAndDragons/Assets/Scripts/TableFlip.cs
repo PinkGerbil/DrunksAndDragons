@@ -24,21 +24,21 @@ public class TableFlip : MonoBehaviour
     float velocityMinMag = 0.1f;
     
 
-    Vector3 nextPosition = Vector3.zero;
-    Vector3 unflippedPosition = Vector3.zero;
-    Quaternion newRotation = Quaternion.identity;
-    Quaternion unflippedRotation = Quaternion.identity;
+    private Vector3 nextPosition = Vector3.zero;
+    private Vector3 unflippedPosition = Vector3.zero;
+    private Quaternion newRotation = Quaternion.identity;
+    private Quaternion unflippedRotation = Quaternion.identity;
 
-    Vector3    resetPos = Vector3.zero;
-    Quaternion resetRot = Quaternion.identity;
+    private Vector3    resetPos = Vector3.zero;
+    private Quaternion resetRot = Quaternion.identity;
 
-    Vector3 flipDir = Vector3.zero;
+    private Vector3 flipDir = Vector3.zero;
 
-    Collider collider;
-
-    List<GameObject> hitEnemies = new List<GameObject>();
-
-    Rigidbody rigidbody;
+    private new Collider collider;
+    
+    private List<GameObject> hitEnemies = new List<GameObject>();
+    
+    private new Rigidbody rigidbody;
 
     void Start()
     {

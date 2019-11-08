@@ -3694,6 +3694,46 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 6658547277966409503, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 6.099874
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658547277966409503, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -4.991554
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658547277966409503, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2.2684927
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658547277966409503, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -1.591223
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658547279584141312, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5.249362
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658547279584141312, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -3.560405
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658547279584141312, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2.055838
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658547279584141312, guid: 8777b5387ca4c1e42b97d12298bf60e9,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.27574506
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8777b5387ca4c1e42b97d12298bf60e9, type: 3}
 --- !u!1 &843177683
@@ -6009,6 +6049,11 @@ PrefabInstance:
     - target: {fileID: 5712643799371156486, guid: a9b4d281f20641147b3d48e515e83e10,
         type: 3}
       propertyPath: flipTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4071317735099217263, guid: a9b4d281f20641147b3d48e515e83e10,
+        type: 3}
+      propertyPath: m_TimeToStationary
       value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

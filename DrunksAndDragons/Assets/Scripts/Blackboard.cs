@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Blackboard : MonoBehaviour
 {
     
-    [SerializeField] GameObject pauseUI;
-    [SerializeField] GameObject settingsUI;
+    [SerializeField] public GameObject pauseUI;
+    [SerializeField] public GameObject settingsUI;
 
     [HideInInspector]
     public List<GameObject> players = new List<GameObject>();
@@ -30,14 +30,14 @@ public class Blackboard : MonoBehaviour
     /// <param name="toggle">Pause state</param>
     public void togglePause(bool toggle)
     {
-        if (pauseUI != null) pauseUI.active = toggle;
+        if (pauseUI != null) pauseUI.SetActive(toggle);
         paused = toggle;
         if (toggle)
             Time.timeScale = 0;
         else
         {
             Time.timeScale = 1;
-            if (settingsUI != null) settingsUI.active = false;
+            if (settingsUI != null) settingsUI.SetActive(false);
         }
     }
 
@@ -53,7 +53,7 @@ public class Blackboard : MonoBehaviour
         else
         {
             Time.timeScale = 1;
-            if (settingsUI != null) settingsUI.active = false;
+            if (settingsUI != null) settingsUI.SetActive(false);
         }
     }
 }

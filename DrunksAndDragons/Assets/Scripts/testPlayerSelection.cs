@@ -6,10 +6,10 @@ using XboxCtrlrInput;
 
 public class testPlayerSelection : MonoBehaviour
 {
-    private XboxController Controller1 = XboxController.First;
-    private XboxController Controller2 = XboxController.Second;
-    private XboxController Controller3 = XboxController.Third;
-    private XboxController Controller4 = XboxController.Fourth;
+    //private XboxController Controller1 = XboxController.First;
+    //private XboxController Controller2 = XboxController.Second;
+    //private XboxController Controller3 = XboxController.Third;
+    //private XboxController Controller4 = XboxController.Fourth;
     //public GameObject Player1;
     //public GameObject Player2;
     //public GameObject Player3;

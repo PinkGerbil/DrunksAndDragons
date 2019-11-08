@@ -6,10 +6,10 @@ using XboxCtrlrInput;
 
 public class PlayerSelect : MonoBehaviour
 {
-    private XboxController Controller1 = XboxController.First;
-    private XboxController Controller2 = XboxController.Second;
-    private XboxController Controller3 = XboxController.Third;
-    private XboxController Controller4 = XboxController.Fourth;
+    //private XboxController Controller1 = XboxController.First;
+    //private XboxController Controller2 = XboxController.Second;
+    //private XboxController Controller3 = XboxController.Third;
+    //private XboxController Controller4 = XboxController.Fourth;
     public GameObject Player1;
     public GameObject Player2;
     public GameObject Player3;
@@ -36,7 +36,7 @@ public class PlayerSelect : MonoBehaviour
 
     private int controllerCount = 0;
 
-    bool checkPlayers = false;
+    //bool checkPlayers = false;
 
     bool anyActive { get { return player1Active || player2Active || player3Active || player4Active; } }
 

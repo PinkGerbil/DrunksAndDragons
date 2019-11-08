@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class PauseUI : MonoBehaviour
 {
-    [SerializeField] Button firstSelected;
-    [SerializeField] GameObject settings;
-    [SerializeField] Blackboard blackboard;
+    [SerializeField] public Button firstSelected;
+    [SerializeField] public GameObject settings;
+    [SerializeField] public Blackboard blackboard;
     void OnEnable()
     {
         if (firstSelected != null)

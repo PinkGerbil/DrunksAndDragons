@@ -12,8 +12,7 @@ public class ThrowableObject : MonoBehaviour
 
     [HideInInspector]
     public bool wasThrown = false;
-
-    Rigidbody rigidbody;
+    new Rigidbody rigidbody;
     Collider thisCollider;
 
     float maxTimer = 1;

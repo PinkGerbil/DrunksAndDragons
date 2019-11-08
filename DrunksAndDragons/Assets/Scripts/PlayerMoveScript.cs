@@ -24,7 +24,7 @@ public class PlayerMoveScript : MonoBehaviour
     public float shopSpeedIncrease;
     public float shopSpeedIncreaseLimit;
 
-    [SerializeField] Image SpeedPanel;
+    [SerializeField] public Image SpeedPanel;
 
     /// <summary>
     /// A speed modifier that reduces player speed when the player is carrying another player
