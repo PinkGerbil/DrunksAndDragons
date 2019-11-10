@@ -42,10 +42,20 @@ public class ThrowableObject : MonoBehaviour
         }
         else if(wasThrown && rigidbody.velocity == Vector3.zero)
         {
-            rigidbody.isKinematic = true;
-            wasThrown = false;
-            hitEnemies.Clear();
-            GetComponent<NavMeshObstacle>().enabled = true;
+            int mask = 1 << LayerMask.NameToLayer("Floor");
+            if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, mask))
+            {
+                float distance = Vector3.Distance(hit.point, thisCollider.ClosestPointOnBounds(hit.point));
+
+                if(distance <= 0.1)
+                {
+                    rigidbody.isKinematic = true;
+                    wasThrown = false;
+                    hitEnemies.Clear();
+                    GetComponent<NavMeshObstacle>().enabled = true;
+                }
+            }
+
         }
     }
     public void setThrown()
@@ -64,28 +74,6 @@ public class ThrowableObject : MonoBehaviour
         Destroy(gameObject);
     }
 
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (wasThrown && other.CompareTag("Enemy"))
-    //    {
-    //        foreach (GameObject child in hitEnemies)
-    //            if (other.gameObject.Equals(child))
-    //                return;
-    //        Vector3 hitDir = (other.ClosestPointOnBounds(transform.position) - transform.position).normalized;
-    //        hitDir.y = 0;
-    //        other.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
-    //        Debug.Log(rigidbody.velocity);
-    //        rigidbody.velocity = (rigidbody.velocity.normalized - hitDir * 2).normalized * rigidbody.velocity.magnitude * 2;
-
-    //        hitEnemies.Add(other.gameObject);
-    //        objectHealth--;
-    //        if (objectHealth <= 0)
-    //        {
-    //            ObjectBreak();
-    //        }
-    //    }
-    //}
-
     private void OnCollisionEnter(Collision collision)
     {
         if (wasThrown && collision.collider.CompareTag("Enemy"))
@@ -101,7 +89,6 @@ public class ThrowableObject : MonoBehaviour
             hitDir.y = 0;
             collision.collider.GetComponent<AI>().takeDamage(damage, hitDir.normalized);
             Debug.Log(rigidbody.velocity);
-            //rigidbody.velocity = (rigidbody.velocity.normalized - (colNorm * 2)) * rigidbody.velocity.magnitude;
 
             hitEnemies.Add(collision.collider.gameObject);
             objectHealth--;
