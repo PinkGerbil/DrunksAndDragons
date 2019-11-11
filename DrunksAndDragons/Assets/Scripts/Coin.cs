@@ -47,9 +47,8 @@ public class Coin : MonoBehaviour
                 if (child.gameObject.activeInHierarchy
                     && child.GetComponent<PlayerDamageHandler>().Alive
                     && Vector3.Distance(child.transform.position, transform.position) < Vector3.Distance(closest, transform.position))
-                    closest = child.transform.position;
+                        closest = child.transform.position;
             }
-            //closest.y = transform.position.y;
             if (Vector3.Distance(transform.position, closest) < AttractDistance)
             {
                 GetComponent<Rigidbody>().isKinematic = true;

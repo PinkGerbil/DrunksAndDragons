@@ -71,8 +71,10 @@ public class CameraMove : MonoBehaviour
         else
         {
             nextPos = CalcCamPos();
-            nextZoom = CalcCamZoom();
+            //nextZoom = CalcCamZoom();
         }
+        transform.localPosition = Vector3.Lerp(transform.localPosition, nextPos + -transform.forward * nextZoom, camMoveSpeed * Time.deltaTime);
+
         if(usePositionBounds)
         {
             Vector3 temp = transform.localPosition;
@@ -88,8 +90,6 @@ public class CameraMove : MonoBehaviour
 
             transform.localPosition = temp;
         }
-        transform.localPosition = Vector3.Lerp(transform.localPosition, nextPos + -transform.forward * nextZoom, camMoveSpeed * Time.deltaTime);
-
 
         nextZoom = 0;
     }
@@ -101,7 +101,7 @@ public class CameraMove : MonoBehaviour
 
         foreach (GameObject child in players)
             temp += child.transform.position;
-
+        temp.z += 20;
         return temp / players.Count;
     }
 

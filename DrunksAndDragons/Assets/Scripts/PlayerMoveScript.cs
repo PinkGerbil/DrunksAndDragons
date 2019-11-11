@@ -118,7 +118,6 @@ public class PlayerMoveScript : MonoBehaviour
         {
             Debug.Log(shopSpeedIncrease / shopSpeedIncreaseLimit);
         }
-        Debug.Log(scaledSpeed);
         animator.SetFloat("Speed", scaledSpeed);
     }
 
