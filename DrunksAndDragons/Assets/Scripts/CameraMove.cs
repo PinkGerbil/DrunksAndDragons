@@ -71,7 +71,7 @@ public class CameraMove : MonoBehaviour
         else
         {
             nextPos = CalcCamPos();
-            //nextZoom = CalcCamZoom();
+            nextZoom = CalcCamZoom();
         }
         transform.localPosition = Vector3.Lerp(transform.localPosition, nextPos + -transform.forward * nextZoom, camMoveSpeed * Time.deltaTime);
 
