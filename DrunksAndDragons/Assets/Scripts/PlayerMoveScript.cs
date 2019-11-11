@@ -57,7 +57,8 @@ public class PlayerMoveScript : MonoBehaviour
     /// </summary>
     Vector3 velocity { get { return transform.forward * (moveSpeed + shopSpeedIncrease) * carrySpeedMod * consumableSpeedMod * Time.deltaTime; } }
 
-    
+    float  scaledSpeed { get { return ((moveSpeed + shopSpeedIncrease) * carrySpeedMod * consumableSpeedMod) / 5; } }
+
     /// <summary>
     /// Start is called before the first frame update
     /// </summary>
@@ -117,6 +118,8 @@ public class PlayerMoveScript : MonoBehaviour
         {
             Debug.Log(shopSpeedIncrease / shopSpeedIncreaseLimit);
         }
+        Debug.Log(scaledSpeed);
+        animator.SetFloat("Speed", scaledSpeed);
     }
 
     /// <summary>
