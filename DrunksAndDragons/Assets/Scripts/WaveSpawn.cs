@@ -81,16 +81,13 @@ public class WaveSpawn : MonoBehaviour
                     lerpUpProgress += Time.deltaTime * lerpSpeed;
                     shoptimerObject.transform.position = Vector3.Lerp(downPos.position, upPos.position, lerpUpProgress);
                 }
-                //shoptimerObject.SetActive(true);
+                shoptimerObject.SetActive(true);
                 shopOpen = true;
             }
             if(waveTimer < 0)
             {
 
-                //if (shoptimerObject.transform.position == downPos.position)
-                //{
-                //    shoptimerObject.SetActive(false);
-                //}
+
                 shopOpen = false;
                 waveCount++;
 
@@ -111,6 +108,10 @@ public class WaveSpawn : MonoBehaviour
                 shopTimer.gameObject.SetActive(false);
                 lerpDownProgress += Time.deltaTime * lerpSpeed;
                 shoptimerObject.transform.position = Vector3.Lerp(upPos.position, downPos.position, lerpDownProgress);
+                if (lerpDownProgress >= 1)
+                {
+                    shoptimerObject.SetActive(false);
+                }
             }
             waveTimer = startTimeBetweenWaves;
         }
