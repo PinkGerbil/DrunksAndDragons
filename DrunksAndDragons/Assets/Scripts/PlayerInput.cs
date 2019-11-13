@@ -62,7 +62,7 @@ public class PlayerInput : MonoBehaviour
     {
         // playerID - 1 because playerIndex starts at 0
         GamePad.SetVibration((PlayerIndex)playerID - 1, intensity, intensity);
-        Debug.Log("Rumble on controller: " + playerID);
+
         vibrationTimer = time;
     }
 

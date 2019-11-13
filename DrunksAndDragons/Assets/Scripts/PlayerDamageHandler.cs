@@ -166,7 +166,6 @@ public class PlayerDamageHandler : MonoBehaviour
                 maxHealth = originalMaxHealth;
             }
             transform.Find("group1").GetComponent<SkinnedMeshRenderer>().enabled = false;
-            transform.Find("polySurface3").GetComponent<SkinnedMeshRenderer>().enabled = false;
             Player_Icon.GetComponent<SpriteRenderer>().enabled = false; 
             GetComponent<PlayerMoveScript>().enabled = false; 
         }
@@ -179,7 +178,6 @@ public class PlayerDamageHandler : MonoBehaviour
             {
                 health = maxHealth;
                 transform.Find("group1").GetComponent<SkinnedMeshRenderer>().enabled = true;
-                transform.Find("polySurface3").GetComponent<SkinnedMeshRenderer>().enabled = true;
                 Player_Icon.GetComponent<SpriteRenderer>().enabled = true;
                 GetComponent<PlayerMoveScript>().enabled = true;
                 transform.position = spawnLocation;
