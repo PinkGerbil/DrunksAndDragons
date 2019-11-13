@@ -332,7 +332,7 @@ public class AttackScript : MonoBehaviour
         }
         if (hitCollided)
         {
-            //input.setVibration(1, 0.1f);
+            input.setVibration(1, 0.1f);
             OnHit.Invoke();
         }
     }
@@ -378,7 +378,7 @@ public class AttackScript : MonoBehaviour
         }
         if (hitCollided)
         {
-            //input.setVibration(1, 0.1f);
+            input.setVibration(1, 0.1f);
             OnHit.Invoke();
         }
     }
@@ -509,7 +509,7 @@ public class AttackScript : MonoBehaviour
             {
                 heldObject.GetComponent<Animator>().SetTrigger("Thrown");
                 heldObject.GetComponent<Collider>().isTrigger = true;
-                //heldObject.GetComponent<PlayerInput>().startVibrate(0.25f);
+                heldObject.GetComponent<PlayerInput>().startVibrate(0.25f);
                 other.AddForceAtPosition((transform.forward + transform.up).normalized * throwForce, other.ClosestPointOnBounds(other.transform.position - transform.forward * playerRadius));
             }
             else

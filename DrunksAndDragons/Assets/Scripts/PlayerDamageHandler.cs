@@ -94,7 +94,7 @@ public class PlayerDamageHandler : MonoBehaviour
                 Vector3 temp = hit.point;
                 transform.position = temp;
                 //GetComponent<PlayerInput>().stopVibrate();
-                //GetComponent<PlayerInput>().setVibration(1, 0.2f);
+                GetComponent<PlayerInput>().setVibration(1, 0.2f);
             }
 
             Vector3 velocity = rigidbody.velocity;
@@ -136,10 +136,11 @@ public class PlayerDamageHandler : MonoBehaviour
             velocity.y = 0;
             transform.position += velocity;
             playerMove.checkGrounded();
+            //if (knockbackCountdown <= 0)
+            //  GetComponent<PlayerInput>().startVibrate(0);
         }
         else if (IFrameTime > 0)
         {
-            //GamePad.SetVibration((PlayerIndex)GetComponent<PlayerInput>().controller, 0, 0);
             isHitDir = Vector3.zero;
             IFrameTime -= Time.deltaTime;
             rigidbody.isKinematic = true;
@@ -213,7 +214,7 @@ public class PlayerDamageHandler : MonoBehaviour
         IFrameTime = IFrames;
         health -= 1;
         isHit = false;
-        //GetComponent<PlayerInput>().setVibration(0.5f, 0.25f);
+        GetComponent<PlayerInput>().setVibration(0.5f, 0.25f);
     }
 
     /// <summary>
