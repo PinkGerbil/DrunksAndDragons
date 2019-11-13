@@ -69,6 +69,7 @@ ModelImporter:
     100126: mixamorig:Spine1
     100128: mixamorig:Spine2
     100130: //RootNode
+    100132: unamed
     400000: mixamorig:Head
     400002: mixamorig:HeadTop_End
     400004: mixamorig:Hips
@@ -135,8 +136,13 @@ ModelImporter:
     400126: mixamorig:Spine1
     400128: mixamorig:Spine2
     400130: //RootNode
+    400132: unamed
+    2100000: No Name
+    4300000: unamed
     7400000: punch2
     9500000: //RootNode
+    13700000: unamed
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -169,7 +175,7 @@ ModelImporter:
       name: punch2
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 17
+      lastFrame: 31
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
