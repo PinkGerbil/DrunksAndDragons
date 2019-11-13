@@ -1,0 +1,258 @@
+fileFormatVersion: 2
+guid: 952e01a0a2003b347bcf831d7c22ca1e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Extract3
+    100002: Skin_stylizedMaleMed_01Base72
+    100004: Skin_stylizedMaleMed_01Base73
+    100006: Skin_stylizedMaleMed_01Base74
+    100008: Skin_stylizedMaleMed_01Base74_copy1
+    100010: Skin_stylizedMaleMed_01Base75
+    100012: Skin_stylizedMaleMed_01Base76
+    100014: Skin_stylizedMaleMed_01Base77
+    100016: Skin_stylizedMaleMed_01Base78
+    100018: Skin_stylizedMaleMed_01Base79
+    100020: Skin_stylizedMaleMed_01Base81
+    100022: Skin_stylizedMaleMed_01Base81_copy1
+    100024: Skin_stylizedMaleMed_01Base82
+    100026: Skin_stylizedMaleMed_01Base83
+    100028: Skin_stylizedMaleMed_01Base84
+    100030: //RootNode
+    400000: Extract3
+    400002: Skin_stylizedMaleMed_01Base72
+    400004: Skin_stylizedMaleMed_01Base73
+    400006: Skin_stylizedMaleMed_01Base74
+    400008: Skin_stylizedMaleMed_01Base74_copy1
+    400010: Skin_stylizedMaleMed_01Base75
+    400012: Skin_stylizedMaleMed_01Base76
+    400014: Skin_stylizedMaleMed_01Base77
+    400016: Skin_stylizedMaleMed_01Base78
+    400018: Skin_stylizedMaleMed_01Base79
+    400020: Skin_stylizedMaleMed_01Base81
+    400022: Skin_stylizedMaleMed_01Base81_copy1
+    400024: Skin_stylizedMaleMed_01Base82
+    400026: Skin_stylizedMaleMed_01Base83
+    400028: Skin_stylizedMaleMed_01Base84
+    400030: //RootNode
+    2100000: Extract3Mat
+    2100002: Skin_stylizedMaleMed_01Base72Mat
+    2100004: Skin_stylizedMaleMed_01Base73Mat
+    2100006: Skin_stylizedMaleMed_01Base74Mat
+    2100008: Skin_stylizedMaleMed_01Base74_copy1Mat
+    2100010: Skin_stylizedMaleMed_01Base75Mat
+    2100012: Skin_stylizedMaleMed_01Base76Mat
+    2100014: Skin_stylizedMaleMed_01Base77Mat
+    2100016: Skin_stylizedMaleMed_01Base78Mat
+    2100018: Skin_stylizedMaleMed_01Base79Mat
+    2100020: Skin_stylizedMaleMed_01Base81Mat
+    2100022: Skin_stylizedMaleMed_01Base81_copy1Mat
+    2100024: Skin_stylizedMaleMed_01Base82Mat
+    2100026: Skin_stylizedMaleMed_01Base83Mat
+    2100028: Skin_stylizedMaleMed_01Base84Mat
+    2300000: Extract3
+    2300002: Skin_stylizedMaleMed_01Base72
+    2300004: Skin_stylizedMaleMed_01Base73
+    2300006: Skin_stylizedMaleMed_01Base74
+    2300008: Skin_stylizedMaleMed_01Base74_copy1
+    2300010: Skin_stylizedMaleMed_01Base75
+    2300012: Skin_stylizedMaleMed_01Base76
+    2300014: Skin_stylizedMaleMed_01Base77
+    2300016: Skin_stylizedMaleMed_01Base78
+    2300018: Skin_stylizedMaleMed_01Base79
+    2300020: Skin_stylizedMaleMed_01Base81
+    2300022: Skin_stylizedMaleMed_01Base81_copy1
+    2300024: Skin_stylizedMaleMed_01Base82
+    2300026: Skin_stylizedMaleMed_01Base83
+    2300028: Skin_stylizedMaleMed_01Base84
+    3300000: Extract3
+    3300002: Skin_stylizedMaleMed_01Base72
+    3300004: Skin_stylizedMaleMed_01Base73
+    3300006: Skin_stylizedMaleMed_01Base74
+    3300008: Skin_stylizedMaleMed_01Base74_copy1
+    3300010: Skin_stylizedMaleMed_01Base75
+    3300012: Skin_stylizedMaleMed_01Base76
+    3300014: Skin_stylizedMaleMed_01Base77
+    3300016: Skin_stylizedMaleMed_01Base78
+    3300018: Skin_stylizedMaleMed_01Base79
+    3300020: Skin_stylizedMaleMed_01Base81
+    3300022: Skin_stylizedMaleMed_01Base81_copy1
+    3300024: Skin_stylizedMaleMed_01Base82
+    3300026: Skin_stylizedMaleMed_01Base83
+    3300028: Skin_stylizedMaleMed_01Base84
+    4300000: Extract3
+    4300002: Skin_stylizedMaleMed_01Base72
+    4300004: Skin_stylizedMaleMed_01Base73
+    4300006: Skin_stylizedMaleMed_01Base74
+    4300008: Skin_stylizedMaleMed_01Base74_copy1
+    4300010: Skin_stylizedMaleMed_01Base75
+    4300012: Skin_stylizedMaleMed_01Base76
+    4300014: Skin_stylizedMaleMed_01Base77
+    4300016: Skin_stylizedMaleMed_01Base78
+    4300018: Skin_stylizedMaleMed_01Base79
+    4300020: Skin_stylizedMaleMed_01Base81
+    4300022: Skin_stylizedMaleMed_01Base81_copy1
+    4300024: Skin_stylizedMaleMed_01Base82
+    4300026: Skin_stylizedMaleMed_01Base83
+    4300028: Skin_stylizedMaleMed_01Base84
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Extract3Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base72Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base73Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base74Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base74_copy1Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base75Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base76Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base77Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base78Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base79Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base81Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base81_copy1Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base82Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base83Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_stylizedMaleMed_01Base84Mat
+    second: {fileID: 2100000, guid: d6155ddb74d6de64c97df6b98e101100, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
