@@ -89,7 +89,7 @@ public class PlayerPoints : MonoBehaviour
     /// </summary>
     public void FinalScore()
     {
-        finalPoints = points + (kills * killPointMultiplier);
+        finalPoints = totalCoins + (kills * killPointMultiplier);
     }
     /// <summary>
     /// Gets the final score of the player
