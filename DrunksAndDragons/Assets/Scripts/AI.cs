@@ -328,11 +328,12 @@ public class AI : MonoBehaviour
             }
             
         }
-        if(skippedPlayers >= 4)
+        if(skippedPlayers >= players.Length)
         {
             hasTarget = false;
-            skippedPlayers = 0;
         }
+        skippedPlayers = 0;
+
     }
 
     //adds a timer to the ai's attack so it doesnt constantly hit the player
