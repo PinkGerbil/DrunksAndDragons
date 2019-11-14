@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator), typeof(NavMeshAgent))]
 public class AI : MonoBehaviour
 {
     Animator animator;
@@ -104,6 +104,7 @@ public class AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         renderer = GetComponent<Renderer>();
         players = GameObject.FindGameObjectsWithTag("Player");
