@@ -46,8 +46,8 @@ public class UIFade : MonoBehaviour
         if(overlap)
         {
             cvGroup.alpha -= Time.deltaTime;
-            if (cvGroup.alpha < 0.5f)
-                cvGroup.alpha = 0.5f;
+            if (cvGroup.alpha < 0.25f)
+                cvGroup.alpha = 0.25f;
         }
         else
         {
