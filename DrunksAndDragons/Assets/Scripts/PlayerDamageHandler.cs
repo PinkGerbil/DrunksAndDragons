@@ -7,6 +7,8 @@ using XInputDotNetPure;
 [RequireComponent(typeof(AttackScript), typeof(Rigidbody), typeof(Animator))]
 public class PlayerDamageHandler : MonoBehaviour
 {
+    new Renderer renderer; 
+
     [SerializeField]
     public Animator animator;
     [SerializeField] new Rigidbody rigidbody;
@@ -60,6 +62,7 @@ public class PlayerDamageHandler : MonoBehaviour
     /// </summary>
     void Start()
     {
+        renderer = transform.Find("group1").GetComponent<Renderer>();
         if (!animator)
             animator = GetComponent<Animator>();
         spawnLocation = transform.position;
@@ -143,6 +146,7 @@ public class PlayerDamageHandler : MonoBehaviour
         }
         else if (IFrameTime > 0)
         {
+            renderer.material.color = Color.white;
             isHitDir = Vector3.zero;
             IFrameTime -= Time.deltaTime;
             rigidbody.isKinematic = true;
@@ -215,6 +219,7 @@ public class PlayerDamageHandler : MonoBehaviour
         health -= 1;
         isHit = false;
         GetComponent<PlayerInput>().setVibration(0.5f, 0.25f);
+        renderer.material.color = Color.red;
     }
 
     /// <summary>
