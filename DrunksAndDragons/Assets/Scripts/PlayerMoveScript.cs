@@ -57,7 +57,7 @@ public class PlayerMoveScript : MonoBehaviour
     /// </summary>
     Vector3 velocity { get { return transform.forward * (moveSpeed + shopSpeedIncrease) * carrySpeedMod * consumableSpeedMod * Time.deltaTime; } }
 
-    float  scaledSpeed { get { return ((moveSpeed + shopSpeedIncrease) * carrySpeedMod * consumableSpeedMod) / 5; } }
+    float  scaledSpeed { get { return (moveSpeed + shopSpeedIncrease) * consumableSpeedMod * carrySpeedMod / 5; } }
 
     /// <summary>
     /// Start is called before the first frame update

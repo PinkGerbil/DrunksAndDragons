@@ -1538,7 +1538,7 @@ GameObject:
   - component: {fileID: 3547770589383843214}
   - component: {fileID: 174303534238179427}
   m_Layer: 8
-  m_Name: Dwarf_Player
+  m_Name: Dwarf_Player Red
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
