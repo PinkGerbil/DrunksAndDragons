@@ -6159,7 +6159,7 @@ PrefabInstance:
         type: 3}
       propertyPath: SpeedPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1068093175}
     - target: {fileID: 2942986365390005711, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: shopSpeedIncreaseLimit
@@ -6169,7 +6169,7 @@ PrefabInstance:
         type: 3}
       propertyPath: SpeedPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1278142784}
     - target: {fileID: 8517220037259680343, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: shopSpeedIncreaseLimit
@@ -6189,7 +6189,7 @@ PrefabInstance:
         type: 3}
       propertyPath: SpeedPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 83001597}
     - target: {fileID: 662559066479560901, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: m_Controller

@@ -50,7 +50,7 @@ public class PlayerInput : MonoBehaviour
         }
         if(vibrationTimer > 0)
         {
-            vibrationTimer -= Time.deltaTime;
+            vibrationTimer -= Time.unscaledDeltaTime;
         }
         else
         {

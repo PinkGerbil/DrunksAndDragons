@@ -24,14 +24,13 @@ public class UIFade : MonoBehaviour
             Debug.Log("No reference to blackboard");
         else
             players = blackboard.players;
-
-        if (players.Count == 0)
-            Debug.Log("players was not filled");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
         bool overlap = false;
         foreach(GameObject player in players)
         {
