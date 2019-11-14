@@ -61,14 +61,14 @@ public class PlayerInput : MonoBehaviour
     public void setVibration(float intensity, float time)
     {
         // playerID - 1 because playerIndex starts at 0
-        GamePad.SetVibration((PlayerIndex)playerID - 1, intensity, intensity);
+        // GamePad.SetVibration((PlayerIndex)playerID - 1, intensity, intensity);
 
-        vibrationTimer = time;
+        //vibrationTimer = time;
     }
 
     public void startVibrate(float intensity)
     {
-        GamePad.SetVibration((PlayerIndex)playerID - 1, intensity, intensity);
+        //GamePad.SetVibration((PlayerIndex)playerID - 1, intensity, intensity);
     }
 
     public void stopVibrate()
