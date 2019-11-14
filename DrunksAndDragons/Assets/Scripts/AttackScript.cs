@@ -507,6 +507,7 @@ public class AttackScript : MonoBehaviour
             
             if (heldObject.CompareTag("Player"))
             {
+                heldObject.GetComponent<Rigidbody>().useGravity = true;
                 heldObject.GetComponent<Animator>().SetTrigger("Thrown");
                 heldObject.GetComponent<Collider>().isTrigger = true;
                 heldObject.GetComponent<PlayerInput>().startVibrate(0.25f);

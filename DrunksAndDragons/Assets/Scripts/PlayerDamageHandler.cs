@@ -90,7 +90,9 @@ public class PlayerDamageHandler : MonoBehaviour
             if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 0.2f, layerMask))
             {
                 rigidbody.isKinematic = true;
+                rigidbody.useGravity = false;
                 GetComponent<Collider>().isTrigger = false;
+                
                 Vector3 temp = hit.point;
                 transform.position = temp;
                 //GetComponent<PlayerInput>().stopVibrate();
