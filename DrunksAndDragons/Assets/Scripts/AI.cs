@@ -162,8 +162,6 @@ public class AI : MonoBehaviour
                 {
                     renderer.material.color = Color.white;
                 }
-                else
-                    renderer.material.color = Color.green;
             }
             if (!isDead)
             {
@@ -456,6 +454,7 @@ public class AI : MonoBehaviour
     //knocks back players who are close
     void KnockbackAttack()
     {
+        animator.SetTrigger("Blast");
         Instantiate(knockback,transform.position,transform.rotation);
     }
 

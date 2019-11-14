@@ -280,7 +280,7 @@ MonoBehaviour:
   gameEndText: {fileID: 752494399}
   pointsShown: 1
   waveMaster: {fileID: 1826136152}
-  finalWaveNumber: 5
+  finalWaveNumber: 1
   gameLost: 0
 --- !u!82 &7923833
 AudioSource:
