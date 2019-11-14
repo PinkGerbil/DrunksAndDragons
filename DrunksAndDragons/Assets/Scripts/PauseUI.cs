@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using XboxCtrlrInput;
+using UnityEngine.SceneManagement;
 public class PauseUI : MonoBehaviour
 {
     [SerializeField] public Button firstSelected;
     public                  Button settingButton;
-    public                  Button quitButton;
+    public                  Button mainMenuButton;
     [SerializeField] public GameObject settings;
     [SerializeField] public Blackboard blackboard;
 
@@ -42,6 +43,12 @@ public class PauseUI : MonoBehaviour
         }
     }
 
+    public void mainmenuButton()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
+
     public void quitApp()
     {
         Application.Quit();
@@ -53,7 +60,7 @@ public class PauseUI : MonoBehaviour
 
         changeTimer -= Time.unscaledDeltaTime;
         //going up
-        if (XCI.GetAxis(XboxAxis.LeftStickY) > 0 && eventSystem.currentSelectedGameObject.name == "Quit" && changeTimer < 0)
+        if (XCI.GetAxis(XboxAxis.LeftStickY) > 0 && eventSystem.currentSelectedGameObject.name == "MainMenu" && changeTimer < 0)
         {
             eventSystem.SetSelectedGameObject(settingButton.gameObject);
             changeTimer = 0.4f;
@@ -75,7 +82,7 @@ public class PauseUI : MonoBehaviour
         if (XCI.GetAxis(XboxAxis.LeftStickY) < 0 && eventSystem.currentSelectedGameObject.name == "Settings" && changeTimer < 0)
         {
             Debug.Log("down");
-            eventSystem.SetSelectedGameObject(quitButton.gameObject);
+            eventSystem.SetSelectedGameObject(mainMenuButton.gameObject);
             changeTimer = 0.4f;
         }
 
@@ -89,9 +96,9 @@ public class PauseUI : MonoBehaviour
         {
             settingButton.GetComponent<Button>().onClick.Invoke();
         }
-        if (XCI.GetButtonDown(XboxButton.A) && eventSystem.currentSelectedGameObject.name == "Quit")
+        if (XCI.GetButtonDown(XboxButton.A) && eventSystem.currentSelectedGameObject.name == "MainMenu")
         {
-            quitButton.GetComponent<Button>().onClick.Invoke();
+            mainMenuButton.GetComponent<Button>().onClick.Invoke();
         }
     }
 }

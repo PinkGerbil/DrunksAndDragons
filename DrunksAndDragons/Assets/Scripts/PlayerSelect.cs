@@ -36,6 +36,12 @@ public class PlayerSelect : MonoBehaviour
 
     private int controllerCount = 0;
 
+    public GameObject p1AtoJoin;
+    public GameObject p2AtoJoin;
+    public GameObject p3AtoJoin;
+    public GameObject p4AtoJoin;
+
+
     //bool checkPlayers = false;
 
     bool anyActive { get { return player1Active || player2Active || player3Active || player4Active; } }
@@ -84,6 +90,22 @@ public class PlayerSelect : MonoBehaviour
             SetControllerPlayer(Player2, p2);
             SetControllerPlayer(Player3, p3);
             SetControllerPlayer(Player4, p4);
+        }
+        if(player1Active && p1AtoJoin.activeInHierarchy)
+        {
+            p1AtoJoin.SetActive(false);
+        }
+        if (player2Active && p2AtoJoin.activeInHierarchy)
+        {
+            p2AtoJoin.SetActive(false);
+        }
+        if (player3Active && p3AtoJoin.activeInHierarchy)
+        {
+            p3AtoJoin.SetActive(false);
+        }
+        if (player4Active && p4AtoJoin.activeInHierarchy)
+        {
+            p4AtoJoin.SetActive(false);
         }
     }
 
