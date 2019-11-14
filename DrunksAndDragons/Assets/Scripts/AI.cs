@@ -158,7 +158,10 @@ public class AI : MonoBehaviour
         {
             if (renderer != null)
             {
-                renderer.material.color = Color.white;
+                if (this.name != "Boss(Clone)")
+                {
+                    renderer.material.color = Color.white;
+                }
             }
             if (!isDead)
             {
