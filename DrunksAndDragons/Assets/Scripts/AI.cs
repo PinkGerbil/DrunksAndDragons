@@ -106,7 +106,7 @@ public class AI : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        renderer = GetComponent<Renderer>();
+        renderer = transform.Find("default2").GetComponent<Renderer>();
         players = GameObject.FindGameObjectsWithTag("Player");
         isDead = false;
         FindClosestPlayer();
