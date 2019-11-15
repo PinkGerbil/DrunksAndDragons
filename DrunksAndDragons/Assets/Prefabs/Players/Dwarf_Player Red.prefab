@@ -1537,8 +1537,9 @@ GameObject:
   - component: {fileID: 2689507102940744695}
   - component: {fileID: 3547770589383843214}
   - component: {fileID: 174303534238179427}
+  - component: {fileID: 9101025326831800542}
   m_Layer: 8
-  m_Name: Dwarf_Player
+  m_Name: Dwarf_Player Red
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1880,6 +1881,22 @@ MonoBehaviour:
   SpeedBoost: 2
   DurationOfDrink: 5
   GinAndSonicDuration: 20
+--- !u!208 &9101025326831800542
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2881682680496295213}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.005, y: 0.025, z: 0.005}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.02, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2881682680496295217
 GameObject:
   m_ObjectHideFlags: 0

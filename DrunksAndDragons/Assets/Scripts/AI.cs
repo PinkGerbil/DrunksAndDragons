@@ -126,6 +126,7 @@ public class AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
+
         //if the boss is channeling for healing basic ai will go to him
         if(boss != null && boss.GetComponent<AI>().channeling && this.gameObject.name != "Boss(Clone)")
         {
@@ -196,7 +197,7 @@ public class AI : MonoBehaviour
             Destroy(this.gameObject);
         }
         //checking to see how many players there are in the scene by seeing how many player tags there are in startup
-        else if(boss != null && stunTime <= 0 && !boss.GetComponent<AI>().channeling && !isDead)
+        else if(boss != null && stunTime <= 0 && !boss.GetComponent<AI>().channeling && !isDead && hasTarget)
         {
             agent.isStopped = false;
 
@@ -222,7 +223,7 @@ public class AI : MonoBehaviour
             else
                 attackCountdown = attackTime;
         }
-        else if (!hasTarget && !isDead)
+        else if (!hasTarget && !isDead || !currentPlayer.Alive)
         {
             agent.isStopped = true;
         }
@@ -286,10 +287,12 @@ public class AI : MonoBehaviour
             else
                 animator.SetBool("Moving", true);
         }
-        if(!agent.hasPath)
-        {
-            hasTarget = false;
-        }
+        //if(!agent.hasPath)
+        //{
+        //    hasTarget = false;
+        //}
+
+
     }
 
     //getting the closest player to this object if the player moves past a distance set above
