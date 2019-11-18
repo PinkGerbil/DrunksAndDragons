@@ -6845,6 +6845,11 @@ PrefabInstance:
       propertyPath: SpeedPanel
       value: 
       objectReference: {fileID: 444620603}
+    - target: {fileID: 8517220037259680343, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8889305699210294315, guid: 66f61d54eaa5d414f9fc55f93a77fbca,
         type: 3}
       propertyPath: shopSpeedIncreaseLimit

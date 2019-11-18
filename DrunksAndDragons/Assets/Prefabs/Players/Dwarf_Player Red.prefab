@@ -1743,7 +1743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 0}
   attack: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 7.5
   shopSpeedIncrease: 0
   shopSpeedIncreaseLimit: 0
   SpeedPanel: {fileID: 0}

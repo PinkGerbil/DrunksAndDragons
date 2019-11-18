@@ -541,7 +541,7 @@ public class AttackScript : MonoBehaviour
         else if (other.gameObject.tag == "SpeedDrinkShop" && input.getBuyPressed && points.points >= speedUpPrice && gameObject.GetComponent<PlayerMoveScript>().shopSpeedIncrease < gameObject.GetComponent<PlayerMoveScript>().shopSpeedIncreaseLimit)
         {
             spendParticle.Play();
-            this.gameObject.GetComponent<PlayerMoveScript>().shopSpeedIncrease++;
+            this.gameObject.GetComponent<PlayerMoveScript>().shopSpeedIncrease += GetComponent<PlayerMoveScript>().moveSpeed / 5;
             points.LosePoints(speedUpPrice);
         }
         else if (other.gameObject.tag == "HealthIncreaseShop" && input.getBuyPressed && points.points >= healthUpPrice)

@@ -19,7 +19,7 @@ public class PlayerMoveScript : MonoBehaviour
     [SerializeField] 
     [Tooltip("How fast the player moves")]
     [Range(1, 10)]
-    float moveSpeed = 5;
+    public float moveSpeed = 5;
     [Tooltip("float that increases players speed permanently")]
     public float shopSpeedIncrease;
     public float shopSpeedIncreaseLimit;
@@ -57,7 +57,7 @@ public class PlayerMoveScript : MonoBehaviour
     /// </summary>
     Vector3 velocity { get { return transform.forward * (moveSpeed + shopSpeedIncrease) * carrySpeedMod * consumableSpeedMod * Time.deltaTime; } }
 
-    float  scaledSpeed { get { return ((moveSpeed + shopSpeedIncrease) * carrySpeedMod * consumableSpeedMod) / 5; } }
+    float  scaledSpeed { get { return ((moveSpeed + shopSpeedIncrease) * carrySpeedMod * consumableSpeedMod); } }
 
     /// <summary>
     /// Start is called before the first frame update

@@ -195,7 +195,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: Speed
-    m_EventTreshold: 1.999999
+    m_EventTreshold: 12.49
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102314462020929904}
   m_Solo: 0
@@ -223,7 +223,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 4
     m_ConditionEvent: Speed
-    m_EventTreshold: 2
+    m_EventTreshold: 12.5
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102138477802395064}
   m_Solo: 0
@@ -276,7 +276,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: Speed
-    m_EventTreshold: 1.999999
+    m_EventTreshold: 12.49
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102314462020929904}
   m_Solo: 0
@@ -429,7 +429,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 4
     m_ConditionEvent: Speed
-    m_EventTreshold: 2
+    m_EventTreshold: 12.5
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102138477802395064}
   m_Solo: 0
@@ -632,7 +632,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: Speed
-    m_EventTreshold: 1.999999
+    m_EventTreshold: 12.49
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102314462020929904}
   m_Solo: 0
@@ -841,7 +841,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Run
-  m_Speed: 0.8
+  m_Speed: 0.16
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101340798657193102}
@@ -927,7 +927,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: fastRun
-  m_Speed: 1.2
+  m_Speed: 0.24
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101404201287036790}
