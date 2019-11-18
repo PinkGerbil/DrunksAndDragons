@@ -230,6 +230,8 @@ public class AI : MonoBehaviour
         //boss things
         if (this.gameObject.name == "Boss(Clone)")
         {
+            if (isDead)
+                animator.SetTrigger("Die");
             //when dead will drop lots of coins in random directions 
             if (isDead == true && coroutineRunning == true)
             {
