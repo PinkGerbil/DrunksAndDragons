@@ -230,12 +230,11 @@ public class AI : MonoBehaviour
         //boss things
         if (this.gameObject.name == "Boss(Clone)")
         {
-            if (isDead)
-                animator.SetTrigger("Die");
             //when dead will drop lots of coins in random directions 
             if (isDead == true && coroutineRunning == true)
             {
                 StartCoroutine(coinDrop());
+                animator.SetTrigger("Die");
                 coroutineRunning = false;
             }
             //picks a random player and puts a damaging aoe at their feet and does damage every set amount of time in aoe.cs
