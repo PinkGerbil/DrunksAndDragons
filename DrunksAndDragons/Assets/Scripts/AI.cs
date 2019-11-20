@@ -234,6 +234,7 @@ public class AI : MonoBehaviour
             if (isDead == true && coroutineRunning == true)
             {
                 StartCoroutine(coinDrop());
+                animator.SetTrigger("Die");
                 coroutineRunning = false;
             }
             //picks a random player and puts a damaging aoe at their feet and does damage every set amount of time in aoe.cs
